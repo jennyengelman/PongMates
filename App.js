@@ -13,7 +13,7 @@ export default class App extends React.Component {
           </View>
           <View style={{paddingTop: 30}}>
             <View style={styles.matesRoundedRectangle}>
-              <Text style={{justifyContent: 'flex-start'}}>Mates</Text>
+              <Text style={styles.pongMatesText}>Mates</Text>
             </View>
           </View>
         </View>
