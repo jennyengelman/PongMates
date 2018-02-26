@@ -8,7 +8,7 @@ export default class App extends React.Component {
         <View style={{flexDirection: 'row', paddingTop: 30}}>
           <View>
             <View style={styles.pongRoundedRectangle}>
-              <Text style={{justifyContent: 'flex-end'}}>Pong</Text>
+              <Text style={styles.pongMatesText}>Pong</Text>
             </View>
           </View>
           <View style={{paddingTop: 30}}>
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 30,
   },
   pongMatesText: {
+    fontFamily: 'Cochin',
     fontSize: 50,
     alignItems: 'center'
   },
