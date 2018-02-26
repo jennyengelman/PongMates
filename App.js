@@ -41,6 +41,8 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 30,
   },
   pongMatesText: {
+    paddingTop: 20,
+    padding: 5,
     fontFamily: 'Cochin',
     fontSize: 50,
     alignItems: 'center'
