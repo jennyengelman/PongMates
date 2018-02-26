@@ -5,7 +5,18 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <View style={{flexDirection: 'row', paddingTop: 30}}>
+          <View>
+            <View style={styles.pongRoundedRectangle}>
+              <Text style={{justifyContent: 'flex-end'}}>Pong</Text>
+            </View>
+          </View>
+          <View style={{paddingTop: 30}}>
+            <View style={styles.matesRoundedRectangle}>
+              <Text style={{justifyContent: 'flex-start'}}>Mates</Text>
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
@@ -14,8 +25,23 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  pongRoundedRectangle: {
+    backgroundColor: 'orange',
+    width: 220,
+    height: 120,
+    borderTopRightRadius: 30,
+    borderBottomRightRadius: 30,
+  },
+  matesRoundedRectangle: {
+    backgroundColor: 'yellow',
+    width: 240,
+    height: 120,
+    borderTopLeftRadius: 30,
+    borderBottomLeftRadius: 30,
+  },
+  pongMatesText: {
+    fontSize: 50,
+    alignItems: 'center'
   },
 });
