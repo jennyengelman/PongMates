@@ -1,20 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, Fonts, Button } from 'react-native';
+import { Font } from 'expo';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{flexDirection: 'row', paddingTop: 30}}>
-          <View>
-            <View style={styles.pongRoundedRectangle}>
-              <Text style={styles.pongMatesText}>Pong</Text>
-            </View>
+        <View style = {{flexDirection: 'row', justifyContent: 'space-around'}}>
+          <View style = {styles.topButtons}>
+            <Image source = {require('./assets/profile.png')} style = {styles.image}/>
           </View>
-          <View style={{paddingTop: 30}}>
-            <View style={styles.matesRoundedRectangle}>
-              <Text style={{justifyContent: 'flex-start'}}>Mates</Text>
-            </View>
+          <View style = {styles.topButtons}>
+            <Text style = {styles.faqButton}>?</Text>
+          </View>
+
+        </View>
+        <View style = {{justifyContent: 'center'}}>
+
+          <View style = {styles.postButton}>
+            <Text style = {styles.buttonText}>Post a Game</Text>
+          </View>
+
+          <View style = {styles.findButton}>
+            <Text style = {styles.buttonText}>Find a Game</Text>
           </View>
         </View>
       </View>
@@ -24,25 +32,47 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'column',
     flex: 1,
+    backgroundColor: '#F2994A',
   },
-  pongRoundedRectangle: {
-    backgroundColor: 'orange',
-    width: 220,
+  faqButton: {
+    fontSize: 70,
+  },
+  topButtons: {
+    width: 130,
     height: 120,
-    borderTopRightRadius: 30,
-    borderBottomRightRadius: 30,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    backgroundColor:'#F5F5F5',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  matesRoundedRectangle: {
-    backgroundColor: 'yellow',
-    width: 240,
-    height: 120,
-    borderTopLeftRadius: 30,
-    borderBottomLeftRadius: 30,
+  buttonText:{
+    fontSize: 40,
   },
-  pongMatesText: {
-    fontFamily: 'Cochin',
-    fontSize: 50,
-    alignItems: 'center'
+  image:{
+    width: 70,
+    height: 70,
   },
+  postButton: {
+    marginBottom: 30,
+    marginTop: 20,
+    width: 300,
+    height: 250,
+    borderRadius: 20,
+    borderColor: 'white',
+    borderWidth: 5,
+    paddingTop: 50,
+    backgroundColor:'#FFC928',
+  },
+  findButton:{
+    width: 300,
+    height: 250,
+    backgroundColor:'#93E1FA',
+    borderRadius: 20,
+    borderColor: 'white',
+    borderWidth: 5,
+    paddingTop: 50,
+  }
 });
