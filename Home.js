@@ -108,6 +108,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFC928',
     borderColor: 'white',
     borderWidth: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   nameInput: {
     width: '80%',
