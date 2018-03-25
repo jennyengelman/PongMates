@@ -1,12 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.background}>
-        <View style = {styles.topContainer}/>
+        <View style = {styles.topContainer}>
+          
+          <Text style = {styles.waitingFont}>waiting...</Text>
+        </View>
         <View style = {styles.bottomContainer}>
+        <View style = {styles.tabStyle}>
+          <Text style = {{fontWeight: 'bold', color: '#545454'}}>Your Game Details</Text>
+        </View>
           <View style = {styles.innerContainer}>
             <Text style = {styles.fontStyle}>Name:</Text>
             <Text style = {styles.fontStyle}>Place:</Text>
@@ -30,6 +36,13 @@ const styles = StyleSheet.create({
   topContainer: {
     flex: .6,
     backgroundColor:'#fff',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end'
+  },
+  waitingFont: {
+    fontWeight: 'bold',
+    fontSize: 22,
+    margin: 7,
   },
   bottomContainer: {
     borderTopColor: '#FFC928',
@@ -39,6 +52,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
+  },
+  tabStyle:{
+    width: 140,
+    height: 35,
+    backgroundColor: '#FFC928',
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   innerContainer: {
     height: 150,
@@ -54,11 +76,11 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   deleteButton: {
-    height: 70,
+    height: 60,
     width: 110,
     backgroundColor: '#FFC928',
     borderRadius: 15,
-    marginTop: 40,
+    marginTop: 30,
     alignItems: 'center',
     justifyContent: 'center',
   },
