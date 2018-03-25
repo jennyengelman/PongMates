@@ -9,7 +9,7 @@ export default class App extends React.Component {
           <Text style={{fontFamily: 'Cochin', fontSize: 50, color: 'white', width: '75%'}}>CREATE</Text>
           <Text style={{fontFamily: 'Cochin', fontSize: 50, color: 'white', width: '75%'}}>A GAME</Text>
         </View>
-        <View style={{paddingTop: '10%'}}>
+        <View style={{paddingTop: '5%'}}>
           <View style={styles.time}>
             <View style={styles.timeTop}>
               <Image style={{height: 40, width: 40}} source={require('./assets/time.png')}/>
@@ -67,15 +67,17 @@ export default class App extends React.Component {
                   {key: 'Zete'},
                 ]}
                 renderItem={({item}) => (
-                  <View style={styles.optionButtons}>
-                    <Text style={styles.optionsTextPlace}>{item.key}</Text>
+                  <View style={{paddingLeft: 5}}>
+                    <View style={styles.optionButtons}>
+                      <Text style={styles.optionsTextPlace}>{item.key}</Text>
+                    </View>
                   </View>
                 )}
               />
             </View>
           </View>
         </View>
-        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around'}}>
+        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: 10}}>
           <Text style={{color: '#F2994A', fontSize: 30, fontFamily: 'Cochin', paddingLeft: 15}}>Cancel</Text>
           <View style={styles.postButton}>
             <Text style={styles.postButtonText}>Post!</Text>
