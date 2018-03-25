@@ -27,12 +27,11 @@ export default class App extends React.Component {
         <View style = {{justifyContent: 'center'}}>
 
           <View style = {{width: '100%', flexDirection: 'row', justifyContent: 'flex-start'}}>
-            <Logo font = {this.state.fontLoaded}> </Logo>
+            
             <View style = {styles.postButton}>
             {
               this.state.fontLoaded ? (
                 <Text style = {styles.postFontStyle}>Create a Game</Text>
-
               ) : null
             }
             </View>
@@ -110,5 +109,6 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     shadowColor: 'gray',
     shadowOpacity: .5,
+    /*fontFamily: 'double-bubble-shadow'*/
   }
 });
