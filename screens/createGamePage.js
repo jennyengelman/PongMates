@@ -9,7 +9,7 @@ export default class App extends React.Component {
           <Text style={{fontFamily: 'Cochin', fontSize: 50, color: 'white', width: '75%'}}>CREATE</Text>
           <Text style={{fontFamily: 'Cochin', fontSize: 50, color: 'white', width: '75%'}}>A GAME</Text>
         </View>
-        <View style={{paddingTop: '5%'}}>
+        <View style={{paddingTop: '7.5%'}}>
           <View style={styles.time}>
             <View style={styles.timeTop}>
               <Image style={{height: 40, width: 40}} source={require('./assets/time.png')}/>
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: 100,
+    height: 80,
   },
   timeTop: {
     backgroundColor: '#F2994A',
