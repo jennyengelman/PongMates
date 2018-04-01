@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 
-export default class App extends React.Component {
+export default class CreateScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>

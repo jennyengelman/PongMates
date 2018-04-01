@@ -1,19 +1,26 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Image, TextInput, StackNavigator, Font } from 'react-native';
-import { HomeScreen } from './Home.js';
+import { StyleSheet, Text, View, Button, Alert, Image, TextInput, Font } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import { HomeScreen } from './screens/Home';
+import { CreateScreen } from './screens/CreateGamePage';
+import { TimedOutScreen } from './screens/TimedOutPage';
 
-// const App = StackNavigator({
-//   Home: { screen: HomeScreen },
-//   Selection: { screen: SelectionScreen },
-// });
-// <View style={styles.removeHeaderOverlap}>
-// </View>
+const RootStack = StackNavigator({
+  Home: {
+    screen: HomeScreen,
+  },
+  Create: {
+    screen: CreateScreen,
+  },
+  TimedOut: {
+    screen: TimedOutScreen,
+  },
+});
 
 export default class App extends React.Component {
   render() {
     return (
-      <HomeScreen>
-      </HomeScreen>
+      <RootStack />
     )
   }
 };

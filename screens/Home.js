@@ -8,8 +8,8 @@ export class HomeScreen extends React.Component {
   };
   async componentDidMount() {
     await Font.loadAsync({
-      'double-bubble-shadow': require('./assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./assets/fonts/SourceSansPro-Regular.ttf'),
+      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
+      'source-sans-pro': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
     });
     this.setState({ fontLoaded: true});
   }
@@ -36,7 +36,7 @@ export class HomeScreen extends React.Component {
               <View style={styles.homeRectangle}>
                 <View style={{borderRadius: 20}}>
                   <View style={{backgroundColor: '#FFC928', width: 200, height: 200, borderRadius: 100}}>
-                    <Image style={{width: 200, height: 200}} source={require('./assets/image.png')}/>
+                    <Image style={{width: 200, height: 200}} source={require('./../assets/image.png')}/>
                     <Text style={styles.selfieText}>Take a selfie to share with your partner!</Text>
                   </View>
                 </View>
