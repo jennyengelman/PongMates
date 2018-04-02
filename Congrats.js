@@ -6,7 +6,7 @@ import PongButton from './PongButton';
 
 
 export class Congrats extends React.Component {
-  static navigationOptions = {header: null };
+  static navigationOptions = { header: null };
   state = { fontLoaded: false };
   async componentDidMount() {
     await Font.loadAsync({
@@ -46,31 +46,20 @@ export class Congrats extends React.Component {
           />
         </View>
         <View style={ styles.congratsContainer }>
-        {
-          this.state.fontLoaded ? (
           <View style={ styles.congratsBox }>
-            <Text style={ styles.congratsInfo }>
-              Name: Jenny{ '\n' }Place: Phi Delt{ '\n' }Time: Now
+            <Text style={ this.state.fontLoaded ? styles.congratsInfo : styles.congratsInfoBackup }>
+            Name: Jenny{ '\n' }Place: Phi Delt{ '\n' }Time: Now
             </Text>
           </View>
-          ) :
-          <View style={ styles.congratsBox }>
-            <Text style={ styles.congratsInfoBackup }>
-              Name: Jenny{ '\n' }Place: Phi Delt{ '\n' }Time: Now
-            </Text>
-          </View>
-        }
         </View>
         <TouchableOpacity onPress={() =>
             navigate('About')
-          } style={ styles.bottomButton }>
+          } style={ styles.bottomButton }
+        >
           <View style={ styles.bottomButton }>
-          {
-            this.state.fontLoaded ? (
-              <Text style={ styles.buttonText }>tap to continue</Text>
-            ) :
-            <Text style={ styles.buttonTextBackup }>tap to continue</Text>
-          }
+            <Text style={ this.state.fontLoaded ? styles.buttonText : styles.buttonTextBackup }>
+            tap to continue
+            </Text>
           </View>
         </TouchableOpacity>
       </View>
