@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "create-game-page",
+    "name": "PongMates",
     "description": "This project is really great.",
-    "slug": "create-game-page",
+    "slug": "PongMates",
     "privacy": "public",
     "sdkVersion": "25.0.0",
     "platforms": ["ios", "android"],

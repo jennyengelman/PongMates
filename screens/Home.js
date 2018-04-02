@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Image, TextInput, StackNavigator} from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, Image, TextInput } from 'react-native';
 import { Font } from 'expo';
+import { StackNavigator } from 'react-navigation';
 
 export class HomeScreen extends React.Component {
   state = {
@@ -15,38 +16,36 @@ export class HomeScreen extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
-        <View style={{backgroundColor: '#C2515B', height: '80%'}}>
-          <View style={{flexDirection: 'row', paddingTop: 30}}>
-            <View style={styles.shadowPong}>
-              <View style={styles.pongContainer}>
+      <View style = { styles.container }>
+        <View style = {{ backgroundColor: '#C2515B', height: '80%' }}>
+          <View style = {{ flexDirection: 'row', paddingTop: 30 }}>
+            <View style = { styles.shadowPong }>
+              <View style = { styles.pongContainer }>
               {
-                this.state.fontLoaded ? (
-                  <Text style={styles.pongText}>Pong</Text>
-                ) : null
+                this.state.fontLoaded ? (<Text style = { styles.pongText }>Pong</Text>) : (<Text style = {{ fontSize: 60, color: 'white', paddingRight: 45 }}>Pong</Text>) }
               }
-                <View style={styles.matesContainer}>
-                  <Text style={styles.matesText}>Mates</Text>
+                <View style = { styles.matesContainer }>
+                  <Text style = { styles.matesText }>Mates</Text>
                 </View>
               </View>
             </View>
           </View>
-          <View style={{alignItems: 'center', paddingTop: 55}}>
-            <View style={styles.shadowHome}>
-              <View style={styles.homeRectangle}>
-                <View style={{borderRadius: 20}}>
-                  <View style={{backgroundColor: '#FFC928', width: 200, height: 200, borderRadius: 100}}>
-                    <Image style={{width: 200, height: 200}} source={require('./../assets/image.png')}/>
-                    <Text style={styles.selfieText}>Take a selfie to share with your partner!</Text>
+          <View style = {{ alignItems: 'center', paddingTop: 55 }}>
+            <View style = { styles.shadowHome }>
+              <View style = { styles.homeRectangle }>
+                <View style = {{ borderRadius: 20 }}>
+                  <View style = {{ backgroundColor: '#FFC928', width: 200, height: 200, borderRadius: 100 }}>
+                    <Image style = {{ width: 200, height: 200 }} source={require('./../assets/image.png')}/>
+                    <Text style = { styles.selfieText }>Take a selfie to share with your partner!</Text>
                   </View>
                 </View>
-                <View style={{paddingTop: 40}}>
-                  <View style={styles.shadowName}>
-                    <View style={styles.nameContainer}>
+                <View style = {{ paddingTop: 40 }}>
+                  <View style = { styles.shadowName }>
+                    <View style = { styles.nameContainer }>
                       <TextInput
-                        style={styles.nameInput}
-                        placeholder="Your Name"
-                        onChangeText={(text) => this.setState({text})}
+                        style = { styles.nameInput }
+                        placeholder = "Your Name"
+                        onChangeText = { (text) => this.setState({ text }) }
                       />
                     </View>
                   </View>
@@ -54,14 +53,12 @@ export class HomeScreen extends React.Component {
               </View>
             </View>
           </View>
-          <View style={{paddingTop: 20}}>
+          <View style = {{ paddingTop: 20 }}>
             <Button
-              onPress={() =>
-                navigate('SelectionScreen')
-              }
-              title= 'tap to begin'
-              color= 'white'
-              fontSize= '35'
+              onPress = { () => navigate('SelectionScreen') }
+              title = 'tap to begin'
+              color = 'white'
+              fontSize = '35'
             />
           </View>
         </View>
