@@ -1,13 +1,15 @@
 import React from 'react';
-import { Congrats } from './Congrats.js';
-import { About } from './About.js';
+import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
+import { Congrats } from './Congrats';
+import { About } from './About';
+import PongButton from './PongButton';
 
 
 
 export default class App extends React.Component {
   render() {
     return (
-      <About />
+      <About/>
     )
   }
 };

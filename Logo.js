@@ -9,7 +9,7 @@ export default class Logo extends React.Component {
       <View style = {{
         height: '30%',
         flexDirection: 'column',
-        marginTop: '13%',
+        marginTop: '10%',
       }}>
         <View style={[styles.logo, styles.pong]} />
         <View style={[styles.logo, styles.mates, {marginTop: 30}]} />

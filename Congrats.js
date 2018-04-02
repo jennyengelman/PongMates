@@ -1,59 +1,78 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
+import PongButton from './PongButton';
+
 
 
 export class Congrats extends React.Component {
-  state = {fontLoaded: false};
+  state = { fontLoaded: false };
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro': require('./assets/fonts/SourceSansPro-Bold.ttf'),
     });
-    this.setState({fontLoaded: true});
+    this.setState({ fontLoaded: true });
   }
   render() {
     return (
-      <View style={{flex: 1}}>
-      {
-        this.state.fontLoaded ? (
-        <View style={{flexDirection: 'column'}}>
-          <View style={{height: '58%', alignItems: 'center'}}>
-            <Text style={styles.congratsText}>Its a</Text>
-            <Text style={styles.congratsText}>Match!</Text>
-            <Image source={require('./assets/image.png')}
-              style={{
-                tintColor: 'black',
-                height: '40%',
-                width: '40%',
-                marginBottom: 10,
-              }}
-            />
-            <Image source={require('./assets/person.png')}
-              style={{
-                height: '15%',
-                width: '15%'
-              }}
-            />
-          </View>
-          <View style={styles.congratsContainer}>
-              <View style={styles.congratsBox}>
-                  <Text style={styles.congratsInfo}>
-                  Name: Jenny{"\n"}Place: Phi Delt{"\n"}Time: Now
-                  </Text>
+      <View style={{ flexDirection: 'column' }}>
+        <View style={{ height: '58%', alignItems: 'center' }}>
+          {
+            this.state.fontLoaded ? (
+              <View style={{ height: '37%', alignItems: 'center' }}>
+                <Text style={ styles.congratsText }>It{ `'` }s a</Text>
+                <Text style={ styles.congratsText }>Match!</Text>
               </View>
-          </View>
-          <View style={[styles.bottomButton, {backgroundColor: '#FFC928'}]}>
-            <Button
-              //onPress={idk}
-              title="tap to continue"
-              color="white"
-              fontWeight="bold"
-            />
-          </View>
+            ) :
+            <View style={{ height: '37%', alignItems: 'center' }}>
+              <Text style={ styles.congratsTextBackup }>It{ `'` }s a</Text>
+              <Text style={ styles.congratsTextBackup }>Match!</Text>
+            </View>
+          }
+          <Image source={ require('./assets/image.png') }
+            style={{
+            tintColor: '#000000',
+            height: '40%',
+            width: '41%',
+            margin: 'auto',
+            marginBottom: 10,
+            }}
+          />
+          <Image source={ require('./assets/person.png') }
+            style={{
+              height: '15%',
+              width: '15%',
+              margin: 'auto',
+            }}
+          />
         </View>
-        ) : null
-      }
+        <View style={ styles.congratsContainer }>
+        {
+          this.state.fontLoaded ? (
+          <View style={ styles.congratsBox }>
+            <Text style={ styles.congratsInfo }>
+              Name: Jenny{ '\n' }Place: Phi Delt{ '\n' }Time: Now
+            </Text>
+          </View>
+          ) :
+          <View style={ styles.congratsBox }>
+            <Text style={ styles.congratsInfoBackup }>
+              Name: Jenny{ '\n' }Place: Phi Delt{ '\n' }Time: Now
+            </Text>
+          </View>
+        }
+        </View>
+        <TouchableOpacity onPress={ this._onPressButton } style={{ height: '6%' }}>
+          <View style={ styles.bottomButton }>
+          {
+            this.state.fontLoaded ? (
+              <Text style={ styles.buttonText }>tap to continue</Text>
+            ) :
+            <Text style={ styles.buttonTextBackup }>tap to continue</Text>
+          }
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -79,22 +98,38 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   congratsText: {
-    fontSize: 50,
+    fontSize: Dimensions.get('window').height/12,
     fontWeight: 'bold',
     color: '#000000',
     fontFamily: 'double-bubble-shadow',
   },
+  congratsTextBackup: {
+    fontSize: Dimensions.get('window').height/12,
+    fontWeight: 'bold',
+    color: '#000000',
+  },
   congratsInfo: {
-    fontSize: 30,
+    fontSize: Dimensions.get('window').height/20,
     fontWeight: 'bold',
     color: '#4F4F4F',
     margin: 25,
     fontFamily: 'source-sans-pro',
   },
+  congratsInfoBackup: {
+    fontSize: Dimensions.get('window').height/20,
+    fontWeight: 'bold',
+    color: '#4F4F4F',
+    margin: 25,
+  },
   bottomButton: {
-    width: '100%',
-    height: '6%',
+    height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#FFC928',
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontFamily: 'source-sans-pro',
+    fontSize: Dimensions.get('window').height/30,
   },
 });
