@@ -15,40 +15,34 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <View style={styles.background}>
-        <View style = {styles.topContainer}>
-        {
-          this.state.fontLoaded ? (
-            <Text style = {styles.waitingFont}>waiting...</Text>
-          ) : null
-        }
+      <View style = { styles.background }>
+        <View style = { styles.topContainer }>
+          <Text style = { this.state.fontLoaded ? styles.waitingFont : styles.anything }>
+            waiting...
+          </Text>
         </View>
-        <View style = {styles.bottomContainer}>
-        <View style = {styles.tabStyle}>
-        {
-          this.state.fontLoaded ? (
-            <Text style = {styles.tabFontStyle}>Your Game Details</Text>
-          ) : null
-        }
+        <View style = { styles.bottomContainer }>
+        <View style = { styles.tabStyle }>
+          <Text style = { this.state.fontLoaded ? styles.tabFontStyle : styles.anything }>Your Game Details</Text>
         </View>
-          <View style = {styles.innerContainer}>
-              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything}>
+          <View style = { styles.innerContainer }>
+              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
                 Name: {'\n'}Place: {'\n'}Time:
               </Text>
           </View>
-          <View style = {styles.deleteButton}>
-            <Text style = { this.state.fontLoaded ? styles.deleteFontStyle : styles.anything}>
-              Delete {'\n'}Post
+          <View style = { styles.deleteButton }>
+            <Text style = { this.state.fontLoaded ? styles.deleteFontStyle : styles.anything }>
+              Delete{'\n'}Post
             </Text>
           </View>
         </View>
       </View>
     );
   }
-}
+ }
 
 const styles = StyleSheet.create({
-  background:{
+  background: {
     flex: 2,
     flexDirection: 'column',
   },
@@ -74,13 +68,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
   },
-  tabFontStyle:{
+  tabFontStyle: {
     fontWeight: 'bold',
     color: '#545454',
     fontFamily: 'source-sans',
     fontSize: 16
   },
-  tabStyle:{
+  tabStyle: {
     width: 140,
     height: 35,
     backgroundColor: '#FFC928',
@@ -120,4 +114,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '100%'
   },
-});
+ });
