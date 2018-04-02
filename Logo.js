@@ -11,28 +11,24 @@ export default class Logo extends React.Component {
         flexDirection: 'column',
         marginTop: '10%',
       }}>
-        <View style={[styles.logo, styles.pong]} />
-        <View style={[styles.logo, styles.mates, {marginTop: 30}]} />
-        <View style={[styles.logo, styles.pong, styles.cover, {marginTop: 7}]} />
-        <View style={[styles.logo, styles.mates, styles.cover, {marginTop: 37}]} />
-        {
-          this.props.font ? (
-          <View style={{
+        <View style={ [styles.logo, styles.pong] } />
+        <View style={ [styles.logo, styles.mates, { marginTop: 30 }] } />
+        <View style={ [styles.logo, styles.pong, styles.cover, { marginTop: 7 }] } />
+        <View style={ [styles.logo, styles.mates, styles.cover, { marginTop: 37 }] } />
+        <View style={{
             alignSelf: 'center',
             justifyContent: 'center',
             flexDirection: 'row',
             position: 'absolute',
             marginTop: 10,
-          }}>
-            <Text style={styles.pongMatesText}>
-            Pong
-            </Text>
-            <Text style={[styles.pongMatesText, {marginTop: 30}]}>
-            Mates
-            </Text>
-          </View>
-          ) : null
-        }
+        }}>
+          <Text style={ this.props.font ? styles.pongMatesText : styles.pongMatesTextBackup }>
+          Pong
+          </Text>
+          <Text style={ this.props.font ? styles.pongMatesText2 : styles.pongMatesTextBackup2 }>
+          Mates
+          </Text>
+        </View>
       </View>
     );
   }
@@ -67,5 +63,20 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'double-bubble-shadow',
     fontSize: 65,
+  },
+  pongMatesTextBackup: {
+    color: 'white',
+    fontSize: 65,
+  },
+  pongMatesText2: {
+    color: 'white',
+    fontFamily: 'double-bubble-shadow',
+    fontSize: 65,
+    marginTop: 30,
+  },
+  pongMatesTextBackup2: {
+    color: 'white',
+    fontSize: 65,
+    marginTop: 30,
   },
 });
