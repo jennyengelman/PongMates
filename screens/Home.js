@@ -6,11 +6,12 @@ import { StackNavigator } from 'react-navigation';
 export class HomeScreen extends React.Component {
   state = {
     fontLoaded: false,
+    name: '',
   };
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
+      'source-sans-pro': require('./../assets/fonts/SourceSansPro-SemiBold.ttf'),
     });
     this.setState({ fontLoaded: true});
   }
@@ -21,11 +22,9 @@ export class HomeScreen extends React.Component {
           <View style = {{ flexDirection: 'row', paddingTop: 30 }}>
             <View style = { styles.shadowPong }>
               <View style = { styles.pongContainer }>
-              {
-                this.state.fontLoaded ? (<Text style = { styles.pongText }>Pong</Text>) : (<Text style = {{ fontSize: 60, color: 'white', paddingRight: 45 }}>Pong</Text>) }
-              }
+                this.state.fontLoaded ? (<Text style = { styles.pongText }>Pong</Text>) : (<Text style = {{ fontSize: 60, color: 'white', paddingRight: 45 }}>Pong</Text>)
                 <View style = { styles.matesContainer }>
-                  <Text style = { styles.matesText }>Mates</Text>
+                  this.state.fontLoaded ? (<Text style = { styles.matesText }>Mates</Text>) : (<Text style = {{ fontSize: 60, color: 'white', paddingRight: 45 }}>Mates</Text>)
                 </View>
               </View>
             </View>
@@ -36,7 +35,7 @@ export class HomeScreen extends React.Component {
                 <View style = {{ borderRadius: 20 }}>
                   <View style = {{ backgroundColor: '#FFC928', width: 200, height: 200, borderRadius: 100 }}>
                     <Image style = {{ width: 200, height: 200 }} source={require('./../assets/image.png')}/>
-                    <Text style = { styles.selfieText }>Take a selfie to share with your partner!</Text>
+                    this.state.fontLoaded ? (<Text style = { styles.selfieText }>Take a selfie to share with your partner!</Text>) : (<Text style = {{ position: 'absolute', width: 150, top: '35%', left: '20%', fontSize: 20, color: '#696969' }}>Take a selfie to share with your partner!</Text>)
                   </View>
                 </View>
                 <View style = {{ paddingTop: 40 }}>
@@ -45,7 +44,7 @@ export class HomeScreen extends React.Component {
                       <TextInput
                         style = { styles.nameInput }
                         placeholder = "Your Name"
-                        onChangeText = { (text) => this.setState({ text }) }
+                        onChangeText = { (text) => this.setState({ name: text }) }
                       />
                     </View>
                   </View>
@@ -109,7 +108,7 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 0, width: 0 },
   },
   matesText: {
-    fontFamily: 'Cochin',
+    fontFamily: 'double-bubble-shadow',
     fontSize: 60,
     color: 'white',
     paddingLeft: 3,
@@ -166,7 +165,7 @@ const styles = StyleSheet.create({
     left: '20%',
     fontSize: 20,
     color: '#696969',
-    fontFamily: 'Cochin',
+    fontFamily: 'source-sans-pro',
   },
   shadowHome: {
     borderTopRightRadius: 10,
