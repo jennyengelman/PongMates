@@ -1,20 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 
 
 export default class PongButton extends React.Component {
   render() {
+    const { navigate } = this.props.navigation;
     return (
-      <TouchableOpacity onPress={ this._onPressButton }>
-        <View style={ styles.button }>
-        {
-          this.props.font ? (
-            <Text style={ styles.buttonText }>{ this.props.text }</Text>
-          ) :
-          <Text style={ styles.buttonTextBackup }>{ this.props.text }</Text>
-        }
-        </View>
+      <TouchableOpacity
+        onPress={ () => navigate(this.props.destination) }
+        style={ styles.button }
+      >
+        <Text style={ this.props.font ? styles.buttonText : styles.buttonTextBackup }>
+        { this.props.text }
+        </Text>
       </TouchableOpacity>
     );
   }
@@ -23,8 +22,8 @@ export default class PongButton extends React.Component {
 
 const styles = StyleSheet.create({
   button: {
-    width: Dimensions.get('window').width/3,
-    height: Dimensions.get('window').height/10,
+    width: Dimensions.get('window').width / 3,
+    height: Dimensions.get('window').height / 10,
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -34,6 +33,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#FFFFFF',
     fontFamily: 'source-sans-pro',
-    fontSize: Dimensions.get('window').height/25,
+    fontSize: Dimensions.get('window').height / 25,
   }
 });

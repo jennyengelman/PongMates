@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import PongButton from './PongButton';
 
 
 
 export class Congrats extends React.Component {
+  static navigationOptions = {header: null };
   state = { fontLoaded: false };
   async componentDidMount() {
     await Font.loadAsync({
@@ -15,21 +16,18 @@ export class Congrats extends React.Component {
     this.setState({ fontLoaded: true });
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style={{ flexDirection: 'column' }}>
         <View style={{ height: '58%', alignItems: 'center' }}>
-          {
-            this.state.fontLoaded ? (
-              <View style={{ height: '37%', alignItems: 'center' }}>
-                <Text style={ styles.congratsText }>It{ `'` }s a</Text>
-                <Text style={ styles.congratsText }>Match!</Text>
-              </View>
-            ) :
-            <View style={{ height: '37%', alignItems: 'center' }}>
-              <Text style={ styles.congratsTextBackup }>It{ `'` }s a</Text>
-              <Text style={ styles.congratsTextBackup }>Match!</Text>
-            </View>
-          }
+          <View style={{ height: '37%', alignItems: 'center' }}>
+            <Text style={ this.state.fontLoaded ? styles.congratsText : styles.congratsTextBackup }>
+            It{ `'` }s a
+            </Text>
+            <Text style={ this.state.fontLoaded ? styles.congratsText : styles.congratsTextBackup }>
+            Match!
+            </Text>
+          </View>
           <Image source={ require('./assets/image.png') }
             style={{
             tintColor: '#000000',
@@ -63,7 +61,9 @@ export class Congrats extends React.Component {
           </View>
         }
         </View>
-        <TouchableOpacity onPress={ this._onPressButton } style={{ height: '6%' }}>
+        <TouchableOpacity onPress={() =>
+            navigate('About')
+          } style={ styles.bottomButton }>
           <View style={ styles.bottomButton }>
           {
             this.state.fontLoaded ? (
@@ -98,31 +98,31 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   congratsText: {
-    fontSize: Dimensions.get('window').height/12,
+    fontSize: Dimensions.get('window').height / 12,
     fontWeight: 'bold',
     color: '#000000',
     fontFamily: 'double-bubble-shadow',
   },
   congratsTextBackup: {
-    fontSize: Dimensions.get('window').height/12,
+    fontSize: Dimensions.get('window').height / 12,
     fontWeight: 'bold',
     color: '#000000',
   },
   congratsInfo: {
-    fontSize: Dimensions.get('window').height/20,
+    fontSize: Dimensions.get('window').height / 20,
     fontWeight: 'bold',
     color: '#4F4F4F',
     margin: 25,
     fontFamily: 'source-sans-pro',
   },
   congratsInfoBackup: {
-    fontSize: Dimensions.get('window').height/20,
+    fontSize: Dimensions.get('window').height / 20,
     fontWeight: 'bold',
     color: '#4F4F4F',
     margin: 25,
   },
   bottomButton: {
-    height: '100%',
+    height: '6%',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FFC928',
@@ -130,6 +130,10 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#FFFFFF',
     fontFamily: 'source-sans-pro',
-    fontSize: Dimensions.get('window').height/30,
+    fontSize: Dimensions.get('window').height / 30,
+  },
+  buttonTextBackup: {
+    color: '#FFFFFF',
+    fontSize: Dimensions.get('window').height / 30,
   },
 });

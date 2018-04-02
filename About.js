@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import Logo from './Logo';
 import PongButton from './PongButton';
@@ -7,6 +7,7 @@ import PongButton from './PongButton';
 
 
 export class About extends React.Component {
+  static navigationOptions = {header: null };
   state = { fontLoaded: false };
   async componentDidMount() {
     await Font.loadAsync({
@@ -16,22 +17,16 @@ export class About extends React.Component {
     this.setState({ fontLoaded: true });
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style={ styles.container }>
         <View style={{ height: '70%', backgroundColor: '#C2515B' }}>
-            <Logo font={ this.state.fontLoaded }/>
-            <View style={ styles.aboutBox } >
-            {
-              this.state.fontLoaded ? (
-                <Text style={ styles.aboutText }>
-                PongMates is designed to connect Dartmouth students through the game of Pong.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!
-                </Text>
-              ) :
-              <Text style={ styles.aboutTextBackup }>
-              PongMates is designed to connect Dartmouth students through the game of Pong.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!
-              </Text>
-            }
-            </View>
+          <Logo font={ this.state.fontLoaded }/>
+          <View style={ styles.aboutBox }>
+            <Text style={ this.state.fontLoaded ? styles.aboutText : styles.aboutTextBackup }>
+            PongMates is designed to connect Dartmouth students through the game of Pong.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!
+            </Text>
+          </View>
         </View>
         <View style={{
           flex: 1,
@@ -39,7 +34,12 @@ export class About extends React.Component {
           alignItems: 'center',
           marginBottom: '8%',
         }}>
-          <PongButton font={ this.state.fontLoaded } text={ 'Back' }/>
+          <PongButton
+            font={ this.state.fontLoaded }
+            text={ 'Back' }
+            navigation={ this.props.navigation }
+            destination={ 'Congrats' }
+          />
         </View>
       </View>
     );
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   aboutText: {
-    fontSize: Dimensions.get('window').height/31,
+    fontSize: Dimensions.get('window').height / 31,
     fontWeight: 'bold',
     color: '#4F4F4F',
     margin: 20,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     fontFamily: 'source-sans-pro',
   },
   aboutTextBackup: {
-    fontSize: Dimensions.get('window').height/31,
+    fontSize: Dimensions.get('window').height / 31,
     fontWeight: 'bold',
     color: '#4F4F4F',
     margin: 20,
