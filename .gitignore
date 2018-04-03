@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+node_modules/**/*
+.expo/*
+npm-debug.*
+=======
 # Logs
 logs
 *.log
@@ -57,3 +62,4 @@ typings/
 # dotenv environment variables file
 .env
 
+>>>>>>> 39845d2611eb1bfe1e0524abeec3507a897bf81f
