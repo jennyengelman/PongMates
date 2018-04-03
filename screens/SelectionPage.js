@@ -8,7 +8,7 @@ export default class Selection extends React.Component {
    };
   async componentDidMount() {
     await Font.loadAsync({
-      'double-bubble-shadow': require('./assets/fonts/Double_Bubble_shadow.otf'),
+      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
      });
     this.setState({ fontLoaded: true  }) ;
    }
@@ -17,7 +17,7 @@ export default class Selection extends React.Component {
       <View style = { styles.container }>
           <View style = {{ height: '10%', flexDirection: 'row', justifyContent: 'space-around', alignContent: 'flex-start' }}>
             <View style = { styles.topButtons }>
-              <Image source = { require('./assets/profile.png') } style = { styles.image }/>
+              <Image source = { require('./../assets/profile.png') } style = { styles.image }/>
             </View>
             <View style = { styles.topButtons }>
               <Text style = { this.state.fontLoaded ? styles.faqButton : styles.anything }>

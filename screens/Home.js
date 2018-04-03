@@ -11,20 +11,21 @@ export class HomeScreen extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/SourceSansPro-SemiBold.ttf'),
+      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
     });
-    this.setState({ fontLoaded: true});
+    this.setState({ fontLoaded: true });
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
         <View style = {{ backgroundColor: '#C2515B', height: '80%' }}>
           <View style = {{ flexDirection: 'row', paddingTop: 30 }}>
             <View style = { styles.shadowPong }>
               <View style = { styles.pongContainer }>
-                this.state.fontLoaded ? (<Text style = { styles.pongText }>Pong</Text>) : (<Text style = {{ fontSize: 60, color: 'white', paddingRight: 45 }}>Pong</Text>)
+                {this.state.fontLoaded ? (<Text style = { styles.pongText }>Pong</Text>) : (<Text style = {{ fontSize: 60, color: 'white', paddingRight: 45 }}>Pong</Text>)}
                 <View style = { styles.matesContainer }>
-                  this.state.fontLoaded ? (<Text style = { styles.matesText }>Mates</Text>) : (<Text style = {{ fontSize: 60, color: 'white', paddingRight: 45 }}>Mates</Text>)
+                  {this.state.fontLoaded ? (<Text style = { styles.matesText }>Mates</Text>) : (<Text style = {{ fontSize: 60, color: 'white', paddingRight: 45 }}>Mates</Text>)}
                 </View>
               </View>
             </View>
@@ -35,7 +36,7 @@ export class HomeScreen extends React.Component {
                 <View style = {{ borderRadius: 20 }}>
                   <View style = {{ backgroundColor: '#FFC928', width: 200, height: 200, borderRadius: 100 }}>
                     <Image style = {{ width: 200, height: 200 }} source={require('./../assets/image.png')}/>
-                    this.state.fontLoaded ? (<Text style = { styles.selfieText }>Take a selfie to share with your partner!</Text>) : (<Text style = {{ position: 'absolute', width: 150, top: '35%', left: '20%', fontSize: 20, color: '#696969' }}>Take a selfie to share with your partner!</Text>)
+                    {this.state.fontLoaded ? (<Text style = { styles.selfieText }>Take a selfie to share with your partner!</Text>) : (<Text style = {{ position: 'absolute', width: 150, top: '35%', left: '20%', fontSize: 20, color: '#696969' }}>Take a selfie to share with your partner!</Text>)}
                   </View>
                 </View>
                 <View style = {{ paddingTop: 40 }}>
@@ -54,7 +55,7 @@ export class HomeScreen extends React.Component {
           </View>
           <View style = {{ paddingTop: 20 }}>
             <Button
-              onPress = { () => navigate('SelectionScreen') }
+              onPress = { () => navigate('Selection') }
               title = 'tap to begin'
               color = 'white'
               fontSize = '35'

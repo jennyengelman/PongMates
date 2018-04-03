@@ -1,17 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
-import PongButton from './PongButton';
-
-
+import PongButton from './../components/PongButton';
 
 export class Congrats extends React.Component {
   static navigationOptions = { header: null };
   state = { fontLoaded: false };
   async componentDidMount() {
     await Font.loadAsync({
-      'double-bubble-shadow': require('./assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./assets/fonts/SourceSansPro-Bold.ttf'),
+      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
+      'source-sans-pro': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
     });
     this.setState({ fontLoaded: true });
   }
@@ -28,7 +26,7 @@ export class Congrats extends React.Component {
             Match!
             </Text>
           </View>
-          <Image source={ require('./assets/image.png') }
+          <Image source={ require('./../assets/image.png') }
             style={{
             tintColor: '#000000',
             height: '40%',
@@ -37,7 +35,7 @@ export class Congrats extends React.Component {
             marginBottom: 10,
             }}
           />
-          <Image source={ require('./assets/person.png') }
+          <Image source={ require('./../assets/person.png') }
             style={{
               height: '15%',
               width: '15%',

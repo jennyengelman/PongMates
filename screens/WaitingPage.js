@@ -8,8 +8,8 @@ export default class App extends React.Component {
   };
   async componentDidMount() {
     await Font.loadAsync({
-      'bubble-body': require('./assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans': require('./assets/fonts/source-sans-pro.semibold.ttf')
+      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
+      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf')
     });
     this.setState({ fontLoaded: true }) ;
   }

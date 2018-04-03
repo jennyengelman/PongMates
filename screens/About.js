@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Font } from 'expo';
-import Logo from './Logo';
-import PongButton from './PongButton';
+import Logo from './../components/Logo';
+import PongButton from './../components/PongButton';
 
 
 
@@ -11,8 +11,8 @@ export class About extends React.Component {
   state = { fontLoaded: false };
   async componentDidMount() {
     await Font.loadAsync({
-      'double-bubble-shadow': require('./assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./assets/fonts/SourceSansPro-Bold.ttf'),
+      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
+      'source-sans-pro': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
     });
     this.setState({ fontLoaded: true });
   }
