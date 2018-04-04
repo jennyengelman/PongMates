@@ -23,4 +23,31 @@ export default class App extends React.Component {
       <RootStack />
     )
   }
-};
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  pongRoundedRectangle: {
+    backgroundColor: 'orange',
+    width: 220,
+    height: 120,
+    borderTopRightRadius: 30,
+    borderBottomRightRadius: 30,
+  },
+  matesRoundedRectangle: {
+    backgroundColor: 'yellow',
+    width: 240,
+    height: 120,
+    borderTopLeftRadius: 30,
+    borderBottomLeftRadius: 30,
+  },
+  pongMatesText: {
+    paddingTop: 20,
+    padding: 5,
+    fontFamily: 'Cochin',
+    fontSize: 50,
+    alignItems: 'center'
+  },
+});
