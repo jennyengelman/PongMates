@@ -9,11 +9,12 @@ import { About } from './screens/About';
 import { Selection } from './screens/SelectionPage';
 
 const RootStack = StackNavigator({
-  /*Home: { screen: HomeScreen },
-  Create: { screen: CreateScreen },*/
+  Home: { screen: TimedOutScreen },
+  Create: { screen: CreateScreen },
   TimedOut: { screen: TimedOutScreen },
-  /*About: { screen: About },
-  Congrats: { screen: Congrats },*/
+  About: { screen: About },
+  Congrats: { screen: Congrats },
+  Selection: { screen: Selection },
 });
 
 export default class App extends React.Component {

@@ -33,7 +33,7 @@ export class HomeScreen extends React.Component {
             <View style = { styles.shadowHome }>
               <View style = { styles.homeRectangle }>
                 <View style = {{ borderRadius: 20 }}>
-                  <View style = {{ backgroundColor: '#FFC928', width: 200, height: 200, borderRadius: 100 }}>
+                  <View style = {{ backgroundColor: '#FFC928', width: 200, height: 200, borderRadius: 100, alignItems: 'center' }}>
                     <Image style = {{ width: 200, height: 200 }} source={require('./../assets/image.png')}/>
                     <Text style = { this.state.fontLoaded ? styles.selfieText : styles.selfieTextElse }>Take a selfie to share with your partner!</Text>
                   </View>
@@ -58,6 +58,7 @@ export class HomeScreen extends React.Component {
               title = 'tap to begin'
               color = 'white'
               fontSize = '35'
+              fontFamily = { this.state.fontLoaded ? styles.nextText : styles.nextTextElse }
             />
           </View>
         </View>
@@ -131,10 +132,10 @@ const styles = StyleSheet.create({
     width: '80%',
     color: 'white',
     fontFamily: 'source-sans-pro',
-    paddingTop: 20,
     fontWeight: 'bold',
     fontSize: 20,
     alignItems: 'center',
+    textAlign: 'center',
   },
   nameInputElse: {
     width: '80%',
@@ -143,6 +144,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     alignItems: 'center',
+  },
+  nextText: {
+    fontFamily: 'source-sans-pro',
+    textAlign: 'center',
+  },
+  nextTextElse: {
+    textAlign: 'center',
   },
   pongContainer: {
     backgroundColor: '#FFC928',
@@ -180,10 +188,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 150,
     top: '35%',
-    left: '20%',
     fontSize: 20,
     color: '#696969',
     fontFamily: 'source-sans-pro',
+    textAlign: 'center',
   },
   selfieTextElse: {
     position: 'absolute',

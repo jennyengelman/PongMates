@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Fonts, Button  } from 'react-native';
 import { Font  } from 'expo';
 
-export default class Selection extends React.Component {
+export class Selection extends React.Component {
   state = {
     fontLoaded: false,
    };
