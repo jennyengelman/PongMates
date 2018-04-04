@@ -7,6 +7,7 @@ import { TimedOutScreen } from './screens/TimedOutPage';
 import { Congrats } from './screens/Congrats';
 import { About } from './screens/About';
 import { Selection } from './screens/SelectionPage';
+import { FindScreen } from './screens/FindGamePage';
 
 const RootStack = StackNavigator({
   Home: { screen: TimedOutScreen },
@@ -15,6 +16,7 @@ const RootStack = StackNavigator({
   About: { screen: About },
   Congrats: { screen: Congrats },
   Selection: { screen: Selection },
+  Find: { screen: FindScreen },
 });
 
 export default class App extends React.Component {
