@@ -5,7 +5,7 @@ import { StackNavigator } from 'react-navigation';
 export default class TimedOutScreen extends React.Component {
   render() {
     return (
-      <View style = { styles.container }>
+      {/*<View style = { styles.container }>
         <View style = { styles.topContainer }>
           <Text style = { styles.sorryText }>Sorry...</Text>
         </View>
@@ -28,7 +28,7 @@ export default class TimedOutScreen extends React.Component {
             />
           </View>
         </View>
-      </View>
+      </View> */}
     );
   }
 }

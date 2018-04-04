@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, FlatList, Button } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
-export default class CreateScreen extends React.Component {
+export class CreateScreen extends React.Component {
   render() {
     return (
       <View style = { styles.container }>
