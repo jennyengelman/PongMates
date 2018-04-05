@@ -6,7 +6,6 @@ import { Font } from 'expo';
 export class TimedOutScreen extends React.Component {
   state = {
     fontLoaded: false,
-    name: '',
    };
   async componentDidMount() {
     await Font.loadAsync({

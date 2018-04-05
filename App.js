@@ -8,15 +8,17 @@ import { Congrats } from './screens/Congrats';
 import { About } from './screens/About';
 import { Selection } from './screens/SelectionPage';
 import { FindScreen } from './screens/FindGamePage';
+import { WaitingScreen } from './screens/WaitingPage';
 
 const RootStack = StackNavigator({
-  Home: { screen: TimedOutScreen },
+  Home: { screen: HomeScreen },
   Create: { screen: CreateScreen },
   TimedOut: { screen: TimedOutScreen },
   About: { screen: About },
   Congrats: { screen: Congrats },
   Selection: { screen: Selection },
   Find: { screen: FindScreen },
+  Waiting: { screen: WaitingScreen },
 });
 
 export default class App extends React.Component {

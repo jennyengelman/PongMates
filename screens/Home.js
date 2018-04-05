@@ -6,7 +6,6 @@ import { StackNavigator } from 'react-navigation';
 export class HomeScreen extends React.Component {
   state = {
     fontLoaded: false,
-    name: '',
    };
   async componentDidMount() {
     await Font.loadAsync({

@@ -6,15 +6,14 @@ import { StackNavigator } from 'react-navigation';
 export class FindScreen extends React.Component {
   state = {
     fontLoaded: false,
-    name: '',
-   };
+  };
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
       'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-     });
-    this.setState({ fontLoaded: true }) ;
+    });
+    this.setState({ fontLoaded: true });
   }
   render() {
     return (
