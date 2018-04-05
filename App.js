@@ -9,6 +9,7 @@ import { About } from './screens/About';
 import { Selection } from './screens/SelectionPage';
 import { FindScreen } from './screens/FindGamePage';
 import { WaitingScreen } from './screens/WaitingPage';
+import { FoundGameScreen } from './screens/FoundGamePage';
 
 const RootStack = StackNavigator({
   Home: { screen: HomeScreen },
@@ -19,6 +20,7 @@ const RootStack = StackNavigator({
   Selection: { screen: Selection },
   Find: { screen: FindScreen },
   Waiting: { screen: WaitingScreen },
+  FoundGame: { screen: FoundGameScreen },
 });
 
 export default class App extends React.Component {
