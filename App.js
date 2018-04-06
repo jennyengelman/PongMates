@@ -6,14 +6,14 @@ import { CreateScreen } from './screens/CreateGamePage';
 import { TimedOutScreen } from './screens/TimedOutPage';
 import { Congrats } from './screens/Congrats';
 import { About } from './screens/About';
-import Selection from './screens/SelectionPage';
+import { Selection } from './screens/SelectionPage';
 
 const RootStack = StackNavigator({
   Home: { screen: HomeScreen },
   Create: { screen: CreateScreen },
   TimedOut: { screen: TimedOutScreen },
-  About: { screen: About},
-  Congrats: { screen: Congrats},
+  About: { screen: About },
+  Congrats: { screen: Congrats },
   Selection: { screen: Selection },
 });
 
