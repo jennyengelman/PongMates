@@ -17,7 +17,7 @@ export class Selection extends React.Component {
       <View style = { styles.container }>
           <View style = {{ height: '10%', flexDirection: 'row', justifyContent: 'space-around', alignContent: 'flex-start' }}>
             <View style = { styles.topButtons }>
-              <Image source = { require('./../assets/profile.png') } style = { styles.image }/>
+              <Image source = { require('./../assets/images/profile.png') } style = { styles.image }/>
             </View>
             <View style = { styles.topButtons }>
               <Text style = { this.state.fontLoaded ? styles.faqButton : styles.anything }>

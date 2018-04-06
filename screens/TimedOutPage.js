@@ -23,7 +23,7 @@ export class TimedOutScreen extends React.Component {
           <Text style = { this.state.fontLoaded ? styles.sorryText : styles.sorryTextElse }>Sorry...</Text>
         </View>
         <View style = { styles.middleContainer }>
-          <Image style = { styles.brokenPong } source = {require('./../assets/broken-pong.png')}/>
+          <Image style = { styles.brokenPong } source = {require('./../assets/images/broken-pong.png')}/>
         </View>
         <View style = { styles.stripe }>
         </View>

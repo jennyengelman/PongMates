@@ -26,7 +26,7 @@ export class Congrats extends React.Component {
             Match!
             </Text>
           </View>
-          <Image source={ require('./../assets/image.png') }
+          <Image source={ require('./../assets/images/image.png') }
             style={{
             tintColor: '#000000',
             height: '40%',
@@ -35,7 +35,7 @@ export class Congrats extends React.Component {
             marginBottom: 10,
             }}
           />
-          <Image source={ require('./../assets/person.png') }
+          <Image source={ require('./../assets/images/person.png') }
             style={{
               height: '15%',
               width: '15%',
