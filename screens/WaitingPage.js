@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { Font } from 'expo';
 
 export default class App extends React.Component {
+  static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
   };

@@ -4,7 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import { HomeScreen } from './screens/Home';
 import { CreateScreen } from './screens/CreateGamePage';
 import { TimedOutScreen } from './screens/TimedOutPage';
-import { Congrats } from './screens/Congrats';
+import { FoundAPartner } from './screens/FoundAPartner';
 import { About } from './screens/About';
 import Selection from './screens/SelectionPage';
 
@@ -13,7 +13,7 @@ const RootStack = StackNavigator({
   Create: { screen: CreateScreen },
   TimedOut: { screen: TimedOutScreen },
   About: { screen: About},
-  Congrats: { screen: Congrats},
+  FoundAPartner: { screen: FoundAPartner },
   Selection: { screen: Selection },
 });
 
