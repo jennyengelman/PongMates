@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button, Alert, Image, TextInput } from 'react-n
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
-export class FoundGameScreen extends React.Component {
+export class FoundScreen extends React.Component {
   state = {
     fontLoaded: false,
    };
@@ -18,7 +18,7 @@ export class FoundGameScreen extends React.Component {
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
-          <Text style = { this.state.fontLoaded ? styles.matchText : styles.matchTextElse }>Its a Match!</Text>
+          <Text style = { this.state.fontLoaded ? styles.matchText : styles.matchTextElse }>It{ `'` }s a Match!</Text>
           <Image style = { styles.cup } source = {require('./../assets/cup.png')}/>
         </View>
         <View style = { styles.yellowStrip }>
@@ -37,7 +37,7 @@ export class FoundGameScreen extends React.Component {
               <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Decline</Text>
             </View>
             <View style = { styles.button }>
-              <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Lets Go!</Text>
+              <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Let{ `'` }s Go!</Text>
             </View>
           </View>
         </View>

@@ -19,7 +19,7 @@ export class FindScreen extends React.Component {
     return (
       <View style = { styles.container }>
         <View style = { styles.find }>
-          <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>Find</Text>
+          <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>FIND</Text>
           <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>A GAME</Text>
         </View>
         <View style = {{ paddingTop: '7.5%' }}>

@@ -4,9 +4,7 @@ import { Font } from 'expo';
 import Logo from './../components/Logo';
 import PongButton from './../components/PongButton';
 
-
-
-export class About extends React.Component {
+export class AboutScreen extends React.Component {
   static navigationOptions = {header: null };
   state = { fontLoaded: false };
   async componentDidMount() {

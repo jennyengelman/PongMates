@@ -4,23 +4,23 @@ import { StackNavigator } from 'react-navigation';
 import { HomeScreen } from './screens/Home';
 import { CreateScreen } from './screens/CreateGamePage';
 import { TimedOutScreen } from './screens/TimedOutPage';
-import { Congrats } from './screens/Congrats';
-import { About } from './screens/About';
-import { Selection } from './screens/SelectionPage';
+import { CongratsScreen } from './screens/Congrats';
+import { AboutScreen } from './screens/About';
+import { SelectionScreen } from './screens/SelectionPage';
 import { FindScreen } from './screens/FindGamePage';
 import { WaitingScreen } from './screens/WaitingPage';
-import { FoundGameScreen } from './screens/FoundGamePage';
+import { FoundScreen } from './screens/FoundGamePage';
 
 const RootStack = StackNavigator({
-  Home: { screen: HomeScreen },
+  Home: { screen: FindScreen },
   Create: { screen: CreateScreen },
   TimedOut: { screen: TimedOutScreen },
-  About: { screen: About },
-  Congrats: { screen: Congrats },
-  Selection: { screen: Selection },
+  About: { screen: AboutScreen },
+  Congrats: { screen: CongratsScreen },
+  Selection: { screen: SelectionScreen },
   Find: { screen: FindScreen },
   Waiting: { screen: WaitingScreen },
-  FoundGame: { screen: FoundGameScreen },
+  FoundGame: { screen: FoundScreen },
 });
 
 export default class App extends React.Component {
