@@ -8,9 +8,9 @@ export default class App extends React.Component {
   };
   async componentDidMount() {
     await Font.loadAsync({
-      'double-bubble': require('./assets/fonts/Double_Bubble_shadow.otf'),
-      'bubble-body': require('./assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans': require('./assets/fonts/source-sans-pro.semibold.ttf')
+      'double-bubble': require('./../assets/fonts/Double_Bubble_shadow.otf'),
+      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
+      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf')
     });
     this.setState({ fontLoaded: true }) ;
   }
