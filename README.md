@@ -1,8 +1,4 @@
 # PongMates
-<<<<<<< HEAD
-=======
-
->>>>>>> 60835940ece883480a169637547aeaf912a2cb16
 We are three Dartmouth students from the class of 2021 working as Women in Science Program (WISP) interns in conjunction with the DALI Lab for the 2017-2018 school year.
 
 PongMates is designed to improve social integration at Dartmouth through the game of pong. PongMates will serve as a platform to connect with a partner to play with, either by searching for or posting a game. We hope that this will become an easy way for new members of the Dartmouth community, such as freshmen or transfer students, to use the app to branch out and meet new people. Additionally, the app could serve as a mechanism for upperclassmen to reach out to underclassmen and make Dartmouth a more inclusive place.

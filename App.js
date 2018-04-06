@@ -9,7 +9,7 @@ import { About } from './screens/About';
 import { Selection } from './screens/SelectionPage';
 
 const RootStack = StackNavigator({
-  Home: { screen: TimedOutScreen },
+  Home: { screen: HomeScreen },
   Create: { screen: CreateScreen },
   TimedOut: { screen: TimedOutScreen },
   About: { screen: About },
