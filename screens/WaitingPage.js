@@ -1,20 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Font } from 'expo';
+import PongButton from './../components/PongButton';
 
-export default class App extends React.Component {
+export class WaitingScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
   };
   async componentDidMount() {
     await Font.loadAsync({
+      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
+      'source-sans-pro': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
       'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf')
+      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
+      'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
     });
     this.setState({ fontLoaded: true }) ;
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
@@ -31,11 +36,12 @@ export default class App extends React.Component {
                 Name: {'\n'}Place: {'\n'}Time:
               </Text>
           </View>
-          <View style = { styles.deleteButton }>
-            <Text style = { this.state.fontLoaded ? styles.deleteFontStyle : styles.anything }>
-              Delete{'\n'}Post
-            </Text>
-          </View>
+          <PongButton
+            font={ this.state.fontLoaded }
+            text={ 'Delete\nRequest' }
+            navigation={ this.props.navigation }
+            destination={ 'Create' }
+          />
         </View>
       </View>
     );
@@ -88,7 +94,7 @@ const styles = StyleSheet.create({
     height: 150,
     width: 250,
     borderRadius: 25,
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
   },
   fontStyle: {
@@ -97,15 +103,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontFamily: 'source-sans',
     marginBottom: 5,
-  },
-  deleteButton: {
-    height: 60,
-    width: 110,
-    backgroundColor: '#FFC928',
-    borderRadius: 15,
-    marginTop: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   deleteFontStyle:{
     fontWeight: 'bold',

@@ -10,6 +10,9 @@ export class FoundAPartner extends React.Component {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
+      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
+      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
+      'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
     });
     this.setState({ fontLoaded: true });
   }
@@ -17,29 +20,26 @@ export class FoundAPartner extends React.Component {
     const { navigate } = this.props.navigation
     return (
       <View style={{ flexDirection: 'column' }}>
-        <View style={{ height: '58%', alignItems: 'center' }}>
-          <View style={{ height: '37%', alignItems: 'center' }}>
-            <Text style={ this.state.fontLoaded ? styles.congratsText : styles.congratsTextBackup }>
-            It{ `'` }s a
-            </Text>
-            <Text style={ this.state.fontLoaded ? styles.congratsText : styles.congratsTextBackup }>
-            Match!
-            </Text>
-          </View>
+        <View style={ styles.topContainer }>
+          <Text style={ this.state.fontLoaded ? styles.congratsText : styles.congratsTextBackup }>
+          IT{ `'` }S A MATCH!
+          </Text>
+        </View>
+        <View style={ styles.middleContainer }>
           <Image source={ require('./../assets/image.png') }
             style={{
             tintColor: '#000000',
-            height: '40%',
-            width: '41%',
-            margin: 'auto',
-            marginBottom: 10,
+            height: Dimensions.get('window').width / 2.1,
+            width: Dimensions.get('window').width / 2.1,
+            marginBottom: Dimensions.get('window').height / 50,
+            marginTop: Dimensions.get('window').height / 50,
             }}
           />
           <Image source={ require('./../assets/person.png') }
             style={{
-              height: '15%',
-              width: '15%',
-              margin: 'auto',
+              height: Dimensions.get('window').width / 8,
+              width: Dimensions.get('window').width / 8,
+              marginBottom: Dimensions.get('window').height / 50,
             }}
           />
         </View>
@@ -67,6 +67,19 @@ export class FoundAPartner extends React.Component {
 
 
 const styles = StyleSheet.create({
+  topContainer: {
+    height: '19%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    backgroundColor: '#FFFFFF',
+  },
+  middleContainer: {
+    height: '39%',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#FFFFFF',
+  },
   congratsContainer: {
     width: '100%',
     height: '36%',
@@ -85,27 +98,28 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   congratsText: {
-    fontSize: Dimensions.get('window').height / 12,
+    fontSize: Dimensions.get('window').height / 14,
     fontWeight: 'bold',
     color: '#000000',
-    fontFamily: 'double-bubble-shadow',
+    fontFamily: 'bubble-body',
   },
   congratsTextBackup: {
-    fontSize: Dimensions.get('window').height / 12,
+    fontSize: Dimensions.get('window').height / 14,
     fontWeight: 'bold',
     color: '#000000',
+    marginBottom: Dimensions.get('window').height / 30,
   },
   congratsInfo: {
-    fontSize: Dimensions.get('window').height / 20,
+    fontSize: Dimensions.get('window').height / 21,
     fontWeight: 'bold',
-    color: '#4F4F4F',
+    color: '#616161',
     margin: 25,
     fontFamily: 'source-sans-pro',
   },
   congratsInfoBackup: {
-    fontSize: Dimensions.get('window').height / 20,
+    fontSize: Dimensions.get('window').height / 21,
     fontWeight: 'bold',
-    color: '#4F4F4F',
+    color: '#616161',
     margin: 25,
   },
   bottomButton: {

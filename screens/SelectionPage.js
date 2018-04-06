@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Fonts, Button  } from 'react-native';
+import { StyleSheet, Text, View, Image, Fonts, Button, TouchableOpacity, Dimensions } from 'react-native';
 import { Font  } from 'expo';
 
-export default class Selection extends React.Component {
+export class Selection extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
@@ -14,33 +14,50 @@ export default class Selection extends React.Component {
     this.setState({ fontLoaded: true  }) ;
    }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
-          <View style = {{ height: '10%', flexDirection: 'row', justifyContent: 'space-around', alignContent: 'flex-start' }}>
-            <View style = { styles.topButtons }>
-              <Image source = { require('./../assets/profile.png') } style = { styles.image }/>
-            </View>
-            <View style = { styles.topButtons }>
-              <Text style = { this.state.fontLoaded ? styles.faqButton : styles.anything }>
-                ?
-              </Text>
-            </View>
-          </View>
-
-        <View style = {{  height: '90%', justifyContent: 'center', alignItems: 'center' }}>
-          <View style = {{ width: '100%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
-            <View style = { styles.postButton }>
-                <Text style = { this.state.fontLoaded ? styles.postFontStyle : styles.anything }>
-                  CREATE A GAME
+          <View style = {{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignContent: 'flex-start' }}>
+            <TouchableOpacity onPress={() =>
+                navigate('Home')
+              }
+            >
+              <View style = { styles.topButtons }>
+                <Image source = { require('./../assets/profile.png') } style = { styles.image }/>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() =>
+                navigate('About')
+              }
+            >
+              <View style = { styles.topButtons }>
+                <Text style = { this.state.fontLoaded ? styles.faqButton : styles.anything }>
+                  ?
                 </Text>
-            </View>
+              </View>
+            </TouchableOpacity>
           </View>
-          <View style = {{ width: '100%', flexDirection: 'row', justifyContent: 'flex-end' }}>
-            <View style = { styles.findButton }>
-                <Text style = { this.state.fontLoaded ? styles.findFontStyle : styles.anything }>
-                  FIND A GAME
-                </Text>
-            </View>
+        <View style = {{  flex: 4 }}>
+          <View style = {{ height: '50%', width: '100%' }}>
+            <TouchableOpacity onPress={() =>
+                navigate('Create')
+              } style = {{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}
+            >
+              <View style = { styles.postButton }>
+                  <Text style = { this.state.fontLoaded ? styles.postFontStyle : styles.anything }>
+                    CREATE A GAME
+                  </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+          <View style = {{ height: '50%', width: '100%' }}>
+            <TouchableOpacity style = {{ flex: 1, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
+              <View style = { styles.findButton }>
+                  <Text style = { this.state.fontLoaded ? styles.findFontStyle : styles.anything }>
+                    FIND A GAME
+                  </Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -50,19 +67,19 @@ export default class Selection extends React.Component {
 
 const styles = StyleSheet.create({
   postFontStyle: {
-    color: 'white',
-    fontSize: 60,
+    color: '#FFFFFF',
+    fontSize: Dimensions.get('window').width / 6,
     textAlign: 'right',
-    marginLeft: 10,
+    marginLeft: Dimensions.get('window').width / 10,
     paddingRight: 25,
-    fontFamily: 'double-bubble-shadow'
+    fontFamily: 'double-bubble-shadow',
    },
   findFontStyle: {
-    color: 'white',
-    fontSize: 60,
+    color: '#FFFFFF',
+    fontSize: Dimensions.get('window').width / 6,
     textAlign: 'left',
-    marginLeft: 15,
-    paddingLeft: 10,
+    marginRight: Dimensions.get('window').width / 10,
+    paddingLeft: 25,
     fontFamily: 'double-bubble-shadow'
    },
   container: {
@@ -72,55 +89,55 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2994A',
    },
   faqButton: {
-    fontSize: 80,
+    fontSize: Dimensions.get('window').width / 4,
     color: '#C2515B',
     fontFamily: 'double-bubble-shadow',
-    paddingRight: 1
+    paddingRight: 1,
    },
   topButtons: {
-    width: 120,
-    height: 130,
+    width: Dimensions.get('window').width / 3,
+    height: Dimensions.get('window').height / 6,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     backgroundColor:'#F5F5F5',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
+    shadowColor: '#000000',
+    shadowOpacity: .3,
+    shadowOffset: { width: 0, height: 5 }
    },
   image: {
-    width: 70,
-    height: 70,
+    width: Dimensions.get('window').width / 4,
+    height: Dimensions.get('window').width / 4,
    },
   postButton: {
-    marginBottom: 30,
-    marginTop: 20,
+    justifyContent: 'center',
     width: '80%',
-    height: 250,
+    height: '70%',
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
-    borderColor: 'white',
+    borderColor: '#FFFFFF',
     borderTopWidth: 5,
     borderRightWidth: 5,
     borderBottomWidth: 5,
-    paddingTop: 50,
     backgroundColor:'#FFC928',
-    shadowColor: 'gray',
-    shadowOpacity: .8,
-    shadowOffset: { width: 0, height: 5 }
+    shadowColor: '#000000',
+    shadowOpacity: .4,
+    shadowOffset: { width: 0, height: 5 },
    },
   findButton: {
-    width: 300,
-    height: 250,
+    justifyContent: 'center',
+    width: '80%',
+    height: '70%',
     backgroundColor:'#93E1FA',
     borderTopLeftRadius: 20,
     borderBottomLeftRadius: 20,
-    borderColor: 'white',
+    borderColor: '#FFFFFF',
     borderTopWidth: 5,
     borderBottomWidth: 5,
     borderLeftWidth: 5,
-    paddingTop: 50,
-    marginTop: 22,
-    shadowColor: 'gray',
-    shadowOpacity: .8,
-    shadowOffset: { width: 6, height: 6 }
+    shadowColor: '#000000',
+    shadowOpacity: .4,
+    shadowOffset: { width: 6, height: 6 },
    }
  });

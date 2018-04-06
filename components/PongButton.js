@@ -29,10 +29,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFC928',
     alignSelf: 'center',
+    marginTop: Dimensions.get('window').width / 15,
   },
   buttonText: {
-    color: '#FFFFFF',
+    color: '#616161',
     fontFamily: 'source-sans-pro',
-    fontSize: Dimensions.get('window').height / 25,
-  }
+    textAlign: 'center',
+    fontSize: Dimensions.get('window').height / 30,
+  },
+  buttonTextBackup: {
+    color: '#616161',
+    textAlign: 'center',
+    fontSize: Dimensions.get('window').height / 30,
+  },
 });

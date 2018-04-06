@@ -4,12 +4,14 @@ import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
 export class CreateScreen extends React.Component {
+  static navigationOptions = { header: null };
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
         <View style = { styles.create }>
-          <Text style = {{ fontFamily: 'Cochin', fontSize: 50, color: 'white', width: '75%' }}>CREATE</Text>
-          <Text style = {{ fontFamily: 'Cochin', fontSize: 50, color: 'white', width: '75%' }}>A GAME</Text>
+          <Text style = {{ fontFamily: 'Cochin', fontSize: 50, color: '#FFFFFF', width: '75%' }}>CREATE</Text>
+          <Text style = {{ fontFamily: 'Cochin', fontSize: 50, color: '#FFFFFF', width: '75%' }}>A GAME</Text>
         </View>
         <View style = {{ paddingTop: '7.5%' }}>
           <View style = { styles.time }>
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
     marginLeft: -10,
     shadowOpacity: 0.75,
     shadowRadius: 5,
-    shadowColor: 'black',
+    shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
     paddingLeft: 20,
   },
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     shadowOpacity: 0.25,
     shadowRadius: 5,
-    shadowColor: 'black',
+    shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
     paddingLeft: 20,
   },

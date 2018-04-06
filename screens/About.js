@@ -13,6 +13,9 @@ export class About extends React.Component {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
+      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
+      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
+      'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
     });
     this.setState({ fontLoaded: true });
   }
@@ -30,15 +33,15 @@ export class About extends React.Component {
         </View>
         <View style={{
           flex: 1,
-          justifyContent: 'flex-end',
+          justifyContent: 'center',
           alignItems: 'center',
-          marginBottom: '8%',
+          paddingTop: Dimensions.get('window').height / 20,
         }}>
           <PongButton
             font={ this.state.fontLoaded }
             text={ 'Back' }
             navigation={ this.props.navigation }
-            destination={ 'Congrats' }
+            destination={ 'Home' }
           />
         </View>
       </View>
@@ -53,8 +56,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2994A',
   },
   aboutBox: {
-    width: '80%',
-    height: '70%',
+    width: Dimensions.get('window').width * .80,
+    height: Dimensions.get('window').height * .50,
     alignSelf: 'center',
     backgroundColor: '#93E1FA',
     marginTop: '8%',
@@ -63,17 +66,21 @@ const styles = StyleSheet.create({
     borderWidth: 6,
     justifyContent: 'center',
     alignItems: 'center',
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    shadowColor: '#000000',
+    shadowOffset: { height: 2, width: 0 },
   },
   aboutText: {
-    fontSize: Dimensions.get('window').height / 31,
+    fontSize: Dimensions.get('window').height / 32,
     fontWeight: 'bold',
     color: '#4F4F4F',
     margin: 20,
     textAlign: 'center',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans',
   },
   aboutTextBackup: {
-    fontSize: Dimensions.get('window').height / 31,
+    fontSize: Dimensions.get('window').height / 32,
     fontWeight: 'bold',
     color: '#4F4F4F',
     margin: 20,
