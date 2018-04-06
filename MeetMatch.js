@@ -17,27 +17,20 @@ export default class App extends React.Component {
   render(){
     return(
       <View style = { styles.container }>
-        <View style = { styles.topContainer }>
-          <View>
-            <Text style = { this.state.fontLoaded ? styles.matchText : styles.anything }>
-              IT'S A MATCH!'
-            </Text>
-          </View>
-          <Image source = { require ('./assets/ball.png')} style = { styles.ballStyle }/>
-          <Image source = { require ('./assets/person.png')} style = { styles.personStyle }/>
-        </View>
-
-        <View style = { styles.bottomContainer }>
-          <View style = { styles.matchDetails }>
-            <Text style = { this.state.fontLoaded ? styles.detailsStyle : styles.anything }>
-              Name: {'\n'}Place: {'\n'}Time:
+        <Text style = { this.state.fontLoaded ? styles.meetMatchText : styles.anything }>
+          MEET YOUR MATCH!
+        </Text>
+        <View style = { styles.detailsContainer }>
+          <View style = { styles.details }>
+            <Text style = { this.state.fontLoaded ? styles.detailText : styles.anything }>
+              Name:{'\n'}Place:{'\n'}Time:
             </Text>
           </View>
         </View>
 
-        <View style = { styles.continue }>
-          <Text style = { this.state.fontLoaded ? styles.continueText : styles.anything }>
-            tap to continue
+        <View style = { styles.cancelButton }>
+          <Text style = { this.state.fontLoaded ? styles.cancelButtonText : styles.anything }>
+            Cancel
           </Text>
         </View>
       </View>
@@ -49,65 +42,56 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 2,
-    flexDirection: 'column',
-  },
-  topContainer: {
-    flex: .6,
-    backgroundColor:'#fff',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  matchText: {
-      textAlign: 'center',
-      fontWeight: 'bold',
-      fontSize: 50,
-      fontFamily: 'double-bubble'
-  },
-  imageContainer:{
-    width: 500,
-    height:500
-  },
-  ballStyle: {
-    width: '50%',
-    height: '50%',
-    padding: -50,
-  },
-  personStyle: {
-    width: '20%',
-    height: '20%',
-  },
-  bottomContainer: {
-    flex: .33,
     backgroundColor: '#F2994A',
-    borderTopColor: '#FFC928',
-    borderTopWidth: 13,
-    justifyContent: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     alignItems: 'center'
   },
-  matchDetails: {
-    width: '70%',
-    height: '55%',
-    backgroundColor: '#fff',
-    borderRadius: 23,
-    justifyContent: 'center',
+  meetMatchText: {
+    marginTop: '20%',
+    fontFamily: 'double-bubble',
+    textAlign: 'center',
+    fontSize: 60,
+    color: '#fff'
   },
-  detailsStyle: {
-    fontWeight: 'bold',
+  detailsContainer: {
+    width: '85%',
+    height: '50%',
+    borderRadius: 25,
+    borderWidth: 8,
+    borderColor: '#fff',
+    backgroundColor: '#93E1FA',
     margin: 15,
-    fontSize: 28,
-    color: '#4F4F4F',
-    fontFamily: 'source-sans'
+    alignItems: 'center',
+    justifyContent: 'flex-end'
   },
-  continue: {
-    flex: .07,
+  details: {
+    width: '70%',
+    height: '38%',
+    borderRadius: 25,
+    marginBottom: '10%',
+    backgroundColor: '#fff',
+    justifyContent: 'center'
+  },
+  detailText: {
+    fontWeight: 'bold',
+    fontSize: 25,
+    color: '#4F4F4F',
+    fontFamily: 'source-sans',
+    marginLeft: '7%'
+  },
+  cancelButton: {
+    width: '30%',
+    height: '8%',
+    marginBottom: '15%',
+    borderRadius: 20,
     backgroundColor: '#FFC928',
     justifyContent: 'center'
   },
-  continueText: {
+  cancelButtonText: {
     textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 25,
-    color: '#fff',
-    fontFamily: 'source-sans'
+    fontFamily: 'source-sans',
+    color: '#545454',
+    fontSize: 18
   }
 });
