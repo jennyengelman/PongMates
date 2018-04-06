@@ -92,6 +92,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'source-sans',
     color: '#545454',
-    fontSize: 18
+    fontSize: 18,
   }
 });
