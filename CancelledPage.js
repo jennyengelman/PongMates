@@ -18,17 +18,21 @@ export default class App extends React.Component {
     return(
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
+          <Text style = { this.state.fontLoaded ? styles.sorryText : styles.anything }>
+            SORRY...
+          </Text>
+          <Image source = { require ('./assets/sorry.png') } style = { styles.imageStyle }/>
         </View>
 
         <View style = { styles.bottomContainer }>
           <View style = { styles.details }>
-          <Text style = { styles.detailsText }>
-            Jenny cancelled your game at Phi Delt. Return home to find a new game.
-          </Text>
+            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.anything }>
+              Jenny cancelled your game at Phi Delt. Return home to find a new game.
+            </Text>
           </View>
 
           <View style = { styles.homeButton }>
-            <Text style = { styles.homeText }>
+            <Text style = { this.state.fontLoaded ? styles.homeText : styles.anything }>
               Home
             </Text>
           </View>
@@ -48,6 +52,15 @@ const styles = StyleSheet.create({
     backgroundColor:'#fff',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  sorryText: {
+    fontFamily: 'bubble-body',
+    fontSize: 65,
+    padding: 30,
+  },
+  imageStyle: {
+    width: 150,
+    height: 150
   },
   bottomContainer: {
     flex: .4,
@@ -69,8 +82,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: '#4F4F4F',
-    paddingLeft: '5%',
-    paddingRight:'5%'
+    paddingLeft: '7%',
+    paddingRight:'7%',
+    fontFamily: 'source-sans'
   },
   homeButton: {
     width: '35%',
@@ -84,5 +98,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: '#4F4F4F',
+    fontFamily: 'source-sans'
   }
 });
