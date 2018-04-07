@@ -25,7 +25,7 @@ export class FindScreen extends React.Component {
         <View style = {{ paddingTop: '7.5%' }}>
           <View style = { styles.time }>
             <View style = { styles.timeTop }>
-              <Image style = {{ height: 40, width: 40 }} source={require('./../assets/time.png')}/>
+              <Image style = {{ height: 40, width: 40 }} source={require('./../assets/images/time.png')}/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Time</Text>
             </View>
             <View style = {{ height: 3, width: '100%', backgroundColor: '#fff' }}>
@@ -43,7 +43,7 @@ export class FindScreen extends React.Component {
         <View style = {{ paddingTop: '3%' }}>
           <View style = { styles.place }>
             <View style = { styles.placeTop }>
-              <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/place.png') }/>
+              <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
             </View>
             <View style = {{ height: 5, width: '100%', backgroundColor: '#fff' }}>
