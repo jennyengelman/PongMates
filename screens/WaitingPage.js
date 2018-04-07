@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 
 export class WaitingScreen extends React.Component {
   state = {

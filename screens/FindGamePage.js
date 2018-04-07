@@ -174,9 +174,19 @@ const styles = StyleSheet.create({
     color: '#545454',
     textAlign: 'center',
   },
+  optionsPlaceTextElse: {
+    fontSize: 18,
+    color: '#545454',
+    textAlign: 'center',
+  },
   optionsTimeText: {
     fontSize: 30,
     fontFamily: 'source-sans-pro',
+    color: '#545454',
+    textAlign: 'center',
+  },
+  optionsTimeTextElse: {
+    fontSize: 30,
     color: '#545454',
     textAlign: 'center',
   },
