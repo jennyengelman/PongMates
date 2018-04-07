@@ -33,7 +33,7 @@ export class HomeScreen extends React.Component {
               <View style = { styles.homeRectangle }>
                 <View style = {{ borderRadius: 20 }}>
                   <View style = {{ backgroundColor: '#FFC928', width: 200, height: 200, borderRadius: 100, alignItems: 'center' }}>
-                    <Image style = {{ width: 200, height: 200 }} source={require('./../assets/image.png')}/>
+                    <Image style = {{ width: 200, height: 200 }} source={require('./../assets/images/image.png')}/>
                     <Text style = { this.state.fontLoaded ? styles.selfieText : styles.selfieTextElse }>Take a selfie to share with your partner!</Text>
                   </View>
                 </View>
