@@ -19,7 +19,7 @@ export class FoundScreen extends React.Component {
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
           <Text style = { this.state.fontLoaded ? styles.matchText : styles.matchTextElse }>It{ `'` }s a Match!</Text>
-          <Image style = { styles.cup } source = {require('./../assets/cup.png')}/>
+          <Image style = { styles.cup } source = {require('./../assets/images/cup.png')}/>
         </View>
         <View style = { styles.yellowStrip }>
         </View>
