@@ -37,7 +37,7 @@ export class HomeScreen extends React.Component {
                     <Text style = { this.state.fontLoaded ? styles.selfieText : styles.selfieTextElse }>Take a selfie to share with your partner!</Text>
                   </View>
                 </View>
-                <View style = {{ paddingTop: 40 }}>
+                <View style = {{ marginTop: 40 }}>
                   <View style = { styles.shadowName }>
                     <View style = { styles.nameContainer }>
                       <TextInput

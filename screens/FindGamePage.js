@@ -19,7 +19,7 @@ export class FindScreen extends React.Component {
     return (
       <View style = { styles.container }>
         <View style = { styles.find }>
-          <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>Find</Text>
+          <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>FIND</Text>
           <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>A GAME</Text>
         </View>
         <View style = {{ paddingTop: '7.5%' }}>
@@ -174,9 +174,19 @@ const styles = StyleSheet.create({
     color: '#545454',
     textAlign: 'center',
   },
+  optionsPlaceTextElse: {
+    fontSize: 18,
+    color: '#545454',
+    textAlign: 'center',
+  },
   optionsTimeText: {
     fontSize: 30,
     fontFamily: 'source-sans-pro',
+    color: '#545454',
+    textAlign: 'center',
+  },
+  optionsTimeTextElse: {
+    fontSize: 30,
     color: '#545454',
     textAlign: 'center',
   },
