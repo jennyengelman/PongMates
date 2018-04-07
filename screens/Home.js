@@ -12,7 +12,7 @@ export class HomeScreen extends React.Component {
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
      });
-    this.setState({ fontLoaded: true }) ;
+    this.setState({ fontLoaded: true });
   }
   render() {
     return (
