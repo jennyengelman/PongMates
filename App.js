@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import { HomeScreen } from './screens/Home';
 import { CreateScreen } from './screens/CreateGamePage';
 import { TimedOutScreen } from './screens/TimedOutPage';
+import { FoundAPartner } from './screens/FoundAPartner';
 import { AboutScreen } from './screens/About';
 import { SelectionScreen } from './screens/SelectionPage';
 import { FindScreen } from './screens/FindGamePage';
