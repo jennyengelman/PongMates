@@ -3,24 +3,24 @@ import { StyleSheet, Text, View, Image, FlatList, Button } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
-export class CreateScreen extends React.Component {
+export class FindScreen extends React.Component {
   state = {
     fontLoaded: false,
-   };
+  };
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
       'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-     });
-    this.setState({ fontLoaded: true }) ;
+    });
+    this.setState({ fontLoaded: true });
   }
   render() {
     return (
       <View style = { styles.container }>
-        <View style = { styles.create }>
-          <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>CREATE</Text>
-          <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>A GAME</Text>
+        <View style = { styles.find }>
+          <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>FIND</Text>
+          <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>A GAME</Text>
         </View>
         <View style = {{ paddingTop: '7.5%' }}>
           <View style = { styles.time }>
@@ -118,8 +118,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#C2515B',
     paddingTop: '5%'
   },
-  create: {
-    backgroundColor: '#FFC928',
+  find: {
+    backgroundColor: '#93E1FA',
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: '#fff',
@@ -132,14 +132,14 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOffset: { height: 0, width: 0 },
   },
-  createText: {
+  findText: {
     fontFamily: 'double-bubble-shadow',
     fontSize: 50,
     color: 'white',
     width: '75%',
     textAlign: 'center',
   },
-  createTextElse: {
+  findTextElse: {
     fontSize: 50,
     color: 'white',
     width: '75%',
@@ -174,9 +174,19 @@ const styles = StyleSheet.create({
     color: '#545454',
     textAlign: 'center',
   },
+  optionsPlaceTextElse: {
+    fontSize: 18,
+    color: '#545454',
+    textAlign: 'center',
+  },
   optionsTimeText: {
     fontSize: 30,
     fontFamily: 'source-sans-pro',
+    color: '#545454',
+    textAlign: 'center',
+  },
+  optionsTimeTextElse: {
+    fontSize: 30,
     color: '#545454',
     textAlign: 'center',
   },

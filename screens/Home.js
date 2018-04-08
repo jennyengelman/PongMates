@@ -7,26 +7,24 @@ export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
-    name: '',
-  };
+   };
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-    });
+     });
     this.setState({ fontLoaded: true });
   }
   render() {
-    const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
         <View style = {{ backgroundColor: '#C2515B', height: '80%' }}>
           <View style = {{ flexDirection: 'row', paddingTop: 30 }}>
             <View style = { styles.shadowPong }>
               <View style = { styles.pongContainer }>
-                {this.state.fontLoaded ? (<Text style = { styles.pongText }>Pong</Text>) : (<Text style = {{ fontSize: 60, color: 'white', paddingRight: 45 }}>Pong</Text>)}
+                <Text style = { this.state.fontLoaded ? styles.pongText : styles.pongTextElse }>Pong</Text>
                 <View style = { styles.matesContainer }>
-                  {this.state.fontLoaded ? (<Text style = { styles.matesText }>Mates</Text>) : (<Text style = {{ fontSize: 60, color: 'white', paddingRight: 45 }}>Mates</Text>)}
+                  <Text style = { this.state.fontLoaded ? styles.matesText : styles.matesTextElse }>Mates</Text>
                 </View>
               </View>
             </View>
@@ -35,16 +33,16 @@ export class HomeScreen extends React.Component {
             <View style = { styles.shadowHome }>
               <View style = { styles.homeRectangle }>
                 <View style = {{ borderRadius: 20 }}>
-                  <View style = {{ backgroundColor: '#FFC928', width: 200, height: 200, borderRadius: 100 }}>
-                    <Image style = {{ width: 200, height: 200 }} source={require('./../assets/image.png')}/>
-                    {this.state.fontLoaded ? (<Text style = { styles.selfieText }>Take a selfie to share with your partner!</Text>) : (<Text style = {{ position: 'absolute', width: 150, top: '35%', left: '20%', fontSize: 20, color: '#696969' }}>Take a selfie to share with your partner!</Text>)}
+                  <View style = {{ backgroundColor: '#FFC928', width: 200, height: 200, borderRadius: 100, alignItems: 'center' }}>
+                    <Image style = {{ width: 200, height: 200 }} source={require('./../assets/images/image.png')}/>
+                    <Text style = { this.state.fontLoaded ? styles.selfieText : styles.selfieTextElse }>Take a selfie to share with your partner!</Text>
                   </View>
                 </View>
-                <View style = {{ paddingTop: 40 }}>
+                <View style = {{ marginTop: 40 }}>
                   <View style = { styles.shadowName }>
                     <View style = { styles.nameContainer }>
                       <TextInput
-                        style = { styles.nameInput }
+                        style = { this.state.fontLoaded ? styles.nameInput : styles.nameInputElse }
                         placeholder = "Your Name"
                         onChangeText = { (text) => this.setState({ name: text }) }
                       />
@@ -56,10 +54,11 @@ export class HomeScreen extends React.Component {
           </View>
           <View style = {{ paddingTop: 20 }}>
             <Button
-              onPress = { () => navigate('Selection') }
+              onPress = { () => navigate('SelectionScreen') }
               title = 'tap to begin'
               color = 'white'
               fontSize = '35'
+              fontFamily = { this.state.fontLoaded ? styles.nextText : styles.nextTextElse }
             />
           </View>
         </View>
@@ -115,6 +114,11 @@ const styles = StyleSheet.create({
     color: 'white',
     paddingLeft: 3,
   },
+  matesTextElse: {
+    fontSize: 60,
+    color: 'white',
+    paddingLeft: 3,
+  },
   nameContainer: {
     width: 250,
     height: 50,
@@ -127,11 +131,26 @@ const styles = StyleSheet.create({
   nameInput: {
     width: '80%',
     color: 'white',
-    fontFamily: 'Cochin',
+    fontFamily: 'source-sans-pro',
+    fontWeight: 'bold',
+    fontSize: 20,
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  nameInputElse: {
+    width: '80%',
+    color: 'white',
     paddingTop: 20,
     fontWeight: 'bold',
     fontSize: 20,
     alignItems: 'center',
+  },
+  nextText: {
+    fontFamily: 'source-sans-pro',
+    textAlign: 'center',
+  },
+  nextTextElse: {
+    textAlign: 'center',
   },
   pongContainer: {
     backgroundColor: '#FFC928',
@@ -151,6 +170,11 @@ const styles = StyleSheet.create({
     color: 'white',
     paddingRight: 45,
   },
+  pongTextElse: {
+    fontSize: 60,
+    color: 'white',
+    paddingRight: 45,
+  },
   removeHeaderOverlap: {
     backgroundColor: '#FFC928',
     width: 35,
@@ -164,10 +188,18 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 150,
     top: '35%',
-    left: '20%',
     fontSize: 20,
     color: '#696969',
     fontFamily: 'source-sans-pro',
+    textAlign: 'center',
+  },
+  selfieTextElse: {
+    position: 'absolute',
+    width: 150,
+    top: '35%',
+    left: '20%',
+    fontSize: 20,
+    color: '#696969',
   },
   shadowHome: {
     borderTopRightRadius: 10,

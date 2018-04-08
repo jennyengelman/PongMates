@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'rea
 import { Font } from 'expo';
 import PongButton from './../components/PongButton';
 
-export class Congrats extends React.Component {
+export class CongratsScreen extends React.Component {
   static navigationOptions = { header: null };
   state = { fontLoaded: false };
   async componentDidMount() {
@@ -26,7 +26,7 @@ export class Congrats extends React.Component {
             Match!
             </Text>
           </View>
-          <Image source={ require('./../assets/image.png') }
+          <Image source={ require('./../assets/images/image.png') }
             style={{
             tintColor: '#000000',
             height: '40%',
@@ -35,7 +35,7 @@ export class Congrats extends React.Component {
             marginBottom: 10,
             }}
           />
-          <Image source={ require('./../assets/person.png') }
+          <Image source={ require('./../assets/images/person.png') }
             style={{
               height: '15%',
               width: '15%',

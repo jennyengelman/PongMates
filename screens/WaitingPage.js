@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Font } from 'expo';
+import { StackNavigator } from 'react-navigation';
 
-export default class App extends React.Component {
+export class WaitingScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,

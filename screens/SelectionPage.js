@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Fonts, Button  } from 'react-native';
 import { Font  } from 'expo';
 
-export default class Selection extends React.Component {
+export class SelectionScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
@@ -11,14 +11,14 @@ export default class Selection extends React.Component {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
      });
-    this.setState({ fontLoaded: true  }) ;
+    this.setState({ fontLoaded: true }) ;
    }
   render() {
     return (
       <View style = { styles.container }>
           <View style = {{ height: '10%', flexDirection: 'row', justifyContent: 'space-around', alignContent: 'flex-start' }}>
             <View style = { styles.topButtons }>
-              <Image source = { require('./../assets/profile.png') } style = { styles.image }/>
+              <Image source = { require('./../assets/images/profile.png') } style = { styles.image }/>
             </View>
             <View style = { styles.topButtons }>
               <Text style = { this.state.fontLoaded ? styles.faqButton : styles.anything }>
