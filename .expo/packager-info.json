@@ -1,8 +1,7 @@
-{
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 2161,
-  "expoServerNgrokUrl": "https://rd-khx.uchoi6441.pongmates.exp.direct",
-  "packagerNgrokUrl": "https://packager.rd-khx.uchoi6441.pongmates.exp.direct",
-  "ngrokPid": 2183
+{   "expoServerPort": 19000,
+    "packagerPort": 19001,
+    "packagerPid": 2161,
+    "expoServerNgrokUrl": "https://rd-khx.uchoi6441.pongmates.exp.direct",
+    "packagerNgrokUrl": "https://packager.rd-khx.uchoi6441.pongmates.exp.direct",
+    "ngrokPid": 2183
 }

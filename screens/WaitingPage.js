@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import PongButton from './../components/PongButton';
+import { StackNavigator } from 'react-navigation';
 
 export class WaitingScreen extends React.Component {
   static navigationOptions = { header: null };

@@ -85,6 +85,11 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     paddingLeft: 3,
   },
+  matesTextElse: {
+    fontSize: 60,
+    color: 'white',
+    paddingLeft: 3,
+  },
   nameContainer: {
     width: Dimensions.get('window').width / 1.5,
     height: Dimensions.get('window').width / 7,
@@ -103,7 +108,7 @@ const styles = StyleSheet.create({
   nameInput: {
     width: '80%',
     color: '#FFFFFF',
-    fontFamily: 'source-sans-pro-bold',
+    fontFamily: 'source-sans-pro',
     fontWeight: 'bold',
     fontSize: 20,
     alignItems: 'center',
@@ -116,6 +121,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     alignItems: 'center',
+    textAlign: 'center',
+  },
+  pongContainer: {
+    backgroundColor: '#FFC928',
+    width: 220,
+    height: 110,
+    borderTopRightRadius: 30,
+    borderBottomRightRadius: 30,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    borderColor: 'white',
+    borderWidth: 5,
+    marginLeft: -5,
   },
   nextText: {
     fontFamily: 'source-sans-pro-bold',

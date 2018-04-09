@@ -17,7 +17,6 @@ export class CreateScreen extends React.Component {
      });
     this.setState({ fontLoaded: true }) ;
   }
-
   render() {
     const { navigate } = this.props.navigation
     return (
