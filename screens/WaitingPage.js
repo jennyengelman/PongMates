@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
 export class WaitingScreen extends React.Component {
+  static navigationOptions = {header: null };
   state = {
     fontLoaded: false,
   };
@@ -15,6 +16,7 @@ export class WaitingScreen extends React.Component {
     this.setState({ fontLoaded: true }) ;
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
@@ -31,11 +33,15 @@ export class WaitingScreen extends React.Component {
                 Name: {'\n'}Place: {'\n'}Time:
               </Text>
           </View>
-          <View style = { styles.deleteButton }>
-            <Text style = { this.state.fontLoaded ? styles.deleteFontStyle : styles.anything }>
-              Delete{'\n'}Post
-            </Text>
-          </View>
+          <TouchableOpacity onPress={() =>
+            navigate('Home')
+          }>
+            <View style = { styles.deleteButton }>
+              <Text style = { this.state.fontLoaded ? styles.deleteFontStyle : styles.anything }>
+                Delete{'\n'}Post
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     );
