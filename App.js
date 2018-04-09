@@ -10,9 +10,10 @@ import { SelectionScreen } from './screens/SelectionPage';
 import { FindScreen } from './screens/FindGamePage';
 import { WaitingScreen } from './screens/WaitingPage';
 import { FoundScreen } from './screens/FoundGamePage';
+import { NoGamesFoundScreen } from './screens/NoGamesFoundPage';
 
 const RootStack = StackNavigator({
-  Home: { screen: HomeScreen },
+  Home: { screen: NoGamesFoundScreen },
   Create: { screen: CreateScreen },
   TimedOut: { screen: TimedOutScreen },
   About: { screen: AboutScreen },
@@ -21,6 +22,7 @@ const RootStack = StackNavigator({
   Find: { screen: FindScreen },
   Waiting: { screen: WaitingScreen },
   FoundGame: { screen: FoundScreen },
+  NoGamesFound: { screen: NoGamesFoundScreen },
 });
 
 export default class App extends React.Component {
