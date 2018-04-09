@@ -22,9 +22,9 @@ export class HomeScreen extends React.Component {
           <View style = {{ flexDirection: 'row', paddingTop: 30 }}>
             <View style = { styles.shadowPong }>
               <View style = { styles.pongContainer }>
-                <Text style = { this.state.fontLoaded ? styles.pongText : styles.pongTextElse }>Pong</Text>
+                <Text style = { this.state.fontLoaded ? styles.pongText : styles.pongTextElse }>Need</Text>
                 <View style = { styles.matesContainer }>
-                  <Text style = { this.state.fontLoaded ? styles.matesText : styles.matesTextElse }>Mates</Text>
+                  <Text style = { this.state.fontLoaded ? styles.matesText : styles.matesTextElse }>One</Text>
                 </View>
               </View>
             </View>

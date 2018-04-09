@@ -36,7 +36,7 @@ export class AboutScreen extends React.Component {
             font={ this.state.fontLoaded }
             text={ 'Back' }
             navigation={ this.props.navigation }
-            destination={ 'Congrats' }
+            destination={ 'Selection' }
           />
         </View>
       </View>

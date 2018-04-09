@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Fonts, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, Fonts, Button, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
+//import HomeButton from './../components/HomeButton';
+//import AboutButton from './../components/AboutButton';
 
 export class SelectionScreen extends React.Component {
   static navigationOptions = {header: null };
@@ -18,35 +20,45 @@ export class SelectionScreen extends React.Component {
     return (
       <View style = { styles.container }>
           <View style = {{ height: '10%', flexDirection: 'row', justifyContent: 'space-around', alignContent: 'flex-start' }}>
-            <View style = { styles.topButtons }>
-              <Button
-                onPress = { () => navigate( 'About' ) }
-                color = 'white'
-                title = { 'tap to begin' }
-              />
-              <Image source = { require('./../assets/images/profile.png') } style = { styles.image }/>
-            </View>
-            <View style = { styles.topButtons }>
-              <Text style = { this.state.fontLoaded ? styles.faqButton : styles.anything }>
-                ?
-              </Text>
-            </View>
+            <TouchableOpacity onPress={() =>
+              navigate('Home')
+            }>
+              <View style = { styles.topButtons }>
+                <Image source = { require('./../assets/images/profile.png') } style = { styles.image }/>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() =>
+              navigate('About')
+            }>
+              <View style = { styles.topButtons }>
+                <Text style = { this.state.fontLoaded ? styles.faqButton : styles.anything }>
+                  ?
+                </Text>
+              </View>
+            </TouchableOpacity>
           </View>
-
         <View style = {{  height: '90%', justifyContent: 'center', alignItems: 'center' }}>
           <View style = {{ width: '100%', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
             <View style = { styles.postButton }>
+              <TouchableOpacity onPress={() =>
+                navigate('Create')
+              }>
                 <Text style = { this.state.fontLoaded ? styles.postFontStyle : styles.anything }>
                   CREATE A GAME
                 </Text>
+              </TouchableOpacity>
             </View>
           </View>
           <View style = {{ width: '100%', flexDirection: 'row', justifyContent: 'flex-end' }}>
-            <View style = { styles.findButton }>
+            <TouchableOpacity onPress={() =>
+              navigate('Find')
+            }>
+              <View style = { styles.findButton }>
                 <Text style = { this.state.fontLoaded ? styles.findFontStyle : styles.anything }>
                   FIND A GAME
                 </Text>
-            </View>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </View>

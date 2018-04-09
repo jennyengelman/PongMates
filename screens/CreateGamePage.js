@@ -4,6 +4,7 @@ import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
 export class CreateScreen extends React.Component {
+  static navigationOptions = {header: null };
   state = {
     fontLoaded: false,
    };
@@ -16,6 +17,7 @@ export class CreateScreen extends React.Component {
     this.setState({ fontLoaded: true }) ;
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
         <View style = { styles.create }>
@@ -91,7 +93,21 @@ export class CreateScreen extends React.Component {
           </View>
         </View>
         <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: 10 }}>
-          <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
+        <Button
+          onPress = { () => navigate( 'Selection' ) }
+          color = '#F2994A'
+          fontSize = '30'
+          fontFamily = { this.state.fontLoaded ? 'source-sans-pro' : 'Cochin' }
+          //fontFamily = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }
+          title = { 'Cancel' }
+        />
+        <Button
+          onPress = { () => navigate( 'Waiting' ) }
+          fontSize = '30'
+          fontFamily = { this.state.fontLoaded ? 'source-sans-pro' : 'Cochin' }
+          //fontFamily = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }
+          title = { 'Post!' }
+        />
           <View style = { styles.postButton }>
             <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
           </View>

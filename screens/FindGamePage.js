@@ -4,6 +4,7 @@ import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
 export class FindScreen extends React.Component {
+  static navigationOptions = {header: null };
   state = {
     fontLoaded: false,
   };
@@ -16,6 +17,7 @@ export class FindScreen extends React.Component {
     this.setState({ fontLoaded: true });
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
         <View style = { styles.find }>
