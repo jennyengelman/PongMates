@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, Button, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
@@ -93,24 +93,18 @@ export class CreateScreen extends React.Component {
           </View>
         </View>
         <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: 10 }}>
-        <Button
-          onPress = { () => navigate( 'Selection' ) }
-          color = '#F2994A'
-          fontSize = '30'
-          fontFamily = { this.state.fontLoaded ? 'source-sans-pro' : 'Cochin' }
-          //fontFamily = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }
-          title = { 'Cancel' }
-        />
-        <Button
-          onPress = { () => navigate( 'Waiting' ) }
-          fontSize = '30'
-          fontFamily = { this.state.fontLoaded ? 'source-sans-pro' : 'Cochin' }
-          //fontFamily = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }
-          title = { 'Post!' }
-        />
-          <View style = { styles.postButton }>
-            <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
-          </View>
+          <TouchableOpacity onPress={() =>
+            navigate('Home')
+          }>
+            <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() =>
+            navigate('Waiting')
+          }>
+            <View style = { styles.postButton }>
+              <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     );
