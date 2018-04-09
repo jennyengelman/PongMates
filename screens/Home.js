@@ -23,9 +23,11 @@ export class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View style = { styles.container }>
-        <View style = {{ backgroundColor: '#C2515B', height: '70%' }}>
+        <View style = {{ backgroundColor: '#C2515B', height: '30%', justifyContent: 'center' }}>
           <Logo font={ this.state.fontLoaded }/>
-          <View style = {{ alignItems: 'center', marginTop: '8%'}}>
+        </View>
+        <View style = {{ backgroundColor: '#C2515B', height: '40%' }}>
+          <View style = {{ alignItems: 'center', paddingTop: '5%' }}>
             <View style = { styles.homeRectangle }>
               <View style = {{ backgroundColor: '#FFC928', width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55, borderRadius: Dimensions.get('window').width * .275, justifyContent: 'center' }}>
                 <Image style = {{ width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55 }} source={ require('./../assets/images/image.png') }/>

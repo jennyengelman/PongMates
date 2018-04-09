@@ -5,7 +5,7 @@ import Logo from './../components/Logo';
 import PongButton from './../components/PongButton';
 
 export class AboutScreen extends React.Component {
-  static navigationOptions = {header: null };
+  static navigationOptions = { header: null };
   state = { fontLoaded: false };
   async componentDidMount() {
     await Font.loadAsync({
@@ -20,8 +20,10 @@ export class AboutScreen extends React.Component {
     const { navigate } = this.props.navigation
     return (
       <View style={ styles.container }>
-        <View style={{ height: '70%', backgroundColor: '#C2515B' }}>
+        <View style = {{ backgroundColor: '#C2515B', height: '30%', justifyContent: 'center' }}>
           <Logo font={ this.state.fontLoaded }/>
+        </View>
+        <View style={{ height: '40%', backgroundColor: '#C2515B'}} >
           <View style={ styles.aboutBox }>
             <Text style={ this.state.fontLoaded ? styles.aboutText : styles.aboutTextBackup }>
             PongMates is designed to connect Dartmouth students through the game of Pong.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!
@@ -32,7 +34,7 @@ export class AboutScreen extends React.Component {
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
-          paddingTop: Dimensions.get('window').height / 20,
+          paddingTop: Dimensions.get('window').height / 10,
         }}>
           <PongButton
             font={ this.state.fontLoaded }
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height * .50,
     alignSelf: 'center',
     backgroundColor: '#93E1FA',
-    marginTop: '8%',
+    marginTop: '5%',
     borderColor: '#FFFFFF',
     borderRadius: 20,
     borderWidth: 6,
