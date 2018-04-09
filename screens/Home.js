@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   nameInput: {
     width: '80%',
     color: '#FFFFFF',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans',
     fontWeight: 'bold',
     fontSize: 20,
     alignItems: 'center',

@@ -10,7 +10,7 @@ export class AboutScreen extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
+      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
       'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
       'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
     });
@@ -38,7 +38,7 @@ export class AboutScreen extends React.Component {
             font={ this.state.fontLoaded }
             text={ 'Back' }
             navigation={ this.props.navigation }
-            destination={ 'Home' }
+            destination={ 'Selection' }
           />
         </View>
       </View>
