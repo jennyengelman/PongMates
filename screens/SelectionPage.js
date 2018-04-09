@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Fonts, Button, TouchableOpacity, Dimensions } from 'react-native';
 import { Font  } from 'expo';
 
-export class Selection extends React.Component {
+export class SelectionScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
@@ -10,8 +10,9 @@ export class Selection extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
+      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
      });
-    this.setState({ fontLoaded: true  }) ;
+    this.setState({ fontLoaded: true }) ;
    }
   render() {
     const { navigate } = this.props.navigation
@@ -23,7 +24,7 @@ export class Selection extends React.Component {
               }
             >
               <View style = { styles.topButtons }>
-                <Image source = { require('./../assets/profile.png') } style = { styles.image }/>
+                <Image source = { require('./../assets/images/profile.png') } style = { styles.image }/>
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     marginRight: Dimensions.get('window').width / 10,
     paddingLeft: 25,
-    fontFamily: 'double-bubble-shadow'
+    fontFamily: 'double-bubble-shadow',
    },
   container: {
     justifyContent: 'center',

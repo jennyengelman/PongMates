@@ -12,7 +12,7 @@ export class HomeScreen extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
+      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
       'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
       'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
       'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
@@ -20,7 +20,7 @@ export class HomeScreen extends React.Component {
     this.setState({ fontLoaded: true });
   }
   render() {
-    const { navigate } = this.props.navigation
+    const { navigate } = this.props.navigation;
     return (
       <View style = { styles.container }>
         <View style = {{ backgroundColor: '#C2515B', height: '70%' }}>
@@ -28,12 +28,12 @@ export class HomeScreen extends React.Component {
           <View style = {{ alignItems: 'center', marginTop: '8%'}}>
             <View style = { styles.homeRectangle }>
               <View style = {{ backgroundColor: '#FFC928', width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55, borderRadius: Dimensions.get('window').width * .275, justifyContent: 'center' }}>
-                <Image style = {{ width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55, }} source={require('./../assets/image.png')}/>
-                {this.state.fontLoaded ? (<Text style = { styles.selfieText }>Take a selfie to share with your partner!</Text>) : (<Text style = {{ position: 'absolute', width: 150, top: '35%', left: '20%', fontSize: 20, color: '#696969' }}>Take a selfie to share with your partner!</Text>)}
+                <Image style = {{ width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55 }} source={ require('./../assets/images/image.png') }/>
+                <Text style = { this.state.fontLoaded ? styles.selfieText : styles.selfieTextElse }>Take a selfie to share with your partner!</Text>
               </View>
               <View style = { styles.nameContainer }>
                 <TextInput
-                  style = { styles.nameInput }
+                  style = { this.state.fontLoaded ? styles.nameInput : styles.nameInputElse }
                   placeholder = "Your Name"
                   onChangeText = { (text) => this.setState({ name: text }) }
                 />
@@ -46,7 +46,7 @@ export class HomeScreen extends React.Component {
               navigate('Selection')
             }
           >
-            <Text style={ this.state.fontLoaded ? styles.buttonText : styles.buttonTextBackup }>
+            <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
             tap to begin
             </Text>
           </TouchableOpacity>
@@ -57,15 +57,6 @@ export class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  buttonText: {
-    color: '#FFFFFF',
-    fontFamily: 'source-sans-pro',
-    fontSize: Dimensions.get('window').height / 30,
-  },
-  buttonTextBackup: {
-    color: '#FFFFFF',
-    fontSize: Dimensions.get('window').height / 30,
-  },
   container: {
     flex: 1,
     backgroundColor: '#F2994A',
@@ -89,6 +80,11 @@ const styles = StyleSheet.create({
     shadowColor: '#000000',
     shadowOffset: { height: 2, width: 0 },
   },
+  matesTextElse: {
+    fontSize: 60,
+    color: '#FFFFFF',
+    paddingLeft: 3,
+  },
   nameContainer: {
     width: Dimensions.get('window').width / 1.5,
     height: Dimensions.get('window').width / 7,
@@ -107,11 +103,28 @@ const styles = StyleSheet.create({
   nameInput: {
     width: '80%',
     color: '#FFFFFF',
-    fontFamily: 'Cochin',
+    fontFamily: 'source-sans-pro-bold',
+    fontWeight: 'bold',
+    fontSize: 20,
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  nameInputElse: {
+    width: '80%',
+    color: '#FFFFFF',
     paddingTop: 20,
     fontWeight: 'bold',
     fontSize: 20,
     alignItems: 'center',
+  },
+  nextText: {
+    fontFamily: 'source-sans-pro-bold',
+    textAlign: 'center',
+    fontSize: Dimensions.get('window').height / 30,
+  },
+  nextTextElse: {
+    textAlign: 'center',
+    fontSize: Dimensions.get('window').height / 30,
   },
   selfieText: {
     position: 'absolute',
@@ -119,7 +132,15 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width * .4,
     fontSize: Dimensions.get('window').width / 15,
     color: '#696969',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-bold',
     textAlign: 'center',
+  },
+  selfieTextElse: {
+      position: 'absolute',
+      alignSelf: 'center',
+      width: Dimensions.get('window').width * .4,
+      fontSize: Dimensions.get('window').width / 15,
+      color: '#696969',
+      textAlign: 'center',
   },
 });

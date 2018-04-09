@@ -11,26 +11,23 @@ export class TimedOutScreen extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-      'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
+      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
+      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
     });
-    this.setState({ fontLoaded: true });
-  }
+    this.setState({ fontLoaded: true });  }
   render() {
     const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
-          <Text style = { styles.sorryText }>Sorry...</Text>
+          <Text style = { this.state.fontLoaded ? styles.sorryText : styles.sorryTextElse }>Sorry...</Text>
         </View>
         <View style = { styles.middleContainer }>
-          <Image style = { styles.brokenPong } source = {require('./../assets/broken-pong.png')}/>
+          <Image style = { styles.brokenPong } source = {require('./../assets/images/broken-pong.png')}/>
         </View>
         <View style = { styles.bottomContainer }>
           <View style = { styles.timedOutTextBox }>
-            <Text style = { styles.timedOutText }>Your request timed out. Please try again later!</Text>
+            <Text style = { this.state.fontLoaded ? styles.timedOutText : styles.timedOutTextElse }>Your request timed out. Please try again later!</Text>
           </View>
           <View style = { styles.homeTextBox }>
             <PongButton
@@ -53,7 +50,9 @@ const styles = StyleSheet.create({
     borderColor: '#FFC928',
     backgroundColor: '#F2994A',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
+    paddingTop: 10,
+    paddingBottom: 20,
   },
   brokenPong: {
     width: Dimensions.get('window').width / 3,
@@ -62,15 +61,37 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
   },
+  homeTextBox: {
+    backgroundColor: '#FFC928',
+    borderRadius: 15,
+    height: 50,
+    width: 150,
+    justifyContent: 'center',
+  },
   sorryText: {
-    fontFamily: 'Cochin',
+    fontFamily: 'source-sans-pro-bold',
     fontSize: Dimensions.get('window').height / 14,
     color: '#000000',
   },
+  sorryTextElse: {
+    fontSize: 55,
+    color: 'black',
+  },
+  stripe: {
+    backgroundColor: '#FFC928',
+    height: '2%',
+  },
   timedOutText: {
-    fontFamily: 'Cochin',
+    fontFamily: 'source-sans-pro',
     fontSize: Dimensions.get('window').height / 21,
-    margin: 25,
+    padding: 30,
+    color: '#616161',
+    justifyContent: 'center',
+    textAlign: 'center',
+  },
+  timedOutTextElse: {
+    fontSize: Dimensions.get('window').height / 21,
+    padding: 30,
     color: '#616161',
     justifyContent: 'center',
   },

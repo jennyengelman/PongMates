@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#616161',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-bold',
     textAlign: 'center',
     fontSize: Dimensions.get('window').height / 30,
   },

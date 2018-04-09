@@ -4,18 +4,15 @@ import { Font } from 'expo';
 import Logo from './../components/Logo';
 import PongButton from './../components/PongButton';
 
-
-
-export class About extends React.Component {
+export class AboutScreen extends React.Component {
   static navigationOptions = {header: null };
   state = { fontLoaded: false };
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
       'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
       'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
+      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
     });
     this.setState({ fontLoaded: true });
   }

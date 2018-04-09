@@ -9,9 +9,8 @@ export class FoundAPartner extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
+      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
       'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
       'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
     });
     this.setState({ fontLoaded: true });
@@ -26,7 +25,7 @@ export class FoundAPartner extends React.Component {
           </Text>
         </View>
         <View style={ styles.middleContainer }>
-          <Image source={ require('./../assets/image.png') }
+          <Image source={ require('./../assets/images/image.png') }
             style={{
             tintColor: '#000000',
             height: Dimensions.get('window').width / 2.1,
@@ -35,7 +34,7 @@ export class FoundAPartner extends React.Component {
             marginTop: Dimensions.get('window').height / 50,
             }}
           />
-          <Image source={ require('./../assets/person.png') }
+          <Image source={ require('./../assets/images/person.png') }
             style={{
               height: Dimensions.get('window').width / 8,
               width: Dimensions.get('window').width / 8,
@@ -114,7 +113,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#616161',
     margin: 25,
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-bold',
   },
   congratsInfoBackup: {
     fontSize: Dimensions.get('window').height / 21,
@@ -130,7 +129,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#FFFFFF',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-bold',
     fontSize: Dimensions.get('window').height / 30,
   },
   buttonTextBackup: {
