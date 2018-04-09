@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert, Image, TextInput } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 
 export class HomeScreen extends React.Component {
+  static navigationOptions = {header: null };
   state = {
     fontLoaded: false,
    };
@@ -15,6 +15,7 @@ export class HomeScreen extends React.Component {
     this.setState({ fontLoaded: true });
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
         <View style = {{ backgroundColor: '#C2515B', height: '80%' }}>
@@ -53,11 +54,11 @@ export class HomeScreen extends React.Component {
           </View>
           <View style = {{ paddingTop: 20 }}>
             <Button
-              onPress = { () => navigate('SelectionScreen') }
-              title = 'tap to begin'
+              onPress = { () => navigate( 'Selection' ) }
               color = 'white'
               fontSize = '35'
               fontFamily = { this.state.fontLoaded ? styles.nextText : styles.nextTextElse }
+              title = { 'tap to begin' }
             />
           </View>
         </View>
@@ -111,12 +112,14 @@ const styles = StyleSheet.create({
     fontFamily: 'double-bubble-shadow',
     fontSize: 60,
     color: 'white',
-    paddingLeft: 3,
+    textAlign: 'center',
+    marginLeft: -35,
   },
   matesTextElse: {
     fontSize: 60,
     color: 'white',
-    paddingLeft: 3,
+    textAlign: 'center',
+    marginLeft: -35,
   },
   nameContainer: {
     width: 250,
@@ -167,12 +170,14 @@ const styles = StyleSheet.create({
     fontFamily: 'double-bubble-shadow',
     fontSize: 60,
     color: 'white',
-    paddingRight: 45,
+    paddingRight: 55,
+    textAlign: 'center',
   },
   pongTextElse: {
     fontSize: 60,
     color: 'white',
-    paddingRight: 45,
+    paddingRight: 55,
+    textAlign: 'center',
   },
   removeHeaderOverlap: {
     backgroundColor: '#FFC928',

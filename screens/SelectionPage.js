@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Fonts, Button  } from 'react-native';
-import { Font  } from 'expo';
+import { StyleSheet, Text, View, Image, Fonts, Button } from 'react-native';
+import { Font } from 'expo';
 
 export class SelectionScreen extends React.Component {
+  static navigationOptions = {header: null };
   state = {
     fontLoaded: false,
    };
@@ -13,10 +14,16 @@ export class SelectionScreen extends React.Component {
     this.setState({ fontLoaded: true }) ;
    }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
           <View style = {{ height: '10%', flexDirection: 'row', justifyContent: 'space-around', alignContent: 'flex-start' }}>
             <View style = { styles.topButtons }>
+              <Button
+                onPress = { () => navigate( 'About' ) }
+                color = 'white'
+                title = { 'tap to begin' }
+              />
               <Image source = { require('./../assets/images/profile.png') } style = { styles.image }/>
             </View>
             <View style = { styles.topButtons }>

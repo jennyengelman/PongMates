@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert, Image, TextInput } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 
 export class NoGamesFoundScreen extends React.Component {
   state = {
