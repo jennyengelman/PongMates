@@ -34,7 +34,7 @@ export class WaitingScreen extends React.Component {
               </Text>
           </View>
           <TouchableOpacity onPress={() =>
-            navigate('Home')
+            navigate('Create')
           }>
             <View style = { styles.deleteButton }>
               <Text style = { this.state.fontLoaded ? styles.deleteFontStyle : styles.anything }>
