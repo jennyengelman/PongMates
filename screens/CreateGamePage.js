@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, Button, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
@@ -29,10 +29,10 @@ export class CreateScreen extends React.Component {
         <View style = {{ paddingTop: '7.5%' }}>
           <View style = { styles.time }>
             <View style = { styles.timeTop }>
-              <Image style = {{ height: 40, width: 40 }} source={require('./../assets/images/time.png')}/>
+              <Image style = {{ height: Dimensions.get('window').height / 17, width: Dimensions.get('window').height / 17 }} source={require('./../assets/images/time.png')}/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Time</Text>
             </View>
-            <View style = {{ height: 3, width: '100%', backgroundColor: '#fff' }}>
+            <View style = {{ height: 3, width: '100%', backgroundColor: '#FFFFFF' }}>
             </View>
             <View style = { styles.timeBottom }>
               <View style = { styles.optionButtons }>
@@ -47,10 +47,10 @@ export class CreateScreen extends React.Component {
         <View style = {{ paddingTop: '3%' }}>
           <View style = { styles.place }>
             <View style = { styles.placeTop }>
-              <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/images/place.png') }/>
+              <Image style = {{ height: Dimensions.get('window').height / 17, width: Dimensions.get('window').height / 17 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
             </View>
-            <View style = {{ height: 5, width: '100%', backgroundColor: '#fff' }}>
+            <View style = {{ height: 3, width: '100%', backgroundColor: '#FFFFFF' }}>
             </View>
             <View style = { styles.placeBottom }>
               <FlatList
@@ -84,9 +84,9 @@ export class CreateScreen extends React.Component {
                   { key: 'Zete' },
                 ]}
                 renderItem = {({ item }) => (
-                  <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
+                  <View style = {{ paddingLeft: Dimensions.get('window').width / 30, paddingTop: Dimensions.get('window').height / 50 }}>
                     <View style = { styles.optionButtons }>
-                      <Text style = { this.state.fontLoaded ? styles.optionsTextPlace : styles.optionsTextPlaceElse }>{ item.key }</Text>
+                      <Text style = { this.state.fontLoaded ? styles.optionsPlaceText : styles.optionsTextPlaceElse }>{ item.key }</Text>
                     </View>
                   </View>
                 )}
@@ -94,7 +94,7 @@ export class CreateScreen extends React.Component {
             </View>
           </View>
         </View>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: 10 }}>
+        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: Dimensions.get('window').height / 30 }}>
           <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
           <View style = { styles.postButton }>
             <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   container: {
     height: '70%',
     backgroundColor: '#C2515B',
-    paddingTop: '5%'
+    paddingTop: '12%',
   },
   create: {
     backgroundColor: '#FFC928',
@@ -128,9 +128,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderColor: '#fff',
     borderWidth: 10,
-    borderRadius: 5,
     width: '110%',
-    marginLeft: -10,
+    marginLeft: Dimensions.get('window').width / -20,
     shadowOpacity: 0.75,
     shadowRadius: 5,
     shadowColor: '#000000',
@@ -138,48 +137,48 @@ const styles = StyleSheet.create({
   },
   createText: {
     fontFamily: 'double-bubble-shadow',
-    fontSize: 50,
-    color: 'white',
+    fontSize: Dimensions.get('window').height / 15,
+    color: '#FFFFFF',
     width: '75%',
     textAlign: 'center',
   },
   createTextElse: {
-    fontSize: 50,
-    color: 'white',
+    fontSize: Dimensions.get('window').height / 15,
+    color: '#FFFFFF',
     width: '75%',
     textAlign: 'center',
   },
   headerText: {
     color: '#545454',
-    fontSize: 35,
+    fontSize: Dimensions.get('window').height / 17,
     fontFamily: 'source-sans-pro-bold',
   },
   headerTextElse: {
     color: '#545454',
-    fontSize: 35,
+    fontSize: Dimensions.get('window').height / 17,
   },
   optionButtons: {
     borderColor: '#545454',
     borderRadius: 50,
     borderWidth: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 125,
-    height: 40,
+    width: Dimensions.get('window').width / 2.6,
+    height: Dimensions.get('window').height / 17,
     shadowOpacity: 0.25,
     shadowRadius: 5,
     shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
   },
   optionsPlaceText: {
-    fontSize: 18,
+    fontSize: Dimensions.get('window').height / 35,
     fontFamily: 'source-sans-pro',
     color: '#545454',
     textAlign: 'center',
   },
   optionsTimeText: {
-    fontSize: 30,
+    fontSize: Dimensions.get('window').height / 25,
     fontFamily: 'source-sans-pro',
     color: '#545454',
     textAlign: 'center',
@@ -188,7 +187,7 @@ const styles = StyleSheet.create({
     width: '90%',
     borderTopRightRadius: 7,
     borderBottomRightRadius: 7,
-    borderColor: '#fff',
+    borderColor: '#FFFFFF',
     borderWidth: 5,
     marginLeft: -5,
   },
@@ -197,13 +196,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: 145,
+    height: Dimensions.get('window').height / 4,
     paddingTop: 5,
     paddingBottom: 5,
   },
   placeTop: {
     backgroundColor: '#F2994A',
-    height: 50,
+    height: Dimensions.get('window').height / 15,
     alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'row',
@@ -234,7 +233,7 @@ const styles = StyleSheet.create({
     width: '90%',
     borderTopRightRadius: 7,
     borderBottomRightRadius: 7,
-    borderColor: '#fff',
+    borderColor: '#FFFFFF',
     borderWidth: 5,
     marginLeft: -5,
   },
@@ -243,11 +242,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: 80,
+    height: Dimensions.get('window').height / 8,
   },
   timeTop: {
     backgroundColor: '#F2994A',
-    height: 50,
+    height: Dimensions.get('window').height / 15,
     alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'row',

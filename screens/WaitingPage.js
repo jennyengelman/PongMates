@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import PongButton from './../components/PongButton';
 
@@ -54,14 +54,14 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   topContainer: {
-    flex: .6,
+    flex: .57,
     backgroundColor:'#fff',
     justifyContent: 'flex-end',
     alignItems: 'flex-end'
   },
   waitingFont: {
     fontWeight: 'bold',
-    fontSize: 40,
+    fontSize: Dimensions.get('window').height / 20,
     paddingTop: 10,
     margin: 10,
     fontFamily: 'bubble-body',
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   bottomContainer: {
     borderTopColor: '#FFC928',
     borderTopWidth: 15,
-    flex: .4,
+    flex: .43,
     backgroundColor: '#F2994A',
     alignItems: 'center',
     justifyContent: 'center',
@@ -79,28 +79,28 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#545454',
     fontFamily: 'source-sans',
-    fontSize: 16
+    fontSize: Dimensions.get('window').width / 18,
   },
   tabStyle: {
-    width: 140,
-    height: 35,
+    width: Dimensions.get('window').width / 2,
+    height: Dimensions.get('window').width / 10,
     backgroundColor: '#FFC928',
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   innerContainer: {
-    height: 150,
-    width: 250,
+    height: Dimensions.get('window').height / 5,
+    width: Dimensions.get('window').width / 1.2,
     borderRadius: 25,
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
   },
   fontStyle: {
-    fontSize: 25,
+    fontSize: Dimensions.get('window').height / 25,
     fontWeight: 'bold',
-    marginLeft: 10,
+    marginLeft: 15,
     fontFamily: 'source-sans',
     marginBottom: 5,
   },

@@ -45,14 +45,14 @@ export class TimedOutScreen extends React.Component {
 
 const styles = StyleSheet.create({
   bottomContainer: {
-    height: '52%',
+    height: '43%',
     borderTopWidth: 10,
     borderColor: '#FFC928',
     backgroundColor: '#F2994A',
     alignItems: 'center',
     justifyContent: 'space-around',
     paddingTop: 10,
-    paddingBottom: 20,
+    paddingBottom: Dimensions.get('window').height / 25,
   },
   brokenPong: {
     width: Dimensions.get('window').width / 3,
@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
     color: '#000000',
   },
   sorryTextElse: {
-    fontSize: 55,
-    color: 'black',
+    fontSize: Dimensions.get('window').height / 14,
+    color: '#000000',
   },
   stripe: {
     backgroundColor: '#FFC928',
@@ -83,14 +83,14 @@ const styles = StyleSheet.create({
   },
   timedOutText: {
     fontFamily: 'source-sans-pro',
-    fontSize: Dimensions.get('window').height / 21,
+    fontSize: Dimensions.get('window').height / 25,
     padding: 30,
     color: '#616161',
     justifyContent: 'center',
     textAlign: 'center',
   },
   timedOutTextElse: {
-    fontSize: Dimensions.get('window').height / 21,
+    fontSize: Dimensions.get('window').height / 25,
     padding: 30,
     color: '#616161',
     justifyContent: 'center',
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   timedOutTextBox: {
     backgroundColor: '#FFFFFF',
     width: '80%',
-    height: '50%',
+    height: '60%',
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   middleContainer: {
-    height: '25%',
+    height: '32%',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#FFFFFF',
