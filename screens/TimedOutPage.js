@@ -4,10 +4,10 @@ import { StackNavigator } from 'react-navigation';
 import { Font } from 'expo';
 import PongButton from './../components/PongButton';
 
-
 export class TimedOutScreen extends React.Component {
   static navigationOptions = { header: null };
   state = { fontLoaded: false };
+
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'rea
 import { Font } from 'expo';
 import PongButton from './../components/PongButton';
 
-export class FoundAPartner extends React.Component {
+export class FoundAPartnerScreen extends React.Component {
   static navigationOptions = { header: null };
   state = { fontLoaded: false };
   async componentDidMount() {

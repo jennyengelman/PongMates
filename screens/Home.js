@@ -92,6 +92,11 @@ const styles = StyleSheet.create({
     color: 'white',
     paddingLeft: 3,
   },
+  matesTextElse: {
+    fontSize: 60,
+    color: 'white',
+    paddingLeft: 3,
+  },
   nameContainer: {
     width: Dimensions.get('window').width / 1.5,
     height: Dimensions.get('window').width / 7,
@@ -123,6 +128,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     alignItems: 'center',
+    textAlign: 'center',
+  },
+  nextText: {
+    fontFamily: 'source-sans-pro',
+    textAlign: 'center',
+  },
+  nextTextElse: {
     textAlign: 'center',
   },
   pongContainer: {

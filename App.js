@@ -10,14 +10,14 @@ import { SelectionScreen } from './screens/SelectionPage';
 import { FindScreen } from './screens/FindGamePage';
 import { WaitingScreen } from './screens/WaitingPage';
 import { FoundScreen } from './screens/FoundGamePage';
-
+import { FoundAPartnerScreen } from './screens/FoundAPartner';
 
 const RootStack = StackNavigator({
-  Home: { screen: HomeScreen },
+  Home: { screen: CreateScreen },
   Create: { screen: CreateScreen },
   TimedOut: { screen: TimedOutScreen },
-  About: {screen: AboutScreen },
-  FoundAPartner: { screen: FoundAPartner },
+  About: { screen: AboutScreen },
+  FoundAPartner: { screen: FoundAPartnerScreen },
   Selection: { screen: SelectionScreen },
   Find: { screen: FindScreen },
   Waiting: { screen: WaitingScreen },
