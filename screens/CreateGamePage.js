@@ -99,6 +99,7 @@ export class CreateScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
           </View>
         </View>
+        </View>
       </View>
     );
   }
