@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import { Font } from 'expo';
 
 export class TimedOutScreen extends React.Component {
+  static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
    };

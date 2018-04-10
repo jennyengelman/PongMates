@@ -4,6 +4,7 @@ import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
 export class FoundScreen extends React.Component {
+  static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
    };
