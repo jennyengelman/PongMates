@@ -1,8 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Dimensions, Text, View, Image } from 'react-native';
+import PongButton from './../components/PongButton';
 import { Font } from 'expo';
 
-export default class App extends React.Component {
+export class MeetMatch extends React.Component {
+
+  static navigationOptions = { header: null };
+
   state = {
     fontLoaded: false,
   };
@@ -10,7 +14,7 @@ export default class App extends React.Component {
     await Font.loadAsync({
       'double-bubble': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf')
+      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf')
     });
     this.setState({ fontLoaded: true }) ;
   }
@@ -21,6 +25,7 @@ export default class App extends React.Component {
           MEET YOUR MATCH!
         </Text>
         <View style = { styles.detailsContainer }>
+          <Image source = { require('./../assets/match.png') } style = { styles.matchImageStyle }/>
           <View style = { styles.details }>
             <Text style = { this.state.fontLoaded ? styles.detailText : styles.anything }>
               Name:{'\n'}Place:{'\n'}Time:
@@ -28,11 +33,12 @@ export default class App extends React.Component {
           </View>
         </View>
 
-        <View style = { styles.cancelButton }>
-          <Text style = { this.state.fontLoaded ? styles.cancelButtonText : styles.anything }>
-            Cancel
-          </Text>
-        </View>
+        <PongButton
+         font = { this.state.fontLoaded }
+         text = { 'Cancel' }
+         navigation = { this.props.navigation }
+         destination = { 'Selection' }
+         />
       </View>
     );
   }
@@ -65,6 +71,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end'
   },
+  matchImageStyle: {
+    width: Dimensions.get('window').height / 4,
+    height: Dimensions.get('window').height / 4,
+  },
   details: {
     width: '70%',
     height: '38%',
@@ -75,23 +85,21 @@ const styles = StyleSheet.create({
   },
   detailText: {
     fontWeight: 'bold',
-    fontSize: 25,
+    fontSize: Dimensions.get('window').height / 35,
     color: '#4F4F4F',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro',
     marginLeft: '7%'
   },
   cancelButton: {
     width: '30%',
-    height: '8%',
+    height: '15%',
     marginBottom: '15%',
     borderRadius: 20,
     backgroundColor: '#FFC928',
     justifyContent: 'center'
   },
-  cancelButtonText: {
-    textAlign: 'center',
-    fontFamily: 'source-sans',
-    color: '#545454',
-    fontSize: 18,
+  anything: {
+    fontSize: 65,
+    padding: 30,
   }
 });
