@@ -140,5 +140,5 @@ const styles = StyleSheet.create({
     shadowColor: '#000000',
     shadowOpacity: .4,
     shadowOffset: { width: 6, height: 6 },
-   }
+  }
  });
