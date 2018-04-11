@@ -1,15 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import PongButton from './../components/PongButton';
 import { Font } from 'expo';
 
-export default class App extends React.Component {
+export class Waiting extends React.Component {
+
+  static navigationOptions = { header: null };
+
   state = {
     fontLoaded: false,
   };
   async componentDidMount() {
     await Font.loadAsync({
       'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf')
+      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf')
     });
     this.setState({ fontLoaded: true }) ;
   }
@@ -30,11 +34,12 @@ export default class App extends React.Component {
                 Name: {'\n'}Place: {'\n'}Time:
               </Text>
           </View>
-          <View style = { styles.deleteButton }>
-            <Text style = { this.state.fontLoaded ? styles.deleteFontStyle : styles.anything }>
-              Delete{'\n'}Post
-            </Text>
-          </View>
+          <PongButton
+           font = { this.state.fontLoaded }
+           text = { 'Delete Request' }
+           navigation = { this.props.navigation }
+           destination = { 'Congrats' }
+           />
         </View>
       </View>
     );
@@ -71,7 +76,7 @@ const styles = StyleSheet.create({
   tabFontStyle: {
     fontWeight: 'bold',
     color: '#545454',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro',
     fontSize: 16
   },
   tabStyle: {
@@ -94,7 +99,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: 'bold',
     marginLeft: 10,
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro',
     marginBottom: 5,
   },
   deleteButton: {

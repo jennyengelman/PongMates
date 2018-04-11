@@ -12,7 +12,7 @@ import { MeetMatch } from './screens/MeetYourMatch';
 import { Waiting } from './screens/WaitingPage';
 
 const RootStack = StackNavigator({
-  Home: { screen: Waiting },
+  Home: { screen: Cancel },
   Create: { screen: CreateScreen },
   TimedOut: { screen: TimedOutScreen },
   About: { screen: About },
