@@ -4,15 +4,15 @@ import { Font } from 'expo';
 import Logo from './../components/Logo';
 import PongButton from './../components/PongButton';
 
-
-
-export class About extends React.Component {
-  static navigationOptions = {header: null };
+export class AboutScreen extends React.Component {
+  static navigationOptions = { header: null };
   state = { fontLoaded: false };
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
+      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
+      'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
+      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
     });
     this.setState({ fontLoaded: true });
   }
@@ -20,8 +20,10 @@ export class About extends React.Component {
     const { navigate } = this.props.navigation
     return (
       <View style={ styles.container }>
-        <View style={{ height: '70%', backgroundColor: '#C2515B' }}>
+        <View style = {{ backgroundColor: '#C2515B', height: '30%', justifyContent: 'center' }}>
           <Logo font={ this.state.fontLoaded }/>
+        </View>
+        <View style={{ height: '40%', backgroundColor: '#C2515B'}} >
           <View style={ styles.aboutBox }>
             <Text style={ this.state.fontLoaded ? styles.aboutText : styles.aboutTextBackup }>
             PongMates is designed to connect Dartmouth students through the game of Pong.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!
@@ -30,15 +32,15 @@ export class About extends React.Component {
         </View>
         <View style={{
           flex: 1,
-          justifyContent: 'flex-end',
+          justifyContent: 'center',
           alignItems: 'center',
-          marginBottom: '8%',
+          paddingTop: Dimensions.get('window').height / 10,
         }}>
           <PongButton
             font={ this.state.fontLoaded }
             text={ 'Back' }
             navigation={ this.props.navigation }
-            destination={ 'Congrats' }
+            destination={ 'Selection' }
           />
         </View>
       </View>
@@ -53,27 +55,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#F2994A',
   },
   aboutBox: {
-    width: '80%',
-    height: '70%',
+    width: Dimensions.get('window').width * .80,
+    height: Dimensions.get('window').height * .50,
     alignSelf: 'center',
     backgroundColor: '#93E1FA',
-    marginTop: '8%',
+    marginTop: '5%',
     borderColor: '#FFFFFF',
     borderRadius: 20,
     borderWidth: 6,
     justifyContent: 'center',
     alignItems: 'center',
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    shadowColor: '#000000',
+    shadowOffset: { height: 2, width: 0 },
   },
   aboutText: {
-    fontSize: Dimensions.get('window').height / 31,
+    fontSize: Dimensions.get('window').height / 32,
     fontWeight: 'bold',
     color: '#4F4F4F',
     margin: 20,
     textAlign: 'center',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans',
   },
   aboutTextBackup: {
-    fontSize: Dimensions.get('window').height / 31,
+    fontSize: Dimensions.get('window').height / 32,
     fontWeight: 'bold',
     color: '#4F4F4F',
     margin: 20,
