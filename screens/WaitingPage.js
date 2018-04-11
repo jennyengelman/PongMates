@@ -1,17 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import { Font } from 'expo';
+import PongButton from './../components/PongButton';
 import { StackNavigator } from 'react-navigation';
 
 export class WaitingScreen extends React.Component {
-  static navigationOptions = {header: null };
+  static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
   };
   async componentDidMount() {
     await Font.loadAsync({
+      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
+      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
       'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf')
+      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
+      'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
     });
     this.setState({ fontLoaded: true }) ;
   }
@@ -33,15 +37,12 @@ export class WaitingScreen extends React.Component {
                 Name: {'\n'}Place: {'\n'}Time:
               </Text>
           </View>
-          <TouchableOpacity onPress={() =>
-            navigate('Create')
-          }>
-            <View style = { styles.deleteButton }>
-              <Text style = { this.state.fontLoaded ? styles.deleteFontStyle : styles.anything }>
-                Delete{'\n'}Post
-              </Text>
-            </View>
-          </TouchableOpacity>
+          <PongButton
+            font={ this.state.fontLoaded }
+            text={ 'Delete\nRequest' }
+            navigation={ this.props.navigation }
+            destination={ 'Create' }
+          />
         </View>
       </View>
     );
@@ -54,14 +55,14 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   topContainer: {
-    flex: .6,
+    flex: .57,
     backgroundColor:'#fff',
     justifyContent: 'flex-end',
     alignItems: 'flex-end'
   },
   waitingFont: {
     fontWeight: 'bold',
-    fontSize: 40,
+    fontSize: Dimensions.get('window').height / 20,
     paddingTop: 10,
     margin: 10,
     fontFamily: 'bubble-body',
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
   bottomContainer: {
     borderTopColor: '#FFC928',
     borderTopWidth: 15,
-    flex: .4,
+    flex: .43,
     backgroundColor: '#F2994A',
     alignItems: 'center',
     justifyContent: 'center',
@@ -79,39 +80,30 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#545454',
     fontFamily: 'source-sans',
-    fontSize: 16
+    fontSize: Dimensions.get('window').width / 18,
   },
   tabStyle: {
-    width: 140,
-    height: 35,
+    width: Dimensions.get('window').width / 2,
+    height: Dimensions.get('window').width / 10,
     backgroundColor: '#FFC928',
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   innerContainer: {
-    height: 150,
-    width: 250,
+    height: Dimensions.get('window').height / 5,
+    width: Dimensions.get('window').width / 1.2,
     borderRadius: 25,
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
   },
   fontStyle: {
-    fontSize: 25,
+    fontSize: Dimensions.get('window').height / 25,
     fontWeight: 'bold',
-    marginLeft: 10,
+    marginLeft: 15,
     fontFamily: 'source-sans',
     marginBottom: 5,
-  },
-  deleteButton: {
-    height: 60,
-    width: 110,
-    backgroundColor: '#FFC928',
-    borderRadius: 15,
-    marginTop: 30,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   deleteFontStyle:{
     fontWeight: 'bold',
