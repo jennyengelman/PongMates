@@ -121,5 +121,9 @@ const styles = StyleSheet.create({
     shadowColor: 'gray',
     shadowOpacity: .8,
     shadowOffset: { width: 6, height: 6 }
-   }
+  },
+  anything: {
+    fontSize: 65,
+    padding: 30,
+  }
  });
