@@ -40,7 +40,7 @@ export class Cancel extends React.Component {
            font = { this.state.fontLoaded }
            text = { 'Home' }
            navigation = { this.props.navigation }
-           destination = { 'Congrats' }
+           destination = { 'HomeScreen' }
            />
         </View>
       </View>

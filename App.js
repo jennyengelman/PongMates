@@ -13,6 +13,7 @@ import { Waiting } from './screens/WaitingPage';
 
 const RootStack = StackNavigator({
   Home: { screen: Cancel },
+  HomeScreen: { screen: HomeScreen },
   Create: { screen: CreateScreen },
   TimedOut: { screen: TimedOutScreen },
   About: { screen: About },
