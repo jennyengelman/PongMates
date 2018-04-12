@@ -92,21 +92,21 @@ export class CreateScreen extends React.Component {
             </View>
           </View>
         </View>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: Dimensions.get('window').height / 30 }}>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: 10 }}>
-          <TouchableOpacity onPress={() =>
-            navigate('Home')
-          }>
-            <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() =>
-            navigate('Waiting')
-          }>
-            <View style = { styles.postButton }>
-              <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
+        <View style = {{ alignItems: 'center', paddingTop: Dimensions.get('window').height / 30 }}>
+          <View style = {{ flexDirection: 'row', alignItems: 'center'}}>
+            <TouchableOpacity onPress={() =>
+              navigate('Home')
+            }>
+              <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() =>
+              navigate('Waiting')
+            }>
+              <View style = { styles.postButton }>
+                <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
