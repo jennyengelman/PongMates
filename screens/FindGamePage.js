@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, Button, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
@@ -13,6 +13,7 @@ export class FindScreen extends React.Component {
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
       'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
+      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
     });
     this.setState({ fontLoaded: true });
   }
@@ -20,8 +21,7 @@ export class FindScreen extends React.Component {
     return (
       <View style = { styles.container }>
         <View style = { styles.find }>
-          <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>FIND</Text>
-          <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>A GAME</Text>
+          <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>FIND GAME</Text>
         </View>
         <View style = {{ paddingTop: '7.5%' }}>
           <View style = { styles.time }>
@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
   container: {
     height: '70%',
     backgroundColor: '#C2515B',
-    paddingTop: '5%'
   },
   find: {
     backgroundColor: '#93E1FA',
@@ -132,9 +131,12 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowColor: 'black',
     shadowOffset: { height: 0, width: 0 },
+    paddingTop: 17,
+    paddingBottom: 3,
+    marginTop: '10%',
   },
   findText: {
-    fontFamily: 'double-bubble-shadow',
+    fontFamily: 'bubble-body',
     fontSize: 50,
     color: 'white',
     width: '75%',
@@ -204,7 +206,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: 145,
+    height: Dimensions.get('window').height / 4,
     paddingTop: 5,
     paddingBottom: 5,
   },
