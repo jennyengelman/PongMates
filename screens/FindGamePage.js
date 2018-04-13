@@ -16,6 +16,9 @@ export class FindScreen extends React.Component {
     });
     this.setState({ fontLoaded: true });
   }
+  // function isOdd(num) {
+  //   return num % 2;
+  // }
   render() {
     return (
       <View style = { styles.container }>
@@ -50,38 +53,41 @@ export class FindScreen extends React.Component {
             <View style = {{ height: 5, width: '100%', backgroundColor: '#fff' }}>
             </View>
             <View style = { styles.placeBottom }>
-              <FlatList
-                data = {[
-                  { key: 'Alpha Phi Alpha' },
-                  { key: 'Alpha Chi' },
-                  { key: 'Alpha Theta' },
-                  { key: 'Alpha Phi' },
-                  { key: 'Alpha Pi Omega' },
-                  { key: 'AXiD' },
-                  { key: 'Beta' },
-                  { key: 'BG' },
-                  { key: 'Chi Delt' },
-                  { key: 'Chi Gam' },
-                  { key: 'EKT' },
-                  { key: 'GDX' },
-                  { key: 'Heorot' },
-                  { key: 'Kappa' },
-                  { key: 'KD' },
-                  { key: 'KDE' },
-                  { key: 'Lambda Upsilon Lambda' },
-                  { key: 'Phi Delt' },
-                  { key: 'Phi Tau' },
-                  { key: 'Psi U' },
-                  { key: 'Sig Ep' },
-                  { key: 'Sig Nu' },
-                  { key: 'Sigma Delt' },
-                  { key: 'Sigma Lambda Upsilon' },
-                  { key: 'Tabard' },
-                  { key: 'TDX' },
-                  { key: 'Zete' },
-                ]}
+            <FlatList
+              data = {[
+                { key: 'Alpha Phi Alpha', index: 1 },
+                { key: 'Alpha Chi', index: 2 },
+                { key: 'Alpha Theta', index: 3 },
+                { key: 'Alpha Phi', index: 4 },
+                { key: 'Alpha Pi Omega', index: 5 },
+                { key: 'AXiD', index: 6 },
+                { key: 'Beta', index: 7 },
+                { key: 'BG', index: 8 },
+                { key: 'Chi Delt', index: 9 },
+                { key: 'Chi Gam', index: 10 },
+                { key: 'EKT', index: 11 },
+                { key: 'GDX', index: 12 },
+                { key: 'Heorot', index: 13 },
+                { key: 'Kappa', index: 14 },
+                { key: 'KD', index: 15 },
+                { key: 'KDE', index: 16 },
+                { key: 'Lambda Upsilon Lambda', index: 17 },
+                { key: 'Phi Delt', index: 18 },
+                { key: 'Phi Tau', index: 19 },
+                { key: 'Psi U', index: 20 },
+                { key: 'Sig Ep', index: 21 },
+                { key: 'Sig Nu', index: 22 },
+                { key: 'Sigma Delt', index: 23 },
+                { key: 'Sigma Lambda Upsilon', index: 24 },
+                { key: 'Tabard', index: 25 },
+                { key: 'TDX', index: 26 },
+                { key: 'Zete', index: 27 },
+              ]}
                 renderItem = {({ item }) => (
-                  <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
+                  <View style = {{ justifyContent: 'space-around', paddingLeft: 5, paddingTop: 2, paddingBottom: 2, flexDirection: 'row' }}>
+                    <View style = { styles.optionButtons }>
+                      <Text style = { this.state.fontLoaded ? styles.optionsTextPlace : styles.optionsTextPlaceElse }>{ item.key }</Text>
+                    </View>
                     <View style = { styles.optionButtons }>
                       <Text style = { this.state.fontLoaded ? styles.optionsTextPlace : styles.optionsTextPlaceElse }>{ item.key }</Text>
                     </View>
