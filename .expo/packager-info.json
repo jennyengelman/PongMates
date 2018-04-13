@@ -1,8 +1,15 @@
 {
   "expoServerPort": 19000,
   "packagerPort": 19001,
+<<<<<<< HEAD
   "packagerPid": 70879,
   "expoServerNgrokUrl": "https://rd-khx.atmilich.pongmates.exp.direct",
   "packagerNgrokUrl": "https://packager.rd-khx.atmilich.pongmates.exp.direct",
   "ngrokPid": 70904
+=======
+  "packagerPid": 47938,
+  "expoServerNgrokUrl": "https://rd-khx.ijemmao.pongmates.exp.direct",
+  "packagerNgrokUrl": "https://packager.rd-khx.ijemmao.pongmates.exp.direct",
+  "ngrokPid": 47960
+>>>>>>> e460d50d567cbd68b0f473699c2eb72ce10c6853
 }

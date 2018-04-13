@@ -1,41 +1,47 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Dimensions, Text, View, Image } from 'react-native';
+import PongButton from './../components/PongButton';
 import { Font } from 'expo';
 
-export default class App extends React.Component {
+export class CancelScreen extends React.Component {
+
+  static navigationOptions = { header: null };
+
   state = {
     fontLoaded: false,
   };
   async componentDidMount() {
     await Font.loadAsync({
-      'double-bubble': require('./assets/fonts/Double_Bubble_shadow.otf'),
-      'bubble-body': require('./assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans': require('./assets/fonts/source-sans-pro.semibold.ttf')
+      'double-bubble': require('./../assets/fonts/Double_Bubble_shadow.otf'),
+      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
+      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf')
     });
-    this.setState({ fontLoaded: true }) ;
+    this.setState({ fontLoaded: true });
   }
-  render(){
-    return(
-      <View style = { styles.container }>
-        <View style = { styles.topContainer }>
-          <Text style = { this.state.fontLoaded ? styles.sorryText : styles.anything }>
+  render() {
+    const { navigate } = this.props.navigation
+    return (
+      <View style={styles.container}>
+        <View style={styles.topContainer}>
+          <Text style={this.state.fontLoaded ? styles.sorryText : styles.anything}>
             SORRY...
           </Text>
-          <Image source = { require ('./assets/sorry.png') } style = { styles.imageStyle }/>
+          <Image source={require('./../assets/sad.png')} style={styles.imageStyle} />
         </View>
 
-        <View style = { styles.bottomContainer }>
-          <View style = { styles.details }>
-            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.anything }>
+        <View style={styles.bottomContainer}>
+          <View style={styles.details}>
+            <Text style={this.state.fontLoaded ? styles.detailsText : styles.anything}>
               Jenny cancelled your game at Phi Delt. Return home to find a new game.
             </Text>
           </View>
 
-          <View style = { styles.homeButton }>
-            <Text style = { this.state.fontLoaded ? styles.homeText : styles.anything }>
-              Home
-            </Text>
-          </View>
+          <PongButton
+            font={this.state.fontLoaded}
+            text={'Home'}
+            navigation={this.props.navigation}
+            destination={'Congrats'}
+          />
         </View>
       </View>
     );
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
   },
   topContainer: {
     flex: .6,
-    backgroundColor:'#fff',
+    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -80,11 +86,11 @@ const styles = StyleSheet.create({
   detailsText: {
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: Dimensions.get('window').height / 35,
     color: '#4F4F4F',
     paddingLeft: '7%',
-    paddingRight:'7%',
-    fontFamily: 'source-sans'
+    paddingRight: '7%',
+    fontFamily: 'source-sans-pro'
   },
   homeButton: {
     width: '35%',
@@ -98,6 +104,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: '#4F4F4F',
-    fontFamily: 'source-sans'
+    fontFamily: 'source-sans-pro'
+  },
+  anything: {
+    fontSize: 65,
+    padding: 30,
   }
 });
