@@ -2,8 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Alert, Image, TextInput } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
+import PongButton from './../components/PongButton';
 
 export class NoGamesFoundScreen extends React.Component {
+  static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
    };
@@ -11,10 +13,11 @@ export class NoGamesFoundScreen extends React.Component {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-     });
+    });
     this.setState({ fontLoaded: true }) ;
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
@@ -27,13 +30,20 @@ export class NoGamesFoundScreen extends React.Component {
           <View style = { styles.details }>
             <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>No games found. Try again later or adjust your search filter.</Text>
           </View>
-          <View style = { styles.buttonContainer }>
-            <View style = { styles.button }>
-              <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Home</Text>
-            </View>
-            <View style = { styles.button }>
-              <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Change Filter</Text>
-            </View>
+          <View style = {{ flexDirection: 'row' }}>
+            <PongButton
+              font = { this.state.fontLoaded ? 'source-sans-pro' : 'Cochin' }
+              text = { 'Home' }
+              navigation = { this.props.navigation }
+              destination = { 'Home' }
+              style = {{ paddingRight: '10%' }}
+            />
+            <PongButton
+              font = { this.state.fontLoaded ? 'source-sans-pro' : 'Cochin' }
+              text = { 'Change Filter' }
+              navigation = { this.props.navigation }
+              destination = { 'Find' }
+            />
           </View>
         </View>
       </View>
@@ -45,7 +55,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#93E1FA',
       alignItems: 'center',
       flex: 1,
-      paddingTop: 25,
+      paddingTop: '10%',
     },
     button: {
       backgroundColor: '#FFC928',
@@ -76,8 +86,8 @@ const styles = StyleSheet.create({
     },
     cup: {
       width: 200,
-      height: 125,
-      marginBottom: 30,
+      height: 150,
+      marginBottom: 25,
     },
     details: {
       borderRadius: 20,
@@ -114,9 +124,10 @@ const styles = StyleSheet.create({
       justifyContent: 'space-around',
       alignItems: 'center',
       flex: 1,
+      paddingTop: '15%',
     },
     yellowStrip: {
       backgroundColor: '#FFC928',
-      height: '1.5%',
+      height: '1.25%',
     },
   });

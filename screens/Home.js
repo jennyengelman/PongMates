@@ -1,65 +1,57 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Image, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
+import Logo from './../components/Logo';
 
 export class HomeScreen extends React.Component {
+  static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
-   };
+  };
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-     });
+      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
+      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
+      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
+      'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
+    });
     this.setState({ fontLoaded: true });
   }
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style = { styles.container }>
-        <View style = {{ backgroundColor: '#C2515B', height: '80%' }}>
-          <View style = {{ flexDirection: 'row', paddingTop: 30 }}>
-            <View style = { styles.shadowPong }>
-              <View style = { styles.pongContainer }>
-                <Text style = { this.state.fontLoaded ? styles.pongText : styles.pongTextElse }>Pong</Text>
-                <View style = { styles.matesContainer }>
-                  <Text style = { this.state.fontLoaded ? styles.matesText : styles.matesTextElse }>Mates</Text>
-                </View>
+        <View style = {{ backgroundColor: '#C2515B', height: '30%', justifyContent: 'center' }}>
+          <Logo font={ this.state.fontLoaded }/>
+        </View>
+        <View style = {{ backgroundColor: '#C2515B', height: '40%' }}>
+          <View style = {{ alignItems: 'center', paddingTop: '5%' }}>
+            <View style = { styles.homeRectangle }>
+              <View style = {{ backgroundColor: '#FFC928', width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55, borderRadius: Dimensions.get('window').width * .275, justifyContent: 'center' }}>
+                <Image style = {{ width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55 }} source={ require('./../assets/images/image.png') }/>
+                <Text style = { this.state.fontLoaded ? styles.selfieText : styles.selfieTextElse }>Take a selfie to share with your partner!</Text>
+              </View>
+              <View style = { styles.nameContainer }>
+                <TextInput
+                  style = { this.state.fontLoaded ? styles.nameInput : styles.nameInputElse }
+                  placeholder = "Your Name"
+                  onChangeText = { (text) => this.setState({ name: text }) }
+                />
               </View>
             </View>
           </View>
-          <View style = {{ alignItems: 'center', paddingTop: 55 }}>
-            <View style = { styles.shadowHome }>
-              <View style = { styles.homeRectangle }>
-                <View style = {{ borderRadius: 20 }}>
-                  <View style = {{ backgroundColor: '#FFC928', width: 200, height: 200, borderRadius: 100, alignItems: 'center' }}>
-                    <Image style = {{ width: 200, height: 200 }} source={require('./../assets/images/image.png')}/>
-                    <Text style = { this.state.fontLoaded ? styles.selfieText : styles.selfieTextElse }>Take a selfie to share with your partner!</Text>
-                  </View>
-                </View>
-                <View style = {{ marginTop: 40 }}>
-                  <View style = { styles.shadowName }>
-                    <View style = { styles.nameContainer }>
-                      <TextInput
-                        style = { this.state.fontLoaded ? styles.nameInput : styles.nameInputElse }
-                        placeholder = "Your Name"
-                        onChangeText = { (text) => this.setState({ name: text }) }
-                      />
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View style = {{ paddingTop: 20 }}>
-            <Button
-              onPress = { () => navigate('SelectionScreen') }
-              title = 'tap to begin'
-              color = 'white'
-              fontSize = '35'
-              fontFamily = { this.state.fontLoaded ? styles.nextText : styles.nextTextElse }
-            />
-          </View>
+        </View>
+        <View style = {{ height: '30%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
+          <TouchableOpacity onPress={() =>
+              navigate('Selection')
+            }
+          >
+            <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
+            tap to begin
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -67,48 +59,35 @@ export class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  buttonContainer: {
-    marginTop: 20,
-    width: 150,
-    height: 45,
-    justifyContent: 'flex-end',
-    backgroundColor: '#93E1FA',
-  },
   container: {
-    flex: 2,
+    flex: 1,
     backgroundColor: '#F2994A',
   },
   homeRectangle: {
     backgroundColor: '#93E1FA',
-    height: 380,
-    width: 300,
+    height: Dimensions.get('window').height * .50,
+    width: Dimensions.get('window').width * .80,
     borderRadius: 10,
+    justifyContent: 'space-around',
     alignItems: 'center',
-    paddingTop: 20,
-    borderColor: 'white',
+    paddingTop: Dimensions.get('window').height / 50,
+    borderColor: '#FFFFFF',
     borderWidth: 7,
-  },
-  matesContainer: {
-    backgroundColor: '#FFC928',
-    width: 240,
-    height: 110,
-    borderTopLeftRadius: 30,
-    borderBottomLeftRadius: 30,
-    justifyContent: 'center',
-    borderColor: 'white',
-    borderWidth: 5,
-    position: 'absolute',
-    left: '80%',
-    top: '20%',
-    borderTopLeftRadius: 30,
-    borderBottomLeftRadius: 30,
-    shadowOpacity: 0.75,
+    shadowOpacity: 0.5,
     shadowRadius: 5,
-    shadowColor: 'black',
-    shadowOffset: { height: 0, width: 0 },
+    shadowColor: '#000000',
+    shadowOffset: { height: 2, width: 0 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    shadowColor: '#000000',
+    shadowOffset: { height: 2, width: 0 },
   },
-  matesText: {
-    fontFamily: 'double-bubble-shadow',
+  matesTextElse: {
+    fontSize: 60,
+    color: '#FFFFFF',
+    paddingLeft: 3,
+  },
+  matesTextElse: {
     fontSize: 60,
     color: 'white',
     paddingLeft: 3,
@@ -119,18 +98,24 @@ const styles = StyleSheet.create({
     paddingLeft: 3,
   },
   nameContainer: {
-    width: 250,
-    height: 50,
+    width: Dimensions.get('window').width / 1.5,
+    height: Dimensions.get('window').width / 7,
     backgroundColor: '#FFC928',
-    borderColor: 'white',
+    borderColor: '#FFFFFF',
     borderWidth: 5,
+    borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: Dimensions.get('window').height / 45,
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
+    shadowColor: '#000000',
+    shadowOffset: { height: 2, width: 0 },
   },
   nameInput: {
     width: '80%',
-    color: 'white',
-    fontFamily: 'source-sans-pro',
+    color: '#FFFFFF',
+    fontFamily: 'source-sans',
     fontWeight: 'bold',
     fontSize: 20,
     alignItems: 'center',
@@ -138,11 +123,12 @@ const styles = StyleSheet.create({
   },
   nameInputElse: {
     width: '80%',
-    color: 'white',
+    color: '#FFFFFF',
     paddingTop: 20,
     fontWeight: 'bold',
     fontSize: 20,
     alignItems: 'center',
+    textAlign: 'center',
   },
   nextText: {
     fontFamily: 'source-sans-pro',
@@ -163,63 +149,30 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     marginLeft: -5,
   },
-  pongText: {
-    fontFamily: 'double-bubble-shadow',
-    fontSize: 60,
-    color: 'white',
-    paddingRight: 45,
+  nextText: {
+    fontFamily: 'source-sans-pro-bold',
+    textAlign: 'center',
+    fontSize: Dimensions.get('window').height / 30,
   },
-  pongTextElse: {
-    fontSize: 60,
-    color: 'white',
-    paddingRight: 45,
-  },
-  removeHeaderOverlap: {
-    backgroundColor: '#FFC928',
-    width: 35,
-    height: 88,
-    backgroundColor: '#FFC928',
-    borderRadius: 30,
-    borderWidth: 5,
-    borderColor: '#FFC928',
+  nextTextElse: {
+    textAlign: 'center',
+    fontSize: Dimensions.get('window').height / 30,
   },
   selfieText: {
     position: 'absolute',
-    width: 150,
-    top: '35%',
-    fontSize: 20,
+    alignSelf: 'center',
+    width: Dimensions.get('window').width * .4,
+    fontSize: Dimensions.get('window').width / 15,
     color: '#696969',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-bold',
     textAlign: 'center',
   },
   selfieTextElse: {
-    position: 'absolute',
-    width: 150,
-    top: '35%',
-    left: '20%',
-    fontSize: 20,
-    color: '#696969',
-  },
-  shadowHome: {
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
-    shadowOpacity: 0.75,
-    shadowRadius: 5,
-    shadowColor: 'black',
-    shadowOffset: { height: 0, width: 0 },
-  },
-  shadowName: {
-    shadowOpacity: 0.75,
-    shadowRadius: 5,
-    shadowColor: 'black',
-    shadowOffset: { height: 0, width: 0 },
-  },
-  shadowPong: {
-    borderTopRightRadius: 30,
-    borderBottomRightRadius: 30,
-    shadowOpacity: 0.75,
-    shadowRadius: 5,
-    shadowColor: 'black',
-    shadowOffset: { height: 0, width: 0 },
+      position: 'absolute',
+      alignSelf: 'center',
+      width: Dimensions.get('window').width * .4,
+      fontSize: Dimensions.get('window').width / 15,
+      color: '#696969',
+      textAlign: 'center',
   },
 });
