@@ -26,7 +26,7 @@ export class CancelScreen extends React.Component {
           <Text style={this.state.fontLoaded ? styles.sorryText : styles.anything}>
             SORRY...
           </Text>
-          <Image source={require('./../assets/sad.png')} style={styles.imageStyle} />
+          <Image source={ require('./../assets/sad.png') } style={ styles.imageStyle } />
         </View>
 
         <View style={styles.bottomContainer}>
@@ -37,11 +37,11 @@ export class CancelScreen extends React.Component {
           </View>
 
           <PongButton
-            font={this.state.fontLoaded}
-            text={'Home'}
-            navigation={this.props.navigation}
-            destination={'Congrats'}
-          />
+           font = { this.state.fontLoaded }
+           text = { 'Home' }
+           navigation = { this.props.navigation }
+           destination = { 'HomeScreen' }
+           />
         </View>
       </View>
     );
