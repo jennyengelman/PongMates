@@ -16,9 +16,6 @@ export class FindScreen extends React.Component {
     });
     this.setState({ fontLoaded: true });
   }
-  // function isOdd(num) {
-  //   return num % 2;
-  // }
   render() {
     return (
       <View style = { styles.container }>
