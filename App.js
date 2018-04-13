@@ -22,7 +22,6 @@ const RootStack = StackNavigator({
   Find: { screen: FindScreen },
   Waiting: { screen: WaitingScreen },
   FoundGame: { screen: FoundScreen },
-  MeetMatch: { screen: MeetMatch }
 });
 
 export default class App extends React.Component {
