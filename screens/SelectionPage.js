@@ -52,7 +52,9 @@ export class SelectionScreen extends React.Component {
             </TouchableOpacity>
           </View>
           <View style = {{ height: '50%', width: '100%' }}>
-            <TouchableOpacity style = {{ flex: 1, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
+            <TouchableOpacity onPress={() =>
+              navigate('Find')}
+              style = {{ flex: 1, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
               <View style = { styles.findButton }>
                   <Text style = { this.state.fontLoaded ? styles.findFontStyle : styles.anything }>
                     FIND A GAME
