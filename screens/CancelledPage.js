@@ -26,7 +26,7 @@ export class CancelScreen extends React.Component {
           <Text style={this.state.fontLoaded ? styles.sorryText : styles.anything}>
             SORRY...
           </Text>
-          <Image source={ require('./../assets/sad.png') } style={ styles.imageStyle } />
+          <Image source={ require('./../assets/images/sad.png') } style={ styles.imageStyle } />
         </View>
 
         <View style={styles.bottomContainer}>
