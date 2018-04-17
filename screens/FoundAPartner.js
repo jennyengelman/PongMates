@@ -11,7 +11,6 @@ export class FoundAPartnerScreen extends React.Component {
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
       'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
     });
     this.setState({ fontLoaded: true });
   }
@@ -50,7 +49,7 @@ export class FoundAPartnerScreen extends React.Component {
           </View>
         </View>
         <TouchableOpacity onPress={() =>
-            navigate('About')
+            navigate('Home') //for now
           } style={ styles.bottomButton }
         >
           <View style={ styles.bottomButton }>

@@ -11,6 +11,7 @@ import { FindScreen } from './screens/FindGamePage';
 import { WaitingScreen } from './screens/WaitingPage';
 import { FoundScreen } from './screens/FoundGamePage';
 import { FoundAPartnerScreen } from './screens/FoundAPartner';
+import { NoGamesFoundScreen } from './screens/NoGamesFoundPage';
 import { CancelScreen } from './screens/CancelledPage';
 
 const RootStack = StackNavigator({
@@ -23,6 +24,7 @@ const RootStack = StackNavigator({
   Find: { screen: FindScreen },
   Waiting: { screen: WaitingScreen },
   FoundGame: { screen: FoundScreen },
+  NoGamesFound: { screen: NoGamesFoundScreen },
   Cancel: { screen: CancelScreen }
 });
 
