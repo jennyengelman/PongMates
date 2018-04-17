@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Image, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 
 export class FoundScreen extends React.Component {
@@ -16,6 +16,7 @@ export class FoundScreen extends React.Component {
     this.setState({ fontLoaded: true }) ;
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
@@ -34,12 +35,22 @@ export class FoundScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Time:</Text>
           </View>
           <View style = { styles.buttonContainer }>
-            <View style = { styles.button }>
-              <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Decline</Text>
-            </View>
-            <View style = { styles.button }>
-              <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Let{ `'` }s Go!</Text>
-            </View>
+            <TouchableOpacity onPress={() =>
+                navigate('Create')
+              }
+            >
+              <View style = { styles.button }>
+                <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Decline</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() =>
+                navigate('Home') //for now
+              }
+            >
+              <View style = { styles.button }>
+                <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Let{ `'` }s Go!</Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -64,7 +75,7 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
       flexDirection: 'row',
-      paddingTop: 30,
+      paddingTop: '5%',
     },
     buttonText: {
       textAlign: 'center',

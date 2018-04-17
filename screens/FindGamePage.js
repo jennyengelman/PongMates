@@ -24,7 +24,7 @@ export class FindScreen extends React.Component {
           <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>FIND</Text>
           <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>A GAME</Text>
         </View>
-        <View style = {{ paddingTop: '10%' }}>
+        <View style = {{ paddingTop: '7%' }}>
           <View style = { styles.time }>
             <View style = { styles.timeTop }>
               <Image style = {{ height: 40, width: 40 }} source={require('./../assets/images/time.png')}/>
@@ -92,7 +92,7 @@ export class FindScreen extends React.Component {
             </View>
           </View>
         </View>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '10%' }}>
+        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '7%' }}>
           <TouchableOpacity onPress={() =>
             navigate('Home')
           }>
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   container: {
     height: '70%',
     backgroundColor: '#C2515B',
-    paddingTop: '20%'
+    paddingTop: '10%',
   },
   find: {
     backgroundColor: '#93E1FA',
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: 160,
+    height: 130,
     paddingTop: 5,
     paddingBottom: 5,
   },
@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: 80,
+    height: 60,
   },
   timeTop: {
     backgroundColor: '#F2994A',
