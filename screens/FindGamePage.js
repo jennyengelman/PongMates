@@ -245,6 +245,7 @@ const styles = StyleSheet.create({
   postButtonTextElse: {
     fontSize: 30,
     color: '#fff',
+    textAlign: 'center',
   },
   time: {
     width: '90%',
