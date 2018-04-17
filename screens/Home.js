@@ -4,6 +4,22 @@ import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import Logo from './../components/Logo';
 
+var firebase = require("firebase");
+var config = {
+  apiKey: "AIzaSyAt5uKud6IAmerbJJmhWRxdxu6UksagTVg",
+  authDomain: "needone-c3edb.firebaseapp.com",
+  databaseURL: "https://needone-c3edb.firebaseio.com/",
+  storageBucket: "needone-c3edb.appspot.com",
+};
+firebase.initializeApp(config);
+var database = firebase.database();
+
+function writeUserData(userId, name) {
+  firebase.database().ref('users/' + userId).set({
+    username: name,
+  });
+}
+
 export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
@@ -39,6 +55,7 @@ export class HomeScreen extends React.Component {
                   placeholder = "Your Name"
                   onChangeText = { (text) => this.setState({ name: text }) }
                 />
+                <Text> {this.state.name} </Text>
               </View>
             </View>
           </View>
