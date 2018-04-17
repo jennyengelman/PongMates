@@ -113,4 +113,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '100%'
   },
+  anything: {
+    fontSize: 65,
+    padding: 30,
+  }
  });

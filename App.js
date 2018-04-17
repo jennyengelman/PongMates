@@ -12,9 +12,10 @@ import { WaitingScreen } from './screens/WaitingPage';
 import { FoundScreen } from './screens/FoundGamePage';
 import { FoundAPartnerScreen } from './screens/FoundAPartner';
 import { NoGamesFoundScreen } from './screens/NoGamesFoundPage';
+import { CancelScreen } from './screens/CancelledPage';
 
 const RootStack = StackNavigator({
-  Home: { screen: FoundScreen },
+  Home: { screen: HomeScreen },
   Create: { screen: CreateScreen },
   TimedOut: { screen: TimedOutScreen },
   About: { screen: AboutScreen },
@@ -24,12 +25,13 @@ const RootStack = StackNavigator({
   Waiting: { screen: WaitingScreen },
   FoundGame: { screen: FoundScreen },
   NoGamesFound: { screen: NoGamesFoundScreen },
+  Cancel: { screen: CancelScreen }
 });
 
 export default class App extends React.Component {
   render() {
     return (
-      <RootStack />
+      <RootStack/>
     )
   }
 };
