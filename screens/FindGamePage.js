@@ -25,14 +25,14 @@ export class FindScreen extends React.Component {
           <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>FIND GAME</Text>
         </View>
         <View style = {{ paddingTop: '7%' }}>
-          <View style = { styles.time }>
-            <View style = { styles.timeTop }>
-              <Image style = {{ height: 40, width: 40 }} source={require('./../assets/images/time.png')}/>
+          <View style = { styles.year }>
+            <View style = { styles.yearTop }>
+              <Image style = {{ height: 40, width: 40 }} source={require('./../assets/images/graduation.png')}/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Time</Text>
             </View>
             <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}>
             </View>
-            <View style = { styles.timeBottom }>
+            <View style = { styles.yearBottom }>
               <View style = { styles.optionButtons }>
                 <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>Now</Text>
               </View>
@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
   },
-  time: {
+  year: {
     width: '90%',
     borderTopRightRadius: 7,
     borderBottomRightRadius: 7,
@@ -258,14 +258,14 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     marginLeft: -5,
   },
-  timeBottom: {
+  yearBottom: {
     backgroundColor: '#FFC928',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
     height: 60,
   },
-  timeTop: {
+  yearTop: {
     backgroundColor: '#F2994A',
     height: 50,
     alignItems: 'center',

@@ -28,7 +28,7 @@ export class CreateScreen extends React.Component {
         <View style = {{ paddingTop: '7.5%' }}>
           <View style = { styles.time }>
             <View style = { styles.timeTop }>
-              <Image style = {{ height: Dimensions.get('window').height / 17, width: Dimensions.get('window').height / 17 }} source={require('./../assets/images/time.png')}/>
+              <Image style = {{ height: Dimensions.get('window').height / 17, width: Dimensions.get('window').height / 17 }} source={require('./../assets/images/ball.png')}/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Time</Text>
             </View>
             <View style = {{ height: 3, width: '100%', backgroundColor: '#FFFFFF' }}>
