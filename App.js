@@ -15,7 +15,7 @@ import { NoGamesFoundScreen } from './screens/NoGamesFoundPage';
 import { CancelScreen } from './screens/CancelledPage';
 
 const RootStack = StackNavigator({
-  Home: { screen: HomeScreen },
+  Home: { screen: FindScreen },
   Create: { screen: CreateScreen },
   TimedOut: { screen: TimedOutScreen },
   About: { screen: AboutScreen },
