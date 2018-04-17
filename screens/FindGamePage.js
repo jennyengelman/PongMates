@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     fontFamily: 'bubble-body',
     fontSize: 50,
     color: 'white',
-    width: '75%',
+    width: '50%',
     textAlign: 'center',
   },
   findTextElse: {
