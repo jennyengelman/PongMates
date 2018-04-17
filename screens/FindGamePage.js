@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, Button, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
@@ -18,18 +18,19 @@ export class FindScreen extends React.Component {
     this.setState({ fontLoaded: true });
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
         <View style = { styles.find }>
           <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>FIND GAME</Text>
         </View>
-        <View style = {{ paddingTop: '7.5%' }}>
+        <View style = {{ paddingTop: '7%' }}>
           <View style = { styles.time }>
             <View style = { styles.timeTop }>
               <Image style = {{ height: 40, width: 40 }} source={require('./../assets/images/time.png')}/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Time</Text>
             </View>
-            <View style = {{ height: 3, width: '100%', backgroundColor: '#fff' }}>
+            <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}>
             </View>
             <View style = { styles.timeBottom }>
               <View style = { styles.optionButtons }>
@@ -41,13 +42,13 @@ export class FindScreen extends React.Component {
             </View>
           </View>
         </View>
-        <View style = {{ paddingTop: '3%' }}>
+        <View style = {{ paddingTop: '6%' }}>
           <View style = { styles.place }>
             <View style = { styles.placeTop }>
               <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
             </View>
-            <View style = {{ height: 5, width: '100%', backgroundColor: '#fff' }}>
+            <View style = {{ height: '2.5%', width: '100%', backgroundColor: '#fff' }}>
             </View>
             <View style = { styles.placeBottom }>
               <FlatList
@@ -91,11 +92,19 @@ export class FindScreen extends React.Component {
             </View>
           </View>
         </View>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: 10 }}>
-          <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
-          <View style = { styles.postButton }>
-            <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
-          </View>
+        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '7%' }}>
+          <TouchableOpacity onPress={() =>
+            navigate('Home')
+          }>
+            <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() =>
+            navigate('Home')
+          }>
+            <View style = { styles.postButton }>
+              <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -238,6 +247,7 @@ const styles = StyleSheet.create({
   postButtonTextElse: {
     fontSize: 30,
     color: '#fff',
+    textAlign: 'center',
   },
   time: {
     width: '90%',
@@ -252,7 +262,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: 80,
+    height: 60,
   },
   timeTop: {
     backgroundColor: '#F2994A',
