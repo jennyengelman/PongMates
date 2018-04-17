@@ -37,7 +37,7 @@ export class MeetMatch extends React.Component {
          font = { this.state.fontLoaded }
          text = { 'Cancel' }
          navigation = { this.props.navigation }
-         destination = { 'Congrats' }
+         destination = { 'Selection' }
          />
       </View>
     );

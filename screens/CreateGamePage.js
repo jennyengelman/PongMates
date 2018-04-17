@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, Button, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, Button, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
@@ -53,7 +53,7 @@ export class CreateScreen extends React.Component {
             <View style = { styles.placeBottom }>
               <FlatList
                 data = {[
-                  { key: 'Alpha Phi Alpha' },
+                  { key: 'APhi' },
                   { key: 'Alpha Chi' },
                   { key: 'Alpha Theta' },
                   { key: 'Alpha Phi' },
@@ -92,13 +92,21 @@ export class CreateScreen extends React.Component {
             </View>
           </View>
         </View>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: Dimensions.get('window').height / 30 }}>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: 10 }}>
-          <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
-          <View style = { styles.postButton }>
-            <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
+        <View style = {{ alignItems: 'center', paddingTop: Dimensions.get('window').height / 30 }}>
+          <View style = {{ flexDirection: 'row', alignItems: 'center'}}>
+            <TouchableOpacity onPress={() =>
+              navigate('Home')
+            }>
+              <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() =>
+              navigate('Waiting')
+            }>
+              <View style = { styles.postButton }>
+                <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
+              </View>
+            </TouchableOpacity>
           </View>
-        </View>
         </View>
       </View>
     );
