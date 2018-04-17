@@ -28,7 +28,7 @@ export class NoGamesFoundScreen extends React.Component {
         </View>
         <View style = { styles.bottomContainer }>
           <View style = { styles.details }>
-            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>No games found. Try again later or adjust your search filter.</Text>
+            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>No games found. Adjust your search filter or try again later.</Text>
           </View>
           <View style = {{ flexDirection: 'row' }}>
             <PongButton
@@ -38,6 +38,7 @@ export class NoGamesFoundScreen extends React.Component {
               destination = { 'Home' }
               style = {{ paddingRight: '10%' }}
             />
+            <View style = {{ width: '15%' }}/>
             <PongButton
               font = { this.state.fontLoaded ? 'source-sans-pro' : 'Cochin' }
               text = { 'Change Filter' }
@@ -57,43 +58,19 @@ const styles = StyleSheet.create({
       flex: 1,
       paddingTop: '10%',
     },
-    button: {
-      backgroundColor: '#FFC928',
-      justifyContent: 'center',
-      borderRadius: 20,
-      height: 75,
-      width: 155,
-      marginLeft: 22,
-      marginRight: 22,
-    },
-    buttonContainer: {
-      flexDirection: 'row',
-      paddingTop: 30,
-    },
-    buttonText: {
-      textAlign: 'center',
-      fontFamily: 'source-sans-pro',
-      color: '#4F4F4F',
-      fontSize: 25,
-    },
-    buttonTextElse: {
-      textAlign: 'center',
-      color: '#4F4F4F',
-      fontSize: 25,
-    },
     container: {
       flex: 2,
     },
     cup: {
-      width: 200,
-      height: 150,
-      marginBottom: 25,
+      width: '50%',
+      height: '50%',
+      marginBottom: '8%',
     },
     details: {
       borderRadius: 20,
       backgroundColor: 'white',
       width: '75%',
-      height: 175,
+      height: '60%',
       justifyContent: 'space-around',
     },
     detailsText: {
