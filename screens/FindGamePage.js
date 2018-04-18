@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, Button, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
@@ -51,6 +51,7 @@ export class FindScreen extends React.Component {
             </View>
             <View style = { styles.placeBottom }>
             <FlatList
+              numColumns={2}
               data = {[
                 { key: 'Alpha Phi Alpha', index: 1 },
                 { key: 'Alpha Chi', index: 2 },
@@ -81,10 +82,7 @@ export class FindScreen extends React.Component {
                 { key: 'Zete', index: 27 },
               ]}
                 renderItem = {({ item }) => (
-                  <View style = {{ justifyContent: 'space-around', paddingLeft: 5, paddingTop: 2, paddingBottom: 2, flexDirection: 'row' }}>
-                    <View style = { styles.optionButtons }>
-                      <Text style = { this.state.fontLoaded ? styles.optionsTextPlace : styles.optionsTextPlaceElse }>{ item.key }</Text>
-                    </View>
+                  <View style = {{ paddingLeft: Dimensions.get('window').width / 30, paddingTop: Dimensions.get('window').height / 50 }}>
                     <View style = { styles.optionButtons }>
                       <Text style = { this.state.fontLoaded ? styles.optionsTextPlace : styles.optionsTextPlaceElse }>{ item.key }</Text>
                     </View>

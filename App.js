@@ -13,7 +13,7 @@ import { FoundScreen } from './screens/FoundGamePage';
 import { FoundAPartnerScreen } from './screens/FoundAPartner';
 
 const RootStack = StackNavigator({
-  Home: { screen: FindScreen },
+  Home: { screen: HomeScreen },
   Create: { screen: CreateScreen },
   TimedOut: { screen: TimedOutScreen },
   About: { screen: AboutScreen },
