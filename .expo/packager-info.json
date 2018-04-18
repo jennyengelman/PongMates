@@ -1,8 +1,8 @@
 {
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 32299,
-  "expoServerNgrokUrl": "https://wy-psn.ijemmao.pongmates.exp.direct",
-  "packagerNgrokUrl": "https://packager.wy-psn.ijemmao.pongmates.exp.direct",
-  "ngrokPid": 32323
+  "packagerPid": 25660,
+  "expoServerNgrokUrl": "https://wy-psn.jennyengelman.pongmates.exp.direct",
+  "packagerNgrokUrl": "https://packager.wy-psn.jennyengelman.pongmates.exp.direct",
+  "ngrokPid": 25708
 }
