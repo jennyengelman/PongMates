@@ -7,6 +7,8 @@ export class FindScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
+    yearPressed: false,
+    placePressed: false,
   };
   async componentDidMount() {
     await Font.loadAsync({
@@ -27,18 +29,43 @@ export class FindScreen extends React.Component {
         <View style = {{ paddingTop: '7%' }}>
           <View style = { styles.year }>
             <View style = { styles.yearTop }>
-              <Image style = {{ height: 40, width: 40 }} source={require('./../assets/images/graduation.png')}/>
-              <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Time</Text>
+              <Image style = {{ height: 50, width: 50 }} source={require('./../assets/images/graduation.png')}/>
+              <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Year</Text>
             </View>
-            <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}>
-            </View>
+            <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}/>
             <View style = { styles.yearBottom }>
-              <View style = { styles.optionButtons }>
-                <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>Now</Text>
-              </View>
-              <View style = { styles.optionButtons }>
-                <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>Later</Text>
-              </View>
+              <TouchableOpacity onPress={() =>
+                this.state.yearPressed = !this.state.yearPressed
+                }
+              >
+                <View style = { this.state.yearPressed ? styles.yearButtons : styles.yearButtonsUn }>
+                  <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>21</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() =>
+                this.state.yearPressed = !this.state.yearPressed
+                }
+              >
+                <View style = { this.state.yearPressed ? styles.yearButtons : styles.yearButtonsUn }>
+                  <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>20</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() =>
+                this.state.yearPressed = !this.state.yearPressed
+                }
+              >
+                <View style = { this.state.yearPressed ? styles.yearButtons : styles.yearButtonsUn }>
+                  <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>19</Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() =>
+                this.state.yearPressed = !this.state.yearPressed
+                }
+              >
+                <View style = { this.state.yearPressed ? styles.yearButtons : styles.yearButtonsUn }>
+                  <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>18</Text>
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -87,6 +114,16 @@ export class FindScreen extends React.Component {
                     <View style = { styles.optionButtons }>
                       <Text style = { this.state.fontLoaded ? styles.optionsTextPlace : styles.optionsTextPlaceElse }>{ item.key }</Text>
                     </View>
+
+                  <TouchableOpacity onPress={() =>
+                    this.state.placePressed = !this.state.placePressed
+                  }>
+                    <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
+                      <View style = { this.state.placePressed ? styles.placeButtons : styles.placeButtonsUn }>
+                        <Text style = { this.state.fontLoaded ? styles.optionsTextPlace : styles.optionsTextPlaceElse }>{ item.key }</Text>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
                   </View>
                 )}
               />
@@ -167,20 +204,6 @@ const styles = StyleSheet.create({
     color: '#545454',
     fontSize: 35,
   },
-  optionButtons: {
-    borderColor: '#545454',
-    borderRadius: 50,
-    borderWidth: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 125,
-    height: 40,
-    shadowOpacity: 0.25,
-    shadowRadius: 5,
-    shadowColor: 'black',
-    shadowOffset: { height: 0, width: 0 },
-  },
   optionsPlaceText: {
     fontSize: 18,
     fontFamily: 'source-sans-pro',
@@ -218,7 +241,33 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     height: Dimensions.get('window').height / 4,
     paddingTop: 5,
-    paddingBottom: 5,
+  },
+  placeButtons: {
+    borderRadius: 50,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '45%',
+    height: 40,
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+    marginBottom: 5,
+  },
+  placeButtonsUn: {
+    borderColor: '#545454',
+    borderRadius: 50,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '45%',
+    height: 40,
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+    marginBottom: 5,
   },
   placeTop: {
     backgroundColor: '#F2994A',
@@ -264,6 +313,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     height: 60,
+    paddingRight: 20,
+  },
+  yearButtons: {
+    borderRadius: 50,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '180%',
+    height: 40,
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+  },
+  yearButtonsUn: {
+    borderColor: '#545454',
+    borderRadius: 50,
+    borderWidth: 5,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    width: '180%',
+    height: 40,
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
   },
   yearTop: {
     backgroundColor: '#F2994A',
