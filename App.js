@@ -15,8 +15,9 @@ import { NoGamesFoundScreen } from './screens/NoGamesFoundPage';
 import { CancelScreen } from './screens/CancelledPage';
 
 const RootStack = StackNavigator({
-  Home: { screen: HomeScreen },
+  Home: { screen: NoGamesFoundScreen },
   Create: { screen: CreateScreen },
+  Find: { screen: FindScreen },
   TimedOut: { screen: TimedOutScreen },
   About: { screen: AboutScreen },
   FoundAPartner: { screen: FoundAPartnerScreen },
@@ -25,7 +26,7 @@ const RootStack = StackNavigator({
   Waiting: { screen: WaitingScreen },
   FoundGame: { screen: FoundScreen },
   NoGamesFound: { screen: NoGamesFoundScreen },
-  Cancel: { screen: CancelScreen }
+  Cancel: { screen: CancelScreen },
 });
 
 export default class App extends React.Component {

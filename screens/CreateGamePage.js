@@ -13,6 +13,7 @@ export class CreateScreen extends React.Component {
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
       'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
+      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
      });
     this.setState({ fontLoaded: true }) ;
   }
@@ -21,8 +22,8 @@ export class CreateScreen extends React.Component {
     return (
       <View style = { styles.container }>
         <View style = { styles.create }>
-          <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>CREATE</Text>
-          <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>A GAME</Text>
+          <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>CREATE GAME</Text>
+
         </View>
         <View style = {{ paddingTop: '7.5%' }}>
           <View style = { styles.time }>
@@ -128,7 +129,6 @@ const styles = StyleSheet.create({
   container: {
     height: '70%',
     backgroundColor: '#C2515B',
-    paddingTop: '12%',
   },
   create: {
     backgroundColor: '#FFC928',
@@ -142,12 +142,15 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
+    paddingTop: 17,
+    paddingBottom: 3,
+    marginTop: '10%',
   },
   createText: {
-    fontFamily: 'double-bubble-shadow',
-    fontSize: Dimensions.get('window').height / 15,
+    fontFamily: 'bubble-body',
+    fontSize: Dimensions.get('window').height / 13,
     color: '#FFFFFF',
-    width: '75%',
+    width: '50%',
     textAlign: 'center',
   },
   createTextElse: {

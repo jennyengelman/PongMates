@@ -10,7 +10,6 @@ export class SelectionScreen extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
      });
     this.setState({ fontLoaded: true }) ;
    }
