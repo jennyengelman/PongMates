@@ -26,7 +26,7 @@ export class AboutScreen extends React.Component {
         <View style={{ height: '40%', backgroundColor: '#C2515B'}} >
           <View style={ styles.aboutBox }>
             <Text style={ this.state.fontLoaded ? styles.aboutText : styles.aboutTextBackup }>
-            PongMates is designed to connect Dartmouth students through the game of Pong.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!
+            Need One is a platform to connect Dartmouth students with Pong partners.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!
             </Text>
           </View>
         </View>
