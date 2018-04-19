@@ -49,10 +49,10 @@ export class CreateScreen extends React.Component {
               <Image style = {{ height: Dimensions.get('window').height / 17, width: Dimensions.get('window').height / 17 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
             </View>
-            <View style = {{ height: 3, width: '100%', backgroundColor: '#FFFFFF' }}>
-            </View>
+            <View style = {{ height: 3, width: '100%', backgroundColor: '#FFFFFF' }}/>
             <View style = { styles.placeBottom }>
               <FlatList
+                numColumns={2}
                 data = {[
                   { key: 'APhi' },
                   { key: 'Alpha Chi' },

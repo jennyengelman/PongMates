@@ -51,38 +51,39 @@ export class FindScreen extends React.Component {
             <View style = {{ height: '2.5%', width: '100%', backgroundColor: '#fff' }}>
             </View>
             <View style = { styles.placeBottom }>
-              <FlatList
-                data = {[
-                  { key: 'Alpha Phi Alpha' },
-                  { key: 'Alpha Chi' },
-                  { key: 'Alpha Theta' },
-                  { key: 'Alpha Phi' },
-                  { key: 'Alpha Pi Omega' },
-                  { key: 'AXiD' },
-                  { key: 'Beta' },
-                  { key: 'BG' },
-                  { key: 'Chi Delt' },
-                  { key: 'Chi Gam' },
-                  { key: 'EKT' },
-                  { key: 'GDX' },
-                  { key: 'Heorot' },
-                  { key: 'Kappa' },
-                  { key: 'KD' },
-                  { key: 'KDE' },
-                  { key: 'Lambda Upsilon Lambda' },
-                  { key: 'Phi Delt' },
-                  { key: 'Phi Tau' },
-                  { key: 'Psi U' },
-                  { key: 'Sig Ep' },
-                  { key: 'Sig Nu' },
-                  { key: 'Sigma Delt' },
-                  { key: 'Sigma Lambda Upsilon' },
-                  { key: 'Tabard' },
-                  { key: 'TDX' },
-                  { key: 'Zete' },
-                ]}
+            <FlatList
+              numColumns={2}
+              data = {[
+                { key: 'Alpha Phi Alpha' },
+                { key: 'Alpha Chi' },
+                { key: 'Alpha Theta' },
+                { key: 'Alpha Phi' },
+                { key: 'Alpha Pi Omega' },
+                { key: 'AXiD' },
+                { key: 'Beta' },
+                { key: 'BG' },
+                { key: 'Chi Delt' },
+                { key: 'Chi Gam' },
+                { key: 'EKT' },
+                { key: 'GDX' },
+                { key: 'Heorot' },
+                { key: 'Kappa' },
+                { key: 'KD' },
+                { key: 'KDE' },
+                { key: 'Lambda Upsilon Lambda' },
+                { key: 'Phi Delt' },
+                { key: 'Phi Tau' },
+                { key: 'Psi U' },
+                { key: 'Sig Ep' },
+                { key: 'Sig Nu' },
+                { key: 'Sigma Delt' },
+                { key: 'Sigma Lambda Upsilon' },
+                { key: 'Tabard' },
+                { key: 'TDX' },
+                { key: 'Zete' },
+              ]}
                 renderItem = {({ item }) => (
-                  <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
+                  <View style = {{ paddingLeft: Dimensions.get('window').width / 30, paddingTop: Dimensions.get('window').height / 50 }}>
                     <View style = { styles.optionButtons }>
                       <Text style = { this.state.fontLoaded ? styles.optionsTextPlace : styles.optionsTextPlaceElse }>{ item.key }</Text>
                     </View>
