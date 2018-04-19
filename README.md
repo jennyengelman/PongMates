@@ -5,12 +5,9 @@ Need One is designed to improve social integration at Dartmouth through the game
 
 ## Architecture
 
-* [Expo](https://expo.io/)
-- Expo is a tool for React Native applications that, by providing a prototype formate, aided our development process.
-* [React Native](https://facebook.github.io/react-native/)
-- React Native is the programming language we used to design and develop the structure of our iOS and Android application.
-* [Firebase](https://firebase.google.com)
-- Firebase is a Google platform/infrastructure that provides us with a database to implement the backend of our app.
+* [Expo](https://expo.io/) is a tool for React Native applications that, by providing a prototype formate, aided our development process.
+* [React Native](https://facebook.github.io/react-native/) is the programming language we used to design and develop the structure of our iOS and Android application.
+* [Firebase](https://firebase.google.com) is a Google platform/infrastructure that provides us with a database to implement the backend of our app.
 
 ## Setup
 
@@ -30,4 +27,4 @@ Need One is designed to improve social integration at Dartmouth through the game
 
 ## Acknowledgments
 
-We'd like to thank our faculty advisor Lorie Loeb and mentor Ijemma Onwuzulike (Dartmouth class of ‘19) for their guidance and the hard work they've contributed to helping us succeed in achieving our goals within--as well as outside--this project.
+We'd like to thank our faculty advisor Lorie Loeb and mentor Ijemma Onwuzulike (Dartmouth class of ‘19) for their guidance and the hard work they've contributed to helping us succeed in achieving our goals within, as well as outside, this project.
