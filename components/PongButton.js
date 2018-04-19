@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 
-
 export default class PongButton extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
