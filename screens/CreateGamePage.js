@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
@@ -13,6 +13,7 @@ export class CreateScreen extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
+      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
       'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
       'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
     });
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
   container: {
     height: '70%',
     backgroundColor: '#C2515B',
-    paddingTop: '10%',
+    paddingTop: '8%',
   },
   create: {
     backgroundColor: '#93E1FA',
@@ -167,36 +168,37 @@ const styles = StyleSheet.create({
     borderWidth: 10,
     borderRadius: 5,
     width: '110%',
-    marginLeft: -10,
+    marginLeft: Dimensions.get('window').width / -20,
     shadowOpacity: 0.75,
     shadowRadius: 5,
-    shadowColor: 'black',
+    shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
   },
   createText: {
-    fontFamily: 'double-bubble-shadow',
-    fontSize: 50,
-    color: 'white',
+    fontFamily: 'bubble-body',
+    fontSize: Dimensions.get('window').height / 15,
+    color: '#FFFFFF',
     width: '75%',
     textAlign: 'center',
+    paddingTop: '2%',
   },
   createTextElse: {
-    fontSize: 50,
-    color: 'white',
+    fontSize: Dimensions.get('window').height / 15,
+    color: '#FFFFFF',
     width: '75%',
     textAlign: 'center',
   },
   headerText: {
     color: '#545454',
-    fontSize: 35,
+    fontSize: Dimensions.get('window').height / 17,
     fontFamily: 'source-sans-pro-bold',
   },
   headerTextElse: {
     color: '#545454',
-    fontSize: 35,
+    fontSize: Dimensions.get('window').height / 17,
   },
   optionsPlaceText: {
-    fontSize: 18,
+    fontSize: Dimensions.get('window').height / 35,
     fontFamily: 'source-sans-pro',
     color: '#545454',
     textAlign: 'center',
@@ -207,7 +209,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   optionsTimeText: {
-    fontSize: 30,
+    fontSize: Dimensions.get('window').height / 25,
     fontFamily: 'source-sans-pro',
     color: '#545454',
     textAlign: 'center',
@@ -228,7 +230,7 @@ const styles = StyleSheet.create({
   placeBottom: {
     backgroundColor: '#FFC928',
     flexDirection: 'row',
-    height: 130,
+    height: Dimensions.get('window').height / 4,
     paddingTop: 5,
   },
   placeButtons: {
@@ -260,7 +262,7 @@ const styles = StyleSheet.create({
   },
   placeTop: {
     backgroundColor: '#F2994A',
-    height: 50,
+    height: Dimensions.get('window').height / 15,
     alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'row',
@@ -278,21 +280,21 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 0, width: 0 },
   },
   postButtonText: {
-    color: '#fff',
+    color: '#FFFFFF',
     fontFamily: 'source-sans-pro',
     fontSize: 30,
     textAlign: 'center',
   },
   postButtonTextElse: {
     fontSize: 30,
-    color: '#fff',
+    color: '#FFFFFF',
     textAlign: 'center',
   },
   year: {
     width: '90%',
     borderTopRightRadius: 7,
     borderBottomRightRadius: 7,
-    borderColor: '#fff',
+    borderColor: '#FFFFFF',
     borderWidth: 5,
     marginLeft: -5,
   },
@@ -301,12 +303,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: 60,
+    height: Dimensions.get('window').height / 8,
     paddingRight: 20,
   },
   yearButtons: {
     borderRadius: 50,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     alignItems: 'center',
     justifyContent: 'center',
     width: '180%',
@@ -320,7 +322,7 @@ const styles = StyleSheet.create({
     borderColor: '#545454',
     borderRadius: 50,
     borderWidth: 5,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     width: '180%',
     height: 40,
@@ -331,7 +333,7 @@ const styles = StyleSheet.create({
   },
   yearTop: {
     backgroundColor: '#F2994A',
-    height: 50,
+    height: Dimensions.get('window').height / 15,
     alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'row',
