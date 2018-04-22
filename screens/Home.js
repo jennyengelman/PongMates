@@ -13,18 +13,17 @@ var config = {
 };
 firebase.initializeApp(config);
 var database = firebase.database();
+// Import Admin SDK
+var ref = database.ref();
+var usersRef = ref.child("users");
 
-function writeUserData(userId, name) {
-  firebase.database().ref('users/' + userId).set({
-    username: name,
-  });
-}
+
 
 export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
-    text: 'Your Name',
+    text: null,
   };
   async componentDidMount() {
     await Font.loadAsync({
@@ -43,8 +42,8 @@ export class HomeScreen extends React.Component {
         <View style = {{ backgroundColor: '#C2515B', height: '30%', justifyContent: 'center' }}>
           <Logo font={ this.state.fontLoaded }/>
         </View>
-        <View style = {{ backgroundColor: '#C2515B', height: '40%' }}>
-          <View style = {{ alignItems: 'center', paddingTop: '5%' }}>
+        <View style = {{ backgroundColor: '#C2515B', height: '45%' }}>
+          <View style = {{ alignItems: 'center', paddingTop: '5%' }} >
             <View style = { styles.homeRectangle }>
               <View style = {{ backgroundColor: '#FFC928', width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55, borderRadius: Dimensions.get('window').width * .275, justifyContent: 'center' }}>
                 <Image style = {{ width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55 }} source={ require('./../assets/images/image.png') }/>
@@ -53,23 +52,26 @@ export class HomeScreen extends React.Component {
               <View style = { styles.nameContainer }>
                 <TextInput
                   style = { this.state.fontLoaded ? styles.nameInput : styles.nameInputElse }
-                  placeholder = "Your Name"
                   onChangeText = { (text) => this.setState({ text }) }
+                  placeholder = { "Your Name" }
                 />
-                <Text> {this.state.name} </Text>
               </View>
             </View>
           </View>
         </View>
-        <View style = {{ height: '30%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
-          <TouchableOpacity onPress={() =>
-              navigate('Selection')
-            }
-          >
-            <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
-            tap to begin
-            </Text>
-          </TouchableOpacity>
+        <View style = {{ height: '25%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
+            <TouchableOpacity onPress={() =>
+              {if (this.state.text !== undefined) {
+                usersRef.push().set({
+                  username: this.state.text
+                })};
+                navigate('Selection')
+              }}
+            >
+              <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
+              tap to begin
+              </Text>
+            </TouchableOpacity>
         </View>
       </View>
     );
@@ -91,10 +93,6 @@ const styles = StyleSheet.create({
     paddingTop: Dimensions.get('window').height / 50,
     borderColor: '#FFFFFF',
     borderWidth: 7,
-    shadowOpacity: 0.5,
-    shadowRadius: 5,
-    shadowColor: '#000000',
-    shadowOffset: { height: 2, width: 0 },
     shadowOpacity: 0.5,
     shadowRadius: 5,
     shadowColor: '#000000',
@@ -121,12 +119,12 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width / 1.5,
     height: Dimensions.get('window').width / 7,
     backgroundColor: '#FFC928',
+    marginBottom: Dimensions.get('window').height / 40,
     borderColor: '#FFFFFF',
     borderWidth: 5,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: Dimensions.get('window').height / 45,
     shadowOpacity: 0.5,
     shadowRadius: 3,
     shadowColor: '#000000',
