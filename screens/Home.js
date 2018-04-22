@@ -24,6 +24,7 @@ export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
+    text: 'Your Name',
   };
   async componentDidMount() {
     await Font.loadAsync({
@@ -52,8 +53,8 @@ export class HomeScreen extends React.Component {
               <View style = { styles.nameContainer }>
                 <TextInput
                   style = { this.state.fontLoaded ? styles.nameInput : styles.nameInputElse }
-                  placeholder = "Your Name"
-                  onChangeText = { (text) => this.setState({ name: text }) }
+                  onChangeText = { (text) => this.setState({ text }) }
+                  value = { this.state.text }
                 />
                 <Text> {this.state.name} </Text>
               </View>
