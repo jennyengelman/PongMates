@@ -53,8 +53,8 @@ export class HomeScreen extends React.Component {
               <View style = { styles.nameContainer }>
                 <TextInput
                   style = { this.state.fontLoaded ? styles.nameInput : styles.nameInputElse }
+                  placeholder = "Your Name"
                   onChangeText = { (text) => this.setState({ text }) }
-                  value = { this.state.text }
                 />
                 <Text> {this.state.name} </Text>
               </View>
@@ -108,12 +108,14 @@ const styles = StyleSheet.create({
   matesTextElse: {
     fontSize: 60,
     color: 'white',
-    paddingLeft: 3,
+    textAlign: 'center',
+    marginLeft: -35,
   },
   matesTextElse: {
     fontSize: 60,
     color: 'white',
-    paddingLeft: 3,
+    textAlign: 'center',
+    marginLeft: -35,
   },
   nameContainer: {
     width: Dimensions.get('window').width / 1.5,
@@ -151,9 +153,11 @@ const styles = StyleSheet.create({
   nextText: {
     fontFamily: 'source-sans-pro',
     textAlign: 'center',
+    color: '#696969',
   },
   nextTextElse: {
     textAlign: 'center',
+    color: '#696969',
   },
   pongContainer: {
     backgroundColor: '#FFC928',

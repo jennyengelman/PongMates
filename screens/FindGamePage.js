@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
@@ -13,23 +13,24 @@ export class FindScreen extends React.Component {
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
       'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
+      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
     });
     this.setState({ fontLoaded: true });
   }
   render() {
+    const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
         <View style = { styles.find }>
-          <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>FIND</Text>
-          <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>A GAME</Text>
+          <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>FIND GAME</Text>
         </View>
-        <View style = {{ paddingTop: '7.5%' }}>
+        <View style = {{ paddingTop: '7%' }}>
           <View style = { styles.time }>
             <View style = { styles.timeTop }>
               <Image style = {{ height: 40, width: 40 }} source={require('./../assets/images/time.png')}/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Time</Text>
             </View>
-            <View style = {{ height: 3, width: '100%', backgroundColor: '#fff' }}>
+            <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}>
             </View>
             <View style = { styles.timeBottom }>
               <View style = { styles.optionButtons }>
@@ -41,47 +42,48 @@ export class FindScreen extends React.Component {
             </View>
           </View>
         </View>
-        <View style = {{ paddingTop: '3%' }}>
+        <View style = {{ paddingTop: '6%' }}>
           <View style = { styles.place }>
             <View style = { styles.placeTop }>
               <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
             </View>
-            <View style = {{ height: 5, width: '100%', backgroundColor: '#fff' }}>
+            <View style = {{ height: '2.5%', width: '100%', backgroundColor: '#fff' }}>
             </View>
             <View style = { styles.placeBottom }>
-              <FlatList
-                data = {[
-                  { key: 'Alpha Phi Alpha' },
-                  { key: 'Alpha Chi' },
-                  { key: 'Alpha Theta' },
-                  { key: 'Alpha Phi' },
-                  { key: 'Alpha Pi Omega' },
-                  { key: 'AXiD' },
-                  { key: 'Beta' },
-                  { key: 'BG' },
-                  { key: 'Chi Delt' },
-                  { key: 'Chi Gam' },
-                  { key: 'EKT' },
-                  { key: 'GDX' },
-                  { key: 'Heorot' },
-                  { key: 'Kappa' },
-                  { key: 'KD' },
-                  { key: 'KDE' },
-                  { key: 'Lambda Upsilon Lambda' },
-                  { key: 'Phi Delt' },
-                  { key: 'Phi Tau' },
-                  { key: 'Psi U' },
-                  { key: 'Sig Ep' },
-                  { key: 'Sig Nu' },
-                  { key: 'Sigma Delt' },
-                  { key: 'Sigma Lambda Upsilon' },
-                  { key: 'Tabard' },
-                  { key: 'TDX' },
-                  { key: 'Zete' },
-                ]}
+            <FlatList
+              numColumns={2}
+              data = {[
+                { key: 'Alpha Phi Alpha' },
+                { key: 'Alpha Chi' },
+                { key: 'Alpha Theta' },
+                { key: 'Alpha Phi' },
+                { key: 'Alpha Pi Omega' },
+                { key: 'AXiD' },
+                { key: 'Beta' },
+                { key: 'BG' },
+                { key: 'Chi Delt' },
+                { key: 'Chi Gam' },
+                { key: 'EKT' },
+                { key: 'GDX' },
+                { key: 'Heorot' },
+                { key: 'Kappa' },
+                { key: 'KD' },
+                { key: 'KDE' },
+                { key: 'Lambda Upsilon Lambda' },
+                { key: 'Phi Delt' },
+                { key: 'Phi Tau' },
+                { key: 'Psi U' },
+                { key: 'Sig Ep' },
+                { key: 'Sig Nu' },
+                { key: 'Sigma Delt' },
+                { key: 'Sigma Lambda Upsilon' },
+                { key: 'Tabard' },
+                { key: 'TDX' },
+                { key: 'Zete' },
+              ]}
                 renderItem = {({ item }) => (
-                  <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
+                  <View style = {{ paddingLeft: Dimensions.get('window').width / 30, paddingTop: Dimensions.get('window').height / 50 }}>
                     <View style = { styles.optionButtons }>
                       <Text style = { this.state.fontLoaded ? styles.optionsTextPlace : styles.optionsTextPlaceElse }>{ item.key }</Text>
                     </View>
@@ -91,11 +93,19 @@ export class FindScreen extends React.Component {
             </View>
           </View>
         </View>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: 10 }}>
-          <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
-          <View style = { styles.postButton }>
-            <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
-          </View>
+        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '7%' }}>
+          <TouchableOpacity onPress={() =>
+            navigate('Home')
+          }>
+            <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() =>
+            navigate('Home')
+          }>
+            <View style = { styles.postButton }>
+              <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -117,7 +127,6 @@ const styles = StyleSheet.create({
   container: {
     height: '70%',
     backgroundColor: '#C2515B',
-    paddingTop: '5%'
   },
   find: {
     backgroundColor: '#93E1FA',
@@ -132,12 +141,15 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowColor: 'black',
     shadowOffset: { height: 0, width: 0 },
+    paddingTop: 17,
+    paddingBottom: 3,
+    marginTop: '10%',
   },
   findText: {
-    fontFamily: 'double-bubble-shadow',
+    fontFamily: 'bubble-body',
     fontSize: 50,
     color: 'white',
-    width: '75%',
+    width: '50%',
     textAlign: 'center',
   },
   findTextElse: {
@@ -204,7 +216,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: 145,
+    height: Dimensions.get('window').height / 4,
     paddingTop: 5,
     paddingBottom: 5,
   },
@@ -236,6 +248,7 @@ const styles = StyleSheet.create({
   postButtonTextElse: {
     fontSize: 30,
     color: '#fff',
+    textAlign: 'center',
   },
   time: {
     width: '90%',
@@ -250,7 +263,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: 80,
+    height: 60,
   },
   timeTop: {
     backgroundColor: '#F2994A',
