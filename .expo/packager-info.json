@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19002,
-  "packagerPort": 19003,
-  "packagerPid": 18628,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 32795,
   "expoServerNgrokUrl": "https://5f-sna.uchoi6441.pongmates.exp.direct",
   "packagerNgrokUrl": "https://packager.5f-sna.uchoi6441.pongmates.exp.direct",
-  "ngrokPid": 18648
+  "ngrokPid": 32814
 }

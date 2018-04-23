@@ -13,17 +13,16 @@ var config = {
 };
 firebase.initializeApp(config);
 var database = firebase.database();
-// Import Admin SDK
 var ref = database.ref();
 var usersRef = ref.child("users");
-
+var name;
 
 
 export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
-    text: null,
+    text: undefined,
   };
   async componentDidMount() {
     await Font.loadAsync({
@@ -61,12 +60,16 @@ export class HomeScreen extends React.Component {
         </View>
         <View style = {{ height: '25%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
             <TouchableOpacity onPress={() =>
-              {if (this.state.text !== undefined) {
-                usersRef.push().set({
-                  username: this.state.text
-                })};
-                navigate('Selection')
-              }}
+              { if (this.state.text !== undefined) {
+                var newPostKey = usersRef.push().key;
+                database.ref("users/" + newPostKey).set({
+                  username: this.state.text,
+                });
+                database.ref("users/" + newPostKey).on("value", function(snapshot) {
+                  name = snapshot.val().username;
+                });
+                console.log(name);
+              };}}
             >
               <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
               tap to begin
