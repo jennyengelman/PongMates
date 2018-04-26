@@ -26,7 +26,6 @@ export class CreateScreen extends React.Component {
       <View style = { styles.container }>
         <View style = { styles.create }>
           <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>CREATE GAME</Text>
-
         </View>
         <View style = {{ paddingTop: '7%' }}>
           <View style = { styles.year }>
@@ -37,7 +36,7 @@ export class CreateScreen extends React.Component {
             <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}/>
             <View style = { styles.yearBottom }>
               <TouchableOpacity onPress={() =>
-                this.state.yearPressed = !this.state.yearPressed
+                navigate('Home')
                 }
               >
                 <View style = { this.state.yearPressed ? styles.yearButtons : styles.yearButtonsUn }>
@@ -45,7 +44,7 @@ export class CreateScreen extends React.Component {
                 </View>
               </TouchableOpacity>
               <TouchableOpacity onPress={() =>
-                this.state.yearPressed = !this.state.yearPressed
+                navigate('Home')
                 }
               >
                 <View style = { this.state.yearPressed ? styles.yearButtons : styles.yearButtonsUn }>
@@ -53,21 +52,14 @@ export class CreateScreen extends React.Component {
                 </View>
               </TouchableOpacity>
               <TouchableOpacity onPress={() =>
-                this.state.yearPressed = !this.state.yearPressed
+                navigate('Home')
                 }
               >
                 <View style = { this.state.yearPressed ? styles.yearButtons : styles.yearButtonsUn }>
                   <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>19</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() =>
-                this.state.yearPressed = !this.state.yearPressed
-                }
-              >
-                <View style = { this.state.yearPressed ? styles.yearButtons : styles.yearButtonsUn }>
-                  <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>18</Text>
-                </View>
-              </TouchableOpacity>
+              <YearButton font={ this.state.fontLoaded }/>
             </View>
           </View>
         </View>
@@ -115,8 +107,8 @@ export class CreateScreen extends React.Component {
                     this.state.placePressed = !this.state.placePressed
                   }>
                     <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
-                      <View style = { this.state.placePressed ? styles.placeButtons : styles.placeButtonsUn }>
-                        <Text style = { this.state.fontLoaded ? styles.optionsTextPlace : styles.optionsTextPlaceElse }>{ item.key }</Text>
+                      <View style = { styles.placeButtons }>
+                        <Text style = { this.state.fontLoaded ? styles.optionsPlaceText : styles.optionsPlaceTextElse }>{ item.key }</Text>
                       </View>
                     </View>
                   </TouchableOpacity>
@@ -241,13 +233,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '45%',
+    width: Dimensions.get('window').width / 2.75,
     height: 40,
     shadowOpacity: 0.25,
     shadowRadius: 5,
     shadowColor: 'black',
     shadowOffset: { height: 0, width: 0 },
-    marginBottom: 5,
+    marginBottom: 7,
   },
   placeButtonsUn: {
     borderColor: '#545454',

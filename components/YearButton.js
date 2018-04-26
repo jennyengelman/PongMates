@@ -3,16 +3,21 @@ import { StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 
 export default class YearButton extends React.Component {
+  state = { fontLoaded: false };
+  async componentDidMount() {
+    await Font.loadAsync({
+      'source-sans-pro': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
+    });
+    this.setState({ fontLoaded: true });
+  }
   render() {
     const { navigate } = this.props.navigation;
     return (
       <TouchableOpacity
         onPress={ () => navigate(this.props.destination) }
-        style={ styles.button }
+        style = { styles.yearButtons }
       >
-        <Text style={ this.props.font ? styles.buttonText : styles.buttonTextBackup }>
-        { this.props.text }
-        </Text>
+          <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>18</Text>
       </TouchableOpacity>
     );
   }
@@ -20,27 +25,6 @@ export default class YearButton extends React.Component {
 
 
 const styles = StyleSheet.create({
-  button: {
-    width: Dimensions.get('window').width / 3,
-    height: Dimensions.get('window').height / 10,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FFC928',
-    alignSelf: 'center',
-    marginTop: Dimensions.get('window').width / 20,
-  },
-  buttonText: {
-    color: '#616161',
-    fontFamily: 'source-sans-pro-bold',
-    textAlign: 'center',
-    fontSize: Dimensions.get('window').height / 30,
-  },
-  buttonTextBackup: {
-    color: '#616161',
-    textAlign: 'center',
-    fontSize: Dimensions.get('window').height / 30,
-  },
   optionsTimeText: {
     fontSize: Dimensions.get('window').height / 25,
     fontFamily: 'source-sans-pro',
@@ -51,5 +35,30 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: '#545454',
     textAlign: 'center',
+  },
+  yearButtons: {
+    borderRadius: 50,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '180%',
+    height: 40,
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+  },
+  yearButtonsUn: {
+    borderColor: '#545454',
+    borderRadius: 50,
+    borderWidth: 5,
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    width: '180%',
+    height: 40,
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
   },
 });
