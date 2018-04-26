@@ -24,7 +24,6 @@ export class CreateScreen extends React.Component {
       <View style = { styles.container }>
         <View style = { styles.create }>
           <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>CREATE GAME</Text>
-
         </View>
         <View style = {{ paddingTop: '7.5%' }}>
           <View style = { styles.time }>

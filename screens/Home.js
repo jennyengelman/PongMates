@@ -17,8 +17,6 @@ var database = firebase.database();
 var ref = database.ref();
 var usersRef = ref.child("users");
 
-
-
 export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
