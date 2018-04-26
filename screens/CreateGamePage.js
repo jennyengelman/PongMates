@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
+import YearButton from './../components/YearButton';
 
 export class CreateScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
-    yearPressed: false,
-    placePressed: false,
+    pressed: {},
   };
   async componentDidMount() {
     await Font.loadAsync({
