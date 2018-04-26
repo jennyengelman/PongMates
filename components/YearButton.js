@@ -1,24 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 
 export default class YearButton extends React.Component {
-  state = { fontLoaded: false };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'source-sans-pro': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
-    });
-    this.setState({ fontLoaded: true });
-  }
   render() {
-    const { navigate } = this.props.navigation;
     return (
+      <View>
       <TouchableOpacity
-        onPress={ () => navigate(this.props.destination) }
         style = { styles.yearButtons }
       >
-        <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>18</Text>
+        <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>18</Text>
       </TouchableOpacity>
+      </View>
     );
   }
 }
