@@ -110,11 +110,6 @@ export class FindScreen extends React.Component {
                 { key: 'Zete' },
               ]}
                 renderItem = {({ item }) => (
-                  <View style = {{ paddingLeft: Dimensions.get('window').width / 30, paddingTop: Dimensions.get('window').height / 50 }}>
-                    <View style = { styles.optionButtons }>
-                      <Text style = { this.state.fontLoaded ? styles.optionsTextPlace : styles.optionsTextPlaceElse }>{ item.key }</Text>
-                    </View>
-
                   <TouchableOpacity onPress={() =>
                     this.state.placePressed = !this.state.placePressed
                   }>
@@ -124,7 +119,6 @@ export class FindScreen extends React.Component {
                       </View>
                     </View>
                   </TouchableOpacity>
-                  </View>
                 )}
               />
             </View>

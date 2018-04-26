@@ -17,7 +17,7 @@ export default class YearButton extends React.Component {
         onPress={ () => navigate(this.props.destination) }
         style = { styles.yearButtons }
       >
-          <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>18</Text>
+        <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>18</Text>
       </TouchableOpacity>
     );
   }

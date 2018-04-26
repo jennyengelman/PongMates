@@ -59,7 +59,14 @@ export class CreateScreen extends React.Component {
                   <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>19</Text>
                 </View>
               </TouchableOpacity>
-              <YearButton font={ this.state.fontLoaded }/>
+              <TouchableOpacity onPress={() =>
+                this.state.yearPressed = !this.state.yearPressed
+                }
+              >
+                <View style = { this.state.yearPressed ? styles.yearButtons : styles.yearButtonsUn }>
+                  <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>18</Text>
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
