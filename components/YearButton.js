@@ -7,23 +7,23 @@ export default class YearButton extends React.Component {
     return (
       <View style = {{ flexDirection: 'row', width: '13%' }}>
         <TouchableOpacity
-          onPress={() => { this.state.pressed.21 = !this.state.pressed.21 }}
+          //onPress={() => { this.state.pressed.21 = !this.state.pressed.21 }}
           style = { styles.yearButtons }
         >
           <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>21</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => { this.state.pressed.20 = !this.state.pressed.20 }}
+          //onPress={() => { this.state.pressed.20 = !this.state.pressed.20 }}
           style = { styles.yearButtons }>
           <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>20</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => { this.state.pressed.19 = !this.state.pressed.19 }}
+          //onPress={() => { this.state.pressed.19 = !this.state.pressed.19 }}
           style = { styles.yearButtons }>
           <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>19</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => { this.state.pressed.18 = !this.state.pressed.18 }}
+          //onPress={() => { this.state.pressed.18 = !this.state.pressed.18 }}
           style = { styles.yearButtons }>
           <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>18</Text>
         </TouchableOpacity>

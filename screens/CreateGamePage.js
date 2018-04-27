@@ -13,33 +13,33 @@ export class CreateScreen extends React.Component {
       20: false,
       19: false,
       18: false,
-      AlphaPhiAlpha: false,
-      AlphaChi: false,
-      AlphaTheta: false,
-      AlphaPhi: false,
-      AlphaPiOmega: false,
-      AXiD: false,
-      Beta: false,
-      BG: false,
-      ChiDelt: false,
-      ChiGam: false,
-      EKT: false,
-      GDX: false,
-      Heorot: false,
-      Kappa: false,
-      KD: false,
-      KDE: false,
-      LambdaUpsilonLambda: false,
-      PhiDelt: false,
-      PhiTau: false,
-      PsiU: false,
-      SigEp: false,
-      SigNu: false,
-      SigmaDelt: false,
-      SigmaLambdaUpsilon: false,
-      Tabard: false,
-      TDX: false,
-      Zete: false,
+      'Alpha Phi Alpha': false,
+      'Alpha Chi': false,
+      'Alpha Theta': false,
+      'Alpha Phi': false,
+      'Alpha Pi Omega': false,
+      'AXiD': false,
+      'Beta': false,
+      'BG': false,
+      'Chi Delt': false,
+      'Chi Gam': false,
+      'EKT': false,
+      'GDX': false,
+      'Heorot': false,
+      'Kappa': false,
+      'KD': false,
+      'KDE': false,
+      'Lambda Upsilon Lambda': false,
+      'Phi Delt': false,
+      'Phi Tau': false,
+      'Psi U': false,
+      'Sig Ep': false,
+      'Sig Nu': false,
+      'Sigma Delt': false,
+      'Sigma Lambda Upsilon': false,
+      'Tabard': false,
+      'TDX': false,
+      'Zete': false,
     }],
   };
   async componentDidMount() {
@@ -82,6 +82,7 @@ export class CreateScreen extends React.Component {
               <FlatList
                 numColumns={2}
                 data = {[
+                  {key: 21},
                   { key: 'Alpha Phi Alpha' },
                   { key: 'Alpha Chi' },
                   { key: 'Alpha Theta' },
@@ -111,12 +112,11 @@ export class CreateScreen extends React.Component {
                   { key: 'Zete' },
                 ]}
                 renderItem = {({ item }) => (
-                  <TouchableOpacity onPress={() =>
-                    this.state.placePressed = !this.state.placePressed
-                  }>
+                  <TouchableOpacity>
                     <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
                       <View style = { styles.placeButtons }>
                         <Text style = { this.state.fontLoaded ? styles.optionsPlaceText : styles.optionsPlaceTextElse }>{ item.key }</Text>
+                        {/*<Text>{this.state.pressed.key}</Text>*/}
                       </View>
                     </View>
                   </TouchableOpacity>
