@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Dimensions }
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import YearButton from './../components/YearButton';
+import firebase from 'firebase';
 
 export class CreateScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -67,6 +68,7 @@ export class CreateScreen extends React.Component {
             </View>
             <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}/>
             <View style = { styles.yearBottom }>
+              //add renderYearButton function call, pass in key and state
               <YearButton font={ this.state.fontLoaded }/>
             </View>
           </View>
@@ -82,7 +84,6 @@ export class CreateScreen extends React.Component {
               <FlatList
                 numColumns={2}
                 data = {[
-                  {key: 21},
                   { key: 'Alpha Phi Alpha' },
                   { key: 'Alpha Chi' },
                   { key: 'Alpha Theta' },

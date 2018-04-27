@@ -2,7 +2,20 @@ import React from 'react';
 import { View, StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 
-export default class YearButton extends React.Component {
+export function renderYearButton(buttonList, buttonName, buttonPressed) {
+  return (
+    <View style = {{ flexDirection: 'row', width: '13%' }}>
+      <TouchableOpacity
+          //onPress={() => { this.state.pressed.21 = !this.state.pressed.21 }}
+        style = { buttonPressed ? styles.yearButtons : styles.yearButtonsUn }
+      >
+        <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>{buttonName}</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+{/*{this.props.year}
+  export default class YearButton extends React.Component {
   render() {
     return (
       <View style = {{ flexDirection: 'row', width: '13%' }}>
@@ -10,27 +23,14 @@ export default class YearButton extends React.Component {
           //onPress={() => { this.state.pressed.21 = !this.state.pressed.21 }}
           style = { styles.yearButtons }
         >
-          <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>21</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          //onPress={() => { this.state.pressed.20 = !this.state.pressed.20 }}
-          style = { styles.yearButtons }>
-          <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>20</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          //onPress={() => { this.state.pressed.19 = !this.state.pressed.19 }}
-          style = { styles.yearButtons }>
-          <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>19</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          //onPress={() => { this.state.pressed.18 = !this.state.pressed.18 }}
-          style = { styles.yearButtons }>
-          <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>18</Text>
+          <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>{this.props.year}</Text>
         </TouchableOpacity>
       </View>
     );
   }
-}
+}*/}
+//make function called renderYearButton, run within creategamepage (function, with data will render)
+//can control which specific button is pressed to highlight
 
 const styles = StyleSheet.create({
   optionsTimeText: {
