@@ -5,12 +5,19 @@ import { Font } from 'expo';
 export default class YearButton extends React.Component {
   render() {
     return (
-      <View>
-      <TouchableOpacity
-        style = { styles.yearButtons }
-      >
-        <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>18</Text>
-      </TouchableOpacity>
+      <View style = {{ flexDirection: 'row', width: '13%' }}>
+        <TouchableOpacity style = { styles.yearButtons }>
+          <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>21</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style = { styles.yearButtons }>
+          <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>20</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style = { styles.yearButtons }>
+          <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>19</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style = { styles.yearButtons }>
+          <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>18</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -32,10 +39,9 @@ const styles = StyleSheet.create({
   yearButtons: {
     borderRadius: 50,
     backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '180%',
+    width: '170%',
     height: 40,
+    marginRight: 10,
     shadowOpacity: 0.25,
     shadowRadius: 5,
     shadowColor: 'black',

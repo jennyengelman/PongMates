@@ -35,30 +35,6 @@ export class CreateScreen extends React.Component {
             </View>
             <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}/>
             <View style = { styles.yearBottom }>
-              <TouchableOpacity onPress={() =>
-                navigate('Home')
-                }
-              >
-                <View style = { this.state.yearPressed ? styles.yearButtons : styles.yearButtonsUn }>
-                  <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>21</Text>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() =>
-                navigate('Home')
-                }
-              >
-                <View style = { this.state.yearPressed ? styles.yearButtons : styles.yearButtonsUn }>
-                  <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>20</Text>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() =>
-                navigate('Home')
-                }
-              >
-                <View style = { this.state.yearPressed ? styles.yearButtons : styles.yearButtonsUn }>
-                  <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>19</Text>
-                </View>
-              </TouchableOpacity>
               <YearButton font={ this.state.fontLoaded }/>
             </View>
           </View>
@@ -203,17 +179,6 @@ const styles = StyleSheet.create({
     color: '#545454',
     textAlign: 'center',
   },
-  optionsTimeText: {
-    fontSize: Dimensions.get('window').height / 25,
-    fontFamily: 'source-sans-pro',
-    color: '#545454',
-    textAlign: 'center',
-  },
-  optionsTimeTextElse: {
-    fontSize: 30,
-    color: '#545454',
-    textAlign: 'center',
-  },
   place: {
     width: '90%',
     borderTopRightRadius: 7,
@@ -297,34 +262,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFC928',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
     height: Dimensions.get('window').height / 8,
-    paddingRight: 20,
-  },
-  yearButtons: {
-    borderRadius: 50,
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '180%',
-    height: 40,
-    shadowOpacity: 0.25,
-    shadowRadius: 5,
-    shadowColor: 'black',
-    shadowOffset: { height: 0, width: 0 },
-  },
-  yearButtonsUn: {
-    borderColor: '#545454',
-    borderRadius: 50,
-    borderWidth: 5,
-    backgroundColor: '#FFFFFF',
-    justifyContent: 'center',
-    width: '180%',
-    height: 40,
-    shadowOpacity: 0.25,
-    shadowRadius: 5,
-    shadowColor: 'black',
-    shadowOffset: { height: 0, width: 0 },
+    paddingLeft: 5,
   },
   yearTop: {
     backgroundColor: '#F2994A',
