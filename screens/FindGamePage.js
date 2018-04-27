@@ -40,7 +40,7 @@ export class FindScreen extends React.Component {
       Tabard: false,
       TDX: false,
       Zete: false,
-    }]
+    }],
   };
   async componentDidMount() {
     await Font.loadAsync({
