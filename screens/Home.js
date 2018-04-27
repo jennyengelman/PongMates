@@ -4,19 +4,6 @@ import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import Logo from './../components/Logo';
 
-var firebase = require("firebase");
-var config = {
-  apiKey: "AIzaSyAt5uKud6IAmerbJJmhWRxdxu6UksagTVg",
-  authDomain: "needone-c3edb.firebaseapp.com",
-  databaseURL: "https://needone-c3edb.firebaseio.com/",
-  storageBucket: "needone-c3edb.appspot.com",
-};
-firebase.initializeApp(config);
-var database = firebase.database();
-// Import Admin SDK
-var ref = database.ref();
-var usersRef = ref.child("users");
-
 export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
@@ -59,13 +46,8 @@ export class HomeScreen extends React.Component {
         </View>
         <View style = {{ height: '25%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
             <TouchableOpacity onPress={() =>
-              {if (this.state.text !== undefined) {
-                usersRef.push().set({
-                  username: this.state.text
-                })};
-                navigate('Selection')
-              }}
-            >
+              navigate('Selection')
+            }>
               <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
               tap to begin
               </Text>

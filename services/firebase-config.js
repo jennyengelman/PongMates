@@ -1,9 +1,11 @@
+import firebase from 'firebase'
+
 var config = {
-    apiKey: "<API_KEY>",
-    authDomain: "<PROJECT_ID>.firebaseapp.com",
-    databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
-    projectId: "<PROJECT_ID>",
-    storageBucket: "<BUCKET>.appspot.com",
-    messagingSenderId: "<SENDER_ID>",
-};
-firebase.initializeApp(config);
+    apiKey: "AIzaSyAt5uKud6IAmerbJJmhWRxdxu6UksagTVg",
+    authDomain: "needone-c3edb.firebaseapp.com",
+    databaseURL: "https://needone-c3edb.firebaseio.com",
+    projectId: "needone-c3edb",
+    storageBucket: "needone-c3edb.appspot.com",
+    messagingSenderId: "151558284870"
+  };
+  firebase.initializeApp(config);
