@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList, Button, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
-import * as firebase from 'firebase';
 
 export class CreateScreen extends React.Component {
   static navigationOptions = { header: null };
