@@ -23,7 +23,6 @@ export default class YearButton extends React.Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   optionsTimeText: {
     fontSize: Dimensions.get('window').height / 25,
