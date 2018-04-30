@@ -8,10 +8,10 @@ export class CreateScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
-    pressed: [{
+    pressed: {
       year: [],
       place: [],
-    }],
+    },
   };
   async componentDidMount() {
     await Font.loadAsync({
@@ -90,7 +90,7 @@ export class CreateScreen extends React.Component {
               <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
             </View>
-            <View style = {{ height: 3, width: '100%', backgroundColor: '#FFFFFF' }}/>
+            <View style = {{ height: 4, width: '100%', backgroundColor: '#FFFFFF' }}/>
             <View style = { styles.placeBottom }>
               <FlatList
                 numColumns={2}
