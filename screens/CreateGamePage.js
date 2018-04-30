@@ -24,18 +24,22 @@ export class CreateScreen extends React.Component {
     this.setState({ fontLoaded: true }) ;
   };
   pressedState = (item) => {
-    if (item = this.state.pressed.some) {
+    if (this.state.pressed.includes(item)) {
+      console.log('This item was pressed.')
       return true;
     }
     else {
+      console.log('This item was not pressed.')
       return false;
     }
   };
   pressedChange = (item) => {
-    if (this.state.pressed.indexOf(item) != -1) {
+    if (this.state.pressed.includes(item)) {
+      console.log('This item was already selected.')
       this.state.pressed.splice(this.state.pressed.indexOf(item));
     }
     else {
+      console.log('This item was not already selected.')
       this.state.pressed.push(item);
     }
   };
@@ -66,11 +70,12 @@ export class CreateScreen extends React.Component {
                 renderItem = {({ item }) => (
                   <TouchableOpacity
                     onPress={() => this.pressedChange(item.key)}
-                    style = { this.pressedState(item.key) ? styles.yearButtons : styles.yearButtonsUn }
                   >
-                  <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
-                    <View style = { styles.yearButtons }>
-                      <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>{ item.key }</Text>
+                  <View style = {{ paddingLeft: 5, paddingTop: 4, paddingBottom: 4 }}>
+                    <View style = { this.pressedState(item.key) ? styles.yearButtonsPressed : styles.yearButtons }>
+                      <View style = { styles.yearButtons }>
+                        <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>{ item.key }</Text>
+                      </View>
                     </View>
                   </View>
                   </TouchableOpacity>
@@ -170,7 +175,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#93E1FA',
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: '#fff',
+    borderColor: '#FFFFFF',
     borderWidth: 10,
     borderRadius: 5,
     width: '110%',
@@ -232,7 +237,7 @@ const styles = StyleSheet.create({
     width: '90%',
     borderTopRightRadius: 7,
     borderBottomRightRadius: 7,
-    borderColor: '#fff',
+    borderColor: '#FFFFFF',
     borderWidth: 5,
     marginLeft: -5,
   },
@@ -241,33 +246,34 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: Dimensions.get('window').height / 4,
     paddingTop: 5,
+    paddingLeft: 15,
+    alignItems: 'center',
   },
   placeButtons: {
     borderRadius: 50,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     width: Dimensions.get('window').width / 2.75,
     height: 40,
     shadowOpacity: 0.25,
     shadowRadius: 5,
-    shadowColor: 'black',
+    shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
     marginBottom: 7,
   },
-  placeButtonsUn: {
+  placeButtonsPressed: {
     borderColor: '#545454',
+    borderWidth: 10,
     borderRadius: 50,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     width: '45%',
     height: 40,
     shadowOpacity: 0.25,
     shadowRadius: 5,
-    shadowColor: 'black',
+    shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
-    marginBottom: 5,
+    marginBottom: 7,
   },
   placeTop: {
     backgroundColor: '#F2994A',
@@ -285,7 +291,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     shadowOpacity: 0.25,
     shadowRadius: 5,
-    shadowColor: 'black',
+    shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
   },
   postButtonText: {
@@ -310,35 +316,33 @@ const styles = StyleSheet.create({
   yearBottom: {
     backgroundColor: '#FFC928',
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-around',
     height: Dimensions.get('window').height / 6,
-    paddingLeft: 5,
+    paddingLeft: 15,
+    alignItems: 'center',
   },
   yearButtons: {
     borderRadius: 50,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    width: Dimensions.get('window').width / 2.75,
+    height: 40,
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
+    shadowColor: '#444444',
+    shadowOffset: { height: 0, width: 0 },
+  },
+  yearButtonsPressed: {
+    borderColor: '#545454',
+    borderRadius: 50,
+    borderWidth: 10,
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     width: Dimensions.get('window').width / 2.75,
     height: 40,
     shadowOpacity: 0.25,
     shadowRadius: 5,
-    shadowColor: 'black',
-    shadowOffset: { height: 0, width: 0 },
-    marginBottom: 7,
-  },
-  yearButtonsUn: {
-    borderColor: '#545454',
-    borderWidth: 5,
-    borderRadius: 50,
-    backgroundColor: '#FFFFFF',
-    width: Dimensions.get('window').width / 5,
-    height: 40,
-    //marginRight: 10,
-    shadowOpacity: 0.25,
-    shadowRadius: 5,
-    shadowColor: 'black',
+    shadowColor: '#444444',
     shadowOffset: { height: 0, width: 0 },
   },
   yearTop: {
