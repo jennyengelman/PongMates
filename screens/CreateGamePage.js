@@ -10,37 +10,8 @@ export class CreateScreen extends React.Component {
   state = {
     fontLoaded: false,
     pressed: [{
-      21: false,
-      20: false,
-      19: false,
-      18: false,
-      'Alpha Phi Alpha': false,
-      'Alpha Chi': false,
-      'Alpha Theta': false,
-      'Alpha Phi': false,
-      'Alpha Pi Omega': false,
-      'AXiD': false,
-      'Beta': false,
-      'BG': false,
-      'Chi Delt': false,
-      'Chi Gam': false,
-      'EKT': false,
-      'GDX': false,
-      'Heorot': false,
-      'Kappa': false,
-      'KD': false,
-      'KDE': false,
-      'Lambda Upsilon Lambda': false,
-      'Phi Delt': false,
-      'Phi Tau': false,
-      'Psi U': false,
-      'Sig Ep': false,
-      'Sig Nu': false,
-      'Sigma Delt': false,
-      'Sigma Lambda Upsilon': false,
-      'Tabard': false,
-      'TDX': false,
-      'Zete': false,
+      year: [],
+      place: [],
     }],
   };
   async componentDidMount() {
@@ -52,7 +23,23 @@ export class CreateScreen extends React.Component {
       'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
      });
     this.setState({ fontLoaded: true }) ;
-  }
+  };
+  pressedState = (item) => {
+    if (item = this.state.pressed.some) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  };
+  pressedChange = (item) => {
+    if (this.state.pressed.indexOf(item) != -1) {
+      this.state.pressed.splice(this.state.pressed.indexOf(item));
+    }
+    else {
+      this.state.pressed.push(item);
+    }
+  };
   render() {
     const { navigate } = this.props.navigation
     return (
@@ -68,8 +55,28 @@ export class CreateScreen extends React.Component {
             </View>
             <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}/>
             <View style = { styles.yearBottom }>
-              //add renderYearButton function call, pass in key and state
-              <YearButton font={ this.state.fontLoaded }/>
+              <FlatList
+                numColumns={2}
+                scrollEnabled={false}
+                data = {[
+                  { key: 21 },
+                  { key: 20 },
+                  { key: 19 },
+                  { key: 18 },
+                ]}
+                renderItem = {({ item }) => (
+                  <TouchableOpacity
+                    onPress={() => this.pressedChange(item.key)}
+                    style = { this.pressedState(item.key) ? styles.yearButtons : styles.yearButtonsUn }
+                  >
+                  <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
+                    <View style = { styles.yearButtons }>
+                      <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>{ item.key }</Text>
+                    </View>
+                  </View>
+                  </TouchableOpacity>
+                )}
+              />
             </View>
           </View>
         </View>
@@ -117,7 +124,6 @@ export class CreateScreen extends React.Component {
                     <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
                       <View style = { styles.placeButtons }>
                         <Text style = { this.state.fontLoaded ? styles.optionsPlaceText : styles.optionsPlaceTextElse }>{ item.key }</Text>
-                        {/*<Text>{this.state.pressed.key}</Text>*/}
                       </View>
                     </View>
                   </TouchableOpacity>
@@ -212,6 +218,17 @@ const styles = StyleSheet.create({
     color: '#545454',
     textAlign: 'center',
   },
+  optionsTimeText: {
+    fontSize: Dimensions.get('window').height / 25,
+    fontFamily: 'source-sans-pro',
+    color: '#545454',
+    textAlign: 'center',
+  },
+  optionsTimeTextElse: {
+    fontSize: 30,
+    color: '#545454',
+    textAlign: 'center',
+  },
   place: {
     width: '90%',
     borderTopRightRadius: 7,
@@ -295,9 +312,35 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFC928',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    height: Dimensions.get('window').height / 8,
+    justifyContent: 'space-around',
+    height: Dimensions.get('window').height / 6,
     paddingLeft: 5,
+  },
+  yearButtons: {
+    borderRadius: 50,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: Dimensions.get('window').width / 2.75,
+    height: 40,
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
+    marginBottom: 7,
+  },
+  yearButtonsUn: {
+    borderColor: '#545454',
+    borderWidth: 5,
+    borderRadius: 50,
+    backgroundColor: '#FFFFFF',
+    width: Dimensions.get('window').width / 5,
+    height: 40,
+    //marginRight: 10,
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    shadowColor: 'black',
+    shadowOffset: { height: 0, width: 0 },
   },
   yearTop: {
     backgroundColor: '#F2994A',
