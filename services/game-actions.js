@@ -1,11 +1,11 @@
 import firebase from 'firebase'
 
-export function gameUpdate(game) {
+export function gameUpdate(place, year) {
   return new Promise((resolve, reject) => {
     firebase.database().ref(`games/${game.id}`).set({
       place: game.place,
       year: game.year,
-      time: game.time,
+      //time: game.time,
     })
     resolve(true)
   })

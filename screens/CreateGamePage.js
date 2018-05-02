@@ -24,23 +24,26 @@ export class CreateScreen extends React.Component {
     this.setState({ fontLoaded: true }) ;
   };
   pressedState = (item) => {
-    if (this.state.pressed.includes(item)) {
-      console.log('This item was pressed.')
-      return true;
+    for (var year in this.state.pressed.year) {
+      if (year == item) {
+        console.log('This item was pressed.')
+        return true;
+      }
     }
-    else {
-      console.log('This item was not pressed.')
-      return false;
-    }
+    return false;
   };
   pressedChange = (item) => {
-    if (this.state.pressed.includes(item)) {
-      console.log('This item was already selected.')
-      this.state.pressed.splice(this.state.pressed.indexOf(item));
+    for (var year in this.state.pressed.year) {
+      if (year == item) {
+        console.log('This item was already selected.')
+        this.state.pressed.splice(this.state.pressed.indexOf(item));
+      }
+    }
+    if (item == '21' || item == '20' || item == '19' || item == '18') {
+      this.state.pressed.year.push(item);
     }
     else {
-      console.log('This item was not already selected.')
-      this.state.pressed.push(item);
+      this.state.pressed.place.push(item);
     }
   };
   render() {
@@ -143,6 +146,8 @@ export class CreateScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
+            createGame()
+            gameUpdate(this.state.pressed.place, this.state.pressed.year)
             navigate('Home')
           }>
             <View style = { styles.postButton }>
@@ -335,13 +340,13 @@ const styles = StyleSheet.create({
   yearButtonsPressed: {
     borderColor: '#545454',
     borderRadius: 50,
-    borderWidth: 10,
+    borderWidth: 5,
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     width: Dimensions.get('window').width / 2.75,
     height: 40,
     shadowOpacity: 0.25,
-    shadowRadius: 5,
+    shadowRadius: 3,
     shadowColor: '#444444',
     shadowOffset: { height: 0, width: 0 },
   },
