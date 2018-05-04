@@ -7,39 +7,10 @@ export class FindScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
-    pressed: [{
-      21: false,
-      20: false,
-      19: false,
-      18: false,
-      AlphaPhiAlpha: false,
-      AlphaChi: false,
-      AlphaTheta: false,
-      AlphaPhi: false,
-      AlphaPiOmega: false,
-      AXiD: false,
-      Beta: false,
-      BG: false,
-      ChiDelt: false,
-      ChiGam: false,
-      EKT: false,
-      GDX: false,
-      Heorot: false,
-      Kappa: false,
-      KD: false,
-      KDE: false,
-      LambdaUpsilonLambda: false,
-      PhiDelt: false,
-      PhiTau: false,
-      PsiU: false,
-      SigEp: false,
-      SigNu: false,
-      SigmaDelt: false,
-      SigmaLambdaUpsilon: false,
-      Tabard: false,
-      TDX: false,
-      Zete: false,
-    }],
+    pressed: {
+      year: [],
+      place: [],
+    }
   };
   async componentDidMount() {
     await Font.loadAsync({

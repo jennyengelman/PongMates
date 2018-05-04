@@ -161,7 +161,7 @@ export class CreateScreen extends React.Component {
               myGameKey = generateGameKey()
               createGame({id: myGameKey, place: this.state.place, year: this.state.year})
             })
-            navigate('Home')
+            
           }>
             <View style = { styles.postButton }>
               <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>

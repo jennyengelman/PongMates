@@ -18,6 +18,7 @@ export function createGame(gameID, place, year) {
       id: game.id,
       place: game.place,
       year: game.year,
+      timestamp: game.timestamp,
     })
     resolve(true)
   }
