@@ -2,6 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
+import firebase from 'firebase';
+import * as firebaseConfig from './../services/firebase-config';
+import moment from 'moment';
+import { createGame, generateGameKey } from './../services/game-actions';
 
 export class FindScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -21,7 +25,40 @@ export class FindScreen extends React.Component {
       'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
      });
     this.setState({ fontLoaded: true }) ;
-  }
+  };
+  check = (item, index, arr) => {
+    if (item == arr[index]) {
+      return true
+    }
+  };
+  pressedYearState = (item) => {
+    if (!this.state.pressed.year.forEach(check(item))) {
+      return false;
+    }
+    return true;
+  };
+  pressedPlaceState = (item) => {
+    if (!this.state.pressed.place.forEach(check(item))) {
+      return false;
+    }
+    return true;
+  };
+  pressedYearChange = (item) => {
+    if (!this.state.pressed.year.forEach(check(item))) {
+      this.state.pressed.year.splice(item);
+    }
+    else {
+      this.state.pressed.year.push(item);
+    }
+  };
+  pressedPlaceChange = (item) => {
+    if (!this.state.pressed.place.forEach(check(item))) {
+      this.state.pressed.place.splice(item);
+    }
+    else {
+      this.state.pressed.place.push(item);
+    }
+  };
   render() {
     const { navigate } = this.props.navigation
     return (
@@ -37,7 +74,27 @@ export class FindScreen extends React.Component {
             </View>
             <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}/>
             <View style = { styles.yearBottom }>
-              <YearButton font={ this.state.fontLoaded }/>
+              <FlatList
+                numColumns={2}
+                scrollEnabled={false}
+                data = {[
+                  { key: 21 },
+                  { key: 20 },
+                  { key: 19 },
+                  { key: 18 },
+                ]}
+                renderItem = {({ item }) => (
+                  <TouchableOpacity
+                    onPress={() => this.state.year.pressedYearChange }
+                  >
+                  <View style = {{ paddingLeft: 5, paddingTop: 4, paddingBottom: 4 }}>
+                    <View style = { this.state.pressed.year.pressedYearState ? styles.yearButtonsPressed : styles.yearButtons }>
+                      <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>{ item.key }</Text>
+                    </View>
+                  </View>
+                  </TouchableOpacity>
+                )}
+              />
             </View>
           </View>
         </View>
@@ -47,7 +104,7 @@ export class FindScreen extends React.Component {
               <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
             </View>
-            <View style = {{ height: 3, width: '100%', backgroundColor: '#FFFFFF' }}/>
+            <View style = {{ height: 4, width: '100%', backgroundColor: '#FFFFFF' }}/>
             <View style = { styles.placeBottom }>
               <FlatList
                 numColumns={2}
@@ -81,9 +138,7 @@ export class FindScreen extends React.Component {
                   { key: 'Zete' },
                 ]}
                 renderItem = {({ item }) => (
-                  <TouchableOpacity onPress={() =>
-                    this.state.placePressed = !this.state.placePressed
-                  }>
+                  <TouchableOpacity>
                     <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
                       <View style = { styles.placeButtons }>
                         <Text style = { this.state.fontLoaded ? styles.optionsPlaceText : styles.optionsPlaceTextElse }>{ item.key }</Text>
@@ -102,7 +157,10 @@ export class FindScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
-            navigate('Home')
+            generateGameKey().then((key) => {
+              createGame({id: key, place: this.state.place, year: this.state.year})
+              navigate('Home')
+            })
           }>
             <View style = { styles.postButton }>
               <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
@@ -134,7 +192,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#93E1FA',
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: '#fff',
+    borderColor: '#FFFFFF',
     borderWidth: 10,
     borderRadius: 5,
     width: '110%',
@@ -181,11 +239,22 @@ const styles = StyleSheet.create({
     color: '#545454',
     textAlign: 'center',
   },
+  optionsTimeText: {
+    fontSize: Dimensions.get('window').height / 25,
+    fontFamily: 'source-sans-pro',
+    color: '#545454',
+    textAlign: 'center',
+  },
+  optionsTimeTextElse: {
+    fontSize: 30,
+    color: '#545454',
+    textAlign: 'center',
+  },
   place: {
     width: '90%',
     borderTopRightRadius: 7,
     borderBottomRightRadius: 7,
-    borderColor: '#fff',
+    borderColor: '#FFFFFF',
     borderWidth: 5,
     marginLeft: -5,
   },
@@ -194,33 +263,34 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: Dimensions.get('window').height / 4,
     paddingTop: 5,
+    paddingLeft: 15,
+    alignItems: 'center',
   },
   placeButtons: {
     borderRadius: 50,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     width: Dimensions.get('window').width / 2.75,
     height: 40,
     shadowOpacity: 0.25,
     shadowRadius: 5,
-    shadowColor: 'black',
+    shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
     marginBottom: 7,
   },
-  placeButtonsUn: {
+  placeButtonsPressed: {
     borderColor: '#545454',
+    borderWidth: 10,
     borderRadius: 50,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     width: '45%',
     height: 40,
     shadowOpacity: 0.25,
     shadowRadius: 5,
-    shadowColor: 'black',
+    shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
-    marginBottom: 5,
+    marginBottom: 7,
   },
   placeTop: {
     backgroundColor: '#F2994A',
@@ -238,7 +308,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     shadowOpacity: 0.25,
     shadowRadius: 5,
-    shadowColor: 'black',
+    shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
   },
   postButtonText: {
@@ -263,10 +333,34 @@ const styles = StyleSheet.create({
   yearBottom: {
     backgroundColor: '#FFC928',
     flexDirection: 'row',
+    justifyContent: 'space-around',
+    height: Dimensions.get('window').height / 6,
+    paddingLeft: 15,
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    height: Dimensions.get('window').height / 8,
-    paddingLeft: 5,
+  },
+  yearButtons: {
+    borderRadius: 50,
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    width: Dimensions.get('window').width / 2.75,
+    height: 40,
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
+    shadowColor: '#444444',
+    shadowOffset: { height: 0, width: 0 },
+  },
+  yearButtonsPressed: {
+    borderColor: '#545454',
+    borderRadius: 50,
+    borderWidth: 5,
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    width: Dimensions.get('window').width / 2.75,
+    height: 40,
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
+    shadowColor: '#444444',
+    shadowOffset: { height: 0, width: 0 },
   },
   yearTop: {
     backgroundColor: '#F2994A',
