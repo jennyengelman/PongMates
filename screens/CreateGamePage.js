@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Dimensions }
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import firebase from 'firebase';
+import moment from 'moment';
 
 export class CreateScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -23,41 +24,38 @@ export class CreateScreen extends React.Component {
      });
     this.setState({ fontLoaded: true }) ;
   };
-  pressedYearState = (item) => {
-    var arrayLength = this.state.pressed.year.length;
-    for (var i = 0; i < arrayLength; i++) {
-      if (this.state.pressed.year[i] == item) {
-        return true;
-      }
+  check = (item, index, arr) => {
+    if (item == arr[index]) {
+      return true
     }
-    return false;
+  }
+  pressedYearState = (item) => {
+    if (!this.state.pressed.year.forEach(check(item))) {
+      return false;
+    }
+    return true;
   };
   pressedPlaceState = (item) => {
-    var arrayLength = this.state.pressed.place.length;
-    for (var i = 0; i < arrayLength; i++) {
-      if (this.state.pressed.place[i] == item) {
-        return true;
-      }
+    if (!this.state.pressed.place.forEach(check(item))) {
+      return false;
     }
-    return false;
+    return true;
   };
   pressedYearChange = (item) => {
-    var arrayLength = this.state.pressed.year.length;
-    for (var i = 0; i < arrayLength; i++) {
-      if (this.state.pressed.year[i] == item) {
-        this.state.pressed.year.splice(this.state.pressed.year[i]);
-      }
+    if (!this.state.pressed.year.forEach(check(item))) {
+      this.state.pressed.year.splice(item);
     }
-    this.state.pressed.year.push(item);
+    else {
+      this.state.pressed.year.push(item);
+    }
   };
   pressedPlaceChange = (item) => {
-    var arrayLength = this.state.pressed.place.length;
-    for (var i = 0; i < arrayLength; i++) {
-      if (this.state.pressed.place[i] == item) {
-        this.state.pressed.place.splice(this.state.pressed.place[i]);
-      }
+    if (!this.state.pressed.place.forEach(check(item))) {
+      this.state.pressed.place.splice(item);
     }
-    this.state.pressed.place.push(item);
+    else {
+      this.state.pressed.place.push(item);
+    }
   };
   render() {
     const { navigate } = this.props.navigation
@@ -159,11 +157,10 @@ export class CreateScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
-            const gameKey = generateGameKey()
-            createGame()
-            gameUpdate(this.state.place, this.state.year, timestamp)
-            //createGame()
-            //gameUpdate(this.state.pressed.place, this.state.pressed.year)
+            generateUserKey().then((key) => {
+              myGameKey = generateGameKey()
+              createGame({id: myGameKey, place: this.state.place, year: this.state.year})
+            })
             navigate('Home')
           }>
             <View style = { styles.postButton }>

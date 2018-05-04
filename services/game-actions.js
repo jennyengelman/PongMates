@@ -1,39 +1,41 @@
 import firebase from 'firebase'
+import moment from 'moment';
 
-export function gameUpdate(place, year) {
-  return new Promise((resolve, reject) => {
-    firebase.database().ref(`games/${game.id}`).set({
-      place: game.place,
-      year: game.year,
-      timestamp: game.timestamp,
-    })
-    resolve(true)
-  })
-}
+// export function gameUpdate(place, year) {
+//   return new Promise((resolve, reject) => {
+//     firebase.database().ref(`games/${game.id}`).set({
+//       place: game.place,
+//       year: game.year,
+//       timestamp: game.timestamp,
+//     })
+//     resolve(true)
+//   })
+// }
 
-export function createGame(game) {
+export function createGame(gameID, place, year) {
   return new Promise((resolve, reject)) => {
     firebase.database().ref(`games/${game.id}`).set({
       id: game.id,
+      place: game.place,
+      year: game.year,
     })
     resolve(true)
   }
 }
 
-export function generateGameKey(game) {
+export function generateGameKey() {
   return new Promise((resolve, reject)) => {
-    firebase.database().ref().child('games').push().key
-    })
-    resolve(true)
-  }
+    var key = firebase.database().ref().child('games').push().key
+    resolve(key)
+  })
 }
 
 export function getGame(game) {
   return new Promise((resolve, reject)) => {
-    firebase.database().ref(`games/${game.id}`).get()
-    })
-    resolve(true)
-  }
+    firebase.database().ref(`games/${game.id}`).once('value').then(snapshot => {
+      resolve(snapshot.val())
+    });
+  })
 }
 
 export function deleteGame(game) {
