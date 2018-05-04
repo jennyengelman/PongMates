@@ -3,26 +3,16 @@ import { StyleSheet, Text, View, Button, Alert, Image, TextInput, Dimensions, To
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import Logo from './../components/Logo';
-
-var firebase = require("firebase");
-var config = {
-  apiKey: "AIzaSyAt5uKud6IAmerbJJmhWRxdxu6UksagTVg",
-  authDomain: "needone-c3edb.firebaseapp.com",
-  databaseURL: "https://needone-c3edb.firebaseio.com/",
-  storageBucket: "needone-c3edb.appspot.com",
-};
-firebase.initializeApp(config);
-var database = firebase.database();
-var ref = database.ref();
-var usersRef = ref.child("users");
-var name;
-
+import { generateUserKey, createUser, getUser } from './../services/user-actions'
+import firebase from 'firebase'
+import * as firebaseConfig from './../services/firebase-config'
+import moment from 'moment'
 
 export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
-    text: undefined,
+    text: '',
   };
   async componentDidMount() {
     await Font.loadAsync({
@@ -60,16 +50,14 @@ export class HomeScreen extends React.Component {
         </View>
         <View style = {{ height: '25%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
             <TouchableOpacity onPress={() =>
-              { if (this.state.text !== undefined) {
-                var newPostKey = usersRef.push().key;
-                database.ref("users/" + newPostKey).set({
-                  username: this.state.text,
-                });
-                database.ref("users/" + newPostKey).on("value", function(snapshot) {
-                  name = snapshot.val().username;
-                });
-                console.log(name);
-              };}}
+              { if (this.state.text !== '') {
+                generateUserKey().then((key) => {
+                  myKey = key
+                  createUser({id: myKey, name: this.state.text, year: 19})
+                  navigate('Selection', { id : myKey })
+                })
+              };}
+            }
             >
               <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
               tap to begin

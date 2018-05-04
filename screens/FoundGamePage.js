@@ -17,6 +17,7 @@ export class FoundScreen extends React.Component {
   }
   render() {
     const { navigate } = this.props.navigation
+    const userID = this.props.navigation.state.params.id
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
@@ -36,7 +37,7 @@ export class FoundScreen extends React.Component {
           </View>
           <View style = { styles.buttonContainer }>
             <TouchableOpacity onPress={() =>
-                navigate('Create')
+                navigate('Create', { id: userID })
               }
             >
               <View style = { styles.button }>
@@ -44,7 +45,7 @@ export class FoundScreen extends React.Component {
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>
-                navigate('Home') //for now
+                navigate('Home', { id: userID }) //for now
               }
             >
               <View style = { styles.button }>

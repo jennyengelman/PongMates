@@ -18,6 +18,7 @@ export class AboutScreen extends React.Component {
   }
   render() {
     const { navigate } = this.props.navigation
+    const userID = this.props.navigation.state.params.id
     return (
       <View style={ styles.container }>
         <View style = {{ backgroundColor: '#C2515B', height: '30%', justifyContent: 'center' }}>
@@ -41,6 +42,7 @@ export class AboutScreen extends React.Component {
             text={ 'Back' }
             navigation={ this.props.navigation }
             destination={ 'Selection' }
+            id = { userID }
           />
         </View>
       </View>

@@ -1,12 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, Fonts, Button, TouchableOpacity, Dimensions } from 'react-native';
 import { Font  } from 'expo';
+import { getUser } from './../services/user-actions'
+import firebase from 'firebase'
+import * as firebaseConfig from './../services/firebase-config'
 
 export class SelectionScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
    };
+  async componentWillMount() {
+    await getUser(this.props.navigation.state.params.id).then((user) => {
+      this.setState({user})
+      this.setState({name: this.state.user.name})
+    });
+  }
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
@@ -15,11 +24,12 @@ export class SelectionScreen extends React.Component {
    }
   render() {
     const { navigate } = this.props.navigation
+    const userID = this.props.navigation.state.params.id
     return (
       <View style = { styles.container }>
           <View style = {{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignContent: 'flex-start' }}>
             <TouchableOpacity onPress={() =>
-                navigate('Home')
+                navigate('Home', { id: userID })
               }
             >
               <View style = { styles.topButtons }>
@@ -27,7 +37,7 @@ export class SelectionScreen extends React.Component {
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>
-                navigate('About')
+                navigate('About', { id: userID })
               }
             >
               <View style = { styles.topButtons }>
@@ -40,19 +50,20 @@ export class SelectionScreen extends React.Component {
         <View style = {{  flex: 4 }}>
           <View style = {{ height: '50%', width: '100%' }}>
             <TouchableOpacity onPress={() =>
-                navigate('Create')
+                navigate('Create', { id : userID })
               } style = {{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}
             >
               <View style = { styles.postButton }>
                   <Text style = { this.state.fontLoaded ? styles.postFontStyle : styles.anything }>
                     CREATE A GAME
                   </Text>
+                  <Text> This is a test to see that {this.state.name} is properly registered </Text>
               </View>
             </TouchableOpacity>
           </View>
           <View style = {{ height: '50%', width: '100%' }}>
             <TouchableOpacity onPress={() =>
-              navigate('Find')}
+              navigate('Find', { id : userID })}
               style = {{ flex: 1, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
               <View style = { styles.findButton }>
                   <Text style = { this.state.fontLoaded ? styles.findFontStyle : styles.anything }>

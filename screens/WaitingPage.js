@@ -21,6 +21,7 @@ export class WaitingScreen extends React.Component {
   }
   render() {
     const { navigate } = this.props.navigation
+    const userID = this.props.navigation.state.params.id
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
@@ -42,6 +43,7 @@ export class WaitingScreen extends React.Component {
             text={ 'Delete\nRequest' }
             navigation={ this.props.navigation }
             destination={ 'Create' }
+            id = { userID }
           />
         </View>
       </View>

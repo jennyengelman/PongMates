@@ -19,6 +19,7 @@ export class FindScreen extends React.Component {
   }
   render() {
     const { navigate } = this.props.navigation
+    const userID = this.props.navigation.state.params.id
     return (
       <View style = { styles.container }>
         <View style = { styles.find }>
@@ -95,12 +96,12 @@ export class FindScreen extends React.Component {
         </View>
         <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '7%' }}>
           <TouchableOpacity onPress={() =>
-            navigate('Home')
+            navigate('Home', { id: userID })
           }>
             <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
-            navigate('Home')
+            navigate('Home', { id: userID })
           }>
             <View style = { styles.postButton }>
               <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>

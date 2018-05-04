@@ -18,6 +18,7 @@ export class NoGamesFoundScreen extends React.Component {
   }
   render() {
     const { navigate } = this.props.navigation
+    const userID = this.props.navigation.state.params.id
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
@@ -37,6 +38,7 @@ export class NoGamesFoundScreen extends React.Component {
               navigation = { this.props.navigation }
               destination = { 'Home' }
               style = {{ paddingRight: '10%' }}
+              id = { userID }
             />
             <View style = {{ width: '15%' }}/>
             <PongButton
@@ -44,6 +46,7 @@ export class NoGamesFoundScreen extends React.Component {
               text = { 'Change Filter' }
               navigation = { this.props.navigation }
               destination = { 'Find' }
+              id = { userID }
             />
           </View>
         </View>
