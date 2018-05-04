@@ -5,7 +5,7 @@ export function gameUpdate(place, year) {
     firebase.database().ref(`games/${game.id}`).set({
       place: game.place,
       year: game.year,
-      //time: game.time,
+      timestamp: game.timestamp,
     })
     resolve(true)
   })
@@ -30,7 +30,7 @@ export function generateGameKey(game) {
 
 export function getGame(game) {
   return new Promise((resolve, reject)) => {
-    firebase.database().ref(`games/${game.id}`)
+    firebase.database().ref(`games/${game.id}`).get()
     })
     resolve(true)
   }

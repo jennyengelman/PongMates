@@ -23,28 +23,41 @@ export class CreateScreen extends React.Component {
      });
     this.setState({ fontLoaded: true }) ;
   };
-  pressedState = (item) => {
-    for (var year in this.state.pressed.year) {
-      if (year == item) {
-        console.log('This item was pressed.')
+  pressedYearState = (item) => {
+    var arrayLength = this.state.pressed.year.length;
+    for (var i = 0; i < arrayLength; i++) {
+      if (this.state.pressed.year[i] == item) {
         return true;
       }
     }
     return false;
   };
-  pressedChange = (item) => {
-    for (var year in this.state.pressed.year) {
-      if (year == item) {
-        console.log('This item was already selected.')
-        this.state.pressed.splice(this.state.pressed.indexOf(item));
+  pressedPlaceState = (item) => {
+    var arrayLength = this.state.pressed.place.length;
+    for (var i = 0; i < arrayLength; i++) {
+      if (this.state.pressed.place[i] == item) {
+        return true;
       }
     }
-    if (item == '21' || item == '20' || item == '19' || item == '18') {
-      this.state.pressed.year.push(item);
+    return false;
+  };
+  pressedYearChange = (item) => {
+    var arrayLength = this.state.pressed.year.length;
+    for (var i = 0; i < arrayLength; i++) {
+      if (this.state.pressed.year[i] == item) {
+        this.state.pressed.year.splice(this.state.pressed.year[i]);
+      }
     }
-    else {
-      this.state.pressed.place.push(item);
+    this.state.pressed.year.push(item);
+  };
+  pressedPlaceChange = (item) => {
+    var arrayLength = this.state.pressed.place.length;
+    for (var i = 0; i < arrayLength; i++) {
+      if (this.state.pressed.place[i] == item) {
+        this.state.pressed.place.splice(this.state.pressed.place[i]);
+      }
     }
+    this.state.pressed.place.push(item);
   };
   render() {
     const { navigate } = this.props.navigation
@@ -146,8 +159,11 @@ export class CreateScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
+            const gameKey = generateGameKey()
             createGame()
-            gameUpdate(this.state.pressed.place, this.state.pressed.year)
+            gameUpdate(this.state.place, this.state.year, timestamp)
+            //createGame()
+            //gameUpdate(this.state.pressed.place, this.state.pressed.year)
             navigate('Home')
           }>
             <View style = { styles.postButton }>
