@@ -4,7 +4,6 @@ import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import firebase from 'firebase';
 import * as firebaseConfig from './../services/firebase-config';
-import moment from 'moment';
 import { createGame, generateGameKey } from './../services/game-actions';
 
 export class CreateScreen extends React.Component {

@@ -4,8 +4,6 @@ import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import firebase from 'firebase';
 import * as firebaseConfig from './../services/firebase-config';
-import moment from 'moment';
-import { createGame, generateGameKey } from './../services/game-actions';
 
 export class FindScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -157,10 +155,7 @@ export class FindScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
-            generateGameKey().then((key) => {
-              createGame({id: key, place: this.state.place, year: this.state.year})
-              navigate('Home')
-            })
+            navigate('Home')
           }>
             <View style = { styles.postButton }>
               <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
