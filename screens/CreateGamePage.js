@@ -3,7 +3,9 @@ import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Dimensions }
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import firebase from 'firebase';
+import * as firebaseConfig from './../services/firebase-config';
 import moment from 'moment';
+import { createGame, generateGameKey } from './../services/game-actions';
 
 export class CreateScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -12,7 +14,7 @@ export class CreateScreen extends React.Component {
     pressed: {
       year: [],
       place: [],
-    },
+    }
   };
   async componentDidMount() {
     await Font.loadAsync({
@@ -28,7 +30,7 @@ export class CreateScreen extends React.Component {
     if (item == arr[index]) {
       return true
     }
-  }
+  };
   pressedYearState = (item) => {
     if (!this.state.pressed.year.forEach(check(item))) {
       return false;
@@ -83,13 +85,11 @@ export class CreateScreen extends React.Component {
                 ]}
                 renderItem = {({ item }) => (
                   <TouchableOpacity
-                    onPress={() => this.pressedChange(item.key)}
+                    onPress={() => this.state.year.pressedYearChange }
                   >
                   <View style = {{ paddingLeft: 5, paddingTop: 4, paddingBottom: 4 }}>
-                    <View style = { this.pressedState(item.key) ? styles.yearButtonsPressed : styles.yearButtons }>
-                      <View style = { styles.yearButtons }>
-                        <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>{ item.key }</Text>
-                      </View>
+                    <View style = { this.state.pressed.year.pressedYearState ? styles.yearButtonsPressed : styles.yearButtons }>
+                      <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>{ item.key }</Text>
                     </View>
                   </View>
                   </TouchableOpacity>
@@ -157,11 +157,10 @@ export class CreateScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
-            generateUserKey().then((key) => {
-              myGameKey = generateGameKey()
-              createGame({id: myGameKey, place: this.state.place, year: this.state.year})
+            generateGameKey().then((key) => {
+              createGame({id: key, place: this.state.place, year: this.state.year})
+              navigate('Home')
             })
-            
           }>
             <View style = { styles.postButton }>
               <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
