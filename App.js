@@ -11,6 +11,8 @@ import { FindScreen } from './screens/FindGamePage';
 import { WaitingScreen } from './screens/WaitingPage';
 import { FoundScreen } from './screens/FoundGamePage';
 import { FoundAPartnerScreen } from './screens/FoundAPartner';
+import { Actions } from './services/automated-actions';
+import * as firebaseConfig from './services/firebase-config'
 
 const RootStack = StackNavigator({
   Home: { screen: HomeScreen },
