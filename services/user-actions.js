@@ -13,3 +13,11 @@ export function createUser(user) {
     resolve{true}
   })
 }
+
+export function getGame(gameId) {
+  return new Promise((resolve, reject) => {
+    firebase.database().ref(`games/${id}`).once('value').then(snapshot => {
+      resolve(snapshot.val())
+    });
+  })
+}

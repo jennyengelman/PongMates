@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Dimensions, Text, View, Image } from 'react-native';
 import PongButton from './../components/PongButton';
 import { Font } from 'expo';
+import { getGame } from './../services/user-actions'
 
 export class MeetMatch extends React.Component {
 
