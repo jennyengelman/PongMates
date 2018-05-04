@@ -10,6 +10,14 @@ export class MeetMatch extends React.Component {
   state = {
     fontLoaded: false,
   };
+
+  componentWillMount() {
+    const gameId = this.props.navigation.state.params.id
+    getGame(gameId).then((game) => {
+      this.setState({game})
+      this.setState({name: this.state.game.name, place: this.state.})
+    });
+  }
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble': require('./../assets/fonts/Double_Bubble_shadow.otf'),
@@ -28,7 +36,7 @@ export class MeetMatch extends React.Component {
           <Image source = { require('./../assets/match.png') } style = { styles.matchImageStyle }/>
           <View style = { styles.details }>
             <Text style = { this.state.fontLoaded ? styles.detailText : styles.anything }>
-              Name:{'\n'}Place:
+              Name: {this.state.name} {'\n'}Place:
             </Text>
           </View>
         </View>

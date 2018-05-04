@@ -8,7 +8,7 @@ let checkDatabase = schedule.scheduleJob('* * */1 * *', () => {
         var now = moment();
         var userTime = snapshot.val()[key].timestamp;
         var converted = moment.unix(userTime);
-        if(now.diff(converted, 'hours') > 12)
+        if(now.diff(converted, 'hours') > 23)
           firebase.database().ref(`/games/${key}`).remove()
       }
   });
