@@ -83,7 +83,7 @@ export class FindScreen extends React.Component {
                 ]}
                 renderItem = {({ item }) => (
                   <TouchableOpacity
-                    onPress={() => this.state.year.pressedYearChange }
+                    onPress={() => this.pressedYearChange(item.key) }
                   >
                   <View style = {{ paddingLeft: 5, paddingTop: 4, paddingBottom: 4 }}>
                     <View style = { this.state.pressed.year.pressedYearState ? styles.yearButtonsPressed : styles.yearButtons }>

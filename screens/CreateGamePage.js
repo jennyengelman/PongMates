@@ -25,37 +25,54 @@ export class CreateScreen extends React.Component {
      });
     this.setState({ fontLoaded: true }) ;
   };
-  check = (item, index, arr) => {
-    if (item == arr[index]) {
-      return true
-    }
+  pressedYearState = (value) => {
+    var isTrue = false;
+    this.state.pressed.year.forEach((item) => {
+      if (this.item == value) {
+        isTrue = true;
+      }
+    })
+    return isTrue;
   };
-  pressedYearState = (item) => {
-    if (!this.state.pressed.year.forEach(check(item))) {
-      return false;
-    }
-    return true;
+  pressedPlaceState = (value) => {
+    var isTrue = false;
+    this.state.pressed.place.forEach((item) => {
+      if (this.item == value) {
+        isTrue = true;
+      }
+    })
+    return isTrue;
   };
-  pressedPlaceState = (item) => {
-    if (!this.state.pressed.place.forEach(check(item))) {
-      return false;
-    }
-    return true;
-  };
-  pressedYearChange = (item) => {
-    if (!this.state.pressed.year.forEach(check(item))) {
-      this.state.pressed.year.splice(item);
+  pressedYearChange = (value) => {
+    var isIn = false;
+    var idx = 0;
+    this.state.pressed.year.forEach((item, index) => {
+      if (value == this.item) {
+        isIn = true;
+        idx = index;
+      }
+    })
+    if (isIn) {
+      this.state.pressed.year.splice(idx);
     }
     else {
-      this.state.pressed.year.push(item);
+      this.state.pressed.year.push(value);
     }
   };
-  pressedPlaceChange = (item) => {
-    if (!this.state.pressed.place.forEach(check(item))) {
-      this.state.pressed.place.splice(item);
+  pressedPlaceChange = (value) => {
+    var isIn = false;
+    var idx = 0;
+    this.state.pressed.place.forEach((item, index) => {
+      if (value == this.item) {
+        isIn = true;
+        idx = index;
+      }
+    })
+    if (isIn) {
+      this.state.pressed.place.splice(idx);
     }
     else {
-      this.state.pressed.place.push(item);
+      this.state.pressed.place.push(value);
     }
   };
   render() {
@@ -83,12 +100,12 @@ export class CreateScreen extends React.Component {
                   { key: 18 },
                 ]}
                 renderItem = {({ item }) => (
-                  <TouchableOpacity
-                    onPress={() => this.state.year.pressedYearChange }
-                  >
+                  <TouchableOpacity onPress={() =>
+                    this.pressedYearChange(item.key)
+                  }>
                   <View style = {{ paddingLeft: 5, paddingTop: 4, paddingBottom: 4 }}>
-                    <View style = { this.state.pressed.year.pressedYearState ? styles.yearButtonsPressed : styles.yearButtons }>
-                      <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>{ item.key }</Text>
+                    <View style = { this.pressedYearState ? styles.yearButtonsPressed : styles.yearButtons }>
+                      <Text style = { this.props.font ? styles.optionsYearText : styles.optionsYearTextElse }>{ item.key }</Text>
                     </View>
                   </View>
                   </TouchableOpacity>
@@ -137,9 +154,11 @@ export class CreateScreen extends React.Component {
                   { key: 'Zete' },
                 ]}
                 renderItem = {({ item }) => (
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() =>
+                    this.pressedPlaceChange(item.key)
+                  }>
                     <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
-                      <View style = { styles.placeButtons }>
+                      <View style = { this.pressedPlaceState ? styles.placeButtonsPressed : styles.placeButtons }>
                         <Text style = { this.state.fontLoaded ? styles.optionsPlaceText : styles.optionsPlaceTextElse }>{ item.key }</Text>
                       </View>
                     </View>
@@ -238,13 +257,13 @@ const styles = StyleSheet.create({
     color: '#545454',
     textAlign: 'center',
   },
-  optionsTimeText: {
+  optionsYearText: {
     fontSize: Dimensions.get('window').height / 25,
     fontFamily: 'source-sans-pro',
-    color: '#545454',
+    color: '#93E1FA',
     textAlign: 'center',
   },
-  optionsTimeTextElse: {
+  optionsYearTextElse: {
     fontSize: 30,
     color: '#545454',
     textAlign: 'center',
@@ -278,18 +297,18 @@ const styles = StyleSheet.create({
     marginBottom: 7,
   },
   placeButtonsPressed: {
-    borderColor: '#545454',
-    borderWidth: 10,
     borderRadius: 50,
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
-    width: '45%',
+    width: Dimensions.get('window').width / 2.75,
     height: 40,
     shadowOpacity: 0.25,
     shadowRadius: 5,
     shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
     marginBottom: 7,
+    borderColor: '#545454',
+    borderWidth: 3,
   },
   placeTop: {
     backgroundColor: '#F2994A',
@@ -349,9 +368,9 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 0, width: 0 },
   },
   yearButtonsPressed: {
-    borderColor: '#545454',
+    borderColor: '#C2515B',
+    borderWidth: 3,
     borderRadius: 50,
-    borderWidth: 5,
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     width: Dimensions.get('window').width / 2.75,
