@@ -1,24 +1,13 @@
 import firebase from 'firebase'
 import moment from 'moment';
 
-// export function gameUpdate(place, year) {
-//   return new Promise((resolve, reject) => {
-//     firebase.database().ref(`games/${game.id}`).set({
-//       place: game.place,
-//       year: game.year,
-//       timestamp: game.timestamp,
-//     })
-//     resolve(true)
-//   })
-// }
-
 export function createGame(game) {
   return new Promise((resolve, reject) => {
     firebase.database().ref(`games/${game.id}`).set({
       id: game.id,
       place: game.place,
       year: game.year,
-      //timestamp: game.timestamp,
+      timestamp: moment.now(),
     })
     resolve(true)
   })
