@@ -19,7 +19,6 @@ export class AboutScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
-    console.log(user)
     return (
       <View style={ styles.container }>
         <View style = {{ backgroundColor: '#C2515B', height: '30%', justifyContent: 'center' }}>
