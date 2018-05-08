@@ -10,10 +10,9 @@ export class SelectionScreen extends React.Component {
   state = {
     fontLoaded: false,
    };
-  async componentWillMount() {
-    await getUser(this.props.navigation.state.params.id).then((user) => {
+  componentWillMount() {
+    getUser(this.props.navigation.state.params.id).then((user) => {
       this.setState({user})
-      this.setState({name: this.state.user.name})
     });
   }
   async componentDidMount() {
@@ -24,58 +23,58 @@ export class SelectionScreen extends React.Component {
    }
   render() {
     const { navigate } = this.props.navigation
-    const userID = this.props.navigation.state.params.id
-    return (
-      <View style = { styles.container }>
-          <View style = {{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignContent: 'flex-start' }}>
-            <TouchableOpacity onPress={() =>
-                navigate('Home', { id: userID })
-              }
-            >
-              <View style = { styles.topButtons }>
-                <Image source = { require('./../assets/images/profile.png') } style = { styles.image }/>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() =>
-                navigate('About', { id: userID })
-              }
-            >
-              <View style = { styles.topButtons }>
-                <Text style = { this.state.fontLoaded ? styles.faqButton : styles.anything }>
-                  ?
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        <View style = {{  flex: 4 }}>
-          <View style = {{ height: '50%', width: '100%' }}>
-            <TouchableOpacity onPress={() =>
-                navigate('Create', { id : userID })
-              } style = {{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}
-            >
-              <View style = { styles.postButton }>
-                  <Text style = { this.state.fontLoaded ? styles.postFontStyle : styles.anything }>
-                    CREATE A GAME
+    if (this.state.user) {
+      return (
+        <View style = { styles.container }>
+            <View style = {{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignContent: 'flex-start' }}>
+              <TouchableOpacity onPress={() =>
+                  navigate('Home', { userObject : this.state.user })
+                }
+              >
+                <View style = { styles.topButtons }>
+                  <Image source = { require('./../assets/images/profile.png') } style = { styles.image }/>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() =>
+                  navigate('About', { userObject : this.state.user })
+                }
+              >
+                <View style = { styles.topButtons }>
+                  <Text style = { this.state.fontLoaded ? styles.faqButton : styles.anything }>
+                    ?
                   </Text>
-                  <Text> This is a test to see that {this.state.name} is properly registered </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style = {{ height: '50%', width: '100%' }}>
-            <TouchableOpacity onPress={() =>
-              navigate('Find', { id : userID })}
-              style = {{ flex: 1, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
-              <View style = { styles.findButton }>
-                  <Text style = { this.state.fontLoaded ? styles.findFontStyle : styles.anything }>
-                    FIND A GAME
-                  </Text>
-              </View>
-            </TouchableOpacity>
+                </View>
+              </TouchableOpacity>
+            </View>
+          <View style = {{  flex: 4 }}>
+            <View style = {{ height: '50%', width: '100%' }}>
+              <TouchableOpacity onPress={() =>
+                  navigate('Create', { userObject : this.state.user })
+                } style = {{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}
+              >
+                <View style = { styles.postButton }>
+                    <Text style = { this.state.fontLoaded ? styles.postFontStyle : styles.anything }>
+                      CREATE A GAME
+                    </Text>
+                    <Text> This is a test to see that {this.state.user.name} is properly registered as {this.state.user.id} </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View style = {{ height: '50%', width: '100%' }}>
+              <TouchableOpacity onPress={() =>
+                navigate('Find', { userObject : this.state.user })}
+                style = {{ flex: 1, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
+                <View style = { styles.findButton }>
+                    <Text style = { this.state.fontLoaded ? styles.findFontStyle : styles.anything }>
+                      FIND A GAME
+                    </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </View>
-    );
-   }
+      );} else return null;
+    }
  }
 
 const styles = StyleSheet.create({

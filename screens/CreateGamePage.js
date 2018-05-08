@@ -19,11 +19,12 @@ export class CreateScreen extends React.Component {
   }
   render() {
     const { navigate } = this.props.navigation
-    const userID = this.props.navigation.state.params.id
+    const user = this.props.navigation.state.params.userObject
     return (
       <View style = { styles.container }>
         <View style = { styles.create }>
           <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>CREATE GAME</Text>
+          <Text> This is a test to see that { user.name } is properly registered as { user.id } </Text>
         </View>
         <View style = {{ paddingTop: '7.5%' }}>
           <View style = { styles.time }>
@@ -96,12 +97,12 @@ export class CreateScreen extends React.Component {
         <View style = {{ alignItems: 'center', paddingTop: Dimensions.get('window').height / 30 }}>
           <View style = {{ flexDirection: 'row', alignItems: 'center'}}>
             <TouchableOpacity onPress={() =>
-              navigate('Home', { id: userID })
+              navigate('Selection', { id: user.id })
             }>
               <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>
-              navigate('Waiting', { id: userID })
+              navigate('Waiting', { userObject : user })
             }>
               <View style = { styles.postButton }>
                 <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>

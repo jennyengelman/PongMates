@@ -18,7 +18,8 @@ export class AboutScreen extends React.Component {
   }
   render() {
     const { navigate } = this.props.navigation
-    const userID = this.props.navigation.state.params.id
+    const user = this.props.navigation.state.params.userObject
+    console.log(user)
     return (
       <View style={ styles.container }>
         <View style = {{ backgroundColor: '#C2515B', height: '30%', justifyContent: 'center' }}>
@@ -29,6 +30,7 @@ export class AboutScreen extends React.Component {
             <Text style={ this.state.fontLoaded ? styles.aboutText : styles.aboutTextBackup }>
             Need One is a platform to connect Dartmouth students with Pong partners.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!
             </Text>
+            <Text> This is a test to see that { user.name } is properly registered as { user.id } </Text>
           </View>
         </View>
         <View style={{
@@ -42,7 +44,7 @@ export class AboutScreen extends React.Component {
             text={ 'Back' }
             navigation={ this.props.navigation }
             destination={ 'Selection' }
-            id = { userID }
+            id = { user.id }
           />
         </View>
       </View>
