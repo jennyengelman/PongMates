@@ -10,7 +10,6 @@ export class SelectionScreen extends React.Component {
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
      });
     this.setState({ fontLoaded: true }) ;
    }
@@ -52,7 +51,9 @@ export class SelectionScreen extends React.Component {
             </TouchableOpacity>
           </View>
           <View style = {{ height: '50%', width: '100%' }}>
-            <TouchableOpacity style = {{ flex: 1, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
+            <TouchableOpacity onPress={() =>
+              navigate('Find')}
+              style = {{ flex: 1, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
               <View style = { styles.findButton }>
                   <Text style = { this.state.fontLoaded ? styles.findFontStyle : styles.anything }>
                     FIND A GAME
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     backgroundColor:'#F5F5F5',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     alignItems: 'center',
     shadowColor: '#000000',
     shadowOpacity: .3,

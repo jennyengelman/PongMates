@@ -8,6 +8,7 @@ export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
+    text: '',
   };
   async componentDidMount() {
     await Font.loadAsync({
@@ -37,7 +38,7 @@ export class HomeScreen extends React.Component {
                 <TextInput
                   style = { this.state.fontLoaded ? styles.nameInput : styles.nameInputElse }
                   placeholder = "Your Name"
-                  onChangeText = { (text) => this.setState({ name: text }) }
+                  onChangeText = { (text) => this.setState({ text }) }
                 />
               </View>
             </View>
@@ -90,12 +91,14 @@ const styles = StyleSheet.create({
   matesTextElse: {
     fontSize: 60,
     color: 'white',
-    paddingLeft: 3,
+    textAlign: 'center',
+    marginLeft: -35,
   },
   matesTextElse: {
     fontSize: 60,
     color: 'white',
-    paddingLeft: 3,
+    textAlign: 'center',
+    marginLeft: -35,
   },
   nameContainer: {
     width: Dimensions.get('window').width / 1.5,
@@ -133,9 +136,11 @@ const styles = StyleSheet.create({
   nextText: {
     fontFamily: 'source-sans-pro',
     textAlign: 'center',
+    color: '#696969',
   },
   nextTextElse: {
     textAlign: 'center',
+    color: '#696969',
   },
   pongContainer: {
     backgroundColor: '#FFC928',

@@ -32,14 +32,12 @@ export class TimedOutScreen extends React.Component {
           <View style = { styles.timedOutTextBox }>
             <Text style = { this.state.fontLoaded ? styles.timedOutText : styles.timedOutTextElse }>Your request timed out. Please try again later!</Text>
           </View>
-          <View style = { styles.homeTextBox }>
             <PongButton
               font={ this.state.fontLoaded }
               text={ 'Home' }
               navigation={ this.props.navigation }
               destination={ 'Selection' }
             />
-          </View>
         </View>
       </View>
     );

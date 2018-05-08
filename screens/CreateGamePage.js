@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, Button, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, Button, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 
@@ -13,6 +13,7 @@ export class CreateScreen extends React.Component {
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
       'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
+      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
      });
     this.setState({ fontLoaded: true }) ;
   }
@@ -21,8 +22,8 @@ export class CreateScreen extends React.Component {
     return (
       <View style = { styles.container }>
         <View style = { styles.create }>
-          <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>CREATE</Text>
-          <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>A GAME</Text>
+          <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>CREATE GAME</Text>
+
         </View>
         <View style = {{ paddingTop: '7.5%' }}>
           <View style = { styles.time }>
@@ -48,12 +49,12 @@ export class CreateScreen extends React.Component {
               <Image style = {{ height: Dimensions.get('window').height / 17, width: Dimensions.get('window').height / 17 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
             </View>
-            <View style = {{ height: 3, width: '100%', backgroundColor: '#FFFFFF' }}>
-            </View>
+            <View style = {{ height: 3, width: '100%', backgroundColor: '#FFFFFF' }}/>
             <View style = { styles.placeBottom }>
               <FlatList
+                numColumns={2}
                 data = {[
-                  { key: 'Alpha Phi Alpha' },
+                  { key: 'APhi' },
                   { key: 'Alpha Chi' },
                   { key: 'Alpha Theta' },
                   { key: 'Alpha Phi' },
@@ -92,13 +93,21 @@ export class CreateScreen extends React.Component {
             </View>
           </View>
         </View>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: Dimensions.get('window').height / 30 }}>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: 10 }}>
-          <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
-          <View style = { styles.postButton }>
-            <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
+        <View style = {{ alignItems: 'center', paddingTop: Dimensions.get('window').height / 30 }}>
+          <View style = {{ flexDirection: 'row', alignItems: 'center'}}>
+            <TouchableOpacity onPress={() =>
+              navigate('Home')
+            }>
+              <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() =>
+              navigate('Waiting')
+            }>
+              <View style = { styles.postButton }>
+                <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
+              </View>
+            </TouchableOpacity>
           </View>
-        </View>
         </View>
       </View>
     );
@@ -120,7 +129,6 @@ const styles = StyleSheet.create({
   container: {
     height: '70%',
     backgroundColor: '#C2515B',
-    paddingTop: '12%',
   },
   create: {
     backgroundColor: '#FFC928',
@@ -134,12 +142,15 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
+    paddingTop: 17,
+    paddingBottom: 3,
+    marginTop: '10%',
   },
   createText: {
-    fontFamily: 'double-bubble-shadow',
-    fontSize: Dimensions.get('window').height / 15,
+    fontFamily: 'bubble-body',
+    fontSize: Dimensions.get('window').height / 13,
     color: '#FFFFFF',
-    width: '75%',
+    width: '50%',
     textAlign: 'center',
   },
   createTextElse: {
