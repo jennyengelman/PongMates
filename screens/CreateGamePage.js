@@ -5,14 +5,16 @@ import { StackNavigator } from 'react-navigation';
 import firebase from 'firebase';
 import * as firebaseConfig from './../services/firebase-config';
 import { createGame, generateGameKey } from './../services/game-actions';
+import { YearButton } from './../components/YearButton';
 
+{/*//component with year button, prop with title (21), prop to highlight*/}
 export class CreateScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
     pressed: {
-      year: [],
-      place: [],
+      years: [],
+      places: [],
     }
   };
   async componentDidMount() {
@@ -26,53 +28,57 @@ export class CreateScreen extends React.Component {
     this.setState({ fontLoaded: true }) ;
   };
   pressedYearState = (value) => {
-    var isTrue = false;
-    this.state.pressed.year.forEach((item) => {
-      if (this.item == value) {
-        isTrue = true;
-      }
-    })
-    return isTrue;
+    console.log(value)
+    console.log(this.state.pressed.years)
+    if (this.state.pressed.years.includes(value)) {
+      //console.log("true")
+      return true
+    }
+    else {
+      //console.log("false")
+      return false
+    }
   };
   pressedPlaceState = (value) => {
-    var isTrue = false;
-    this.state.pressed.place.forEach((item) => {
-      if (this.item == value) {
-        isTrue = true;
+    var isPressed = false;
+    this.state.pressed.places.forEach((item) => {
+      if (item == value) {
+        isPressed = true;
       }
     })
-    return isTrue;
+    return isPressed;
   };
   pressedYearChange = (value) => {
     var isIn = false;
     var idx = 0;
-    this.state.pressed.year.forEach((item, index) => {
-      if (value == this.item) {
+    this.state.pressed.years.forEach((item, index) => {
+      if (value == item) {
         isIn = true;
         idx = index;
       }
     })
     if (isIn) {
-      this.state.pressed.year.splice(idx);
+      this.state.pressed.years.splice(idx);
     }
     else {
-      this.state.pressed.year.push(value);
+      this.state.pressed.years.push(value);
+      console.log(this.state.pressed.years)
     }
   };
   pressedPlaceChange = (value) => {
     var isIn = false;
     var idx = 0;
-    this.state.pressed.place.forEach((item, index) => {
-      if (value == this.item) {
+    this.state.pressed.places.forEach((item, index) => {
+      if (value == item) {
         isIn = true;
         idx = index;
       }
     })
     if (isIn) {
-      this.state.pressed.place.splice(idx);
+      this.state.pressed.places.splice(idx);
     }
     else {
-      this.state.pressed.place.push(value);
+      this.state.pressed.places.push(value);
     }
   };
   render() {
@@ -104,7 +110,8 @@ export class CreateScreen extends React.Component {
                     this.pressedYearChange(item.key)
                   }>
                   <View style = {{ paddingLeft: 5, paddingTop: 4, paddingBottom: 4 }}>
-                    <View style = { this.pressedYearState ? styles.yearButtonsPressed : styles.yearButtons }>
+                    <YearButton/>
+                    <View style = { this.pressedYearState(item.key) ? styles.yearButtonsPressed : styles.yearButtons }>
                       <Text style = { this.props.font ? styles.optionsYearText : styles.optionsYearTextElse }>{ item.key }</Text>
                     </View>
                   </View>
@@ -158,7 +165,7 @@ export class CreateScreen extends React.Component {
                     this.pressedPlaceChange(item.key)
                   }>
                     <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
-                      <View style = { this.pressedPlaceState ? styles.placeButtonsPressed : styles.placeButtons }>
+                      <View style = { this.pressedPlaceState(item.key) ? styles.placeButtonsPressed : styles.placeButtons }>
                         <Text style = { this.state.fontLoaded ? styles.optionsPlaceText : styles.optionsPlaceTextElse }>{ item.key }</Text>
                       </View>
                     </View>
@@ -297,6 +304,8 @@ const styles = StyleSheet.create({
     marginBottom: 7,
   },
   placeButtonsPressed: {
+    borderColor: '#C2515B',
+    borderWidth: 3,
     borderRadius: 50,
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
@@ -307,8 +316,6 @@ const styles = StyleSheet.create({
     shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
     marginBottom: 7,
-    borderColor: '#545454',
-    borderWidth: 3,
   },
   placeTop: {
     backgroundColor: '#F2994A',
