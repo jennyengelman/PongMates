@@ -29,14 +29,10 @@ export class CreateScreen extends React.Component {
     this.setState({ fontLoaded: true }) ;
   };
   pressedYearState = (value) => {
-    console.log(value)
-    console.log(this.state.pressed.years)
     if (this.state.pressed.years.includes(value)) {
-      //console.log("true")
       return true
     }
     else {
-      //console.log("false")
       return false
     }
   };
@@ -63,7 +59,6 @@ export class CreateScreen extends React.Component {
     }
     else {
       this.state.pressed.years.push(value);
-      console.log(this.state.pressed.years)
     }
   };
   pressedPlaceChange = (value) => {
@@ -82,6 +77,11 @@ export class CreateScreen extends React.Component {
       this.state.pressed.places.push(value);
     }
   };
+  // onAPress = (key) => {
+  //   this.pressedYearChange(key);
+  //   isPressed = this.pressedYearState(key);
+  //   return isPressed
+  // }
   render() {
     const { navigate } = this.props.navigation
     return (
@@ -108,10 +108,10 @@ export class CreateScreen extends React.Component {
                 ]}
                 renderItem = {({ item }) => (
                   <TouchableOpacity onPress={() =>
-                    this.pressedYearChange(item.key)
+                    this.pressedPlaceChange(item.key)
                   }>
                   <View style = {{ paddingLeft: 5, paddingTop: 4, paddingBottom: 4 }}>
-                    <YearButton title={ item.key } pressed={ this.pressedYearState(item.key) }/>
+                    <YearButton title={ item.key } pressed={ this.pressedYearState(item.key) ? true : false }/>
                   </View>
                   </TouchableOpacity>
                 )}
