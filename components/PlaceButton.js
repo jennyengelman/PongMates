@@ -5,8 +5,8 @@ import { Font } from 'expo';
 export default class YearButton extends React.Component {
   render() {
     return(
-      <View style = { this.props.pressed ? styles.yearButtonsPressed : styles.yearButtons }>
-        <Text style = { this.props.font ? styles.optionsYearText : styles.optionsYearTextElse }>{ this.props.title }</Text>
+      <View style = { this.props.pressed ? styles.placeButtonsPressed : styles.placeButtons }>
+        <Text style = { this.props.font ? styles.optionsPlaceText : styles.optionsPlaceTextElse }>{ this.props.title }</Text>
       </View>
     )
   }
@@ -14,29 +14,30 @@ export default class YearButton extends React.Component {
 
 
 const styles = StyleSheet.create({
-  optionsYearText: {
-    fontSize: Dimensions.get('window').height / 25,
+  optionsPlaceText: {
+    fontSize: Dimensions.get('window').height / 35,
     fontFamily: 'source-sans-pro',
-    color: '#93E1FA',
-    textAlign: 'center',
-  },
-  optionsYearTextElse: {
-    fontSize: 30,
     color: '#545454',
     textAlign: 'center',
   },
-  yearButtons: {
+  optionsPlaceTextElse: {
+    fontSize: 18,
+    color: '#545454',
+    textAlign: 'center',
+  },
+  placeButtons: {
     borderRadius: 50,
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     width: Dimensions.get('window').width / 2.75,
     height: 40,
     shadowOpacity: 0.25,
-    shadowRadius: 3,
-    shadowColor: '#444444',
+    shadowRadius: 5,
+    shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
+    marginBottom: 7,
   },
-  yearButtonsPressed: {
+  placeButtonsPressed: {
     borderColor: '#C2515B',
     borderWidth: 3,
     borderRadius: 50,
@@ -45,8 +46,9 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width / 2.75,
     height: 40,
     shadowOpacity: 0.25,
-    shadowRadius: 3,
-    shadowColor: '#444444',
+    shadowRadius: 5,
+    shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
+    marginBottom: 7,
   },
 });

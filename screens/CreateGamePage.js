@@ -5,7 +5,8 @@ import { StackNavigator } from 'react-navigation';
 import firebase from 'firebase';
 import * as firebaseConfig from './../services/firebase-config';
 import { createGame, generateGameKey } from './../services/game-actions';
-import { YearButton } from './../components/YearButton';
+import YearButton from './../components/YearButton';
+import PlaceButton from './../components/PlaceButton';
 
 {/*//component with year button, prop with title (21), prop to highlight*/}
 export class CreateScreen extends React.Component {
@@ -110,10 +111,7 @@ export class CreateScreen extends React.Component {
                     this.pressedYearChange(item.key)
                   }>
                   <View style = {{ paddingLeft: 5, paddingTop: 4, paddingBottom: 4 }}>
-                    <YearButton/>
-                    <View style = { this.pressedYearState(item.key) ? styles.yearButtonsPressed : styles.yearButtons }>
-                      <Text style = { this.props.font ? styles.optionsYearText : styles.optionsYearTextElse }>{ item.key }</Text>
-                    </View>
+                    <YearButton title={ item.key } pressed={ this.pressedYearState(item.key) }/>
                   </View>
                   </TouchableOpacity>
                 )}
@@ -165,9 +163,7 @@ export class CreateScreen extends React.Component {
                     this.pressedPlaceChange(item.key)
                   }>
                     <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
-                      <View style = { this.pressedPlaceState(item.key) ? styles.placeButtonsPressed : styles.placeButtons }>
-                        <Text style = { this.state.fontLoaded ? styles.optionsPlaceText : styles.optionsPlaceTextElse }>{ item.key }</Text>
-                      </View>
+                      <PlaceButton title={ item.key } pressed={ this.pressedPlaceState(item.key) }/>
                     </View>
                   </TouchableOpacity>
                 )}
@@ -253,28 +249,6 @@ const styles = StyleSheet.create({
     color: '#545454',
     fontSize: Dimensions.get('window').height / 17,
   },
-  optionsPlaceText: {
-    fontSize: Dimensions.get('window').height / 35,
-    fontFamily: 'source-sans-pro',
-    color: '#545454',
-    textAlign: 'center',
-  },
-  optionsPlaceTextElse: {
-    fontSize: 18,
-    color: '#545454',
-    textAlign: 'center',
-  },
-  optionsYearText: {
-    fontSize: Dimensions.get('window').height / 25,
-    fontFamily: 'source-sans-pro',
-    color: '#93E1FA',
-    textAlign: 'center',
-  },
-  optionsYearTextElse: {
-    fontSize: 30,
-    color: '#545454',
-    textAlign: 'center',
-  },
   place: {
     width: '90%',
     borderTopRightRadius: 7,
@@ -290,32 +264,6 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingLeft: 15,
     alignItems: 'center',
-  },
-  placeButtons: {
-    borderRadius: 50,
-    backgroundColor: '#FFFFFF',
-    justifyContent: 'center',
-    width: Dimensions.get('window').width / 2.75,
-    height: 40,
-    shadowOpacity: 0.25,
-    shadowRadius: 5,
-    shadowColor: '#000000',
-    shadowOffset: { height: 0, width: 0 },
-    marginBottom: 7,
-  },
-  placeButtonsPressed: {
-    borderColor: '#C2515B',
-    borderWidth: 3,
-    borderRadius: 50,
-    backgroundColor: '#FFFFFF',
-    justifyContent: 'center',
-    width: Dimensions.get('window').width / 2.75,
-    height: 40,
-    shadowOpacity: 0.25,
-    shadowRadius: 5,
-    shadowColor: '#000000',
-    shadowOffset: { height: 0, width: 0 },
-    marginBottom: 7,
   },
   placeTop: {
     backgroundColor: '#F2994A',
@@ -362,30 +310,6 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height / 6,
     paddingLeft: 15,
     alignItems: 'center',
-  },
-  yearButtons: {
-    borderRadius: 50,
-    backgroundColor: '#FFFFFF',
-    justifyContent: 'center',
-    width: Dimensions.get('window').width / 2.75,
-    height: 40,
-    shadowOpacity: 0.25,
-    shadowRadius: 3,
-    shadowColor: '#444444',
-    shadowOffset: { height: 0, width: 0 },
-  },
-  yearButtonsPressed: {
-    borderColor: '#C2515B',
-    borderWidth: 3,
-    borderRadius: 50,
-    backgroundColor: '#FFFFFF',
-    justifyContent: 'center',
-    width: Dimensions.get('window').width / 2.75,
-    height: 40,
-    shadowOpacity: 0.25,
-    shadowRadius: 3,
-    shadowColor: '#444444',
-    shadowOffset: { height: 0, width: 0 },
   },
   yearTop: {
     backgroundColor: '#F2994A',
