@@ -67,7 +67,7 @@ export class SelectionScreen extends React.Component {
             </View>
           </View>
         </View>
-      );} else return null;
+      );} else return null
     }
  }
 
