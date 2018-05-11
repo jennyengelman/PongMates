@@ -30,10 +30,6 @@ export class HomeScreen extends React.Component {
           <View style = {{ backgroundColor: '#C2515B', height: '40%' }}>
             <View style = {{ alignItems: 'center', paddingTop: '5%' }}>
               <View style = { styles.homeRectangle }>
-                <View style = {{ backgroundColor: '#FFC928', width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55, borderRadius: Dimensions.get('window').width * .275, justifyContent: 'center' }}>
-                  <Image style = {{ width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55 }} source={ require('./../assets/images/image.png') }/>
-                  <Text style = { this.state.fontLoaded ? styles.selfieText : styles.selfieTextElse }>Take a selfie to share with your partner!</Text>
-                </View>
                 <View style = { styles.nameContainer }>
                   <TextInput
                     style = { this.state.fontLoaded ? styles.nameInput : styles.nameInputElse }
@@ -44,31 +40,23 @@ export class HomeScreen extends React.Component {
               </View>
             </View>
           </View>
-          <View style = {{ height: '30%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
-            <TouchableOpacity onPress={() =>
-                navigate('Selection')
-              }
-            >
-              <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
-              tap to begin
-              </Text>
-            </TouchableOpacity>
-          </View>
           <View style = {{ height: '25%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
-              <TouchableOpacity onPress={() =>
-                { if (this.state.text !== '') {
+            <TouchableOpacity onPress={() =>
+              {
+                if (this.state.text !== '') {
+                  console.log('ok')
                   generateUserKey().then((key) => {
                     myKey = key
                     createUser({id: myKey, name: this.state.text, year: 19})
                     navigate('Selection', { id : myKey })
                   })
-                };}
-              }
-              >
-                <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
-                tap to begin
-                </Text>
-              </TouchableOpacity>
+                }
+              }}
+            >
+            <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
+            tap to begin
+            </Text>
+          </TouchableOpacity>
           </View>
         </View>
     );

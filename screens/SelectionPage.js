@@ -9,9 +9,12 @@ export class SelectionScreen extends React.Component {
   static navigationOptions = { header: null };
   state = { fontLoaded: true };
   componentWillMount() {
-    getUser(this.props.navigation.state.params.id).then((user) => {
-      this.setState({user})
-    });
+    const userID = this.props.navigation.state.params.id
+    if (userID) {
+      getUser(userID).then((user) => {
+        this.setState({user})
+      });
+    }
   }
   render() {
     const { navigate } = this.props.navigation
@@ -48,7 +51,6 @@ export class SelectionScreen extends React.Component {
                     <Text style = { this.state.fontLoaded ? styles.postFontStyle : styles.anything }>
                       CREATE A GAME
                     </Text>
-                    <Text> This is a test to see that {this.state.user.name} is properly registered as {this.state.user.id} </Text>
                 </View>
               </TouchableOpacity>
             </View>

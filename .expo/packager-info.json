@@ -1,1 +1,8 @@
-{}
+{
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://y3-rpq.ijemmao.pongmates.exp.direct",
+  "packagerNgrokUrl": "https://packager.y3-rpq.ijemmao.pongmates.exp.direct",
+  "ngrokPid": 43162,
+  "packagerPort": 19001,
+  "packagerPid": 43142
+}
