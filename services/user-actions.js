@@ -10,6 +10,6 @@ export function createUser(user) {
       id: user.id,
       name: user.name
     })
-    resolve{true}
+    resolve(true)
   })
 }
