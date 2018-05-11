@@ -6,16 +6,7 @@ import PongButton from './../components/PongButton';
 
 export class NoGamesFoundScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = {
-    fontLoaded: false,
-   };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-    });
-    this.setState({ fontLoaded: true }) ;
-  }
+  state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
     const userID = this.props.navigation.state.params.id
@@ -79,7 +70,7 @@ const styles = StyleSheet.create({
     detailsText: {
       fontSize: 30,
       color: '#4F4F4F',
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       textAlign: 'center',
     },
     detailsTextElse: {
@@ -88,7 +79,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
     sorryText: {
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       fontSize: 72,
       textAlign: 'center',
       color: '#4F4F4F',

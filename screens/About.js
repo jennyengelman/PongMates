@@ -6,16 +6,7 @@ import PongButton from './../components/PongButton';
 
 export class AboutScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = { fontLoaded: false };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-      'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
-      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-    });
-    this.setState({ fontLoaded: true });
-  }
+  state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
@@ -79,7 +70,7 @@ const styles = StyleSheet.create({
     color: '#4F4F4F',
     margin: 20,
     textAlign: 'center',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
   },
   aboutTextBackup: {
     fontSize: Dimensions.get('window').height / 32,

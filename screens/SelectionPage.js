@@ -7,20 +7,12 @@ import * as firebaseConfig from './../services/firebase-config'
 
 export class SelectionScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = {
-    fontLoaded: false,
-   };
+  state = { fontLoaded: true };
   componentWillMount() {
     getUser(this.props.navigation.state.params.id).then((user) => {
       this.setState({user})
     });
   }
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-     });
-    this.setState({ fontLoaded: true }) ;
-   }
   render() {
     const { navigate } = this.props.navigation
     if (this.state.user) {
