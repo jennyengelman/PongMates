@@ -1,21 +1,56 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native';
+import React, { Component } from 'react';
+import { Picker, StyleSheet, Text, View, Button, Alert, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import Logo from './../components/Logo';
+import Modal from 'react-native-modal';
+import ModalButton from './../components/ModalButton';
 
 export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
     text: '',
+    visibleModal: null,
   };
+  _renderButton = (text, onPress) => (
+  <TouchableOpacity onPress={onPress}>
+    <View style={styles.button}>
+      <Text>{text}</Text>
+    </View>
+  </TouchableOpacity>
+);
+_renderModalContent = () => (
+  <View style={ styles.modalContent }>
+    <View style = {{ alignItems: 'center', justifyContent: 'center', flex: .2 }}>
+      <Text style = { styles.modalTextStyle }>Select Your Year</Text>
+        <Picker
+          selectedValue={this.state.language}
+          style={{ height: 20, width: 100 }}
+          onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
+          <Picker.Item label="'21" value="freshman" />
+          <Picker.Item label="'20" value="sophomore" />
+          <Picker.Item label="'19" value="junior" />
+          <Picker.Item label="'18" value="senior" />
+        </Picker>
+      </View>
+    <View style = {{ flex: .2 }}>
+    <TouchableOpacity onPress={() =>
+      { this.props.navigation.navigate('Selection')
+      this.state.visibleModal = null
+      this.forceUpdate() }
+    }>
+      <ModalButton/>
+    </TouchableOpacity>
+    </View>
+  </View>
+);
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
       'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
+      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
       'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
     });
     this.setState({ fontLoaded: true });
@@ -43,15 +78,20 @@ export class HomeScreen extends React.Component {
               </View>
             </View>
           </View>
+
         </View>
+
         <View style = {{ height: '30%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
+          {this._renderButton(
+            <Text style = { this.state.fontLoaded ? styles.modalTextStyle : styles.nameInputElse }>tap to begin</Text>, () => this.setState({ visibleModal: 1 }))}
+          <Modal isVisible={this.state.visibleModal === 1}>
+            {this._renderModalContent()}
+          </Modal>
+
           <TouchableOpacity onPress={() =>
               navigate('Selection')
             }
           >
-            <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
-            tap to begin
-            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -118,7 +158,7 @@ const styles = StyleSheet.create({
   nameInput: {
     width: '80%',
     color: '#FFFFFF',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro',
     fontWeight: 'bold',
     fontSize: 20,
     alignItems: 'center',
@@ -180,4 +220,26 @@ const styles = StyleSheet.create({
       color: '#696969',
       textAlign: 'center',
   },
+  button: {
+    backgroundColor: '#F2994A',
+    padding: 12,
+    margin: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+  },
+  modalTextStyle: {
+    fontSize: 28,
+    fontFamily: 'source-sans-pro-bold',
+  },
+  modalContent: {
+   backgroundColor: 'white',
+   paddingTop: 22,
+   justifyContent: 'center',
+   alignItems: 'center',
+   borderRadius: 4,
+   borderColor: 'rgba(0, 0, 0, 0.1)',
+   justifyContent: 'space-around',
+   flex: .6
+ },
 });
