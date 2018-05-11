@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Dimensions }
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import firebase from 'firebase';
-import * as firebaseConfig from './../services/firebase-config';
 import { createGame, generateGameKey } from './../services/game-actions';
 import YearButton from './../components/YearButton';
 import PlaceButton from './../components/PlaceButton';

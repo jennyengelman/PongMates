@@ -16,7 +16,7 @@ export class MeetMatch extends React.Component {
           <Image source = { require('./../assets/match.png') } style = { styles.matchImageStyle }/>
           <View style = { styles.details }>
             <Text style = { this.state.fontLoaded ? styles.detailText : styles.anything }>
-              Name:{'\n'}Place:{'\n'}Time:
+              Name:{'\n'}Place:
             </Text>
           </View>
         </View>

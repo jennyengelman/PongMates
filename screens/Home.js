@@ -5,7 +5,6 @@ import { StackNavigator } from 'react-navigation';
 import Logo from './../components/Logo';
 import { generateUserKey, createUser, getUser } from './../services/user-actions'
 import firebase from 'firebase'
-import * as firebaseConfig from './../services/firebase-config'
 import moment from 'moment'
 import { FontLoad } from './../components/FontLoad'
 

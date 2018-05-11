@@ -2,14 +2,17 @@
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "dependencies": {
-    "expo": "^27.0.1",
+    "events": "^2.0.0",
+    "expo": "^25.0.0",
     "firebase": "^4.13.1",
     "moment": "^2.22.1",
+    "node-schedule": "^1.3.0",
     "react": "16.2.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
     "react-native-scripts": "^1.14.0",
     "react-navigation": "^1.5.8",
-    "reinstall": "^2.0.0"
+    "reinstall": "^2.0.0",
+    "util": "^0.10.3"
   },
   "rnpm": {
     "assets": [

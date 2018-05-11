@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Image, Fonts, Button, TouchableOpacity, Dimensi
 import { Font  } from 'expo';
 import { getUser } from './../services/user-actions'
 import firebase from 'firebase'
-import * as firebaseConfig from './../services/firebase-config'
 
 export class SelectionScreen extends React.Component {
   static navigationOptions = { header: null };
