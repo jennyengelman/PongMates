@@ -5,6 +5,8 @@ import { StackNavigator } from 'react-navigation';
 import Logo from './../components/Logo';
 import Modal from 'react-native-modal';
 import ModalButton from './../components/ModalButton';
+import firebase from 'firebase';
+import { generateUserKey, createUser } from './../services/user-actions'
 
 export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -25,9 +27,9 @@ _renderModalContent = () => (
     <View style = {{ alignItems: 'center', justifyContent: 'center', flex: .2 }}>
       <Text style = { styles.modalTextStyle }>Select Your Year</Text>
         <Picker
-          selectedValue={this.state.language}
+          selectedValue={this.state.year}
           style={{ height: 20, width: 100 }}
-          onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
+          onValueChange={(itemValue, itemIndex) => this.setState({year: itemValue})}>
           <Picker.Item label="'21" value="freshman" />
           <Picker.Item label="'20" value="sophomore" />
           <Picker.Item label="'19" value="junior" />
@@ -36,7 +38,13 @@ _renderModalContent = () => (
       </View>
     <View style = {{ flex: .2 }}>
     <TouchableOpacity onPress={() =>
-      { this.props.navigation.navigate('Selection')
+      {
+      generateUserKey().then((key) => {
+        myKey = key
+        createUser({id: myKey, name: "urie", year: this.state.year })
+        this.props.navigation.navigate('Selection')
+      })
+      this.props.navigation.navigate('Selection')
       this.state.visibleModal = null
       this.forceUpdate() }
     }>
