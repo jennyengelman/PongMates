@@ -69,10 +69,8 @@ export class CreateScreen extends React.Component {
         idx = index;
       }
     })
-    if (isIn) {
-      this.state.pressed.places.splice(idx);
-    }
-    else {
+    this.state.pressed.places.splice(idx);
+    if (!isIn) {
       this.state.pressed.places.push(value);
     }
   };
@@ -119,6 +117,9 @@ export class CreateScreen extends React.Component {
             <View style = { styles.placeTop }>
               <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
+              <View style = {{ marginLeft: 10, justifyContent: 'flex-end' }}>
+                <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Please select one.</Text>
+              </View>
             </View>
             <View style = {{ height: 4, width: '100%', backgroundColor: '#FFFFFF' }}/>
             <View style = { styles.placeBottom }>
@@ -244,6 +245,15 @@ const styles = StyleSheet.create({
   headerTextElse: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 17,
+  },
+  headerSubText: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 45,
+    fontFamily: 'source-sans-pro-bold',
+  },
+  headerSubTextElse: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 45,
   },
   place: {
     width: '90%',
