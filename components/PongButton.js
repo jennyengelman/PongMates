@@ -3,13 +3,7 @@ import { StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 
 export default class PongButton extends React.Component {
-  state = { fontLoaded: false };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-    });
-    this.setState({ fontLoaded: true });
-  }
+  state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation;
     return (

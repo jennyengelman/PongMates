@@ -4,15 +4,7 @@ import { Font  } from 'expo';
 
 export class SelectionScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = {
-    fontLoaded: false,
-   };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-     });
-    this.setState({ fontLoaded: true }) ;
-   }
+  state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
     return (

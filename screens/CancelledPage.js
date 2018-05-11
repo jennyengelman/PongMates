@@ -4,20 +4,8 @@ import PongButton from './../components/PongButton';
 import { Font } from 'expo';
 
 export class CancelScreen extends React.Component {
-
   static navigationOptions = { header: null };
-
-  state = {
-    fontLoaded: false,
-  };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf')
-    });
-    this.setState({ fontLoaded: true });
-  }
+  state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
     return (
@@ -90,7 +78,7 @@ const styles = StyleSheet.create({
     color: '#4F4F4F',
     paddingLeft: '7%',
     paddingRight: '7%',
-    fontFamily: 'source-sans-pro'
+    fontFamily: 'source-sans-pro-semibold'
   },
   homeButton: {
     width: '35%',
@@ -104,7 +92,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: '#4F4F4F',
-    fontFamily: 'source-sans-pro'
+    fontFamily: 'source-sans-pro-semibold'
   },
   anything: {
     fontSize: 65,

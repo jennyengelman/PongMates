@@ -11,21 +11,11 @@ import PlaceButton from './../components/PlaceButton';
 export class FindScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
-    fontLoaded: false,
+    fontLoaded: true,
     pressed: {
       years: [],
       places: [],
     }
-  };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-     });
-    this.setState({ fontLoaded: true }) ;
   };
   pressedYearState = (value) => {
     if (this.state.pressed.years.includes(value)) {
@@ -199,7 +189,7 @@ const styles = StyleSheet.create({
   cancelText: {
     color: '#F2994A',
     fontSize: 30,
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     textAlign: 'center',
   },
   cancelTextElse: {
@@ -335,8 +325,8 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 0, width: 0 },
   },
   postButtonText: {
-    color: '#FFFFFF',
-    fontFamily: 'source-sans-pro',
+    color: '#fff',
+    fontFamily: 'source-sans-pro-semibold',
     fontSize: 30,
     textAlign: 'center',
   },

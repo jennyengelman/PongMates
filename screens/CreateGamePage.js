@@ -12,21 +12,11 @@ import PlaceButton from './../components/PlaceButton';
 export class CreateScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
-    fontLoaded: false,
+    fontLoaded: true,
     pressed: {
       years: [],
       places: [],
     }
-  };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-     });
-    this.setState({ fontLoaded: true }) ;
   };
   pressedYearState = (value) => {
     if (this.state.pressed.years.includes(value)) {
@@ -199,7 +189,7 @@ const styles = StyleSheet.create({
   cancelText: {
     color: '#F2994A',
     fontSize: 30,
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     textAlign: 'center',
   },
   cancelTextElse: {
@@ -251,12 +241,30 @@ const styles = StyleSheet.create({
     color: '#545454',
     fontSize: Dimensions.get('window').height / 17,
   },
-  headerSubText: {
+  optionButtons: {
+    borderColor: '#545454',
+    borderRadius: 50,
+    borderWidth: 1,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: Dimensions.get('window').width / 2.6,
+    height: Dimensions.get('window').height / 17,
+    shadowOpacity: 0.25,
+    shadowRadius: 5,
+    shadowColor: '#000000',
+    shadowOffset: { height: 0, width: 0 },
+  },
+  optionsPlaceText: {
+    fontSize: Dimensions.get('window').height / 35,
+    fontFamily: 'source-sans-pro-semibold',
     color: '#545454',
     fontSize: Dimensions.get('window').height / 50,
     fontFamily: 'source-sans-pro-bold',
   },
-  headerSubTextElse: {
+  optionsTimeText: {
+    fontSize: Dimensions.get('window').height / 25,
+    fontFamily: 'source-sans-pro-semibold',
     color: '#545454',
     fontSize: Dimensions.get('window').height / 50,
   },
@@ -296,8 +304,8 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 0, width: 0 },
   },
   postButtonText: {
-    color: '#FFFFFF',
-    fontFamily: 'source-sans-pro',
+    color: '#fff',
+    fontFamily: 'source-sans-pro-semibold',
     fontSize: 30,
     textAlign: 'center',
   },
