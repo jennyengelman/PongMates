@@ -87,6 +87,9 @@ export class FindScreen extends React.Component {
             <View style = { styles.yearTop }>
               <Image style = {{ height: 50, width: 50 }} source={require('./../assets/images/graduation.png')}/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Year</Text>
+              <View style = {{ marginLeft: 10, justifyContent: 'flex-end' }}>
+                <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Who would you like to play with?</Text>
+              </View>
             </View>
             <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}/>
             <View style = { styles.yearBottom }>
