@@ -15,7 +15,7 @@ export class CreateScreen extends React.Component {
     pressed: {
       years: [],
       places: [],
-    }
+    },
   };
   pressedYearState = (value) => {
     if (this.state.pressed.years.includes(value)) {

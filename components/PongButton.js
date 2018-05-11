@@ -6,9 +6,10 @@ export default class PongButton extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation;
+    console.log(this.props.id)
     return (
       <TouchableOpacity
-        onPress={ () => navigate(this.props.destination, { id: this.props.id }) }
+        onPress={ () => navigate(this.props.destination, { id: this.props.id, userObject: this.props.userObject }) }
         style={ styles.button }
       >
         <Text style={ this.props.font ? styles.buttonText : styles.buttonTextBackup }>
