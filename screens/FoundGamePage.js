@@ -1,22 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Image, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
-import { StackNavigator } from 'react-navigation';
 
 export class FoundScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = {
-    fontLoaded: false,
-   };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-     });
-    this.setState({ fontLoaded: true }) ;
-  }
+  state = { fontLoaded: true };
   render() {
+    const { navigate } = this.props.navigation
+    const userID = this.props.navigation.state.params.id
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
@@ -35,12 +26,22 @@ export class FoundScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Time:</Text>
           </View>
           <View style = { styles.buttonContainer }>
-            <View style = { styles.button }>
-              <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Decline</Text>
-            </View>
-            <View style = { styles.button }>
-              <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Let{ `'` }s Go!</Text>
-            </View>
+            <TouchableOpacity onPress={() =>
+                navigate('Create', { id: userID })
+              }
+            >
+              <View style = { styles.button }>
+                <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Decline</Text>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() =>
+                navigate('Home', { id: userID }) //for now
+              }
+            >
+              <View style = { styles.button }>
+                <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Let{ `'` }s Go!</Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -65,11 +66,11 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
       flexDirection: 'row',
-      paddingTop: 30,
+      paddingTop: '5%',
     },
     buttonText: {
       textAlign: 'center',
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       color: '#4F4F4F',
       fontSize: 30,
     },
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     detailsText: {
       fontSize: 30,
       color: '#4F4F4F',
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       textAlign: 'left',
     },
     detailsTextElse: {
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     detailsHeaderText: {
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       color: '#4F4F4F',
       fontWeight: 'bold',
       textAlign: 'center',
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
       fontSize: 20,
     },
     matchText: {
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       fontSize: 72,
       textAlign: 'center',
       color: '#4F4F4F',

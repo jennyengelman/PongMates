@@ -1,4 +1,6 @@
 import React from 'react';
+import * as firebaseConfig from './services/firebase-config'
+import * as user from './services/user-actions'
 import { StyleSheet, Text, View, Button, Alert, Image, TextInput, Font } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { HomeScreen } from './screens/Home';
@@ -11,12 +13,13 @@ import { FindScreen } from './screens/FindGamePage';
 import { WaitingScreen } from './screens/WaitingPage';
 import { FoundScreen } from './screens/FoundGamePage';
 import { FoundAPartnerScreen } from './screens/FoundAPartner';
-import { Actions } from './services/automated-actions';
-import * as firebaseConfig from './services/firebase-config'
+import { NoGamesFoundScreen } from './screens/NoGamesFoundPage';
+import { CancelScreen } from './screens/CancelledPage';
 
 const RootStack = StackNavigator({
   Home: { screen: HomeScreen },
   Create: { screen: CreateScreen },
+  Find: { screen: FindScreen },
   TimedOut: { screen: TimedOutScreen },
   About: { screen: AboutScreen },
   FoundAPartner: { screen: FoundAPartnerScreen },
@@ -24,6 +27,8 @@ const RootStack = StackNavigator({
   Find: { screen: FindScreen },
   Waiting: { screen: WaitingScreen },
   FoundGame: { screen: FoundScreen },
+  NoGamesFound: { screen: NoGamesFoundScreen },
+  Cancel: { screen: CancelScreen },
 });
 
 export default class App extends React.Component {

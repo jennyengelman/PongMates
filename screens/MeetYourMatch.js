@@ -4,20 +4,8 @@ import PongButton from './../components/PongButton';
 import { Font } from 'expo';
 
 export class MeetMatch extends React.Component {
-
   static navigationOptions = { header: null };
-
-  state = {
-    fontLoaded: false,
-  };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf')
-    });
-    this.setState({ fontLoaded: true }) ;
-  }
+  state = { fontLoaded: true };
   render(){
     return(
       <View style = { styles.container }>
@@ -37,7 +25,7 @@ export class MeetMatch extends React.Component {
          font = { this.state.fontLoaded }
          text = { 'Cancel' }
          navigation = { this.props.navigation }
-         destination = { 'Congrats' }
+         destination = { 'Selection' }
          />
       </View>
     );
@@ -87,7 +75,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: Dimensions.get('window').height / 35,
     color: '#4F4F4F',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     marginLeft: '7%'
   },
   cancelButton: {

@@ -6,18 +6,10 @@ import PongButton from './../components/PongButton';
 
 export class TimedOutScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = { fontLoaded: false };
-
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-    });
-    this.setState({ fontLoaded: true });
-  }
+  state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
+    const userID = this.props.navigation.state.params.id
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
@@ -32,14 +24,13 @@ export class TimedOutScreen extends React.Component {
           <View style = { styles.timedOutTextBox }>
             <Text style = { this.state.fontLoaded ? styles.timedOutText : styles.timedOutTextElse }>Your request timed out. Please try again later!</Text>
           </View>
-          <View style = { styles.homeTextBox }>
             <PongButton
               font={ this.state.fontLoaded }
               text={ 'Home' }
               navigation={ this.props.navigation }
               destination={ 'Selection' }
+              id = { userID }
             />
-          </View>
         </View>
       </View>
     );
@@ -85,7 +76,7 @@ const styles = StyleSheet.create({
     height: '2%',
   },
   timedOutText: {
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     fontSize: Dimensions.get('window').height / 25,
     padding: 30,
     color: '#616161',

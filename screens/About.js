@@ -6,18 +6,10 @@ import PongButton from './../components/PongButton';
 
 export class AboutScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = { fontLoaded: false };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-      'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
-      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-    });
-    this.setState({ fontLoaded: true });
-  }
+  state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
+    const user = this.props.navigation.state.params.userObject
     return (
       <View style={ styles.container }>
         <View style = {{ backgroundColor: '#C2515B', height: '30%', justifyContent: 'center' }}>
@@ -26,8 +18,9 @@ export class AboutScreen extends React.Component {
         <View style={{ height: '40%', backgroundColor: '#C2515B'}} >
           <View style={ styles.aboutBox }>
             <Text style={ this.state.fontLoaded ? styles.aboutText : styles.aboutTextBackup }>
-            PongMates is designed to connect Dartmouth students through the game of Pong.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!
+            Need One is a platform to connect Dartmouth students with Pong partners.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!
             </Text>
+            <Text> This is a test to see that { user.name } is properly registered as { user.id } </Text>
           </View>
         </View>
         <View style={{
@@ -41,6 +34,7 @@ export class AboutScreen extends React.Component {
             text={ 'Back' }
             navigation={ this.props.navigation }
             destination={ 'Selection' }
+            id = { user.id }
           />
         </View>
       </View>
@@ -76,7 +70,7 @@ const styles = StyleSheet.create({
     color: '#4F4F4F',
     margin: 20,
     textAlign: 'center',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
   },
   aboutTextBackup: {
     fontSize: Dimensions.get('window').height / 32,

@@ -3,44 +3,32 @@ import { StyleSheet, Dimensions, Text, View, Image } from 'react-native';
 import PongButton from './../components/PongButton';
 import { Font } from 'expo';
 
-export class Cancel extends React.Component {
-
+export class CancelScreen extends React.Component {
   static navigationOptions = { header: null };
-
-  state = {
-    fontLoaded: false,
-  };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf')
-    });
-    this.setState({ fontLoaded: true }) ;
-  }
-  render(){
+  state = { fontLoaded: true };
+  render() {
     const { navigate } = this.props.navigation
-    return(
-      <View style = { styles.container }>
-        <View style = { styles.topContainer }>
-          <Text style = { this.state.fontLoaded ? styles.sorryText : styles.anything }>
+    const userID = this.props.navigation.state.params.id
+    return (
+      <View style={styles.container}>
+        <View style={styles.topContainer}>
+          <Text style={this.state.fontLoaded ? styles.sorryText : styles.anything}>
             SORRY...
           </Text>
-          <Image source = { require ('./../assets/sad.png') } style = { styles.imageStyle }/>
+          <Image source={ require('./../assets/images/sad.png') } style={ styles.imageStyle } />
         </View>
-
-        <View style = { styles.bottomContainer }>
-          <View style = { styles.details }>
-            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.anything }>
+        <View style={styles.bottomContainer}>
+          <View style={styles.details}>
+            <Text style={this.state.fontLoaded ? styles.detailsText : styles.anything}>
               Jenny cancelled your game at Phi Delt. Return home to find a new game.
             </Text>
           </View>
-
           <PongButton
            font = { this.state.fontLoaded }
            text = { 'Home' }
            navigation = { this.props.navigation }
-           destination = { 'Congrats' }
+           destination = { 'HomeScreen' }
+           id = { userID }
            />
         </View>
       </View>
@@ -55,7 +43,7 @@ const styles = StyleSheet.create({
   },
   topContainer: {
     flex: .6,
-    backgroundColor:'#fff',
+    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -89,8 +77,8 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get('window').height / 35,
     color: '#4F4F4F',
     paddingLeft: '7%',
-    paddingRight:'7%',
-    fontFamily: 'source-sans-pro'
+    paddingRight: '7%',
+    fontFamily: 'source-sans-pro-semibold'
   },
   homeButton: {
     width: '35%',
@@ -104,7 +92,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: '#4F4F4F',
-    fontFamily: 'source-sans-pro'
+    fontFamily: 'source-sans-pro-semibold'
   },
   anything: {
     fontSize: 65,
