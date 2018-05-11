@@ -75,7 +75,6 @@ export class FindScreen extends React.Component {
       <View style = { styles.container }>
         <View style = { styles.find }>
           <Text style = { this.state.fontLoaded ? styles.findText : styles.findTextElse }>FIND GAME</Text>
-          <Text> This is a test to see that { user.name } is properly registered as { user.id } </Text>
         </View>
         <View style = {{ paddingTop: '7%' }}>
           <View style = { styles.year }>

@@ -16,7 +16,6 @@ export class WaitingScreen extends React.Component {
           <Text style = { this.state.fontLoaded ? styles.waitingFont : styles.anything }>
             waiting...
           </Text>
-          <Text> This is a test to see that { user.name } is properly registered as { user.id } </Text>
         </View>
         <View style = { styles.bottomContainer }>
         <View style = { styles.tabStyle }>

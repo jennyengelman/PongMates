@@ -20,7 +20,6 @@ export class AboutScreen extends React.Component {
             <Text style={ this.state.fontLoaded ? styles.aboutText : styles.aboutTextBackup }>
             Need One is a platform to connect Dartmouth students with Pong partners.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!
             </Text>
-            <Text> This is a test to see that { user.name } is properly registered as { user.id } </Text>
           </View>
         </View>
         <View style={{
