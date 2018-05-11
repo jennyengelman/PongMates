@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import PongButton from './../components/PongButton';
 import { StackNavigator } from 'react-navigation';
+import { deleteGame } from './../services/game-actions';
 
 export class WaitingScreen extends React.Component {
   static navigationOptions = { header: null };
@@ -42,6 +43,11 @@ export class WaitingScreen extends React.Component {
             text={ 'Delete\nRequest' }
             navigation={ this.props.navigation }
             destination={ 'Create' }
+            // onPress={() =>
+            //   deleteGame().then((key) => {
+            //     navigate('Create')
+            //   }
+            //}
           />
         </View>
       </View>
