@@ -1,49 +1,125 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, Button, Dimensions, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
+import firebase from 'firebase';
+import * as firebaseConfig from './../services/firebase-config';
+import { createGame, generateGameKey } from './../services/game-actions';
+import YearButton from './../components/YearButton';
+import PlaceButton from './../components/PlaceButton';
 
+{/*//component with year button, prop with title (21), prop to highlight*/}
 export class CreateScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = { fontLoaded: true };
+  state = {
+    fontLoaded: true,
+    pressed: {
+      years: [],
+      places: [],
+    }
+  };
+  pressedYearState = (value) => {
+    if (this.state.pressed.years.includes(value)) {
+      return true
+    }
+    else {
+      return false
+    }
+  };
+  pressedPlaceState = (value) => {
+    if (this.state.pressed.places.includes(value)) {
+      return true
+    }
+    else {
+      return false
+    }
+  };
+  pressedYearChange = (value) => {
+    var isIn = false;
+    var idx = 0;
+    this.state.pressed.years.forEach((item, index) => {
+      if (value == item) {
+        isIn = true;
+        idx = index;
+      }
+    })
+    if (isIn) {
+      this.state.pressed.years.splice(idx);
+    }
+    else {
+      this.state.pressed.years.push(value);
+    }
+  };
+  pressedPlaceChange = (value) => {
+    var isIn = false;
+    var idx = 0;
+    this.state.pressed.places.forEach((item, index) => {
+      if (value == item) {
+        isIn = true;
+        idx = index;
+      }
+    })
+    this.state.pressed.places.splice(idx);
+    if (!isIn) {
+      this.state.pressed.places.push(value);
+    }
+  };
   render() {
     const { navigate } = this.props.navigation
     return (
       <View style = { styles.container }>
         <View style = { styles.create }>
           <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>CREATE GAME</Text>
-
         </View>
-        <View style = {{ paddingTop: '7.5%' }}>
-          <View style = { styles.time }>
-            <View style = { styles.timeTop }>
-              <Image style = {{ height: Dimensions.get('window').height / 17, width: Dimensions.get('window').height / 17 }} source={require('./../assets/images/time.png')}/>
-              <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Time</Text>
-            </View>
-            <View style = {{ height: 3, width: '100%', backgroundColor: '#FFFFFF' }}>
-            </View>
-            <View style = { styles.timeBottom }>
-              <View style = { styles.optionButtons }>
-                <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>Now</Text>
+        <View style = {{ paddingTop: '7%' }}>
+          <View style = { styles.year }>
+            <View style = { styles.yearTop }>
+              <Image style = {{ height: 50, width: 50 }} source={require('./../assets/images/graduation.png')}/>
+              <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Year</Text>
+              <View style = {{ marginLeft: 10, justifyContent: 'flex-end' }}>
+                <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Who would you like to play with?</Text>
               </View>
-              <View style = { styles.optionButtons }>
-                <Text style = { this.state.fontLoaded ? styles.optionsTimeText : styles.optionsTimeTextElse }>Later</Text>
-              </View>
+            </View>
+            <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}/>
+            <View style = { styles.yearBottom }>
+              <FlatList
+                numColumns={2}
+                scrollEnabled={false}
+                data = {[
+                  { key: 21 },
+                  { key: 20 },
+                  { key: 19 },
+                  { key: 18 },
+                ]}
+                renderItem = {({ item }) => (
+                  <TouchableOpacity onPress={() =>
+                    { this.pressedYearChange(item.key)
+                    this.forceUpdate() }
+                  }>
+                  <View style = {{ paddingLeft: 5, paddingTop: 4, paddingBottom: 4 }}>
+                    <YearButton title={ item.key } pressed={ this.pressedYearState(item.key) }/>
+                  </View>
+                  </TouchableOpacity>
+                )}
+              />
             </View>
           </View>
         </View>
-        <View style = {{ paddingTop: '3%' }}>
+        <View style = {{ paddingTop: '6%' }}>
           <View style = { styles.place }>
             <View style = { styles.placeTop }>
-              <Image style = {{ height: Dimensions.get('window').height / 17, width: Dimensions.get('window').height / 17 }} source = { require('./../assets/images/place.png') }/>
+              <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
+              <View style = {{ marginLeft: 10, justifyContent: 'flex-end' }}>
+                <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Please select one.</Text>
+              </View>
             </View>
-            <View style = {{ height: 3, width: '100%', backgroundColor: '#FFFFFF' }}/>
+            <View style = {{ height: 4, width: '100%', backgroundColor: '#FFFFFF' }}/>
             <View style = { styles.placeBottom }>
               <FlatList
                 numColumns={2}
                 data = {[
-                  { key: 'APhi' },
+                  { key: 'Alpha Phi Alpha' },
                   { key: 'Alpha Chi' },
                   { key: 'Alpha Theta' },
                   { key: 'Alpha Phi' },
@@ -72,31 +148,37 @@ export class CreateScreen extends React.Component {
                   { key: 'Zete' },
                 ]}
                 renderItem = {({ item }) => (
-                  <View style = {{ paddingLeft: Dimensions.get('window').width / 30, paddingTop: Dimensions.get('window').height / 50 }}>
-                    <View style = { styles.optionButtons }>
-                      <Text style = { this.state.fontLoaded ? styles.optionsPlaceText : styles.optionsTextPlaceElse }>{ item.key }</Text>
+                  <TouchableOpacity onPress={() =>
+                    { this.pressedPlaceChange(item.key)
+                      this.forceUpdate() }
+                  }>
+                    <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
+                      <PlaceButton title={ item.key } pressed={ this.pressedPlaceState(item.key) }/>
                     </View>
-                  </View>
+                  </TouchableOpacity>
                 )}
               />
             </View>
           </View>
         </View>
-        <View style = {{ alignItems: 'center', paddingTop: Dimensions.get('window').height / 30 }}>
-          <View style = {{ flexDirection: 'row', alignItems: 'center'}}>
-            <TouchableOpacity onPress={() =>
-              navigate('Home')
-            }>
-              <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() =>
-              navigate('Waiting')
-            }>
-              <View style = { styles.postButton }>
-                <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '7%' }}>
+          <TouchableOpacity onPress={() =>
+            navigate('Home')
+          }>
+            <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() =>
+            { if (this.state.pressed.places != '' && this.state.pressed.years != '') {
+              generateGameKey().then((key) => {
+                createGame({id: key, place: this.state.pressed.places, year: this.state.pressed.years})
+                navigate('Waiting')
+              })
+            }}
+          }>
+            <View style = { styles.postButton }>
+              <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -120,11 +202,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#C2515B',
   },
   create: {
-    backgroundColor: '#FFC928',
+    backgroundColor: '#93E1FA',
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: '#fff',
+    borderColor: '#FFFFFF',
     borderWidth: 10,
+    borderRadius: 5,
     width: '110%',
     marginLeft: Dimensions.get('window').width / -20,
     shadowOpacity: 0.75,
@@ -137,10 +220,11 @@ const styles = StyleSheet.create({
   },
   createText: {
     fontFamily: 'bubble-body',
-    fontSize: Dimensions.get('window').height / 13,
+    fontSize: Dimensions.get('window').height / 15,
     color: '#FFFFFF',
-    width: '50%',
+    width: '75%',
     textAlign: 'center',
+    paddingTop: '2%',
   },
   createTextElse: {
     fontSize: Dimensions.get('window').height / 15,
@@ -175,13 +259,14 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get('window').height / 35,
     fontFamily: 'source-sans-pro-semibold',
     color: '#545454',
-    textAlign: 'center',
+    fontSize: Dimensions.get('window').height / 50,
+    fontFamily: 'source-sans-pro-bold',
   },
   optionsTimeText: {
     fontSize: Dimensions.get('window').height / 25,
     fontFamily: 'source-sans-pro-semibold',
     color: '#545454',
-    textAlign: 'center',
+    fontSize: Dimensions.get('window').height / 50,
   },
   place: {
     width: '90%',
@@ -194,11 +279,10 @@ const styles = StyleSheet.create({
   placeBottom: {
     backgroundColor: '#FFC928',
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
     height: Dimensions.get('window').height / 4,
     paddingTop: 5,
-    paddingBottom: 5,
+    paddingLeft: 15,
+    alignItems: 'center',
   },
   placeTop: {
     backgroundColor: '#F2994A',
@@ -216,7 +300,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     shadowOpacity: 0.25,
     shadowRadius: 5,
-    shadowColor: 'black',
+    shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
   },
   postButtonText: {
@@ -227,9 +311,10 @@ const styles = StyleSheet.create({
   },
   postButtonTextElse: {
     fontSize: 30,
-    color: '#fff',
+    color: '#FFFFFF',
+    textAlign: 'center',
   },
-  time: {
+  year: {
     width: '90%',
     borderTopRightRadius: 7,
     borderBottomRightRadius: 7,
@@ -237,14 +322,15 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     marginLeft: -5,
   },
-  timeBottom: {
+  yearBottom: {
     backgroundColor: '#FFC928',
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-around',
-    height: Dimensions.get('window').height / 8,
+    height: Dimensions.get('window').height / 6,
+    paddingLeft: 15,
+    alignItems: 'center',
   },
-  timeTop: {
+  yearTop: {
     backgroundColor: '#F2994A',
     height: Dimensions.get('window').height / 15,
     alignItems: 'center',

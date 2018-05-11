@@ -1,4 +1,6 @@
 import React from 'react';
+import * as firebaseConfig from './services/firebase-config'
+import * as user from './services/user-actions'
 import { StyleSheet, Text, View, Button, Alert, Image, TextInput, Font } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { HomeScreen } from './screens/Home';
