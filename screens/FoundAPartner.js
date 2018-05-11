@@ -8,6 +8,7 @@ export class FoundAPartnerScreen extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
+    const userID = this.props.navigation.state.params.id
     return (
       <View style={{ flexDirection: 'column' }}>
         <View style={ styles.topContainer }>
@@ -41,7 +42,7 @@ export class FoundAPartnerScreen extends React.Component {
           </View>
         </View>
         <TouchableOpacity onPress={() =>
-            navigate('Home') //for now
+            navigate('Home', { id: userID }) //for now
           } style={ styles.bottomButton }
         >
           <View style={ styles.bottomButton }>

@@ -3,6 +3,10 @@ import { StyleSheet, Text, View, Button, Alert, Image, TextInput, Dimensions, To
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import Logo from './../components/Logo';
+import { generateUserKey, createUser, getUser } from './../services/user-actions'
+import firebase from 'firebase'
+import * as firebaseConfig from './../services/firebase-config'
+import moment from 'moment'
 import { FontLoad } from './../components/FontLoad'
 
 export class HomeScreen extends React.Component {
@@ -26,10 +30,6 @@ export class HomeScreen extends React.Component {
           <View style = {{ backgroundColor: '#C2515B', height: '40%' }}>
             <View style = {{ alignItems: 'center', paddingTop: '5%' }}>
               <View style = { styles.homeRectangle }>
-                <View style = {{ backgroundColor: '#FFC928', width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55, borderRadius: Dimensions.get('window').width * .275, justifyContent: 'center' }}>
-                  <Image style = {{ width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55 }} source={ require('./../assets/images/image.png') }/>
-                  <Text style = { this.state.fontLoaded ? styles.selfieText : styles.selfieTextElse }>Take a selfie to share with your partner!</Text>
-                </View>
                 <View style = { styles.nameContainer }>
                   <TextInput
                     style = { this.state.fontLoaded ? styles.nameInput : styles.nameInputElse }
@@ -40,18 +40,26 @@ export class HomeScreen extends React.Component {
               </View>
             </View>
           </View>
-          <View style = {{ height: '30%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
+          <View style = {{ height: '25%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
             <TouchableOpacity onPress={() =>
-                navigate('Selection')
-              }
+              {
+                if (this.state.text !== '') {
+                  console.log('ok')
+                  generateUserKey().then((key) => {
+                    myKey = key
+                    createUser({id: myKey, name: this.state.text, year: 19})
+                    navigate('Selection', { id : myKey })
+                  })
+                }
+              }}
             >
-              <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
-              tap to begin
-              </Text>
-            </TouchableOpacity>
+            <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
+            tap to begin
+            </Text>
+          </TouchableOpacity>
           </View>
         </View>
-      );
+    );
   }
 }
 
@@ -70,10 +78,6 @@ const styles = StyleSheet.create({
     paddingTop: Dimensions.get('window').height / 50,
     borderColor: '#FFFFFF',
     borderWidth: 7,
-    shadowOpacity: 0.5,
-    shadowRadius: 5,
-    shadowColor: '#000000',
-    shadowOffset: { height: 2, width: 0 },
     shadowOpacity: 0.5,
     shadowRadius: 5,
     shadowColor: '#000000',
@@ -100,12 +104,12 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width / 1.5,
     height: Dimensions.get('window').width / 7,
     backgroundColor: '#FFC928',
+    marginBottom: Dimensions.get('window').height / 40,
     borderColor: '#FFFFFF',
     borderWidth: 5,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: Dimensions.get('window').height / 45,
     shadowOpacity: 0.5,
     shadowRadius: 3,
     shadowColor: '#000000',

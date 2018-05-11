@@ -9,12 +9,14 @@ export class WaitingScreen extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
+    const user = this.props.navigation.state.params.userObject
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
           <Text style = { this.state.fontLoaded ? styles.waitingFont : styles.anything }>
             waiting...
           </Text>
+          <Text> This is a test to see that { user.name } is properly registered as { user.id } </Text>
         </View>
         <View style = { styles.bottomContainer }>
         <View style = { styles.tabStyle }>
@@ -30,6 +32,7 @@ export class WaitingScreen extends React.Component {
             text={ 'Delete\nRequest' }
             navigation={ this.props.navigation }
             destination={ 'Create' }
+            userObject = { user }
           />
         </View>
       </View>

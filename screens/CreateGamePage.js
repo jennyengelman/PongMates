@@ -66,6 +66,7 @@ export class CreateScreen extends React.Component {
   };
   render() {
     const { navigate } = this.props.navigation
+    const user = this.props.navigation.state.params.userObject
     return (
       <View style = { styles.container }>
         <View style = { styles.create }>
@@ -163,7 +164,7 @@ export class CreateScreen extends React.Component {
         </View>
         <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '7%' }}>
           <TouchableOpacity onPress={() =>
-            navigate('Home')
+            navigate('Selection', { id: user.id })
           }>
             <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
           </TouchableOpacity>
@@ -171,7 +172,7 @@ export class CreateScreen extends React.Component {
             { if (this.state.pressed.places != '' && this.state.pressed.years != '') {
               generateGameKey().then((key) => {
                 createGame({id: key, place: this.state.pressed.places, year: this.state.pressed.years})
-                navigate('Waiting')
+                navigate('Waiting', { userObject: user })
               })
             }}
           }>

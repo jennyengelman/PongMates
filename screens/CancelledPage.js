@@ -8,6 +8,7 @@ export class CancelScreen extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
+    const userID = this.props.navigation.state.params.id
     return (
       <View style={styles.container}>
         <View style={styles.topContainer}>
@@ -16,19 +17,18 @@ export class CancelScreen extends React.Component {
           </Text>
           <Image source={ require('./../assets/images/sad.png') } style={ styles.imageStyle } />
         </View>
-
         <View style={styles.bottomContainer}>
           <View style={styles.details}>
             <Text style={this.state.fontLoaded ? styles.detailsText : styles.anything}>
               Jenny cancelled your game at Phi Delt. Return home to find a new game.
             </Text>
           </View>
-
           <PongButton
            font = { this.state.fontLoaded }
            text = { 'Home' }
            navigation = { this.props.navigation }
            destination = { 'HomeScreen' }
+           id = { userID }
            />
         </View>
       </View>

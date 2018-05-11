@@ -9,6 +9,7 @@ export class TimedOutScreen extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
+    const userID = this.props.navigation.state.params.id
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
@@ -28,6 +29,7 @@ export class TimedOutScreen extends React.Component {
               text={ 'Home' }
               navigation={ this.props.navigation }
               destination={ 'Selection' }
+              id = { userID }
             />
         </View>
       </View>
