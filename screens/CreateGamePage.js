@@ -77,11 +77,6 @@ export class CreateScreen extends React.Component {
       this.state.pressed.places.push(value);
     }
   };
-  // onAPress = (key) => {
-  //   this.pressedYearChange(key);
-  //   isPressed = this.pressedYearState(key);
-  //   return isPressed
-  // }
   render() {
     const { navigate } = this.props.navigation
     return (
@@ -108,10 +103,11 @@ export class CreateScreen extends React.Component {
                 ]}
                 renderItem = {({ item }) => (
                   <TouchableOpacity onPress={() =>
-                    this.pressedPlaceChange(item.key)
+                    { this.pressedYearChange(item.key)
+                    this.forceUpdate() }
                   }>
                   <View style = {{ paddingLeft: 5, paddingTop: 4, paddingBottom: 4 }}>
-                    <YearButton title={ item.key } pressed={ this.pressedYearState(item.key) ? true : false }/>
+                    <YearButton title={ item.key } pressed={ this.pressedYearState(item.key) }/>
                   </View>
                   </TouchableOpacity>
                 )}
@@ -160,7 +156,8 @@ export class CreateScreen extends React.Component {
                 ]}
                 renderItem = {({ item }) => (
                   <TouchableOpacity onPress={() =>
-                    this.pressedPlaceChange(item.key)
+                    { this.pressedPlaceChange(item.key)
+                      this.forceUpdate() }
                   }>
                     <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
                       <PlaceButton title={ item.key } pressed={ this.pressedPlaceState(item.key) }/>
@@ -179,8 +176,8 @@ export class CreateScreen extends React.Component {
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
             generateGameKey().then((key) => {
-              createGame({id: key, place: this.state.place, year: this.state.year})
-              navigate('Home')
+              createGame({id: key, place: this.state.pressed.places, year: this.state.pressed.years})
+              navigate('Waiting')
             })
           }>
             <View style = { styles.postButton }>
