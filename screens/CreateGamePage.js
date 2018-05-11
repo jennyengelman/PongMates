@@ -86,6 +86,9 @@ export class CreateScreen extends React.Component {
             <View style = { styles.yearTop }>
               <Image style = {{ height: 50, width: 50 }} source={require('./../assets/images/graduation.png')}/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Year</Text>
+              <View style = {{ marginLeft: 10, justifyContent: 'flex-end' }}>
+                <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Who would you like to play with?</Text>
+              </View>
             </View>
             <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}/>
             <View style = { styles.yearBottom }>
@@ -248,12 +251,12 @@ const styles = StyleSheet.create({
   },
   headerSubText: {
     color: '#545454',
-    fontSize: Dimensions.get('window').height / 45,
+    fontSize: Dimensions.get('window').height / 50,
     fontFamily: 'source-sans-pro-bold',
   },
   headerSubTextElse: {
     color: '#545454',
-    fontSize: Dimensions.get('window').height / 45,
+    fontSize: Dimensions.get('window').height / 50,
   },
   place: {
     width: '90%',
