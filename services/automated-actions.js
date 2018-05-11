@@ -1,5 +1,5 @@
 import schedule from 'node-schedule'
-import firebase from 'firebase'
+import firebase from "firebase"
 import moment from 'moment'
 
 let checkDatabase = schedule.scheduleJob('* * */1 * *', () => {
