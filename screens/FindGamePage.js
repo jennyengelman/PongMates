@@ -4,14 +4,17 @@ import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import firebase from 'firebase';
 import * as firebaseConfig from './../services/firebase-config';
+import { createGame, generateGameKey } from './../services/game-actions';
+import YearButton from './../components/YearButton';
+import PlaceButton from './../components/PlaceButton';
 
 export class FindScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
     fontLoaded: false,
     pressed: {
-      year: [],
-      place: [],
+      years: [],
+      places: [],
     }
   };
   async componentDidMount() {
@@ -24,37 +27,52 @@ export class FindScreen extends React.Component {
      });
     this.setState({ fontLoaded: true }) ;
   };
-  check = (item, index, arr) => {
-    if (item == arr[index]) {
+  pressedYearState = (value) => {
+    if (this.state.pressed.years.includes(value)) {
       return true
     }
-  };
-  pressedYearState = (item) => {
-    if (!this.state.pressed.year.forEach(check(item))) {
-      return false;
+    else {
+      return false
     }
-    return true;
   };
-  pressedPlaceState = (item) => {
-    if (!this.state.pressed.place.forEach(check(item))) {
-      return false;
-    }
-    return true;
-  };
-  pressedYearChange = (item) => {
-    if (!this.state.pressed.year.forEach(check(item))) {
-      this.state.pressed.year.splice(item);
+  pressedPlaceState = (value) => {
+    if (this.state.pressed.places.includes(value)) {
+      return true
     }
     else {
-      this.state.pressed.year.push(item);
+      return false
     }
   };
-  pressedPlaceChange = (item) => {
-    if (!this.state.pressed.place.forEach(check(item))) {
-      this.state.pressed.place.splice(item);
+  pressedYearChange = (value) => {
+    var isIn = false;
+    var idx = 0;
+    this.state.pressed.years.forEach((item, index) => {
+      if (value == item) {
+        isIn = true;
+        idx = index;
+      }
+    })
+    if (isIn) {
+      this.state.pressed.years.splice(idx);
     }
     else {
-      this.state.pressed.place.push(item);
+      this.state.pressed.years.push(value);
+    }
+  };
+  pressedPlaceChange = (value) => {
+    var isIn = false;
+    var idx = 0;
+    this.state.pressed.places.forEach((item, index) => {
+      if (value == item) {
+        isIn = true;
+        idx = index;
+      }
+    })
+    if (isIn) {
+      this.state.pressed.places.splice(idx);
+    }
+    else {
+      this.state.pressed.places.push(value);
     }
   };
   render() {
@@ -82,13 +100,12 @@ export class FindScreen extends React.Component {
                   { key: 18 },
                 ]}
                 renderItem = {({ item }) => (
-                  <TouchableOpacity
-                    onPress={() => this.pressedYearChange(item.key) }
-                  >
+                  <TouchableOpacity onPress={() =>
+                    { this.pressedYearChange(item.key)
+                    this.forceUpdate() }
+                  }>
                   <View style = {{ paddingLeft: 5, paddingTop: 4, paddingBottom: 4 }}>
-                    <View style = { this.state.pressed.year.pressedYearState ? styles.yearButtonsPressed : styles.yearButtons }>
-                      <Text style = { this.props.font ? styles.optionsTimeText : styles.optionsTimeTextElse }>{ item.key }</Text>
-                    </View>
+                    <YearButton title={ item.key } pressed={ this.pressedYearState(item.key) }/>
                   </View>
                   </TouchableOpacity>
                 )}
@@ -136,11 +153,12 @@ export class FindScreen extends React.Component {
                   { key: 'Zete' },
                 ]}
                 renderItem = {({ item }) => (
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={() =>
+                  { this.pressedPlaceChange(item.key)
+                    this.forceUpdate() }
+                  }>
                     <View style = {{ paddingLeft: 5, paddingTop: 2, paddingBottom: 2 }}>
-                      <View style = { styles.placeButtons }>
-                        <Text style = { this.state.fontLoaded ? styles.optionsPlaceText : styles.optionsPlaceTextElse }>{ item.key }</Text>
-                      </View>
+                      <PlaceButton title={ item.key } pressed={ this.pressedPlaceState(item.key) }/>
                     </View>
                   </TouchableOpacity>
                 )}
@@ -155,7 +173,7 @@ export class FindScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
-            navigate('Home')
+            navigate('NoGamesFound')
           }>
             <View style = { styles.postButton }>
               <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>

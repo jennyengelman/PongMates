@@ -37,13 +37,12 @@ export class CreateScreen extends React.Component {
     }
   };
   pressedPlaceState = (value) => {
-    var isPressed = false;
-    this.state.pressed.places.forEach((item) => {
-      if (item == value) {
-        isPressed = true;
-      }
-    })
-    return isPressed;
+    if (this.state.pressed.places.includes(value)) {
+      return true
+    }
+    else {
+      return false
+    }
   };
   pressedYearChange = (value) => {
     var isIn = false;
