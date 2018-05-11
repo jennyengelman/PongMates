@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     color: '#4F4F4F',
     paddingLeft: '7%',
     paddingRight: '7%',
-    fontFamily: 'source-sans-pro'
+    fontFamily: 'source-sans-pro-semibold'
   },
   homeButton: {
     width: '35%',
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: '#4F4F4F',
-    fontFamily: 'source-sans-pro'
+    fontFamily: 'source-sans-pro-semibold'
   },
   anything: {
     fontSize: 65,

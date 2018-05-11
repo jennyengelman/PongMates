@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     height: '2%',
   },
   timedOutText: {
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     fontSize: Dimensions.get('window').height / 25,
     padding: 30,
     color: '#616161',

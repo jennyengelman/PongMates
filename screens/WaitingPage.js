@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   tabFontStyle: {
     fontWeight: 'bold',
     color: '#545454',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     fontSize: Dimensions.get('window').width / 18,
   },
   tabStyle: {
@@ -90,14 +90,14 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get('window').height / 25,
     fontWeight: 'bold',
     marginLeft: 15,
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     marginBottom: 5,
   },
   deleteFontStyle:{
     fontWeight: 'bold',
     fontSize: 15,
     color: '#545454',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     textAlign: 'center',
     width: '100%'
   },

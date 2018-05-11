@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
       textAlign: 'center',
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       color: '#4F4F4F',
       fontSize: 30,
     },
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     detailsText: {
       fontSize: 30,
       color: '#4F4F4F',
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       textAlign: 'left',
     },
     detailsTextElse: {
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     detailsHeaderText: {
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       color: '#4F4F4F',
       fontWeight: 'bold',
       textAlign: 'center',
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
       fontSize: 20,
     },
     matchText: {
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       fontSize: 72,
       textAlign: 'center',
       color: '#4F4F4F',
