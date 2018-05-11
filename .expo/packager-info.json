@@ -1,8 +1,15 @@
 {
   "expoServerPort": 19000,
   "packagerPort": 19001,
+<<<<<<< HEAD
   "packagerPid": 53683,
   "expoServerNgrokUrl": "https://wy-psn.ijemmao.pongmates.exp.direct",
   "packagerNgrokUrl": "https://packager.wy-psn.ijemmao.pongmates.exp.direct",
   "ngrokPid": 53696
+=======
+  "packagerPid": 19797,
+  "expoServerNgrokUrl": "https://qf-5v6.jennyengelman.pongmates.exp.direct",
+  "packagerNgrokUrl": "https://packager.qf-5v6.jennyengelman.pongmates.exp.direct",
+  "ngrokPid": 19842
+>>>>>>> b7d52884aeab07d54a2437afd2be4eb1456a9fd2
 }
