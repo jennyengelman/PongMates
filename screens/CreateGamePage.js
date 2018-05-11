@@ -178,10 +178,12 @@ export class CreateScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
-            generateGameKey().then((key) => {
-              createGame({id: key, place: this.state.pressed.places, year: this.state.pressed.years})
-              navigate('Waiting')
-            })
+            { if (this.state.pressed.places != '' && this.state.pressed.years != '') {
+              generateGameKey().then((key) => {
+                createGame({id: key, place: this.state.pressed.places, year: this.state.pressed.years})
+                navigate('Waiting')
+              })
+            }}
           }>
             <View style = { styles.postButton }>
               <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>

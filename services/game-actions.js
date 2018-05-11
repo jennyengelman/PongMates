@@ -4,7 +4,7 @@ import moment from 'moment';
 export function createGame(game) {
   return new Promise((resolve, reject) => {
     firebase.database().ref(`games/${game.id}`).set({
-      creator: "-LCF7qa2LI_oKKSQ3SIA",
+      //creator: "-LCF7qa2LI_oKKSQ3SIA",
       id: game.id,
       place: game.place,
       year: game.year,

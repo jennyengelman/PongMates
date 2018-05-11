@@ -75,6 +75,10 @@ export class FindScreen extends React.Component {
       this.state.pressed.places.push(value);
     }
   };
+  makePrefDict = () => {
+    years: this.state.pressed.years
+    places: this.state.pressed.places
+  }
   render() {
     const { navigate } = this.props.navigation
     return (
@@ -176,7 +180,10 @@ export class FindScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
-            navigate('NoGamesFound')
+            { if (this.state.pressed.places != '' && this.state.pressed.years != '') {
+              { this.makePrefDict()
+                navigate('Home') }
+            }}
           }>
             <View style = { styles.postButton }>
               <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
