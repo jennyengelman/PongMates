@@ -81,6 +81,7 @@ export class FindScreen extends React.Component {
   }
   render() {
     const { navigate } = this.props.navigation
+    const user = this.props.navigation.state.params.userObject
     return (
       <View style = { styles.container }>
         <View style = { styles.find }>
@@ -175,14 +176,14 @@ export class FindScreen extends React.Component {
         </View>
         <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '7%' }}>
           <TouchableOpacity onPress={() =>
-            navigate('Home')
+            navigate('Selection', { id: user.id })
           }>
             <Text style = { this.state.fontLoaded ? styles.cancelText : styles.cancelTextElse }>Cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
             { if (this.state.pressed.places != '' && this.state.pressed.years != '') {
               { this.makePrefDict()
-                navigate('Home') }
+                navigate('Home', { id: user.id }) }
             }}
           }>
             <View style = { styles.postButton }>
@@ -199,7 +200,7 @@ const styles = StyleSheet.create({
   cancelText: {
     color: '#F2994A',
     fontSize: 30,
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     textAlign: 'center',
   },
   cancelTextElse: {
