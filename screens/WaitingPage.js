@@ -32,11 +32,7 @@ export class WaitingScreen extends React.Component {
             text={ 'Delete\nRequest' }
             navigation={ this.props.navigation }
             destination={ 'Create' }
-            onPress={() =>
-              deleteGame().then((key) => {
-                navigate('Selection')
-              })
-            }
+            onPress={() => deleteGame()}
           />
         </View>
       </View>
