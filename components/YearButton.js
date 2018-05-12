@@ -16,7 +16,7 @@ export default class YearButton extends React.Component {
 const styles = StyleSheet.create({
   optionsYearText: {
     fontSize: Dimensions.get('window').height / 25,
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     color: '#93E1FA',
     textAlign: 'center',
   },
