@@ -53,7 +53,7 @@ export class FindScreen extends React.Component {
       }
     })
     if (isIn) {
-      this.state.pressed.years.splice(idx);
+      this.state.pressed.years.splice(idx, 1);
     }
     else {
       this.state.pressed.years.push(value);
@@ -69,7 +69,7 @@ export class FindScreen extends React.Component {
       }
     })
     if (isIn) {
-      this.state.pressed.places.splice(idx);
+      this.state.pressed.places.splice(idx, 1);
     }
     else {
       this.state.pressed.places.push(value);

@@ -35,7 +35,7 @@ export class WaitingScreen extends React.Component {
             onPress={() =>
               deleteGame().then((key) => {
                 navigate('Selection')
-              }
+              })
             }
           />
         </View>
