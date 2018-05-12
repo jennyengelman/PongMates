@@ -11,6 +11,7 @@ export class WaitingScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
+    const game = this.props.navigation.state.params.gameObject
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
@@ -32,11 +33,8 @@ export class WaitingScreen extends React.Component {
             text={ 'Delete\nRequest' }
             navigation={ this.props.navigation }
             destination={ 'Create' }
-            onPress={() =>
-              deleteGame().then((key) => {
-                navigate('Selection')
-              }
-            }
+            userObject={ user }
+            action={() => deleteGame(game.id) }
           />
         </View>
       </View>

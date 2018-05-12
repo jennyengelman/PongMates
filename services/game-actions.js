@@ -4,7 +4,7 @@ import moment from 'moment';
 export function createGame(game) {
   return new Promise((resolve, reject) => {
     firebase.database().ref(`games/${game.id}`).set({
-      creator: user.id,
+      creator: game.creator,
       id: game.id,
       place: game.place,
       year: game.year,
@@ -29,9 +29,9 @@ export function getGame(game) {
   })
 }
 
-export function deleteGame(game) {
+export function deleteGame(id) {
   return new Promise((resolve, reject) => {
-    firebase.database().ref(`games/${game.id}`).remove()
-    })
+    firebase.database().ref(`games/${id}`).remove()
     resolve(true)
+  })
 }
