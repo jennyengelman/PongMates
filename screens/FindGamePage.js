@@ -243,7 +243,7 @@ const styles = StyleSheet.create({
   },
   optionsPlaceText: {
     fontSize: Dimensions.get('window').height / 35,
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     color: '#545454',
     textAlign: 'center',
   },
@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
   },
   optionsTimeText: {
     fontSize: Dimensions.get('window').height / 25,
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     color: '#545454',
     textAlign: 'center',
   },
