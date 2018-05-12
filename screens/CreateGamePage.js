@@ -171,7 +171,7 @@ export class CreateScreen extends React.Component {
             { if (this.state.pressed.places != '' && this.state.pressed.years != '') {
               generateGameKey().then((key) => {
                 createGame({id: key, place: this.state.pressed.places, year: this.state.pressed.years})
-                navigate('Waiting', { userObject: user })
+                navigate('Waiting', { userObject: user, gameID: key })
               })
             }}
           }>
