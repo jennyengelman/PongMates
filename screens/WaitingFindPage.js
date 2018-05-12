@@ -30,12 +30,7 @@ export class WaitingFindScreen extends React.Component {
             font={ this.state.fontLoaded }
             text={ 'Delete\nRequest' }
             navigation={ this.props.navigation }
-
-            onPress={() =>
-              deleteGame().then((key) => {
-                navigate('Selection')
-              })
-            }
+            destination={ 'Selection' }
           />
         </View>
       </View>
