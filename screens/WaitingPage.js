@@ -7,21 +7,10 @@ import { deleteGame } from './../services/game-actions';
 
 export class WaitingScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = {
-    fontLoaded: false,
-  };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-      'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
-    });
-    this.setState({ fontLoaded: true }) ;
-  }
+  state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
+    const user = this.props.navigation.state.params.userObject
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
@@ -48,6 +37,7 @@ export class WaitingScreen extends React.Component {
             //     navigate('Create')
             //   }
             //}
+            userObject = { user }
           />
         </View>
       </View>
@@ -85,7 +75,7 @@ const styles = StyleSheet.create({
   tabFontStyle: {
     fontWeight: 'bold',
     color: '#545454',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     fontSize: Dimensions.get('window').width / 18,
   },
   tabStyle: {
@@ -108,14 +98,14 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get('window').height / 25,
     fontWeight: 'bold',
     marginLeft: 15,
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     marginBottom: 5,
   },
   deleteFontStyle:{
     fontWeight: 'bold',
     fontSize: 15,
     color: '#545454',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     textAlign: 'center',
     width: '100%'
   },

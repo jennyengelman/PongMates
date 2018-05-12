@@ -3,18 +3,13 @@ import { StyleSheet, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 
 export default class PongButton extends React.Component {
-  state = { fontLoaded: false };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-    });
-    this.setState({ fontLoaded: true });
-  }
+  state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation;
+    console.log(this.props.id)
     return (
       <TouchableOpacity
-        onPress={ () => navigate(this.props.destination) }
+        onPress={ () => navigate(this.props.destination, { id: this.props.id, userObject: this.props.userObject }) }
         style={ styles.button }
       >
         <Text style={ this.props.font ? styles.buttonText : styles.buttonTextBackup }>
@@ -39,7 +34,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#616161',
-    // fontFamily: 'source-sans-pro-bold',
+    fontFamily: 'source-sans-pro-bold',
     textAlign: 'center',
     fontSize: Dimensions.get('window').height / 30,
   },

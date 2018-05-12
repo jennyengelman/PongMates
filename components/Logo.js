@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Dimensions } from 'react-native';
 import { Font } from 'expo';
 
-
 export default class Logo extends React.Component {
   render() {
     return (

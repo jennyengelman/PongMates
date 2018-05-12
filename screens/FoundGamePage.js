@@ -4,19 +4,10 @@ import { Font } from 'expo';
 
 export class FoundScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = {
-    fontLoaded: false,
-   };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-      'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
-     });
-    this.setState({ fontLoaded: true }) ;
-  }
+  state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
+    const userID = this.props.navigation.state.params.id
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
@@ -36,7 +27,7 @@ export class FoundScreen extends React.Component {
           </View>
           <View style = { styles.buttonContainer }>
             <TouchableOpacity onPress={() =>
-                navigate('Create')
+                navigate('Create', { id: userID })
               }
             >
               <View style = { styles.button }>
@@ -44,7 +35,7 @@ export class FoundScreen extends React.Component {
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>
-                navigate('Home') //for now
+                navigate('Home', { id: userID }) //for now
               }
             >
               <View style = { styles.button }>
@@ -79,7 +70,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
       textAlign: 'center',
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       color: '#4F4F4F',
       fontSize: 30,
     },
@@ -106,7 +97,7 @@ const styles = StyleSheet.create({
     detailsText: {
       fontSize: 30,
       color: '#4F4F4F',
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       textAlign: 'left',
     },
     detailsTextElse: {
@@ -123,7 +114,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     detailsHeaderText: {
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       color: '#4F4F4F',
       fontWeight: 'bold',
       textAlign: 'center',
@@ -136,7 +127,7 @@ const styles = StyleSheet.create({
       fontSize: 20,
     },
     matchText: {
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       fontSize: 72,
       textAlign: 'center',
       color: '#4F4F4F',
