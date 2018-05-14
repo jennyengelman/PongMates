@@ -36,10 +36,10 @@ export function deleteGame(game) {
     resolve(true)
 }
 
-export function updateGame(id, player) {
+export function updateGame(gameID, playerID) {
   return new Promise((resolve, reject) => {
-    firebase.database().ref(`games/${id}`).set({
-      player: player
+    firebase.database().ref(`games/${gameID}`).set({
+      player: playerID
     })
     resolve(true)
 }

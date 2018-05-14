@@ -1,5 +1,7 @@
 import firebase from 'firebase'
 import { getUser } from './../services/user-actions.js'
+import { updateGame } from './../services/game-actions'
+
 
 export function searchDatabase(preferences, user) {
   return new Promise((resolve, reject) => {
@@ -11,7 +13,7 @@ export function searchDatabase(preferences, user) {
             //creator has right place
             if (preferences.year.includes(childSnapshot.val().creatoryear)) {
               //creator is right age
-              resolve(childSnapshot.val())
+              resolve(childSnapshot.val().updateGame(childSnapshot.val().creator, user.id))
             }
             else {
               console.log("creator is wrong age")
