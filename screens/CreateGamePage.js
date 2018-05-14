@@ -242,6 +242,15 @@ const styles = StyleSheet.create({
     color: '#545454',
     fontSize: Dimensions.get('window').height / 17,
   },
+  headerSubText: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 50,
+    fontFamily: 'source-sans-pro-bold',
+  },
+  headerSubTextElse: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 50,
+  },
   optionButtons: {
     borderColor: '#545454',
     borderRadius: 50,

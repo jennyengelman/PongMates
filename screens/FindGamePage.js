@@ -242,6 +242,15 @@ const styles = StyleSheet.create({
     color: '#545454',
     fontSize: Dimensions.get('window').height / 17,
   },
+  headerSubText: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 50,
+    fontFamily: 'source-sans-pro-bold',
+  },
+  headerSubTextElse: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 50,
+  },
   optionsPlaceText: {
     fontSize: Dimensions.get('window').height / 35,
     fontFamily: 'source-sans-pro-semibold',
