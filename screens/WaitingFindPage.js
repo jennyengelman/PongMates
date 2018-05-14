@@ -5,13 +5,11 @@ import PongButton from './../components/PongButton';
 import { StackNavigator } from 'react-navigation';
 import { deleteGame } from './../services/game-actions';
 
-export class WaitingScreen extends React.Component {
+export class WaitingFindScreen extends React.Component {
   static navigationOptions = { header: null };
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
-    const user = this.props.navigation.state.params.userObject
-    const game = this.props.navigation.state.params.gameObject
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
@@ -32,9 +30,7 @@ export class WaitingScreen extends React.Component {
             font={ this.state.fontLoaded }
             text={ 'Delete\nRequest' }
             navigation={ this.props.navigation }
-            destination={ 'Create' }
-            userObject={ user }
-            action={() => deleteGame(game.id) }
+            destination={ 'Selection' }
           />
         </View>
       </View>
@@ -72,7 +68,7 @@ const styles = StyleSheet.create({
   tabFontStyle: {
     fontWeight: 'bold',
     color: '#545454',
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans',
     fontSize: Dimensions.get('window').width / 18,
   },
   tabStyle: {
@@ -95,14 +91,14 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get('window').height / 25,
     fontWeight: 'bold',
     marginLeft: 15,
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans',
     marginBottom: 5,
   },
   deleteFontStyle:{
     fontWeight: 'bold',
     fontSize: 15,
     color: '#545454',
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans',
     textAlign: 'center',
     width: '100%'
   },

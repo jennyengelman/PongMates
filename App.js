@@ -1,4 +1,6 @@
 import React from 'react';
+import * as firebaseConfig from './services/firebase-config'
+import * as user from './services/user-actions'
 import { StyleSheet, Text, View, Button, Alert, Image, TextInput, Font } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { HomeScreen } from './screens/Home';
@@ -12,9 +14,9 @@ import { WaitingScreen } from './screens/WaitingPage';
 import { FoundScreen } from './screens/FoundGamePage';
 import { FoundAPartnerScreen } from './screens/FoundAPartner';
 import { Actions } from './services/automated-actions';
-import * as firebaseConfig from './services/firebase-config'
 import { NoGamesFoundScreen } from './screens/NoGamesFoundPage';
 import { CancelScreen } from './screens/CancelledPage';
+import { WaitingFindScreen } from './screens/WaitingFindPage'
 
 const RootStack = StackNavigator({
   Home: { screen: HomeScreen },
@@ -26,6 +28,7 @@ const RootStack = StackNavigator({
   Selection: { screen: SelectionScreen },
   Find: { screen: FindScreen },
   Waiting: { screen: WaitingScreen },
+  WaitingFind: { screen: WaitingFindScreen },
   FoundGame: { screen: FoundScreen },
   NoGamesFound: { screen: NoGamesFoundScreen },
   Cancel: { screen: CancelScreen },

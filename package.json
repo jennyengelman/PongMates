@@ -11,6 +11,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
     "react-native-modal": "^6.0.0",
     "react-navigation": "^1.5.8",
+    "react-native-scripts": "^1.14.0",
     "reinstall": "^2.0.0",
     "util": "^0.10.3"
   },

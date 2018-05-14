@@ -5,7 +5,6 @@ import { Font } from 'expo';
 import { getGame } from './../services/user-actions'
 
 export class MeetMatch extends React.Component {
-
   static navigationOptions = { header: null };
 
   state = {
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: Dimensions.get('window').height / 35,
     color: '#4F4F4F',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     marginLeft: '7%'
   },
   cancelButton: {
