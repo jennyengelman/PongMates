@@ -2,8 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
-import firebase from 'firebase'
-import * as firebaseConfig from './../services/firebase-config'
 import { searchDatabase } from './../services/database-actions'
 
 
@@ -105,8 +103,6 @@ export class FindScreen extends React.Component {
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
             searchDatabase({ year: [21, 19], place : ["Alpha Theta", "Alpha Phi", "ChiGam"] }, { year: 21, id: "-LCF7nuE1RLtA8nAJf9S" }).then((result) => {
-              console.log("Searching the database has yielded the following match: ")
-              console.log(result)
             })
           }>
             <View style = { styles.postButton }>
