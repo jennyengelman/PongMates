@@ -22,8 +22,12 @@ export class FindScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation
     var preferences = {
+      year:[20, 19],
+      place:["Alpha Theta", "Bones Gate"]
     }
     var user = {
+      id: "-LCVUkcA8nxir94QqhOJ",
+      year: 20,
     }
     return (
       <View style = { styles.container }>
