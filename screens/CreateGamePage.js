@@ -7,7 +7,6 @@ import { createGame, generateGameKey } from './../services/game-actions';
 import YearButton from './../components/YearButton';
 import PlaceButton from './../components/PlaceButton';
 
-{/*//component with year button, prop with title (21), prop to highlight*/}
 export class CreateScreen extends React.Component {
   static navigationOptions = { header: null };
   state = {
@@ -63,6 +62,35 @@ export class CreateScreen extends React.Component {
       this.state.pressed.places.push(value);
     }
   };
+  selectAllYearFunc = () => {
+    this.state.all.years.forEach((item) => {
+      if (!this.state.pressed.years.includes(item)) {
+        this.state.pressed.years.push(item);
+      }
+    })
+  }
+  selectAllPlaceFunc = () => {
+    this.state.all.places.forEach((item) => {
+      if (!this.state.pressed.places.includes(item)) {
+        this.state.pressed.places.push(item);
+      }
+    })
+  }
+  allYearSelection = () => {
+    var allSelected = true
+    if (this.state.pressed.years.length != this.state.all.years.length) {
+      allSelected = false
+    }
+    if (allSelected) {
+      this.deselectAllYearFunc()
+    }
+    else {
+      this.selectAllYearFunc()
+    }
+  }
+  deselectAllYearFunc = () => {
+    this.state.pressed.years = []
+  }
   render() {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
@@ -78,6 +106,16 @@ export class CreateScreen extends React.Component {
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Year</Text>
               <View style = {{ marginLeft: 10, justifyContent: 'flex-end' }}>
                 <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Who would you like to play with?</Text>
+              </View>
+              <View style = {{ justifyContent: 'flex-end', alignItems: 'flex-end'}}>
+                <TouchableOpacity onPress ={() =>
+                  { this.allYearSelection()
+                  this.forceUpdate() }
+                }>
+                  <View style = { styles.selectAllButton }>
+                    <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Select all</Text>
+                  </View>
+                </TouchableOpacity>
               </View>
             </View>
             <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}/>
@@ -112,6 +150,16 @@ export class CreateScreen extends React.Component {
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
               <View style = {{ marginLeft: 10, justifyContent: 'flex-end' }}>
                 <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Please select one.</Text>
+              </View>
+              <View style = {{ justifyContent: 'flex-end', alignItems: 'flex-end'}}>
+                <TouchableOpacity onPress ={() =>
+                  { this.allYearSelection()
+                  this.forceUpdate() }
+                }>
+                  <View style = { styles.selectAllButton }>
+                    <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Select all</Text>
+                  </View>
+                </TouchableOpacity>
               </View>
             </View>
             <View style = {{ height: 4, width: '100%', backgroundColor: '#FFFFFF' }}/>
