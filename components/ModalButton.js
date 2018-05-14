@@ -23,6 +23,6 @@ const styles = StyleSheet.create({
   },
   modalButtonStyle: {
     fontSize: 20,
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
   },
 });

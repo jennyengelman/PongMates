@@ -43,7 +43,7 @@ export class CreateScreen extends React.Component {
       }
     })
     if (isIn) {
-      this.state.pressed.years.splice(idx);
+      this.state.pressed.years.splice(idx, 1);
     }
     else {
       this.state.pressed.years.push(value);
@@ -58,7 +58,7 @@ export class CreateScreen extends React.Component {
         idx = index;
       }
     })
-    this.state.pressed.places.splice(idx);
+    this.state.pressed.places.splice(idx, 1);
     if (!isIn) {
       this.state.pressed.places.push(value);
     }
@@ -170,8 +170,9 @@ export class CreateScreen extends React.Component {
           <TouchableOpacity onPress={() =>
             { if (this.state.pressed.places != '' && this.state.pressed.years != '') {
               generateGameKey().then((key) => {
-                createGame({id: key, place: this.state.pressed.places, year: this.state.pressed.years})
-                navigate('Waiting', { userObject: user, gameID: key })
+                const game = { id: key, place: this.state.pressed.places, year: this.state.pressed.years, creator: user.id, creatoryear: user.year }
+                createGame(game)
+                navigate('Waiting', { gameObject: game, userObject: user })
               })
             }}
           }>

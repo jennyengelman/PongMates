@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Dimensions }
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import firebase from 'firebase';
+import * as firebaseConfig from './../services/firebase-config';
 import { createGame, generateGameKey } from './../services/game-actions';
 import YearButton from './../components/YearButton';
 import PlaceButton from './../components/PlaceButton';
@@ -42,7 +43,7 @@ export class FindScreen extends React.Component {
       }
     })
     if (isIn) {
-      this.state.pressed.years.splice(idx);
+      this.state.pressed.years.splice(idx, 1);
     }
     else {
       this.state.pressed.years.push(value);
@@ -58,7 +59,7 @@ export class FindScreen extends React.Component {
       }
     })
     if (isIn) {
-      this.state.pressed.places.splice(idx);
+      this.state.pressed.places.splice(idx, 1);
     }
     else {
       this.state.pressed.places.push(value);
@@ -243,7 +244,7 @@ const styles = StyleSheet.create({
   },
   optionsPlaceText: {
     fontSize: Dimensions.get('window').height / 35,
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     color: '#545454',
     textAlign: 'center',
   },
@@ -254,7 +255,7 @@ const styles = StyleSheet.create({
   },
   optionsTimeText: {
     fontSize: Dimensions.get('window').height / 25,
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     color: '#545454',
     textAlign: 'center',
   },
@@ -325,8 +326,8 @@ const styles = StyleSheet.create({
     shadowOffset: { height: 0, width: 0 },
   },
   postButtonText: {
-    color: '#fff',
-    fontFamily: 'source-sans-pro-semibold',
+    color: '#FFFFFF',
+    fontFamily: 'source-sans-pro',
     fontSize: 30,
     textAlign: 'center',
   },

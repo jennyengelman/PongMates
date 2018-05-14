@@ -43,7 +43,6 @@ export class HomeScreen extends React.Component {
             <TouchableOpacity onPress={() =>
               {
                 if (this.state.text !== '') {
-                  console.log('ok')
                   generateUserKey().then((key) => {
                     myKey = key
                     createUser({id: myKey, name: this.state.text, year: 19})
@@ -133,7 +132,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   nextText: {
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     textAlign: 'center',
     color: '#696969',
   },
