@@ -15,16 +15,7 @@ export function searchDatabase(preferences, user) {
               //creator is right age
               resolve(updateGame(childSnapshot.val().id, user.id))
             }
-            else {
-              console.log("creator is wrong age")
-            }
           }
-          else {
-            console.log("creator has wrong place")
-          }
-        }
-        else {
-          console.log("finder is wrong age")
         }
       })
       reject(false)
