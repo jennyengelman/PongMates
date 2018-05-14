@@ -41,7 +41,7 @@ _renderModalContent = () => (
       {
       generateUserKey().then((key) => {
         myKey = key
-        createUser({id: myKey, name: "urie", year: this.state.year })
+        createUser({id: myKey, name: this.state.text, year: this.state.year })
         this.props.navigation.navigate('Selection')
       })
       this.props.navigation.navigate('Selection')
