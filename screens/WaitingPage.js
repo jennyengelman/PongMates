@@ -3,42 +3,53 @@ import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import PongButton from './../components/PongButton';
 import { StackNavigator } from 'react-navigation';
+import { getGame } from './../services/game-actions';
+import moment from 'moment';
 
 export class WaitingScreen extends React.Component {
   static navigationOptions = { header: null };
   state = { fontLoaded: true };
+  componentWillMount() {
+    const gameID = this.props.navigation.state.params.gameID
+    if (gameID) {
+      getGame({id: gameID}).then((game) => {
+        this.setState({game})
+      });
+    }
+  }
   render() {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
-    const game = this.props.navigation.state.params.gameObject
-    return (
-      <View style = { styles.background }>
-        <View style = { styles.topContainer }>
-          <Text style = { this.state.fontLoaded ? styles.waitingFont : styles.anything }>
-            waiting...
-          </Text>
-        </View>
-        <View style = { styles.bottomContainer }>
-        <View style = { styles.tabStyle }>
-          <Text style = { this.state.fontLoaded ? styles.tabFontStyle : styles.anything }>Your Game Details</Text>
-        </View>
-          <View style = { styles.innerContainer }>
-              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
-                Name: {'\n'}Place: {'\n'}Time:
-              </Text>
+    if (this.state.game) {
+      return (
+        <View style = { styles.background }>
+          <View style = { styles.topContainer }>
+            <Text style = { this.state.fontLoaded ? styles.waitingFont : styles.anything }>
+              waiting...
+            </Text>
           </View>
-          <PongButton
-            font={ this.state.fontLoaded }
-            text={ 'Delete\nRequest' }
-            navigation={ this.props.navigation }
-            destination={ 'Create' }
-            userObject = { user }
-          />
+          <View style = { styles.bottomContainer }>
+          <View style = { styles.tabStyle }>
+            <Text style = { this.state.fontLoaded ? styles.tabFontStyle : styles.anything }>Your Game Details</Text>
+          </View>
+            <View style = { styles.innerContainer }>
+                <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
+                  Name: {user.name}{'\n'}Place: {this.state.game.place}{'\n'}Created at {moment(this.state.game.timestamp).format('h:mm')}
+                </Text>
+            </View>
+            <PongButton
+              font={ this.state.fontLoaded }
+              text={ 'Delete\nRequest' }
+              navigation={ this.props.navigation }
+              destination={ 'Create' }
+              userObject = { user }
+            />
+          </View>
         </View>
-      </View>
-    );
+      );
+    } else return null
   }
- }
+}
 
 const styles = StyleSheet.create({
   background: {
