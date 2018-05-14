@@ -13,7 +13,7 @@ export function searchDatabase(preferences, user) {
             //creator has right place
             if (preferences.year.includes(childSnapshot.val().creatoryear)) {
               //creator is right age
-              resolve(updateGame(childSnapshot.val(), user.id))
+              resolve(updateGame(childSnapshot.val().id, user.id))
             }
             else {
               console.log("creator is wrong age")
