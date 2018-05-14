@@ -6,18 +6,10 @@ import PongButton from './../components/PongButton';
 
 export class NoGamesFoundScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = {
-    fontLoaded: false,
-   };
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
-    });
-    this.setState({ fontLoaded: true }) ;
-  }
+  state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
+    const userID = this.props.navigation.state.params.id
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
@@ -37,6 +29,8 @@ export class NoGamesFoundScreen extends React.Component {
               navigation = { this.props.navigation }
               destination = { 'Home' }
               style = {{ paddingRight: '10%' }}
+              id = { userID }
+              action = { () => {} }
             />
             <View style = {{ width: '15%' }}/>
             <PongButton
@@ -44,6 +38,8 @@ export class NoGamesFoundScreen extends React.Component {
               text = { 'Change Filter' }
               navigation = { this.props.navigation }
               destination = { 'Find' }
+              id = { userID }
+              action = { () => {} }
             />
           </View>
         </View>
@@ -76,7 +72,7 @@ const styles = StyleSheet.create({
     detailsText: {
       fontSize: 30,
       color: '#4F4F4F',
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       textAlign: 'center',
     },
     detailsTextElse: {
@@ -85,7 +81,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
     sorryText: {
-      fontFamily: 'source-sans-pro',
+      fontFamily: 'source-sans-pro-semibold',
       fontSize: 72,
       textAlign: 'center',
       color: '#4F4F4F',

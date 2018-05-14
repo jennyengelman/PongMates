@@ -29,18 +29,18 @@ export function getGame(id) {
   })
 }
 
-export function deleteGame(game) {
-  return new Promise((resolve, reject) => {
-    firebase.database().ref(`games/${game.id}`).remove()
-    })
-    resolve(true)
-}
-
 export function updateGame(gameID, playerID) {
   return new Promise((resolve, reject) => {
     firebase.database().ref(`games/${gameID}`).update({
       player: playerID
     })
     resolve(getGame(gameID))
+  })
+}
+
+export function deleteGame(id) {
+  return new Promise((resolve, reject) => {
+    firebase.database().ref(`games/${id}`).remove()
+    resolve(true)
   })
 }
