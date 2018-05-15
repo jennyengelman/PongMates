@@ -173,6 +173,9 @@ export class FindScreen extends React.Component {
               searchDatabase(preferences, user).then((result) => {
                 navigate('FoundAPartner', { id: user.id, game: result })
               })
+              .catch((err) => {
+                navigate('NoGamesFound', { id: user.id })
+              })
             }}
           }>
             <View style = { styles.postButton }>
