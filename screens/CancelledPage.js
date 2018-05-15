@@ -29,6 +29,7 @@ export class CancelScreen extends React.Component {
            navigation = { this.props.navigation }
            destination = { 'HomeScreen' }
            id = { userID }
+           action = { () => {} }
            />
         </View>
       </View>

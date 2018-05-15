@@ -2,9 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
-import firebase from 'firebase';
-import * as firebaseConfig from './../services/firebase-config';
-import { createGame, generateGameKey } from './../services/game-actions';
+import { searchDatabase } from './../services/database-actions'
 import YearButton from './../components/YearButton';
 import PlaceButton from './../components/PlaceButton';
 
@@ -65,10 +63,6 @@ export class FindScreen extends React.Component {
       this.state.pressed.places.push(value);
     }
   };
-  makePrefDict = () => {
-    years: this.state.pressed.years
-    places: this.state.pressed.places
-  }
   render() {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
@@ -172,8 +166,13 @@ export class FindScreen extends React.Component {
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
             { if (this.state.pressed.places != '' && this.state.pressed.years != '') {
-              { this.makePrefDict()
-                navigate('Home', { id: user.id }) }
+              const preferences = {
+                year: this.state.pressed.years,
+                place: this.state.pressed.places
+              }
+              searchDatabase(preferences, user).then((result) => {
+                navigate('Home', { id: user.id, game: result })
+              })
             }}
           }>
             <View style = { styles.postButton }>
@@ -241,6 +240,15 @@ const styles = StyleSheet.create({
   headerTextElse: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 17,
+  },
+  headerSubText: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 50,
+    fontFamily: 'source-sans-pro-bold',
+  },
+  headerSubTextElse: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 50,
   },
   optionsPlaceText: {
     fontSize: Dimensions.get('window').height / 35,
@@ -327,7 +335,7 @@ const styles = StyleSheet.create({
   },
   postButtonText: {
     color: '#FFFFFF',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     fontSize: 30,
     textAlign: 'center',
   },

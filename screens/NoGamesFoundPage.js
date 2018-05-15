@@ -30,6 +30,7 @@ export class NoGamesFoundScreen extends React.Component {
               destination = { 'Home' }
               style = {{ paddingRight: '10%' }}
               id = { userID }
+              action = { () => {} }
             />
             <View style = {{ width: '15%' }}/>
             <PongButton
@@ -38,6 +39,7 @@ export class NoGamesFoundScreen extends React.Component {
               navigation = { this.props.navigation }
               destination = { 'Find' }
               id = { userID }
+              action = { () => {} }
             />
           </View>
         </View>
