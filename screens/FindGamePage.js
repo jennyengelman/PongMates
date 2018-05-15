@@ -171,7 +171,7 @@ export class FindScreen extends React.Component {
                 place: this.state.pressed.places
               }
               searchDatabase(preferences, user).then((result) => {
-                navigate('Home', { id: user.id, game: result })
+                navigate('FoundAPartner', { id: user.id, game: result })
               })
             }}
           }>
