@@ -15,6 +15,10 @@ export class CreateScreen extends React.Component {
       years: [],
       places: [],
     },
+    all: {
+      years: [21, 20, 19, 18],
+      places: ['Alpha Phi Alpha', 'Alpha Chi', 'Alpha Theta', 'Alpha Phi', 'Alpha Pi Omega', 'AXiD', 'Beta', 'BG', 'Chi Delt', 'Chi Gam', 'EKT', 'GDX', 'Heorot', 'Kappa', 'KD', 'KDE', 'Lambda Upsilon Lambda', 'Phi Delt', 'Phi Tau', 'Psi U', 'Sig Ep', 'Sig Nu', 'Sigma Delt', 'Sigma Lambda Upsilon', 'Tabard', 'TDX', 'Zete'],
+    },
   };
   pressedYearState = (value) => {
     if (this.state.pressed.years.includes(value)) {
@@ -62,20 +66,6 @@ export class CreateScreen extends React.Component {
       this.state.pressed.places.push(value);
     }
   };
-  selectAllYearFunc = () => {
-    this.state.all.years.forEach((item) => {
-      if (!this.state.pressed.years.includes(item)) {
-        this.state.pressed.years.push(item);
-      }
-    })
-  }
-  selectAllPlaceFunc = () => {
-    this.state.all.places.forEach((item) => {
-      if (!this.state.pressed.places.includes(item)) {
-        this.state.pressed.places.push(item);
-      }
-    })
-  }
   allYearSelection = () => {
     var allSelected = true
     if (this.state.pressed.years.length != this.state.all.years.length) {
@@ -91,6 +81,13 @@ export class CreateScreen extends React.Component {
   deselectAllYearFunc = () => {
     this.state.pressed.years = []
   }
+  selectAllYearFunc = () => {
+    this.state.all.years.forEach((item) => {
+      if (!this.state.pressed.years.includes(item)) {
+        this.state.pressed.years.push(item);
+      }
+    })
+  }
   render() {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
@@ -104,17 +101,12 @@ export class CreateScreen extends React.Component {
             <View style = { styles.yearTop }>
               <Image style = {{ height: 50, width: 50 }} source={require('./../assets/images/graduation.png')}/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Year</Text>
-              <View style = {{ marginLeft: 10, justifyContent: 'flex-end' }}>
-                <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Who would you like to play with?</Text>
-              </View>
-              <View style = {{ justifyContent: 'flex-end', alignItems: 'flex-end'}}>
+              <View style = { styles.selectAllButton }>
                 <TouchableOpacity onPress ={() =>
                   { this.allYearSelection()
                   this.forceUpdate() }
                 }>
-                  <View style = { styles.selectAllButton }>
                     <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Select all</Text>
-                  </View>
                 </TouchableOpacity>
               </View>
             </View>
@@ -148,19 +140,6 @@ export class CreateScreen extends React.Component {
             <View style = { styles.placeTop }>
               <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
-              <View style = {{ marginLeft: 10, justifyContent: 'flex-end' }}>
-                <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Please select one.</Text>
-              </View>
-              <View style = {{ justifyContent: 'flex-end', alignItems: 'flex-end'}}>
-                <TouchableOpacity onPress ={() =>
-                  { this.allYearSelection()
-                  this.forceUpdate() }
-                }>
-                  <View style = { styles.selectAllButton }>
-                    <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Select all</Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
             </View>
             <View style = {{ height: 4, width: '100%', backgroundColor: '#FFFFFF' }}/>
             <View style = { styles.placeBottom }>
@@ -290,6 +269,15 @@ const styles = StyleSheet.create({
     color: '#545454',
     fontSize: Dimensions.get('window').height / 17,
   },
+  headerSubText: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 40,
+    fontFamily: 'source-sans-pro-bold',
+  },
+  headerSubTextElse: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 40,
+  },
   optionButtons: {
     borderColor: '#545454',
     borderRadius: 50,
@@ -362,6 +350,13 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: '#FFFFFF',
     textAlign: 'center',
+  },
+  selectAllButton: {
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    marginRight: 10,
+    marginTop: 15,
   },
   year: {
     width: '90%',
