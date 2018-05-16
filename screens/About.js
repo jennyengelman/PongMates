@@ -34,6 +34,7 @@ export class AboutScreen extends React.Component {
             navigation={ this.props.navigation }
             destination={ 'Selection' }
             id = { user.id }
+            action = { () => {} }
           />
         </View>
       </View>

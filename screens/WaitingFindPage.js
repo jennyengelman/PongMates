@@ -31,6 +31,7 @@ export class WaitingFindScreen extends React.Component {
             text={ 'Delete\nRequest' }
             navigation={ this.props.navigation }
             destination={ 'Selection' }
+            action = { () => {} }
           />
         </View>
       </View>

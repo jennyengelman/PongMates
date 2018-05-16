@@ -197,7 +197,7 @@ export class CreateScreen extends React.Component {
           <TouchableOpacity onPress={() =>
             { if (this.state.pressed.places != '' && this.state.pressed.years != '') {
               generateGameKey().then((key) => {
-                const game = { id: key, place: this.state.pressed.places, year: this.state.pressed.years, creator: user.id }
+                const game = { id: key, place: this.state.pressed.places, year: this.state.pressed.years, creator: user }
                 createGame(game)
                 navigate('Waiting', { gameObject: game, userObject: user })
               })

@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
-import PongButton from './../components/PongButton';
 
 export class FoundAPartnerScreen extends React.Component {
   static navigationOptions = { header: null };

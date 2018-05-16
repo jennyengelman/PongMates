@@ -30,6 +30,7 @@ export class TimedOutScreen extends React.Component {
               navigation={ this.props.navigation }
               destination={ 'Selection' }
               id = { userID }
+              action = { () => {} }
             />
         </View>
       </View>

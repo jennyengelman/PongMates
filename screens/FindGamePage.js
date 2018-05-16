@@ -2,9 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
-import firebase from 'firebase';
-import * as firebaseConfig from './../services/firebase-config';
-import { createGame, generateGameKey } from './../services/game-actions';
+import { searchDatabase } from './../services/database-actions'
 import YearButton from './../components/YearButton';
 import PlaceButton from './../components/PlaceButton';
 
@@ -233,8 +231,16 @@ export class FindScreen extends React.Component {
           </TouchableOpacity>
           <TouchableOpacity onPress={() =>
             { if (this.state.pressed.places != '' && this.state.pressed.years != '') {
-              { this.makePrefDict()
-                navigate('Home', { id: user.id }) }
+              const preferences = {
+                year: this.state.pressed.years,
+                place: this.state.pressed.places
+              }
+              searchDatabase(preferences, user).then((result) => {
+                navigate('FoundAPartner', { id: user.id, game: result })
+              })
+              .catch((err) => {
+                navigate('NoGamesFound', { id: user.id })
+              })
             }}
           }>
             <View style = { styles.postButton }>
@@ -397,7 +403,7 @@ const styles = StyleSheet.create({
   },
   postButtonText: {
     color: '#FFFFFF',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     fontSize: 30,
     textAlign: 'center',
   },
