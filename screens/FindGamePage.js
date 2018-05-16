@@ -18,7 +18,7 @@ export class FindScreen extends React.Component {
     },
     all: {
       years: [21, 20, 19, 18],
-      places: [],
+      places: ['Alpha Phi Alpha', 'Alpha Chi', 'Alpha Theta', 'Alpha Phi', 'Alpha Pi Omega', 'AXiD', 'Beta', 'BG', 'Chi Delt', 'Chi Gam', 'EKT', 'GDX', 'Heorot', 'Kappa', 'KD', 'KDE', 'Lambda Upsilon Lambda', 'Phi Delt', 'Phi Tau', 'Psi U', 'Sig Ep', 'Sig Nu', 'Sigma Delt', 'Sigma Lambda Upsilon', 'Tabard', 'TDX', 'Zete'],
     }
   };
   pressedYearState = (value) => {
