@@ -14,6 +14,7 @@ export class HomeScreen extends React.Component {
     fontLoaded: false,
     text: '',
     visibleModal: null,
+    id: '',
   };
   _renderButton = (text, onPress) => (
   <TouchableOpacity onPress={onPress}>
@@ -41,18 +42,23 @@ _renderModalContent = () => (
       {
       generateUserKey().then((key) => {
         myKey = key
-        createUser({id: myKey, name: this.state.text  , year: this.state.year })
-        this.props.navigation.navigate('Selection')
+        this.setState({ id: myKey })
       })
-      this.props.navigation.navigate('Selection')
       this.state.visibleModal = null
       this.forceUpdate() }
     }>
-      <ModalButton/>
+      <ModalButton label = { 'Continue' } user = {{ id: this.state.id, name: this.state.text, year: this.state.year }} action = {this.state.modalAction} />
+
     </TouchableOpacity>
     </View>
   </View>
 );
+
+  modalAction = (id, name, year) => {
+    createUser({ id, name, year })
+    this.props.navigation.navigate('Selection')
+  }
+
   async componentDidMount() {
     await Font.loadAsync({
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
@@ -64,6 +70,7 @@ _renderModalContent = () => (
     this.setState({ fontLoaded: true });
   }
   render() {
+    console.log(this.props.navigation.params)
     const { navigate } = this.props.navigation;
     return (
       <View style = { styles.container }>
@@ -73,10 +80,6 @@ _renderModalContent = () => (
         <View style = {{ backgroundColor: '#C2515B', height: '40%' }}>
           <View style = {{ alignItems: 'center', paddingTop: '5%' }}>
             <View style = { styles.homeRectangle }>
-              <View style = {{ backgroundColor: '#FFC928', width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55, borderRadius: Dimensions.get('window').width * .275, justifyContent: 'center' }}>
-                <Image style = {{ width: Dimensions.get('window').width * .55, height: Dimensions.get('window').width * .55 }} source={ require('./../assets/images/image.png') }/>
-                <Text style = { this.state.fontLoaded ? styles.selfieText : styles.selfieTextElse }>Take a selfie to share with your partner!</Text>
-              </View>
               <View style = { styles.nameContainer }>
                 <TextInput
                   style = { this.state.fontLoaded ? styles.nameInput : styles.nameInputElse }
@@ -96,11 +99,7 @@ _renderModalContent = () => (
             {this._renderModalContent()}
           </Modal>
 
-          <TouchableOpacity onPress={() =>
-              navigate('Selection')
-            }
-          >
-          </TouchableOpacity>
+
         </View>
       </View>
     );

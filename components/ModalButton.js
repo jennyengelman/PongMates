@@ -4,9 +4,11 @@ import { Font } from 'expo';
 
 export default class ModalButton extends React.Component {
   render() {
+    console.log(this.props)
     return (
+
       <View style={styles.button}>
-        <Text style = { styles.modalButtonStyle }>Continue</Text>
+        <Text style = { styles.modalButtonStyle }>{ this.props.label }</Text>
       </View>
     )
   }
