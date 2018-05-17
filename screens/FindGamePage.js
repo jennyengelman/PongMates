@@ -13,6 +13,10 @@ export class FindScreen extends React.Component {
     pressed: {
       years: [],
       places: [],
+    },
+    all: {
+      years: [21, 20, 19, 18],
+      places: ['Alpha Phi Alpha', 'Alpha Chi', 'Alpha Theta', 'Alpha Phi', 'Alpha Pi Omega', 'AXiD', 'Beta', 'BG', 'Chi Delt', 'Chi Gam', 'EKT', 'GDX', 'Heorot', 'Kappa', 'KD', 'KDE', 'Lambda Upsilon Lambda', 'Phi Delt', 'Phi Tau', 'Psi U', 'Sig Ep', 'Sig Nu', 'Sigma Delt', 'Sigma Lambda Upsilon', 'Tabard', 'TDX', 'Zete'],
     }
   };
   pressedYearState = (value) => {
@@ -63,6 +67,54 @@ export class FindScreen extends React.Component {
       this.state.pressed.places.push(value);
     }
   };
+  makePrefDict = () => {
+    years: this.state.pressed.years
+    places: this.state.pressed.places
+  }
+  allYearSelection = () => {
+    var allSelected = true
+    if (this.state.pressed.years.length != this.state.all.years.length) {
+      allSelected = false
+    }
+    if (allSelected) {
+      this.deselectAllYearFunc()
+    }
+    else {
+      this.selectAllYearFunc()
+    }
+  }
+  deselectAllYearFunc = () => {
+    this.state.pressed.years = []
+  }
+  selectAllYearFunc = () => {
+    this.state.all.years.forEach((item) => {
+      if (!this.state.pressed.years.includes(item)) {
+        this.state.pressed.years.push(item);
+      }
+    })
+  }
+  allPlaceSelection = () => {
+    var allSelected = true
+    if (this.state.pressed.places.length != this.state.all.places.length) {
+      allSelected = false
+    }
+    if (allSelected) {
+      this.deselectAllPlaceFunc()
+    }
+    else {
+      this.selectAllPlaceFunc()
+    }
+  }
+  deselectAllPlaceFunc = () => {
+    this.state.pressed.places = []
+  }
+  selectAllPlaceFunc = () => {
+    this.state.all.places.forEach((item) => {
+      if (!this.state.pressed.places.includes(item)) {
+        this.state.pressed.places.push(item);
+      }
+    })
+  }
   render() {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
@@ -76,8 +128,13 @@ export class FindScreen extends React.Component {
             <View style = { styles.yearTop }>
               <Image style = {{ height: 50, width: 50 }} source={require('./../assets/images/graduation.png')}/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Year</Text>
-              <View style = {{ marginLeft: 10, justifyContent: 'flex-end' }}>
-                <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Who would you like to play with?</Text>
+              <View style = { styles.selectAllButton }>
+                <TouchableOpacity onPress ={() =>
+                  { this.allYearSelection()
+                  this.forceUpdate() }
+                }>
+                    <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Select all</Text>
+                </TouchableOpacity>
               </View>
             </View>
             <View style = {{ height: '3%', width: '100%', backgroundColor: '#fff' }}/>
@@ -110,6 +167,14 @@ export class FindScreen extends React.Component {
             <View style = { styles.placeTop }>
               <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
+              <View style = { styles.selectAllButton }>
+                <TouchableOpacity onPress ={() =>
+                  { this.allPlaceSelection()
+                  this.forceUpdate() }
+                }>
+                    <Text style = { this.state.fontLoaded ? styles.headerSubText : styles.headerSubTextElse }>Select all</Text>
+                </TouchableOpacity>
+              </View>
             </View>
             <View style = {{ height: 4, width: '100%', backgroundColor: '#FFFFFF' }}/>
             <View style = { styles.placeBottom }>
@@ -246,12 +311,12 @@ const styles = StyleSheet.create({
   },
   headerSubText: {
     color: '#545454',
-    fontSize: Dimensions.get('window').height / 50,
+    fontSize: Dimensions.get('window').height / 40,
     fontFamily: 'source-sans-pro-bold',
   },
   headerSubTextElse: {
     color: '#545454',
-    fontSize: Dimensions.get('window').height / 50,
+    fontSize: Dimensions.get('window').height / 40,
   },
   optionsPlaceText: {
     fontSize: Dimensions.get('window').height / 35,
@@ -346,6 +411,13 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: '#FFFFFF',
     textAlign: 'center',
+  },
+  selectAllButton: {
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
+    marginRight: 10,
+    marginTop: 15,
   },
   year: {
     width: '90%',
