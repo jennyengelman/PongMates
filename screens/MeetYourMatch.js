@@ -26,6 +26,7 @@ export class MeetMatch extends React.Component {
          text = { 'Cancel' }
          navigation = { this.props.navigation }
          destination = { 'Selection' }
+         action = { () => {} }
          />
       </View>
     );

@@ -21,11 +21,20 @@ export function generateGameKey() {
   })
 }
 
-export function getGame(game) {
+export function getGame(id) {
   return new Promise((resolve, reject) => {
-    firebase.database().ref(`games/${game.id}`).once('value').then(snapshot => {
+    firebase.database().ref(`games/${id}`).once('value').then(snapshot => {
       resolve(snapshot.val())
     });
+  })
+}
+
+export function updateGame(gameID, playerID) {
+  return new Promise((resolve, reject) => {
+    firebase.database().ref(`games/${gameID}`).update({
+      player: playerID
+    })
+    resolve(getGame(gameID))
   })
 }
 
