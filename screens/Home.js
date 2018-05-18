@@ -45,7 +45,7 @@ export class HomeScreen extends React.Component {
                 if (this.state.text !== '') {
                   generateUserKey().then((key) => {
                     myKey = key
-                    createUser({id: myKey, name: this.state.text, year: 19})
+                    createUser({id: myKey, name: this.state.text, year: 20})
                     navigate('Selection', { id : myKey })
                   })
                 }

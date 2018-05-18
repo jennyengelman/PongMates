@@ -10,6 +10,8 @@ export class WaitingFindScreen extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
+    const user = this.props.navigation.state.params.userObject
+    const game = this.props.navigation.state.params.gameObject
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
@@ -23,8 +25,13 @@ export class WaitingFindScreen extends React.Component {
         </View>
           <View style = { styles.innerContainer }>
               <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
-                Name: {'\n'}Place: {'\n'}Time:
+                Searching for games...
               </Text>
+              if (searchDatabase(game, user) != false) {
+                navigate('FoundAPartner')
+              } else {
+                navigate('NoGamesFound')
+              }
           </View>
           <PongButton
             font={ this.state.fontLoaded }

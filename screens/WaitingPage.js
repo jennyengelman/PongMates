@@ -39,8 +39,8 @@ export class WaitingScreen extends React.Component {
           />
         </View>
       </View>
-    );
-  } else return null
+    )
+  }
 }
 
 const styles = StyleSheet.create({
