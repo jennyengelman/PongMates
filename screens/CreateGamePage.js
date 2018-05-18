@@ -100,7 +100,7 @@ export class CreateScreen extends React.Component {
           <View style = { styles.year }>
             <View style = { styles.yearTop }>
               <Image style = {{ height: 50, width: 50 }} source={require('./../assets/images/graduation.png')}/>
-              <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Year</Text>
+              <Text style = { this.state.fontLoaded ? styles.headerYearText : styles.headerYearTextElse }>Partner{ `'` }s Year</Text>
               <View style = { styles.selectAllButton }>
                 <TouchableOpacity onPress ={() =>
                   { this.allYearSelection()
@@ -262,12 +262,21 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: '#545454',
-    fontSize: Dimensions.get('window').height / 17,
+    fontSize: Dimensions.get('window').height / 25,
     fontFamily: 'source-sans-pro-bold',
   },
   headerTextElse: {
     color: '#545454',
-    fontSize: Dimensions.get('window').height / 17,
+    fontSize: Dimensions.get('window').height / 25,
+  },
+  headerYearText: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 29,
+    fontFamily: 'source-sans-pro-bold',
+  },
+  headerYearTextElse: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 29,
   },
   headerSubText: {
     color: '#545454',
