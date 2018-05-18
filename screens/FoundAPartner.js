@@ -36,7 +36,7 @@ export class FoundAPartnerScreen extends React.Component {
         <View style={ styles.congratsContainer }>
           <View style={ styles.congratsBox }>
             <Text style={ this.state.fontLoaded ? styles.congratsInfo : styles.congratsInfoBackup }>
-            Name: { userID }{ '\n' }Place: Phi Delt{ '\n' }Time: Now
+            Name: { userID }{ '\n' }Place: Phi Delt
             </Text>
           </View>
         </View>

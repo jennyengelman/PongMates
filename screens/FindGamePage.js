@@ -236,15 +236,15 @@ export class FindScreen extends React.Component {
                 place: this.state.pressed.places
               }
               searchDatabase(preferences, user).then((result) => {
-                navigate('FoundAPartner', { id: user.id, game: result })
+                navigate('FoundGame', { id: user.id, game: result })
               })
               .catch((err) => {
-                navigate('NoGamesFound', { id: user.id })
+                navigate('WaitingFind', { id: user.id })
               })
             }}
           }>
             <View style = { styles.postButton }>
-              <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Post!</Text>
+              <Text style = { this.state.fontLoaded ? styles.postButtonText : styles.postButtonTextElse }>Find!</Text>
             </View>
           </TouchableOpacity>
         </View>

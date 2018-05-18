@@ -22,9 +22,12 @@ export class WaitingFindScreen extends React.Component {
           <Text style = { this.state.fontLoaded ? styles.tabFontStyle : styles.anything }>Your Game Details</Text>
         </View>
           <View style = { styles.innerContainer }>
-              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
-                Name: {'\n'}Place: {'\n'}Time:
-              </Text>
+            <View style = {{ paddingBottom: 5 }}>
+              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Name: { user.name }</Text>
+            </View>
+            <View style = {{ paddingTop: 5 }}>
+              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Place: { game.place }</Text>
+            </View>
           </View>
           <PongButton
             font={ this.state.fontLoaded }
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get('window').height / 25,
     fontWeight: 'bold',
     marginLeft: 15,
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     marginBottom: 5,
   },
   deleteFontStyle:{

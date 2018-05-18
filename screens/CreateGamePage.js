@@ -141,7 +141,7 @@ export class CreateScreen extends React.Component {
               <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
               <View style = { styles.selectAllButton }>
-                  <Text style = { this.state.fontLoaded ? styles.headerSubSubText : styles.headerSubSubTextElse }>Please select one.</Text>
+                  <Text style = { this.state.fontLoaded ? styles.headerSubSubText : styles.headerSubSubTextElse }>Please select one</Text>
               </View>
             </View>
             <View style = {{ height: 4, width: '100%', backgroundColor: '#FFFFFF' }}/>
