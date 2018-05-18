@@ -140,6 +140,9 @@ export class CreateScreen extends React.Component {
             <View style = { styles.placeTop }>
               <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
+              <View style = { styles.selectAllButton }>
+                  <Text style = { this.state.fontLoaded ? styles.headerSubSubText : styles.headerSubSubTextElse }>Please select one.</Text>
+              </View>
             </View>
             <View style = {{ height: 4, width: '100%', backgroundColor: '#FFFFFF' }}/>
             <View style = { styles.placeBottom }>
@@ -286,6 +289,15 @@ const styles = StyleSheet.create({
   headerSubTextElse: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 40,
+  },
+  headerSubSubText: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 50,
+    fontFamily: 'source-sans-pro-bold',
+  },
+  headerSubSubTextElse: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 50,
   },
   optionButtons: {
     borderColor: '#545454',
