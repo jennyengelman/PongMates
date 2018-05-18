@@ -236,10 +236,10 @@ export class FindScreen extends React.Component {
                 place: this.state.pressed.places
               }
               searchDatabase(preferences, user).then((result) => {
-                navigate('FoundGame', { id: user.id, game: result })
+                navigate('FoundGame', { userObject: user, gameObject: result })
               })
               .catch((err) => {
-                navigate('WaitingFind', { id: user.id })
+                navigate('WaitingFind', { userObject: user, gameObject: preferences })
               })
             }}
           }>
@@ -303,7 +303,7 @@ const styles = StyleSheet.create({
   headerText: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 17,
-    fontFamily: 'source-sans-pro-bold',
+    fontFamily: 'source-sans-pro-semibold',
   },
   headerTextElse: {
     color: '#545454',
@@ -312,7 +312,7 @@ const styles = StyleSheet.create({
   headerYearText: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 29,
-    fontFamily: 'source-sans-pro-bold',
+    fontFamily: 'source-sans-pro-semibold',
   },
   headerYearTextElse: {
     color: '#545454',
@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
   headerSubText: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 40,
-    fontFamily: 'source-sans-pro-bold',
+    fontFamily: 'source-sans-pro-semibold',
   },
   headerSubTextElse: {
     color: '#545454',

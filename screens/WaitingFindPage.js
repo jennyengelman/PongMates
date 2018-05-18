@@ -10,6 +10,9 @@ export class WaitingFindScreen extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
+    {console.log}
+    const user = this.props.navigation.state.params.userObject
+    const game = this.props.navigation.state.params.gameObject
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
@@ -72,7 +75,7 @@ const styles = StyleSheet.create({
   tabFontStyle: {
     fontWeight: 'bold',
     color: '#545454',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     fontSize: Dimensions.get('window').width / 18,
   },
   tabStyle: {
@@ -102,7 +105,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 15,
     color: '#545454',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     textAlign: 'center',
     width: '100%'
   },

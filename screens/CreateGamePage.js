@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
   headerText: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 25,
-    fontFamily: 'source-sans-pro-bold',
+    fontFamily: 'source-sans-pro-semibold',
   },
   headerTextElse: {
     color: '#545454',
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
   headerYearText: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 29,
-    fontFamily: 'source-sans-pro-bold',
+    fontFamily: 'source-sans-pro-semibold',
   },
   headerYearTextElse: {
     color: '#545454',
@@ -284,7 +284,7 @@ const styles = StyleSheet.create({
   headerSubText: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 40,
-    fontFamily: 'source-sans-pro-bold',
+    fontFamily: 'source-sans-pro-semibold',
   },
   headerSubTextElse: {
     color: '#545454',
@@ -293,7 +293,7 @@ const styles = StyleSheet.create({
   headerSubSubText: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 50,
-    fontFamily: 'source-sans-pro-bold',
+    fontFamily: 'source-sans-pro-semibold',
   },
   headerSubSubTextElse: {
     color: '#545454',
@@ -317,14 +317,11 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get('window').height / 35,
     fontFamily: 'source-sans-pro-semibold',
     color: '#545454',
-    fontSize: Dimensions.get('window').height / 50,
-    fontFamily: 'source-sans-pro-bold',
   },
-  optionsTimeText: {
-    fontSize: Dimensions.get('window').height / 25,
-    fontFamily: 'source-sans-pro-semibold',
+  optionsPlaceTextElse: {
+    fontSize: 18,
     color: '#545454',
-    fontSize: Dimensions.get('window').height / 50,
+    textAlign: 'center',
   },
   place: {
     width: '90%',
