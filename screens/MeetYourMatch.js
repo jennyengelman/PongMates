@@ -4,7 +4,10 @@ import PongButton from './../components/PongButton';
 import { Font } from 'expo';
 
 export class MeetMatch extends React.Component {
-  static navigationOptions = { header: null };
+  static navigationOptions = {
+    header: null,
+    gesturesEnabled: false,
+  };
   state = { fontLoaded: true };
   render(){
     return(

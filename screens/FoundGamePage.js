@@ -3,7 +3,10 @@ import { StyleSheet, Text, View, Button, Alert, Image, TextInput, TouchableOpaci
 import { Font } from 'expo';
 
 export class FoundScreen extends React.Component {
-  static navigationOptions = { header: null };
+  static navigationOptions = {
+    header: null,
+    gesturesEnabled: false,
+  };
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
