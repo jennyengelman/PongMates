@@ -54,10 +54,8 @@ export class HomeScreen extends React.Component {
                 }
               }}
             >
-            <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
-            tap to begin
-            </Text>
-          </TouchableOpacity>
+              <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>tap to begin</Text>
+            </TouchableOpacity>
           </View>
         </View>
     );

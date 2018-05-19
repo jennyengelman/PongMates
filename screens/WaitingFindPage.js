@@ -13,7 +13,6 @@ export class WaitingFindScreen extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
-    {console.log}
     const user = this.props.navigation.state.params.userObject
     const game = this.props.navigation.state.params.gameObject
     return (

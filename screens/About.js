@@ -20,17 +20,10 @@ export class AboutScreen extends React.Component {
         </View>
         <View style={{ height: '40%', backgroundColor: '#C2515B'}} >
           <View style={ styles.aboutBox }>
-            <Text style={ this.state.fontLoaded ? styles.aboutText : styles.aboutTextBackup }>
-            Need One is a platform to connect Dartmouth students with Pong partners.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!
-            </Text>
+            <Text style={ this.state.fontLoaded ? styles.aboutText : styles.aboutTextBackup }>Need One is a platform to connect Dartmouth students with Pong partners.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!</Text>
           </View>
         </View>
-        <View style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          paddingTop: Dimensions.get('window').height / 10,
-        }}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: Dimensions.get('window').height / 10 }}>
           <PongButton
             font={ this.state.fontLoaded }
             text={ 'Back' }
