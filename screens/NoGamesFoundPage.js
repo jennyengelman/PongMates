@@ -30,6 +30,7 @@ export class NoGamesFoundScreen extends React.Component {
               destination = { 'Home' }
               style = {{ paddingRight: '10%' }}
               id = { userID }
+              action = { () => {} }
             />
             <View style = {{ width: '15%' }}/>
             <PongButton
@@ -38,6 +39,7 @@ export class NoGamesFoundScreen extends React.Component {
               navigation = { this.props.navigation }
               destination = { 'Find' }
               id = { userID }
+              action = { () => {} }
             />
           </View>
         </View>
@@ -70,7 +72,7 @@ const styles = StyleSheet.create({
     detailsText: {
       fontSize: 30,
       color: '#4F4F4F',
-      fontFamily: 'source-sans-pro-semibold',
+      fontFamily: 'source-sans-pro',
       textAlign: 'center',
     },
     detailsTextElse: {
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
     sorryText: {
-      fontFamily: 'source-sans-pro-semibold',
+      fontFamily: 'source-sans-pro',
       fontSize: 72,
       textAlign: 'center',
       color: '#4F4F4F',

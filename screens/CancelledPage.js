@@ -29,6 +29,7 @@ export class CancelScreen extends React.Component {
            navigation = { this.props.navigation }
            destination = { 'HomeScreen' }
            id = { userID }
+           action = { () => {} }
            />
         </View>
       </View>
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     color: '#4F4F4F',
     paddingLeft: '7%',
     paddingRight: '7%',
-    fontFamily: 'source-sans-pro-semibold'
+    fontFamily: 'source-sans-pro'
   },
   homeButton: {
     width: '35%',
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     color: '#4F4F4F',
-    fontFamily: 'source-sans-pro-semibold'
+    fontFamily: 'source-sans-pro'
   },
   anything: {
     fontSize: 65,

@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: Dimensions.get('window').height / 35,
     color: '#4F4F4F',
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     marginLeft: '7%'
   },
   cancelButton: {

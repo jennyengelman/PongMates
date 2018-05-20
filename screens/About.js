@@ -34,6 +34,7 @@ export class AboutScreen extends React.Component {
             navigation={ this.props.navigation }
             destination={ 'Selection' }
             id = { user.id }
+            action = { () => {} }
           />
         </View>
       </View>
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     color: '#4F4F4F',
     margin: 20,
     textAlign: 'center',
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
   },
   aboutTextBackup: {
     fontSize: Dimensions.get('window').height / 32,

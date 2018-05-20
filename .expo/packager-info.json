@@ -1,8 +1,8 @@
 {
   "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://yy-nis.atmilich.pongmates.exp.direct",
-  "packagerNgrokUrl": "https://packager.yy-nis.atmilich.pongmates.exp.direct",
-  "ngrokPid": 1663,
   "packagerPort": 19001,
-  "packagerPid": 1642
+  "packagerPid": 14741,
+  "expoServerNgrokUrl": "https://8a-qgs.atmilich.pongmates.exp.direct",
+  "packagerNgrokUrl": "https://packager.8a-qgs.atmilich.pongmates.exp.direct",
+  "ngrokPid": 14761
 }
