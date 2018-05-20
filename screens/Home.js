@@ -18,7 +18,7 @@ export class HomeScreen extends React.Component {
       text: '',
       visibleModal: null,
       id: null,
-      year: 'freshman',
+      year: 21,
       user: {},
     };
   }
@@ -31,10 +31,10 @@ _renderModalContent = () => (
           style={{ height: 20, width: 100 }}
           onValueChange={(itemValue, itemIndex) => {
             this.setState({year: itemValue})}}>
-          <Picker.Item label="'21" value="freshman" />
-          <Picker.Item label="'20" value="sophomore" />
-          <Picker.Item label="'19" value="junior" />
-          <Picker.Item label="'18" value="senior" />
+          <Picker.Item label="'21" value={21} />
+          <Picker.Item label="'20" value={20} />
+          <Picker.Item label="'19" value={19} />
+          <Picker.Item label="'18" value={18} />
         </Picker>
       </View>
     <View style = {{ flex: .2 }}>
