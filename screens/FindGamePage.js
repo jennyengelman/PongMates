@@ -235,12 +235,7 @@ export class FindScreen extends React.Component {
                 year: this.state.pressed.years,
                 place: this.state.pressed.places
               }
-              searchDatabase(preferences, user).then((result) => {
-                navigate('FoundAPartner', { id: user.id, game: result })
-              })
-              .catch((err) => {
-                navigate('NoGamesFound', { id: user.id })
-              })
+              navigate('WaitingFind', { game: preferences, user: user  })
             }}
           }>
             <View style = { styles.postButton }>

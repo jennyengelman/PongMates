@@ -4,14 +4,31 @@ import { Font } from 'expo';
 import PongButton from './../components/PongButton';
 import { StackNavigator } from 'react-navigation';
 import { deleteGame } from './../services/game-actions';
+import TimerMixin from 'react-timer-mixin';
+import { searchDatabase } from './../services/database-actions'
+
 
 export class WaitingFindScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = { fontLoaded: true };
+  state = { fontLoaded: true };''
+  checkDatabase = (game, user) => {
+    if (searchDatabase(game, user) != false) {
+      this.props.navigation.navigate('FoundAPartner', {userObject:user})
+    }
+  }
+  Component = () => {({
+    mixins: [TimerMixin],
+    componentDidMount() {
+      this.setTimeout(
+        () => { console.log('I do not leak!'); },
+        500
+      );
+    }
+  })};
   render() {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
-    const game = this.props.navigation.state.params.gameObject
+    const game = this.props.navigation.state.params.game
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
@@ -27,11 +44,7 @@ export class WaitingFindScreen extends React.Component {
               <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
                 Searching for games...
               </Text>
-              if (searchDatabase(game, user) != false) {
-                navigate('FoundAPartner')
-              } else {
-                navigate('NoGamesFound')
-              }
+              {this.checkDatabase(game, user)}
           </View>
           <PongButton
             font={ this.state.fontLoaded }
@@ -76,7 +89,7 @@ const styles = StyleSheet.create({
   tabFontStyle: {
     fontWeight: 'bold',
     color: '#545454',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     fontSize: Dimensions.get('window').width / 18,
   },
   tabStyle: {
@@ -99,14 +112,14 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get('window').height / 25,
     fontWeight: 'bold',
     marginLeft: 15,
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     marginBottom: 5,
   },
   deleteFontStyle:{
     fontWeight: 'bold',
     fontSize: 15,
     color: '#545454',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     textAlign: 'center',
     width: '100%'
   },

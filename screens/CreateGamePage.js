@@ -199,7 +199,7 @@ export class CreateScreen extends React.Component {
               generateGameKey().then((key) => {
                 const game = { id: key, place: this.state.pressed.places, year: this.state.pressed.years, creator: user.id, creatoryear: user.year }
                 createGame(game)
-                navigate('WaitingFind', { gameObject: game, userObject: user })
+                navigate('Waiting', { gameObject: game, userObject: user })
               })
             }}
           }>
