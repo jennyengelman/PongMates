@@ -66,6 +66,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F2994A',
+    position: 'relative',
+    zIndex: 1,
   },
   homeRectangle: {
     backgroundColor: '#93E1FA',
@@ -81,6 +83,8 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowColor: '#000000',
     shadowOffset: { height: 2, width: 0 },
+    zIndex: 100,
+    position: 'absolute',
   },
   matesTextElse: {
     fontSize: 60,
@@ -141,18 +145,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#696969',
   },
-  pongContainer: {
-    backgroundColor: '#FFC928',
-    width: 220,
-    height: 110,
-    borderTopRightRadius: 30,
-    borderBottomRightRadius: 30,
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    borderColor: 'white',
-    borderWidth: 5,
-    marginLeft: -5,
-  },
   nextText: {
     fontFamily: 'source-sans-pro-bold',
     textAlign: 'center',
@@ -161,22 +153,5 @@ const styles = StyleSheet.create({
   nextTextElse: {
     textAlign: 'center',
     fontSize: Dimensions.get('window').height / 30,
-  },
-  selfieText: {
-    position: 'absolute',
-    alignSelf: 'center',
-    width: Dimensions.get('window').width * .4,
-    fontSize: Dimensions.get('window').width / 15,
-    color: '#696969',
-    fontFamily: 'source-sans-pro-bold',
-    textAlign: 'center',
-  },
-  selfieTextElse: {
-      position: 'absolute',
-      alignSelf: 'center',
-      width: Dimensions.get('window').width * .4,
-      fontSize: Dimensions.get('window').width / 15,
-      color: '#696969',
-      textAlign: 'center',
   },
 });

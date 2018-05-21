@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   container: {
-    height: '70%',
+    height: '100%',
     backgroundColor: '#C2515B',
   },
   create: {
