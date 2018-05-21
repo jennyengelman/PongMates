@@ -11,10 +11,10 @@ import { searchDatabase } from './../services/database-actions'
 export class WaitingFindScreen extends React.Component {
   static navigationOptions = { header: null };
   state = { fontLoaded: true };''
-  checkDatabase = (game, user) => {
+  findMatch = (game, user) => {
     searchDatabase(game, user).then((result) => {
       if (result != false) {
-        this.props.navigation.navigate('FoundAPartner', { userObject: user })
+        this.props.navigation.navigate('FoundGame', { userObject: user, gameObject: result })
       }
     })
   }
@@ -46,7 +46,7 @@ export class WaitingFindScreen extends React.Component {
               <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
                 Searching for games...
               </Text>
-              {this.checkDatabase(game, user)}
+              {this.findMatch(game, user)}
           </View>
           <PongButton
             font={ this.state.fontLoaded }

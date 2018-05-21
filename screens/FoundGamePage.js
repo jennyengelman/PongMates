@@ -10,7 +10,8 @@ export class FoundScreen extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
-    const userID = this.props.navigation.state.params.id
+    const user = this.props.navigation.state.params.userObject
+    const game = this.props.navigation.state.params.gameObject
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
@@ -24,12 +25,12 @@ export class FoundScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.detailsHeaderText : styles.detailsHeaderTextElse }>Your Game Details</Text>
           </View>
           <View style = { styles.details }>
-            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Partner:</Text>
-            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Place:</Text>
+            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Partner: { game.creator.name }</Text>
+            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Place: { game.place[0] }</Text>
           </View>
           <View style = { styles.buttonContainer }>
             <TouchableOpacity onPress={() =>
-                navigate('Create', { id: userID })
+                navigate('Create', { userObject: user })
               }
             >
               <View style = { styles.button }>
@@ -37,7 +38,7 @@ export class FoundScreen extends React.Component {
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>
-                navigate('Home', { id: userID }) //for now
+                navigate('MeetYourMatch', { userObject: user, gameObject: game }) //for now
               }
             >
               <View style = { styles.button }>
