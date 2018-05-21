@@ -9,13 +9,14 @@ export class MeetMatch extends React.Component {
 
   state = {
     fontLoaded: false,
+    game: {}
   };
 
   componentWillMount() {
     const gameId = this.props.navigation.state.params.id
     getGame(gameId).then((game) => {
       this.setState({game})
-      this.setState({name: this.state.game.name, place: this.state.})
+      this.setState({name: this.state.game.name, place: this.state.game.place})
     });
   }
   async componentDidMount() {
@@ -36,7 +37,7 @@ export class MeetMatch extends React.Component {
           <Image source = { require('./../assets/match.png') } style = { styles.matchImageStyle }/>
           <View style = { styles.details }>
             <Text style = { this.state.fontLoaded ? styles.detailText : styles.anything }>
-              Name: {this.state.name} {'\n'}Place:
+              Name: {this.state.game.creator.name} {'\n'}Place:
             </Text>
           </View>
         </View>
