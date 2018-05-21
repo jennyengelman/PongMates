@@ -3,7 +3,8 @@ import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import PongButton from './../components/PongButton';
 import { StackNavigator } from 'react-navigation';
-import { deleteGame } from './../services/game-actions';
+import { getGame, deleteGame } from './../services/game-actions';
+import moment from 'moment';
 
 export class WaitingScreen extends React.Component {
   static navigationOptions = {
@@ -44,9 +45,9 @@ export class WaitingScreen extends React.Component {
         />
         </View>
       </View>
-    );
+    )
   }
- }
+}
 
 const styles = StyleSheet.create({
   background: {

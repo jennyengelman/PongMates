@@ -10,7 +10,7 @@ export class FoundAPartnerScreen extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
-    const userID = this.props.navigation.state.params.id
+    const user = this.props.navigation.state.params.userObject
     return (
       <View style={{ flexDirection: 'column' }}>
         <View style={ styles.topContainer }>

@@ -4,13 +4,29 @@ import { Font } from 'expo';
 import PongButton from './../components/PongButton';
 import { StackNavigator } from 'react-navigation';
 import { deleteGame } from './../services/game-actions';
+import TimerMixin from 'react-timer-mixin';
+import { searchDatabase } from './../services/database-actions'
+
 
 export class WaitingFindScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-    gesturesEnabled: false,
-  };
-  state = { fontLoaded: true };
+  static navigationOptions = { header: null };
+  state = { fontLoaded: true };''
+  findMatch = (game, user) => {
+    searchDatabase(game, user).then((result) => {
+      if (result != false) {
+        this.props.navigation.navigate('FoundGame', { userObject: user, gameObject: result })
+      }
+    })
+  }
+  Component = () => {({
+    mixins: [TimerMixin],
+    componentDidMount() {
+      this.setTimeout(
+        () => { console.log('I do not leak!'); },
+        1
+      );
+    }
+  })};
   render() {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
@@ -27,12 +43,10 @@ export class WaitingFindScreen extends React.Component {
           <Text style = { this.state.fontLoaded ? styles.tabFontStyle : styles.anything }>Your Game Details</Text>
         </View>
           <View style = { styles.innerContainer }>
-            <View style = {{ paddingBottom: 5 }}>
-              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Name: { user.name }</Text>
-            </View>
-            <View style = {{ paddingTop: 5 }}>
-              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Place: { game.place }</Text>
-            </View>
+              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
+                Searching for games...
+              </Text>
+              {this.findMatch(game, user)}
           </View>
           <PongButton
             font={ this.state.fontLoaded }

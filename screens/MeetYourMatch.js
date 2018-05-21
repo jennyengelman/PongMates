@@ -9,7 +9,10 @@ export class MeetMatch extends React.Component {
     gesturesEnabled: false,
   };
   state = { fontLoaded: true };
-  render(){
+  render() {
+    const { navigate } = this.props.navigation
+    const user = this.props.navigation.state.params.userObject
+    const game = this.props.navigation.state.params.gameObject
     return(
       <View style = { styles.container }>
         <Text style = { this.state.fontLoaded ? styles.meetMatchText : styles.anything }>
@@ -19,16 +22,16 @@ export class MeetMatch extends React.Component {
           <Image source = { require('./../assets/match.png') } style = { styles.matchImageStyle }/>
           <View style = { styles.details }>
             <Text style = { this.state.fontLoaded ? styles.detailText : styles.anything }>
-              Name:{'\n'}Place:
+              Name: { game.creator.name }{ '\n' }Place: { game.place[0] }
             </Text>
           </View>
         </View>
 
         <PongButton
          font = { this.state.fontLoaded }
-         text = { 'Cancel' }
+         text = { 'Close' }
          navigation = { this.props.navigation }
-         destination = { 'Selection' }
+         destination = { 'Home' }
          action = { () => {} }
          />
       </View>
@@ -47,7 +50,7 @@ const styles = StyleSheet.create({
   },
   meetMatchText: {
     marginTop: '20%',
-    fontFamily: 'double-bubble',
+    fontFamily: 'double-bubble-shadow',
     textAlign: 'center',
     fontSize: 60,
     color: '#fff'
