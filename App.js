@@ -13,9 +13,10 @@ import { FindScreen } from './screens/FindGamePage';
 import { WaitingScreen } from './screens/WaitingPage';
 import { FoundScreen } from './screens/FoundGamePage';
 import { FoundAPartnerScreen } from './screens/FoundAPartner';
+import { Actions } from './services/automated-actions';
 import { NoGamesFoundScreen } from './screens/NoGamesFoundPage';
 import { CancelScreen } from './screens/CancelledPage';
-import { WaitingFindScreen } from './screens/WaitingFindPage';
+import { WaitingFindScreen } from './screens/WaitingFindPage'
 
 const RootStack = StackNavigator({
   Home: { screen: HomeScreen },

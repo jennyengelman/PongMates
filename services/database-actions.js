@@ -10,6 +10,7 @@ export function searchDatabase(preferences, user) {
 
       for (let key in snapshot.val()) {
         const childSnapshot = snapshot.val()[key]
+        console.log("snap", childSnapshot)
         if (!childSnapshot.player) {
           if (childSnapshot.year.some(item => user.year) && childSnapshot.creator.id !== user.id) {
             //finder is right age
@@ -26,7 +27,7 @@ export function searchDatabase(preferences, user) {
           }
         }
       }
-      
+
       if (childID && userID) {
         resolve(updateGame(childID, userID))
       } else {

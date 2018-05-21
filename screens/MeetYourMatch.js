@@ -2,13 +2,26 @@ import React from 'react';
 import { StyleSheet, Dimensions, Text, View, Image } from 'react-native';
 import PongButton from './../components/PongButton';
 import { Font } from 'expo';
+import { getGame } from './../services/user-actions'
 
 export class MeetMatch extends React.Component {
-  static navigationOptions = {
+  static navigationOptions = { 
     header: null,
-    gesturesEnabled: false,
+    gesturesEnabled: false
   };
-  state = { fontLoaded: true };
+
+  state = {
+    fontLoaded: true,
+    game: {}
+  };
+
+  componentWillMount() {
+    const gameId = this.props.navigation.state.params.id
+    getGame(gameId).then((game) => {
+      this.setState({game})
+      this.setState({name: this.state.game.name, place: this.state.game.place})
+    });
+  }
   render(){
     return(
       <View style = { styles.container }>
@@ -19,7 +32,7 @@ export class MeetMatch extends React.Component {
           <Image source = { require('./../assets/match.png') } style = { styles.matchImageStyle }/>
           <View style = { styles.details }>
             <Text style = { this.state.fontLoaded ? styles.detailText : styles.anything }>
-              Name:{'\n'}Place:
+              Name: {this.state.game.creator.name} {'\n'}Place:
             </Text>
           </View>
         </View>
@@ -29,7 +42,6 @@ export class MeetMatch extends React.Component {
          text = { 'Cancel' }
          navigation = { this.props.navigation }
          destination = { 'Selection' }
-         action = { () => {} }
          />
       </View>
     );
@@ -79,7 +91,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: Dimensions.get('window').height / 35,
     color: '#4F4F4F',
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     marginLeft: '7%'
   },
   cancelButton: {
