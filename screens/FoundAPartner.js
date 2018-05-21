@@ -3,7 +3,10 @@ import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'rea
 import { Font } from 'expo';
 
 export class FoundAPartnerScreen extends React.Component {
-  static navigationOptions = { header: null };
+  static navigationOptions = {
+    header: null,
+    gesturesEnabled: false,
+  };
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
@@ -36,7 +39,7 @@ export class FoundAPartnerScreen extends React.Component {
         <View style={ styles.congratsContainer }>
           <View style={ styles.congratsBox }>
             <Text style={ this.state.fontLoaded ? styles.congratsInfo : styles.congratsInfoBackup }>
-            Name: Jenny{ '\n' }Place: Phi Delt{ '\n' }Time: Now
+            Name: { userID }{ '\n' }Place: Phi Delt
             </Text>
           </View>
         </View>

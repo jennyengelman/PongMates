@@ -5,10 +5,13 @@ import { Font } from 'expo';
 import { getGame } from './../services/user-actions'
 
 export class MeetMatch extends React.Component {
-  static navigationOptions = { header: null };
+  static navigationOptions = { 
+    header: null,
+    gesturesEnabled: false
+  };
 
   state = {
-    fontLoaded: false,
+    fontLoaded: true,
     game: {}
   };
 
@@ -18,14 +21,6 @@ export class MeetMatch extends React.Component {
       this.setState({game})
       this.setState({name: this.state.game.name, place: this.state.game.place})
     });
-  }
-  async componentDidMount() {
-    await Font.loadAsync({
-      'double-bubble': require('./../assets/fonts/Double_Bubble_shadow.otf'),
-      'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf')
-    });
-    this.setState({ fontLoaded: true }) ;
   }
   render(){
     return(

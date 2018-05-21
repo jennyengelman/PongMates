@@ -104,8 +104,6 @@ renderModalButton = () => {
           <Modal isVisible={this.state.visibleModal === 1}>
             {this._renderModalContent()}
           </Modal>
-
-
         </View>
       </View>
     );
