@@ -52,7 +52,8 @@ export class WaitingFindScreen extends React.Component {
             font={ this.state.fontLoaded }
             text={ 'Delete\nRequest' }
             navigation={ this.props.navigation }
-            destination={ 'Selection' }
+            destination={ 'Find' }
+            userObject={ user }
             action = { () => {} }
           />
         </View>
