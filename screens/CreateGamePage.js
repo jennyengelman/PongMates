@@ -8,7 +8,10 @@ import YearButton from './../components/YearButton';
 import PlaceButton from './../components/PlaceButton';
 
 export class CreateScreen extends React.Component {
-  static navigationOptions = { header: null };
+  static navigationOptions = {
+    header: null,
+    gesturesEnabled: false,
+  };
   state = {
     fontLoaded: true,
     pressed: {
@@ -100,7 +103,7 @@ export class CreateScreen extends React.Component {
           <View style = { styles.year }>
             <View style = { styles.yearTop }>
               <Image style = {{ height: 50, width: 50 }} source={require('./../assets/images/graduation.png')}/>
-              <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Year</Text>
+              <Text style = { this.state.fontLoaded ? styles.headerYearText : styles.headerYearTextElse }>Partner{ `'` }s Year</Text>
               <View style = { styles.selectAllButton }>
                 <TouchableOpacity onPress ={() =>
                   { this.allYearSelection()
@@ -140,6 +143,9 @@ export class CreateScreen extends React.Component {
             <View style = { styles.placeTop }>
               <Image style = {{ height: 40, width: 40 }} source = { require('./../assets/images/place.png') }/>
               <Text style = { this.state.fontLoaded ? styles.headerText : styles.headerTextElse }>Place</Text>
+              <View style = { styles.selectAllButton }>
+                  <Text style = { this.state.fontLoaded ? styles.headerSubSubText : styles.headerSubSubTextElse }>Please select one</Text>
+              </View>
             </View>
             <View style = {{ height: 4, width: '100%', backgroundColor: '#FFFFFF' }}/>
             <View style = { styles.placeBottom }>
@@ -262,21 +268,39 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: '#545454',
-    fontSize: Dimensions.get('window').height / 17,
-    fontFamily: 'source-sans-pro-bold',
+    fontSize: Dimensions.get('window').height / 25,
+    fontFamily: 'source-sans-pro-semibold',
   },
   headerTextElse: {
     color: '#545454',
-    fontSize: Dimensions.get('window').height / 17,
+    fontSize: Dimensions.get('window').height / 25,
+  },
+  headerYearText: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 29,
+    fontFamily: 'source-sans-pro-semibold',
+  },
+  headerYearTextElse: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 29,
   },
   headerSubText: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 40,
-    fontFamily: 'source-sans-pro-bold',
+    fontFamily: 'source-sans-pro-semibold',
   },
   headerSubTextElse: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 40,
+  },
+  headerSubSubText: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 50,
+    fontFamily: 'source-sans-pro-semibold',
+  },
+  headerSubSubTextElse: {
+    color: '#545454',
+    fontSize: Dimensions.get('window').height / 50,
   },
   optionButtons: {
     borderColor: '#545454',
@@ -296,14 +320,11 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get('window').height / 35,
     fontFamily: 'source-sans-pro-semibold',
     color: '#545454',
-    fontSize: Dimensions.get('window').height / 50,
-    fontFamily: 'source-sans-pro-bold',
   },
-  optionsTimeText: {
-    fontSize: Dimensions.get('window').height / 25,
-    fontFamily: 'source-sans-pro-semibold',
+  optionsPlaceTextElse: {
+    fontSize: 18,
     color: '#545454',
-    fontSize: Dimensions.get('window').height / 50,
+    textAlign: 'center',
   },
   place: {
     width: '90%',

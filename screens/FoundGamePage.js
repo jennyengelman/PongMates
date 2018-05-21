@@ -3,7 +3,10 @@ import { StyleSheet, Text, View, Button, Alert, Image, TextInput, TouchableOpaci
 import { Font } from 'expo';
 
 export class FoundScreen extends React.Component {
-  static navigationOptions = { header: null };
+  static navigationOptions = {
+    header: null,
+    gesturesEnabled: false,
+  };
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
@@ -23,7 +26,6 @@ export class FoundScreen extends React.Component {
           <View style = { styles.details }>
             <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Partner:</Text>
             <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Place:</Text>
-            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Time:</Text>
           </View>
           <View style = { styles.buttonContainer }>
             <TouchableOpacity onPress={() =>

@@ -6,7 +6,10 @@ import { StackNavigator } from 'react-navigation';
 import { deleteGame } from './../services/game-actions';
 
 export class WaitingScreen extends React.Component {
-  static navigationOptions = { header: null };
+  static navigationOptions = {
+    header: null,
+    gesturesEnabled: false,
+  };
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
@@ -23,19 +26,22 @@ export class WaitingScreen extends React.Component {
         <View style = { styles.tabStyle }>
           <Text style = { this.state.fontLoaded ? styles.tabFontStyle : styles.anything }>Your Game Details</Text>
         </View>
-          <View style = { styles.innerContainer }>
-              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
-                Name: {'\n'}Place: {'\n'}Time:
-              </Text>
+        <View style = { styles.innerContainer }>
+          <View style = {{ paddingBottom: 5 }}>
+            <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Name: { user.name }</Text>
           </View>
-          <PongButton
-            font={ this.state.fontLoaded }
-            text={ 'Delete\nRequest' }
-            navigation={ this.props.navigation }
-            destination={ 'Create' }
-            userObject={ user }
-            action={() => deleteGame(game.id) }
-          />
+          <View style = {{ paddingTop: 5 }}>
+            <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Place: { game.place }</Text>
+          </View>
+        </View>
+        <PongButton
+          font={ this.state.fontLoaded }
+          text={ 'Delete\nRequest' }
+          navigation={ this.props.navigation }
+          destination={ 'Create' }
+          userObject={ user }
+          action={() => deleteGame(game.id) }
+        />
         </View>
       </View>
     );

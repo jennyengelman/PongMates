@@ -5,7 +5,10 @@ import { StackNavigator } from 'react-navigation';
 import PongButton from './../components/PongButton';
 
 export class NoGamesFoundScreen extends React.Component {
-  static navigationOptions = { header: null };
+  static navigationOptions = {
+    header: null,
+    gesturesEnabled: false,
+  };
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
