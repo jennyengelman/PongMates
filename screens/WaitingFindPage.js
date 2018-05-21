@@ -30,7 +30,7 @@ export class WaitingFindScreen extends React.Component {
   render() {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
-    const game = this.props.navigation.state.params.game
+    const game = this.props.navigation.state.params.gameObject
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>

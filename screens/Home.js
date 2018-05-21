@@ -9,7 +9,10 @@ import moment from 'moment'
 import { FontLoad } from './../components/FontLoad'
 
 export class HomeScreen extends React.Component {
-  static navigationOptions = { header: null };
+  static navigationOptions = {
+    header: null,
+    gesturesEnabled: false,
+  };
   state = {
     fontLoaded: false,
     text: '',
@@ -51,10 +54,8 @@ export class HomeScreen extends React.Component {
                 }
               }}
             >
-            <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>
-            tap to begin
-            </Text>
-          </TouchableOpacity>
+              <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>tap to begin</Text>
+            </TouchableOpacity>
           </View>
         </View>
     );

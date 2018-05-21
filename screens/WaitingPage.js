@@ -7,7 +7,10 @@ import { getGame, deleteGame } from './../services/game-actions';
 import moment from 'moment';
 
 export class WaitingScreen extends React.Component {
-  static navigationOptions = { header: null };
+  static navigationOptions = {
+    header: null,
+    gesturesEnabled: false,
+  };
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
@@ -21,21 +24,25 @@ export class WaitingScreen extends React.Component {
           </Text>
         </View>
         <View style = { styles.bottomContainer }>
-          <View style = { styles.tabStyle }>
-            <Text style = { this.state.fontLoaded ? styles.tabFontStyle : styles.anything }>Your Game Details</Text>
+        <View style = { styles.tabStyle }>
+          <Text style = { this.state.fontLoaded ? styles.tabFontStyle : styles.anything }>Your Game Details</Text>
+        </View>
+        <View style = { styles.innerContainer }>
+          <View style = {{ paddingBottom: 5 }}>
+            <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Name: { user.name }</Text>
           </View>
-          <View style = { styles.innerContainer }>
-            <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
-            </Text>
+          <View style = {{ paddingTop: 5 }}>
+            <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Place: { game.place }</Text>
           </View>
-          <PongButton
-            font={ this.state.fontLoaded }
-            text={ 'Delete\nRequest' }
-            navigation={ this.props.navigation }
-            destination={ 'Create' }
-            userObject={ user }
-            action={() => deleteGame(game.id) }
-          />
+        </View>
+        <PongButton
+          font={ this.state.fontLoaded }
+          text={ 'Delete\nRequest' }
+          navigation={ this.props.navigation }
+          destination={ 'Create' }
+          userObject={ user }
+          action={() => deleteGame(game.id) }
+        />
         </View>
       </View>
     )

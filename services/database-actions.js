@@ -22,7 +22,7 @@ export function searchDatabase(preferences, user) {
               if (preferences.year.includes(childSnapshot.creator.year)) {
                 {console.log('works')}
                 //creator is right age
-                resolve(updateGame(childSnapshot.val().id, user.id))
+                resolve(updateGame(childSnapshot.id, user.id))
               }
             }
           }
