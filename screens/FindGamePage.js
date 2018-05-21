@@ -235,7 +235,7 @@ export class FindScreen extends React.Component {
                 year: this.state.pressed.years,
                 place: this.state.pressed.places
               }
-              navigate('WaitingFind', { game: preferences, user: user  })
+              navigate('WaitingFind', { game: preferences, userObject: user  })
             }}
           }>
             <View style = { styles.postButton }>

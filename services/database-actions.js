@@ -7,31 +7,28 @@ export function searchDatabase(preferences, user) {
     let childID = undefined
     let userID = undefined
     firebase.database().ref("games").once("value").then((snapshot) => {
-
       for (let key in snapshot.val()) {
         const childSnapshot = snapshot.val()[key]
+        {console.log(childSnapshot)}
+        {console.log(user)}
+        {console.log(preferences)}
         if (!childSnapshot.player) {
           if (childSnapshot.year.some(item => user.year) && childSnapshot.creator.id !== user.id) {
+            {console.log('works')}
             //finder is right age
             if (preferences.place.some(item => childSnapshot.place.includes(item))) {
+              {console.log('works')}
               //creator has right place
               if (preferences.year.includes(childSnapshot.creator.year)) {
+                {console.log('works')}
                 //creator is right age
-                if (!childID && !userID) {
-                  childID = childSnapshot.id
-                  userID = user.id
-                }
+                resolve(updateGame(childSnapshot.val().id, user.id))
               }
             }
           }
         }
       }
-      
-      if (childID && userID) {
-        resolve(updateGame(childID, userID))
-      } else {
-        reject(false)
-      }
+      reject(false)
     })
   })
 }

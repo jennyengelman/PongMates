@@ -12,16 +12,18 @@ export class WaitingFindScreen extends React.Component {
   static navigationOptions = { header: null };
   state = { fontLoaded: true };''
   checkDatabase = (game, user) => {
-    if (searchDatabase(game, user) != false) {
-      this.props.navigation.navigate('FoundAPartner', {userObject:user})
-    }
+    searchDatabase(game, user).then((result) => {
+      if (result != false) {
+        this.props.navigation.navigate('FoundAPartner', { userObject: user })
+      }
+    })
   }
   Component = () => {({
     mixins: [TimerMixin],
     componentDidMount() {
       this.setTimeout(
         () => { console.log('I do not leak!'); },
-        500
+        1
       );
     }
   })};

@@ -26,7 +26,6 @@ export class WaitingScreen extends React.Component {
           </View>
           <View style = { styles.innerContainer }>
             <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
-              Name: {user.name}{'\n'}Place: {this.state.game.place}{'\n'}Created at {moment(this.state.game.timestamp).format('h:mm')}
             </Text>
           </View>
           <PongButton
