@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
+import { updateGame } from './../services/game-actions'
+
 
 export class FoundScreen extends React.Component {
   static navigationOptions = {
@@ -26,11 +28,11 @@ export class FoundScreen extends React.Component {
           </View>
           <View style = { styles.details }>
             <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Partner: { game.creator.name }</Text>
-            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Place: { game.place[0] }</Text>
+            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Place: {game.place[0] }</Text>
           </View>
           <View style = { styles.buttonContainer }>
             <TouchableOpacity onPress={() =>
-                navigate('Create', { userObject: user })
+                navigate('Find', { userObject: user })
               }
             >
               <View style = { styles.button }>
@@ -38,8 +40,10 @@ export class FoundScreen extends React.Component {
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>
+              {
+                updateGame(game.id, user.id)
                 navigate('MeetYourMatch', { userObject: user, gameObject: game }) //for now
-              }
+              }}
             >
               <View style = { styles.button }>
                 <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Let{ `'` }s Go!</Text>
