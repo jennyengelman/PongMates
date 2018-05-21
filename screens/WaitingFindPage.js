@@ -6,10 +6,15 @@ import { StackNavigator } from 'react-navigation';
 import { deleteGame } from './../services/game-actions';
 
 export class WaitingFindScreen extends React.Component {
-  static navigationOptions = { header: null };
+  static navigationOptions = {
+    header: null,
+    gesturesEnabled: false,
+  };
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
+    const user = this.props.navigation.state.params.userObject
+    const game = this.props.navigation.state.params.gameObject
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
@@ -22,9 +27,12 @@ export class WaitingFindScreen extends React.Component {
           <Text style = { this.state.fontLoaded ? styles.tabFontStyle : styles.anything }>Your Game Details</Text>
         </View>
           <View style = { styles.innerContainer }>
-              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
-                Name: {'\n'}Place: {'\n'}Time:
-              </Text>
+            <View style = {{ paddingBottom: 5 }}>
+              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Name: { user.name }</Text>
+            </View>
+            <View style = {{ paddingTop: 5 }}>
+              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Place: { game.place }</Text>
+            </View>
           </View>
           <PongButton
             font={ this.state.fontLoaded }
@@ -69,7 +77,7 @@ const styles = StyleSheet.create({
   tabFontStyle: {
     fontWeight: 'bold',
     color: '#545454',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     fontSize: Dimensions.get('window').width / 18,
   },
   tabStyle: {
@@ -92,14 +100,14 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get('window').height / 25,
     fontWeight: 'bold',
     marginLeft: 15,
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     marginBottom: 5,
   },
   deleteFontStyle:{
     fontWeight: 'bold',
     fontSize: 15,
     color: '#545454',
-    fontFamily: 'source-sans',
+    fontFamily: 'source-sans-pro-semibold',
     textAlign: 'center',
     width: '100%'
   },

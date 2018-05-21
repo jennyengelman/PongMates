@@ -9,6 +9,7 @@ import firebase from 'firebase';
 import { generateUserKey, createUser } from './../services/user-actions'
 
 export class HomeScreen extends React.Component {
+
   static navigationOptions = { header: null };
   constructor(props) {
     super(props)
