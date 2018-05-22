@@ -96,6 +96,7 @@ export class CreateScreen extends React.Component {
     const user = this.props.navigation.state.params.userObject
     return (
       <View style = { styles.container }>
+        <View style = {{ backgroundColor: '#C2515B', height: '70%'}}>
         <View style = { styles.create }>
           <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>CREATE GAME</Text>
         </View>
@@ -215,6 +216,7 @@ export class CreateScreen extends React.Component {
           </TouchableOpacity>
         </View>
       </View>
+      </View>
     );
   }
 }
@@ -233,7 +235,7 @@ const styles = StyleSheet.create({
   },
   container: {
     height: '100%',
-    backgroundColor: '#C2515B',
+    backgroundColor: '#FFFFFF',
   },
   create: {
     backgroundColor: '#93E1FA',
@@ -248,8 +250,8 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
-    paddingTop: 17,
-    paddingBottom: 3,
+    //paddingTop: 17,
+    //paddingBottom: 3,
     marginTop: '10%',
   },
   createText: {
