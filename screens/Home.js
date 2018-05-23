@@ -26,23 +26,21 @@ export class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
       return (
         <View style = { styles.container }>
-          <View style = {{ backgroundColor: '#C2515B', height: '30%', justifyContent: 'center' }}>
+          <View style = {{ marginTop: 25 }}>
             <Logo font={ this.state.fontLoaded }/>
           </View>
-          <View style = {{ backgroundColor: '#C2515B', height: '40%' }}>
-            <View style = {{ alignItems: 'center', paddingTop: '5%' }}>
-              <View style = { styles.homeRectangle }>
-                <View style = { styles.nameContainer }>
-                  <TextInput
-                    style = { this.state.fontLoaded ? styles.nameInput : styles.nameInputElse }
-                    placeholder = "Your Name"
-                    onChangeText = { (text) => this.setState({ text }) }
-                  />
-                </View>
+          <View style = {{ alignItems: 'center', paddingTop: '5%' }}>
+            <View style = { styles.homeRectangle }>
+              <View style = { styles.nameContainer }>
+                <TextInput
+                  style = { this.state.fontLoaded ? styles.nameInput : styles.nameInputElse }
+                  placeholder = "Your Name"
+                  onChangeText = { (text) => this.setState({ text }) }
+                />
               </View>
             </View>
           </View>
-          <View style = {{ height: '25%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
+        <View style = {{ justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
             <TouchableOpacity onPress={() =>
               {
                 if (this.state.text !== '') {
@@ -65,9 +63,7 @@ export class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F2994A',
-    position: 'relative',
-    zIndex: 1,
+    backgroundColor: '#C2515B',
   },
   homeRectangle: {
     backgroundColor: '#93E1FA',
@@ -83,8 +79,6 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowColor: '#000000',
     shadowOffset: { height: 2, width: 0 },
-    zIndex: 100,
-    position: 'absolute',
   },
   matesTextElse: {
     fontSize: 60,

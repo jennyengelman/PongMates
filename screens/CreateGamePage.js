@@ -236,6 +236,7 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     backgroundColor: '#FFFFFF',
+    zIndex: 1,
   },
   create: {
     backgroundColor: '#93E1FA',
@@ -343,6 +344,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingLeft: 15,
     alignItems: 'center',
+    zIndex: 100,
   },
   placeTop: {
     backgroundColor: '#F2994A',
