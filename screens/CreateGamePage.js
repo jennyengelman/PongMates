@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#C2515B',
   },
   create: {
-    backgroundColor: '#93E1FA',
+    backgroundColor: '#FFC928',
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: '#FFFFFF',

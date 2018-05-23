@@ -4,6 +4,7 @@ import { Font } from 'expo';
 import PongButton from './../components/PongButton';
 import { StackNavigator } from 'react-navigation';
 import { getGame, deleteGame } from './../services/game-actions';
+import { getUser } from './../services/user-actions';
 import moment from 'moment';
 
 export class WaitingScreen extends React.Component {
@@ -11,11 +12,34 @@ export class WaitingScreen extends React.Component {
     header: null,
     gesturesEnabled: false,
   };
-  state = { fontLoaded: true };
+  state = { fontLoaded: true, matchFound: false };
+
+
+  componentWillMount = () => {
+    checkGame = (game) => {
+      getGame(game.id).then((result) => {
+        if (result.player) {
+          this.setState({ matchFound: true })
+          getUser(result.player).then((match) => {
+            navigate('FoundAPartner', { userObject: user, gameObject: result, matchObject: match })
+          })
+        }
+        else {
+          this.setState({ matchFound: false })
+        }
+      })
+    }
+  }
   render() {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
     const game = this.props.navigation.state.params.gameObject
+    setTimeout(() => {
+      if (this.state.matchFound != true) {
+        deleteGame(game.id)
+        navigate('TimedOut', { userObject: user })
+      }
+    }, 60000)
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
