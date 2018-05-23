@@ -87,25 +87,25 @@ renderModalButton = () => {
               </View>
             </View>
           </View>
+
+          <View style = {{ height: '30%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
+            <TouchableOpacity onPress={() => {
+              generateUserKey().then((key) => {
+                myKey = key
+                this.setState({ id: myKey })
+              })
+              this.state.visibleModal = 1
+            }}>
+              <Text style = { this.state.fontLoaded ? styles.modalTextStyle : styles.nameInputElse }>tap to begin</Text>
+            </TouchableOpacity>
+            <Modal isVisible={this.state.visibleModal === 1}>
+              {this._renderModalContent()}
+              </Modal>
+          </View>
         </View>
-        <View style = {{ height: '30%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
-          <TouchableOpacity onPress={() => {
-            generateUserKey().then((key) => {
-              myKey = key
-              this.setState({ id: myKey })
-            })
-            this.state.visibleModal = 1
-          }}>
-            <Text style = { this.state.fontLoaded ? styles.modalTextStyle : styles.nameInputElse }>tap to begin</Text>
-          </TouchableOpacity>
-          <Modal isVisible={this.state.visibleModal === 1}>
-            {this._renderModalContent()}
-          </Modal>
-        </View>
-      </View>
-    );
+      );
+    }
   }
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -199,33 +199,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: Dimensions.get('window').height / 30,
   },
-<<<<<<< HEAD
-=======
-  selfieText: {
-    position: 'absolute',
-    alignSelf: 'center',
-    width: Dimensions.get('window').width * .4,
-    fontSize: Dimensions.get('window').width / 15,
-    color: '#696969',
-    fontFamily: 'source-sans-pro-bold',
-    textAlign: 'center',
-  },
-  selfieTextElse: {
-      position: 'absolute',
-      alignSelf: 'center',
-      width: Dimensions.get('window').width * .4,
-      fontSize: Dimensions.get('window').width / 15,
-      color: '#696969',
-      textAlign: 'center',
-  },
-  button: {
-    backgroundColor: '#F2994A',
-    padding: 12,
-    margin: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 4,
-  },
   modalTextStyle: {
     fontSize: 28,
     fontFamily: 'source-sans-pro-bold',
@@ -240,5 +213,4 @@ const styles = StyleSheet.create({
    justifyContent: 'space-around',
    flex: .6
  },
->>>>>>> 086531a4b20e765ef0f8a6e2ec5179d0f6dbcb92
 });
