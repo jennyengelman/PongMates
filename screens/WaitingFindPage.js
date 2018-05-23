@@ -10,33 +10,46 @@ import { searchDatabase } from './../services/database-actions'
 
 export class WaitingFindScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = { fontLoaded: true, matchFound: false };
+  constructor(props) {
+    super(props)
+    this.state = {
+      fontLoaded: true,
+      matchFound: false,
+    }
+    this.user = this.props.navigation.state.params.userObject
+    this.game = this.props.navigation.state.params.gameObject
+    this.timer = undefined
+  }
+  componentDidMount() {
+    this.timer = setTimeout(() => {
+      if (this.state.matchFound != true) {
+        navigate('NoGamesFound', { userObject: this.user })
+      }
+    }, 20000)
+  }
+  componentWillUnmount() {
+    clearTimeout(this.timer)
+  }
   findMatch = (game, user) => {
     searchDatabase(game, user).then((result) => {
-      if (result != false) {
-        this.setState({ matchFound: true })
-        this.props.navigation.navigate('FoundGame', { userObject: user, gameObject: result })
-      }
-      else {
-        this.setState({ matchFound: false })
-      }
+      console.log(result)
+      this.setState({ matchFound: true })
+      console.log('here')
+      this.props.navigation.navigate('FoundGame', { userObject: user, gameObject: result })
+    }).catch((error) => {
+      console.log('never found match')
+      this.setState({ matchFound: false })
     })
   }
   render() {
     const { navigate } = this.props.navigation
-    const user = this.props.navigation.state.params.userObject
-    const game = this.props.navigation.state.params.gameObject
-    setTimeout(() => {
-      if (this.state.matchFound != true) {
-        navigate('NoGamesFound', { userObject: user })
-      }
-    }, 20000)
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
           <Text style = { this.state.fontLoaded ? styles.waitingFont : styles.anything }>
             waiting...
           </Text>
+          {this.findMatch(this.game, this.user)}
         </View>
         <View style = { styles.bottomContainer }>
         <View style = { styles.tabStyle }>
@@ -46,15 +59,14 @@ export class WaitingFindScreen extends React.Component {
               <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
                 Searching for games...
               </Text>
-              {this.findMatch(game, user)}
           </View>
           <PongButton
             font={ this.state.fontLoaded }
             text={ 'Delete\nRequest' }
             navigation={ this.props.navigation }
             destination={ 'Find' }
-            userObject={ user }
-            action = { () => {} }
+            userObject={ this.user }
+            action = { () => clearTimeout(timer) }
           />
         </View>
       </View>

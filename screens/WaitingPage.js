@@ -12,34 +12,41 @@ export class WaitingScreen extends React.Component {
     header: null,
     gesturesEnabled: false,
   };
-  state = { fontLoaded: true, matchFound: false };
-
-
-  componentWillMount = () => {
-    checkGame = (game) => {
-      getGame(game.id).then((result) => {
-        if (result.player) {
-          this.setState({ matchFound: true })
-          getUser(result.player).then((match) => {
-            navigate('FoundAPartner', { userObject: user, gameObject: result, matchObject: match })
-          })
-        }
-        else {
-          this.setState({ matchFound: false })
-        }
-      })
+  constructor(props) {
+    super(props)
+    this.state = {
+      fontLoaded: true,
+      matchFound: false,
     }
+    this.user = this.props.navigation.state.params.userObject
+    this.game = this.props.navigation.state.params.gameObject
+  }
+  componentWillMount = () => {
+    this.checkGame(this.game)
+  }
+  checkGame = (game) => {
+    getGame(game.id).then((result) => {
+      if (result.player) {
+        this.setState({ matchFound: true })
+        clearTimeout(timer)
+        getUser(result.player).then((match) => {
+          navigate('FoundAPartner', { userObject: this.user, gameObject: result, matchObject: match })
+        })
+      }
+      else {
+        this.setState({ matchFound: false })
+      }
+    })
   }
   render() {
     const { navigate } = this.props.navigation
-    const user = this.props.navigation.state.params.userObject
-    const game = this.props.navigation.state.params.gameObject
-    setTimeout(() => {
+    var timer
+    timer = setTimeout(() => {
       if (this.state.matchFound != true) {
-        deleteGame(game.id)
-        navigate('TimedOut', { userObject: user })
+        deleteGame(this.game.id)
+        navigate('TimedOut', { userObject: this.user })
       }
-    }, 60000)
+    }, 50000)
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
@@ -53,10 +60,10 @@ export class WaitingScreen extends React.Component {
         </View>
         <View style = { styles.innerContainer }>
           <View style = {{ paddingBottom: 5 }}>
-            <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Name: { user.name }</Text>
+            <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Name: { this.user.name }</Text>
           </View>
           <View style = {{ paddingTop: 5 }}>
-            <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Place: { game.place }</Text>
+            <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Place: { this.game.place }</Text>
           </View>
         </View>
         <PongButton
@@ -64,8 +71,8 @@ export class WaitingScreen extends React.Component {
           text={ 'Delete\nRequest' }
           navigation={ this.props.navigation }
           destination={ 'Create' }
-          userObject={ user }
-          action={() => deleteGame(game.id) }
+          userObject={ this.user }
+          action={() => { deleteGame(this.game.id); clearTimeout(timer) } }
         />
         </View>
       </View>
