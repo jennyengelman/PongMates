@@ -10,27 +10,27 @@ import { searchDatabase } from './../services/database-actions'
 
 export class WaitingFindScreen extends React.Component {
   static navigationOptions = { header: null };
-  state = { fontLoaded: true };''
+  state = { fontLoaded: true, matchFound: false };
   findMatch = (game, user) => {
     searchDatabase(game, user).then((result) => {
       if (result != false) {
+        this.setState({ matchFound: true })
         this.props.navigation.navigate('FoundGame', { userObject: user, gameObject: result })
+      }
+      else {
+        this.setState({ matchFound: false })
       }
     })
   }
-  Component = () => {({
-    mixins: [TimerMixin],
-    componentDidMount() {
-      this.setTimeout(
-        () => { console.log('I do not leak!'); },
-        1
-      );
-    }
-  })};
   render() {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
     const game = this.props.navigation.state.params.gameObject
+    setTimeout(() => {
+      if (this.state.matchFound != true) {
+        navigate('NoGamesFound', { userObject: user })
+      }
+    }, 20000)
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     borderTopColor: '#FFC928',
     borderTopWidth: 15,
     flex: .43,
-    backgroundColor: '#F2994A',
+    backgroundColor: '#93E1FA',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
