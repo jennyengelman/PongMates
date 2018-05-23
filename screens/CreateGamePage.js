@@ -195,7 +195,7 @@ export class CreateScreen extends React.Component {
             </View>
           </View>
         </View>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '7%' }}>
+        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '7%', paddingBottom: '20%' }}>
           <TouchableOpacity onPress={() =>
             navigate('Selection', { id: user.id })
           }>
@@ -250,8 +250,6 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
-    //paddingTop: 17,
-    //paddingBottom: 3,
     marginTop: '10%',
   },
   createText: {
