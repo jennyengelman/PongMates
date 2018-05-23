@@ -87,7 +87,21 @@ renderModalButton = () => {
               </View>
             </View>
           </View>
-
+          <View style = {{ justifyContent: 'flex-end', alignItems: 'center', paddingTop: '10%' }}>
+            <TouchableOpacity onPress={() =>
+              {
+                if (this.state.text !== '') {
+                  generateUserKey().then((key) => {
+                    myKey = key
+                    createUser({id: myKey, name: this.state.text, year: 19})
+                    navigate('Selection', { id : myKey })
+                  })
+               }
+              }}
+            >
+             <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>tap to begin</Text>
+            </TouchableOpacity>
+          </View>
           <View style = {{ height: '30%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
             <TouchableOpacity onPress={() => {
               generateUserKey().then((key) => {
@@ -100,12 +114,12 @@ renderModalButton = () => {
             </TouchableOpacity>
             <Modal isVisible={this.state.visibleModal === 1}>
               {this._renderModalContent()}
-              </Modal>
+            </Modal>
           </View>
         </View>
       );
-    }
   }
+}
 
 const styles = StyleSheet.create({
   container: {
