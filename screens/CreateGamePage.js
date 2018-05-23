@@ -96,7 +96,7 @@ export class CreateScreen extends React.Component {
     const user = this.props.navigation.state.params.userObject
     return (
       <View style = { styles.container }>
-        <View style = {{ backgroundColor: '#C2515B', height: '70%'}}>
+        <View style = {{ backgroundColor: '#C2515B' }}>
         <View style = { styles.create }>
           <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>CREATE GAME</Text>
         </View>
@@ -236,7 +236,6 @@ const styles = StyleSheet.create({
   container: {
     height: '100%',
     backgroundColor: '#FFFFFF',
-    zIndex: 1,
   },
   create: {
     backgroundColor: '#93E1FA',

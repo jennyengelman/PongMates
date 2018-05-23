@@ -26,7 +26,7 @@ export class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
       return (
         <View style = { styles.container }>
-          <View style = {{ marginTop: 25 }}>
+          <View style = {{ marginTop: 25, justifyContent: 'center', marginTop: '-5%' }}>
             <Logo font={ this.state.fontLoaded }/>
           </View>
           <View style = {{ alignItems: 'center', paddingTop: '5%' }}>
@@ -40,7 +40,7 @@ export class HomeScreen extends React.Component {
               </View>
             </View>
           </View>
-        <View style = {{ justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
+        <View style = {{ justifyContent: 'flex-end', alignItems: 'center', paddingTop: '10%' }}>
             <TouchableOpacity onPress={() =>
               {
                 if (this.state.text !== '') {
