@@ -41,6 +41,7 @@ _renderModalContent = () => (
     <View style = {{ flex: .2 }}>
 
     {this.renderModalButton()}
+
     </View>
   </View>
 );
@@ -49,6 +50,7 @@ renderModalButton = () => {
   if (this.state.id) {
     return <ModalButton label = { 'Continue' } user = {{ id: this.state.id, name: this.state.text, year: this.state.year }}
       action = { () => this.modalAction(this.state.id, this.state.text, this.state.year) } navigation = {this.props.navigation} />
+
   } else {
     return null
   }
@@ -64,7 +66,7 @@ renderModalButton = () => {
       'double-bubble-shadow': require('./../assets/fonts/Double_Bubble_shadow.otf'),
       'source-sans-pro-bold': require('./../assets/fonts/SourceSansPro-Bold.ttf'),
       'bubble-body': require('./../assets/fonts/Bubbleboddy-FatTrial.ttf'),
-      'source-sans-pro': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
+      'source-sans-pro-semibold': require('./../assets/fonts/source-sans-pro.semibold.ttf'),
       'source-sans-regular': require('./../assets/fonts/SourceSansPro-Regular.ttf'),
     });
     this.setState({ fontLoaded: true });
@@ -105,8 +107,6 @@ renderModalButton = () => {
           <Modal isVisible={this.state.visibleModal === 1}>
             {this._renderModalContent()}
           </Modal>
-
-
         </View>
       </View>
     );
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
   nameInput: {
     width: '80%',
     color: '#FFFFFF',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     fontWeight: 'bold',
     fontSize: 20,
     alignItems: 'center',
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   nextText: {
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     textAlign: 'center',
     color: '#696969',
   },

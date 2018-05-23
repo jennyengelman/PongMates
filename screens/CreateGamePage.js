@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
   cancelText: {
     color: '#F2994A',
     fontSize: 30,
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     textAlign: 'center',
   },
   cancelTextElse: {
@@ -318,12 +318,12 @@ const styles = StyleSheet.create({
   },
   optionsPlaceText: {
     fontSize: Dimensions.get('window').height / 35,
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     color: '#545454',
   },
   optionsTimeText: {
     fontSize: Dimensions.get('window').height / 25,
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     color: '#545454',
     textAlign: 'center',
   },
@@ -364,7 +364,7 @@ const styles = StyleSheet.create({
   },
   postButtonText: {
     color: '#fff',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
     fontSize: 30,
     textAlign: 'center',
   },

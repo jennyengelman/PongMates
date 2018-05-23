@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     color: '#4F4F4F',
     margin: 20,
     textAlign: 'center',
-    fontFamily: 'source-sans-pro',
+    fontFamily: 'source-sans-pro-semibold',
   },
   aboutTextBackup: {
     fontSize: Dimensions.get('window').height / 32,
