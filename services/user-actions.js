@@ -25,7 +25,7 @@ export function getUser(id) {
 }
 
 
-export function generateUserKey(user) {
+export function generateUserKey() {
   return new Promise((resolve, reject) => {
     var key = firebase.database().ref().child('users').push().key
     resolve(key)
