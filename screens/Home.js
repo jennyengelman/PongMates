@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Picker, StyleSheet, Text, View, Button, Alert, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import Logo from './../components/Logo';
@@ -69,10 +70,14 @@ renderModalButton = () => {
     this.setState({ fontLoaded: true });
   }
   render() {
-    console.log(this.props.navigation.params)
     const { navigate } = this.props.navigation;
     return (
-      <View style = { styles.container }>
+      <KeyboardAwareScrollView
+        style={{ backgroundColor: '#4c69a5' }}
+        resetScrollToCoords={{ x: 0, y: 0 }}
+        contentContainerStyle={styles.container}
+        scrollEnabled={false}
+      >
         <View style = {{ backgroundColor: '#C2515B', height: '30%', justifyContent: 'center' }}>
           <Logo font={ this.state.fontLoaded }/>
         </View>
@@ -105,7 +110,7 @@ renderModalButton = () => {
             {this._renderModalContent()}
           </Modal>
         </View>
-      </View>
+      </KeyboardAwareScrollView>
     );
   }
 }
@@ -114,6 +119,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F2994A',
+  },
+  form: {
+    flex: 1,
+    justifyContent: 'space-between',
   },
   homeRectangle: {
     backgroundColor: '#93E1FA',
