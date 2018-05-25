@@ -4,6 +4,7 @@ import { Font } from 'expo';
 import PongButton from './../components/PongButton';
 import { StackNavigator } from 'react-navigation';
 import { deleteGame } from './../services/game-actions';
+import * as Progress from 'react-native-progress';
 
 export class WaitingFindScreen extends React.Component {
   static navigationOptions = {
@@ -19,8 +20,11 @@ export class WaitingFindScreen extends React.Component {
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
           <Text style = { this.state.fontLoaded ? styles.waitingFont : styles.anything }>
-            waiting...
+            waiting
           </Text>
+          <View style = {{ paddingBottom: 12, paddingRight: 10 }}>
+            <Progress.CircleSnail color={['#FFC928', '93E1FA']} size={30} />
+          </View>
         </View>
         <View style = { styles.bottomContainer }>
         <View style = { styles.tabStyle }>
@@ -56,7 +60,8 @@ const styles = StyleSheet.create({
     flex: .57,
     backgroundColor:'#fff',
     justifyContent: 'flex-end',
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
+    flexDirection: 'row'
   },
   waitingFont: {
     fontWeight: 'bold',
@@ -69,7 +74,7 @@ const styles = StyleSheet.create({
     borderTopColor: '#FFC928',
     borderTopWidth: 15,
     flex: .43,
-    backgroundColor: '#F2994A',
+    backgroundColor: '#93E1FA',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
