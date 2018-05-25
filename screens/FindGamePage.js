@@ -226,7 +226,7 @@ export class FindScreen extends React.Component {
             </View>
           </View>
         </View>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '7%' }}>
+        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '3%' }}>
           <TouchableOpacity onPress={() =>
             navigate('Selection', { id: user.id })
           }>
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   container: {
-    height: '70%',
+    height: '100%',
     backgroundColor: '#C2515B',
   },
   find: {
@@ -348,7 +348,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   optionsTimeTextElse: {
-    fontSize: 30,
+    fontSize: Dimensions.get('window').height / 25,
     color: '#545454',
     textAlign: 'center',
   },
