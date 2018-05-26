@@ -81,6 +81,7 @@ renderModalButton = () => {
         <View style = {{ marginTop: 25, justifyContent: 'center', marginTop: '-5%' }}>
           <Logo font={ this.state.fontLoaded }/>
         </View>
+        <View>
           <View style = {{ alignItems: 'center', paddingTop: '5%' }}>
             <View style = { styles.homeRectangle }>
               <View style = { styles.nameContainer }>
@@ -98,7 +99,7 @@ renderModalButton = () => {
                 if (this.state.text !== '') {
                   generateUserKey().then((key) => {
                     myKey = key
-                    createUser({id: myKey, name: this.state.text, year: 19})
+                    createUser({id: myKey, name: this.state.text, year: 20})
                     navigate('Selection', { id : myKey })
                   })
                }

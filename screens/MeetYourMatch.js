@@ -5,24 +5,16 @@ import { Font } from 'expo';
 import { getGame } from './../services/user-actions'
 
 export class MeetMatch extends React.Component {
-  static navigationOptions = { 
+  static navigationOptions = {
     header: null,
     gesturesEnabled: false
   };
-
-  state = {
-    fontLoaded: true,
-    game: {}
-  };
-
-  componentWillMount() {
-    const gameId = this.props.navigation.state.params.id
-    getGame(gameId).then((game) => {
-      this.setState({game})
-      this.setState({name: this.state.game.name, place: this.state.game.place})
-    });
-  }
-  render(){
+  state = { fontLoaded: true };
+  render() {
+    const { navigate } = this.props.navigation
+    const user = this.props.navigation.state.params.userObject
+    const game = this.props.navigation.state.params.gameObject
+    const match = this.props.navigation.state.params.matchObject
     return(
       <View style = { styles.container }>
         <Text style = { this.state.fontLoaded ? styles.meetMatchText : styles.anything }>
@@ -32,16 +24,18 @@ export class MeetMatch extends React.Component {
           <Image source = { require('./../assets/match.png') } style = { styles.matchImageStyle }/>
           <View style = { styles.details }>
             <Text style = { this.state.fontLoaded ? styles.detailText : styles.anything }>
-              Name: {this.state.game.creator.name} {'\n'}Place:
+              People: { match.name } and {user.name}{ '\n' }Place: { game.place[0] }
             </Text>
           </View>
         </View>
 
         <PongButton
          font = { this.state.fontLoaded }
-         text = { 'Cancel' }
+         text = { 'Close' }
          navigation = { this.props.navigation }
          destination = { 'Selection' }
+         action = { () => {} }
+         id = { user.id }
          />
       </View>
     );
@@ -59,7 +53,7 @@ const styles = StyleSheet.create({
   },
   meetMatchText: {
     marginTop: '20%',
-    fontFamily: 'double-bubble',
+    fontFamily: 'double-bubble-shadow',
     textAlign: 'center',
     fontSize: 60,
     color: '#fff'

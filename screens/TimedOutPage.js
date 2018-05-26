@@ -12,14 +12,14 @@ export class TimedOutScreen extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
-    const userID = this.props.navigation.state.params.id
+    const user = this.props.navigation.state.params.userObject
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
           <Text style = { this.state.fontLoaded ? styles.sorryText : styles.sorryTextElse }>Sorry...</Text>
         </View>
         <View style = { styles.middleContainer }>
-          <Image style = { styles.brokenPong } source = {require('./../assets/images/broken-pong.png')}/>
+          <Image style = { styles.brokenPong } source = { require('./../assets/images/broken-pong.png') }/>
         </View>
         <View style = { styles.stripe }>
         </View>
@@ -32,7 +32,7 @@ export class TimedOutScreen extends React.Component {
               text={ 'Home' }
               navigation={ this.props.navigation }
               destination={ 'Selection' }
-              id = { userID }
+              id = { user.id }
               action = { () => {} }
             />
         </View>

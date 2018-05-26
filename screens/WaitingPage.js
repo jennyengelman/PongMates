@@ -3,24 +3,75 @@ import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import { Font } from 'expo';
 import PongButton from './../components/PongButton';
 import { StackNavigator } from 'react-navigation';
-import { deleteGame } from './../services/game-actions';
+import { getGame, deleteGame } from './../services/game-actions';
+import { getUser } from './../services/user-actions';
+import moment from 'moment';
+import schedule from 'node-schedule'
 
 export class WaitingScreen extends React.Component {
   static navigationOptions = {
     header: null,
     gesturesEnabled: false,
   };
-  state = { fontLoaded: true };
+  constructor(props) {
+    super(props)
+    this.state = {
+      fontLoaded: true,
+      matchFound: false,
+      user: this.props.navigation.state.params.userObject,
+      game: this.props.navigation.state.params.gameObject,
+      timer: undefined,
+      counter: 0,
+      deletedRequest: false,
+    }
+  }
+  componentWillMount() {
+    this.everySecond()
+  }
+  setCounter = (value) => {
+    this.setState({ counter: value })
+  }
+  everySecond = () => {
+    if (!this.state.deletedRequest) {
+      if (this.state.counter < 10) {
+        this.setState({ timer : setTimeout(() => {
+          this.setCounter(this.state.counter + 1)
+          this.checkGame(this.state.game)
+          this.everySecond()
+        }, 1000) })
+      } else {
+        if (this.state.matchFound != true) {
+          deleteGame(this.state.game.id)
+          this.props.navigation.navigate('TimedOut', { userObject: this.state.user })
+        }
+      }
+    }
+  }
+  checkGame = (game) => {
+    if (this.state.matchFound != true ) {
+      getGame(game.id).then((result) => {
+        if (result.player) {
+          this.setState({ matchFound: true })
+          getUser(result.player).then((match) => {
+            this.props.navigation.navigate('FoundAPartner', { userObject: this.state.user, gameObject: result, matchObject: match })
+          })
+        } else {
+          this.setState({ matchFound: false })
+        }
+      }).catch((error) => {
+        this.setState({ matchFound: false })
+      })
+    }
+  }
   render() {
     const { navigate } = this.props.navigation
-    const user = this.props.navigation.state.params.userObject
-    const game = this.props.navigation.state.params.gameObject
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
           <Text style = { this.state.fontLoaded ? styles.waitingFont : styles.anything }>
             waiting...
           </Text>
+          {/*this.checkGame(this.state.game)*/}
         </View>
         <View style = { styles.bottomContainer }>
         <View style = { styles.tabStyle }>
@@ -28,10 +79,10 @@ export class WaitingScreen extends React.Component {
         </View>
         <View style = { styles.innerContainer }>
           <View style = {{ paddingBottom: 5 }}>
-            <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Name: { user.name }</Text>
+            <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Name: { this.state.user.name }</Text>
           </View>
           <View style = {{ paddingTop: 5 }}>
-            <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Place: { game.place }</Text>
+            <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Place: { this.state.game.place }</Text>
           </View>
         </View>
         <PongButton
@@ -39,14 +90,17 @@ export class WaitingScreen extends React.Component {
           text={ 'Delete\nRequest' }
           navigation={ this.props.navigation }
           destination={ 'Create' }
-          userObject={ user }
-          action={() => deleteGame(game.id) }
+          userObject={ this.state.user }
+          action={() => {
+            this.setState({ deletedRequest: true })
+            deleteGame(this.state.game.id)
+          } }
         />
         </View>
       </View>
-    );
+    )
   }
- }
+}
 
 const styles = StyleSheet.create({
   background: {

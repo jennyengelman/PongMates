@@ -10,7 +10,9 @@ export class FoundAPartnerScreen extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
-    const userID = this.props.navigation.state.params.id
+    const user = this.props.navigation.state.params.userObject
+    const game = this.props.navigation.state.params.gameObject
+    const match = this.props.navigation.state.params.matchObject
     return (
       <View style={{ flexDirection: 'column' }}>
         <View style={ styles.topContainer }>
@@ -39,12 +41,12 @@ export class FoundAPartnerScreen extends React.Component {
         <View style={ styles.congratsContainer }>
           <View style={ styles.congratsBox }>
             <Text style={ this.state.fontLoaded ? styles.congratsInfo : styles.congratsInfoBackup }>
-            Name: { userID }{ '\n' }Place: Phi Delt
+            Name: { match.name }{ '\n' }Place: { game.place[0] }
             </Text>
           </View>
         </View>
         <TouchableOpacity onPress={() =>
-            navigate('Home', { id: userID }) //for now
+            navigate('MeetYourMatch', { userObject: user, gameObject: game, matchObject: match }) //for now
           } style={ styles.bottomButton }
         >
           <View style={ styles.bottomButton }>
