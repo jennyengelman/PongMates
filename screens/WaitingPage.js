@@ -48,7 +48,6 @@ export class WaitingScreen extends React.Component {
     }
   }
   checkGame = (game) => {
-    console.log('check')
     if (this.state.matchFound != true ) {
       getGame(game.id).then((result) => {
         if (result.player) {
@@ -133,7 +132,7 @@ const styles = StyleSheet.create({
   tabFontStyle: {
     fontWeight: 'bold',
     color: '#545454',
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     fontSize: Dimensions.get('window').width / 18,
   },
   tabStyle: {
@@ -156,14 +155,14 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get('window').height / 25,
     fontWeight: 'bold',
     marginLeft: 15,
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     marginBottom: 5,
   },
   deleteFontStyle:{
     fontWeight: 'bold',
     fontSize: 15,
     color: '#545454',
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     textAlign: 'center',
     width: '100%'
   },

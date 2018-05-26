@@ -96,6 +96,7 @@ export class CreateScreen extends React.Component {
     const user = this.props.navigation.state.params.userObject
     return (
       <View style = { styles.container }>
+        <View style = {{ backgroundColor: '#C2515B' }}>
         <View style = { styles.create }>
           <Text style = { this.state.fontLoaded ? styles.createText : styles.createTextElse }>CREATE GAME</Text>
         </View>
@@ -194,7 +195,7 @@ export class CreateScreen extends React.Component {
             </View>
           </View>
         </View>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '7%' }}>
+        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '7%', paddingBottom: '20%' }}>
           <TouchableOpacity onPress={() =>
             navigate('Selection', { id: user.id })
           }>
@@ -215,6 +216,7 @@ export class CreateScreen extends React.Component {
           </TouchableOpacity>
         </View>
       </View>
+      </View>
     );
   }
 }
@@ -223,7 +225,7 @@ const styles = StyleSheet.create({
   cancelText: {
     color: '#F2994A',
     fontSize: 30,
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     textAlign: 'center',
   },
   cancelTextElse: {
@@ -232,8 +234,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   container: {
-    height: '70%',
-    backgroundColor: '#C2515B',
+    height: '100%',
+    backgroundColor: '#FFFFFF',
   },
   create: {
     backgroundColor: '#FFC928',
@@ -248,8 +250,6 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowColor: '#000000',
     shadowOffset: { height: 0, width: 0 },
-    paddingTop: 17,
-    paddingBottom: 3,
     marginTop: '10%',
   },
   createText: {
@@ -318,11 +318,12 @@ const styles = StyleSheet.create({
   },
   optionsPlaceText: {
     fontSize: Dimensions.get('window').height / 35,
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     color: '#545454',
   },
-  optionsPlaceTextElse: {
-    fontSize: 18,
+  optionsTimeText: {
+    fontSize: Dimensions.get('window').height / 25,
+    fontFamily: 'source-sans-pro',
     color: '#545454',
     textAlign: 'center',
   },
@@ -341,6 +342,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingLeft: 15,
     alignItems: 'center',
+    zIndex: 100,
   },
   placeTop: {
     backgroundColor: '#F2994A',
@@ -363,7 +365,7 @@ const styles = StyleSheet.create({
   },
   postButtonText: {
     color: '#fff',
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     fontSize: 30,
     textAlign: 'center',
   },

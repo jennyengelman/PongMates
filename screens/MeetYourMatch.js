@@ -2,11 +2,12 @@ import React from 'react';
 import { StyleSheet, Dimensions, Text, View, Image } from 'react-native';
 import PongButton from './../components/PongButton';
 import { Font } from 'expo';
+import { getGame } from './../services/user-actions'
 
 export class MeetMatch extends React.Component {
   static navigationOptions = {
     header: null,
-    gesturesEnabled: false,
+    gesturesEnabled: false
   };
   state = { fontLoaded: true };
   render() {
@@ -32,8 +33,9 @@ export class MeetMatch extends React.Component {
          font = { this.state.fontLoaded }
          text = { 'Close' }
          navigation = { this.props.navigation }
-         destination = { 'Home' }
+         destination = { 'Selection' }
          action = { () => {} }
+         id = { user.id }
          />
       </View>
     );
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: Dimensions.get('window').height / 35,
     color: '#4F4F4F',
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     marginLeft: '7%'
   },
   cancelButton: {

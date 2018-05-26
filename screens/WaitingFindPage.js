@@ -44,7 +44,6 @@ export class WaitingFindScreen extends React.Component {
     }
   }
   findMatch = (game, user) => {
-    console.log('find')
     if (this.state.matchFound != true) {
       searchDatabase(game, user).then((result) => {
         this.setState({ matchFound: true })

@@ -226,7 +226,7 @@ export class FindScreen extends React.Component {
             </View>
           </View>
         </View>
-        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '7%' }}>
+        <View style = {{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', paddingTop: '3%' }}>
           <TouchableOpacity onPress={() =>
             navigate('Selection', { id: user.id })
           }>
@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
   cancelText: {
     color: '#F2994A',
     fontSize: 30,
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     textAlign: 'center',
   },
   cancelTextElse: {
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   container: {
-    height: '70%',
+    height: '100%',
     backgroundColor: '#C2515B',
   },
   find: {
@@ -332,7 +332,7 @@ const styles = StyleSheet.create({
   },
   optionsPlaceText: {
     fontSize: Dimensions.get('window').height / 35,
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     color: '#545454',
     textAlign: 'center',
   },
@@ -343,12 +343,12 @@ const styles = StyleSheet.create({
   },
   optionsTimeText: {
     fontSize: Dimensions.get('window').height / 25,
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     color: '#545454',
     textAlign: 'center',
   },
   optionsTimeTextElse: {
-    fontSize: 30,
+    fontSize: Dimensions.get('window').height / 25,
     color: '#545454',
     textAlign: 'center',
   },
@@ -415,7 +415,7 @@ const styles = StyleSheet.create({
   },
   postButtonText: {
     color: '#FFFFFF',
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     fontSize: 30,
     textAlign: 'center',
   },

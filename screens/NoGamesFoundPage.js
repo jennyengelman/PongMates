@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     detailsText: {
       fontSize: 30,
       color: '#4F4F4F',
-      fontFamily: 'source-sans-pro-semibold',
+      fontFamily: 'source-sans-pro',
       textAlign: 'center',
     },
     detailsTextElse: {
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
     sorryText: {
-      fontFamily: 'source-sans-pro-semibold',
+      fontFamily: 'source-sans-pro',
       fontSize: 72,
       textAlign: 'center',
       color: '#4F4F4F',

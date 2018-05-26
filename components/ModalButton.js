@@ -4,10 +4,21 @@ import { Font } from 'expo';
 
 export default class ModalButton extends React.Component {
   render() {
+    console.log(this.props)
     return (
+
+      <TouchableOpacity
+        onPress={() => {
+          console.log("pressed")
+          this.props.action()
+          this.props.navigation.navigate('Selection', { id: this.props.user.id, userObject: this.props.user })
+        }}
+        style={ styles.button }
+      >
       <View style={styles.button}>
-        <Text style = { styles.modalButtonStyle }>Continue</Text>
+        <Text style = { styles.modalButtonStyle }>{ this.props.label }</Text>
       </View>
+      </TouchableOpacity>
     )
   }
 }
@@ -23,6 +34,6 @@ const styles = StyleSheet.create({
   },
   modalButtonStyle: {
     fontSize: 20,
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
   },
 });

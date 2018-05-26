@@ -15,15 +15,13 @@ export class AboutScreen extends React.Component {
     const user = this.props.navigation.state.params.userObject
     return (
       <View style={ styles.container }>
-        <View style = {{ backgroundColor: '#C2515B', height: '30%', justifyContent: 'center' }}>
+        <View style = {{ justifyContent: 'center' }}>
           <Logo font={ this.state.fontLoaded }/>
         </View>
-        <View style={{ height: '40%', backgroundColor: '#C2515B'}} >
-          <View style={ styles.aboutBox }>
-            <Text style={ this.state.fontLoaded ? styles.aboutText : styles.aboutTextBackup }>Need One is a platform to connect Dartmouth students with Pong partners.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!</Text>
-          </View>
+        <View style={ styles.aboutBox }>
+          <Text style={ this.state.fontLoaded ? styles.aboutText : styles.aboutTextBackup }>Need One is a platform to connect Dartmouth students with Pong partners.{ '\n\n' }Created by three WISP Interns working with the DALI Lab.{ '\n\n' }We hope you enjoy!</Text>
         </View>
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: Dimensions.get('window').height / 10 }}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <PongButton
             font={ this.state.fontLoaded }
             text={ 'Back' }
@@ -42,7 +40,7 @@ export class AboutScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 2,
-    backgroundColor: '#F2994A',
+    backgroundColor: '#C2515B'
   },
   aboutBox: {
     width: Dimensions.get('window').width * .80,
@@ -66,7 +64,7 @@ const styles = StyleSheet.create({
     color: '#4F4F4F',
     margin: 20,
     textAlign: 'center',
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
   },
   aboutTextBackup: {
     fontSize: Dimensions.get('window').height / 32,
