@@ -81,6 +81,7 @@ renderModalButton = () => {
         <View style = {{ marginTop: 25, justifyContent: 'center', marginTop: '-5%' }}>
           <Logo font={ this.state.fontLoaded }/>
         </View>
+        <View>
           <View style = {{ alignItems: 'center', paddingTop: '5%' }}>
             <View style = { styles.homeRectangle }>
               <View style = { styles.nameContainer }>

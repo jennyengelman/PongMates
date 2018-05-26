@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
   headerText: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 25,
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
   },
   headerTextElse: {
     color: '#545454',
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
   headerYearText: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 29,
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
   },
   headerYearTextElse: {
     color: '#545454',
@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
   headerSubText: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 40,
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
   },
   headerSubTextElse: {
     color: '#545454',
@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
   headerSubSubText: {
     color: '#545454',
     fontSize: Dimensions.get('window').height / 50,
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
   },
   headerSubSubTextElse: {
     color: '#545454',
