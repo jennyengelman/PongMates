@@ -13,6 +13,7 @@ export class MeetMatch extends React.Component {
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
     const game = this.props.navigation.state.params.gameObject
+    const match = this.props.navigation.state.params.matchObject
     return(
       <View style = { styles.container }>
         <Text style = { this.state.fontLoaded ? styles.meetMatchText : styles.anything }>
@@ -22,7 +23,7 @@ export class MeetMatch extends React.Component {
           <Image source = { require('./../assets/match.png') } style = { styles.matchImageStyle }/>
           <View style = { styles.details }>
             <Text style = { this.state.fontLoaded ? styles.detailText : styles.anything }>
-              Name: { game.creator.name }{ '\n' }Place: { game.place[0] }
+              People: { match.name } and {user.name}{ '\n' }Place: { game.place[0] }
             </Text>
           </View>
         </View>

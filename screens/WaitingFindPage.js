@@ -15,31 +15,44 @@ export class WaitingFindScreen extends React.Component {
     this.state = {
       fontLoaded: true,
       matchFound: false,
+      user: this.props.navigation.state.params.userObject,
+      game: this.props.navigation.state.params.gameObject,
+      timer: undefined,
+      counter: 0,
+      deletedRequest: false,
     }
-    this.user = this.props.navigation.state.params.userObject
-    this.game = this.props.navigation.state.params.gameObject
-    this.timer = undefined
   }
-  componentDidMount() {
-    this.timer = setTimeout(() => {
-      if (this.state.matchFound != true) {
-        navigate('NoGamesFound', { userObject: this.user })
+  componentWillMount() {
+    this.everySecond()
+  }
+  setCounter = (value) => {
+    this.setState({ counter: value })
+  }
+  everySecond = () => {
+    if (!this.state.deletedRequest) {
+      if (this.state.counter < 10) {
+        this.setState({ timer : setTimeout(() => {
+          this.setCounter(this.state.counter + 1)
+          this.findMatch(this.state.game, this.state.user)
+          this.everySecond()
+        }, 1000) })
+      } else {
+        if (this.state.matchFound != true) {
+          this.props.navigation.navigate('NoGamesFound', { userObject: this.state.user })
+        }
       }
-    }, 20000)
-  }
-  componentWillUnmount() {
-    clearTimeout(this.timer)
+    }
   }
   findMatch = (game, user) => {
-    searchDatabase(game, user).then((result) => {
-      console.log(result)
-      this.setState({ matchFound: true })
-      console.log('here')
-      this.props.navigation.navigate('FoundGame', { userObject: user, gameObject: result })
-    }).catch((error) => {
-      console.log('never found match')
-      this.setState({ matchFound: false })
-    })
+    console.log('find')
+    if (this.state.matchFound != true) {
+      searchDatabase(game, user).then((result) => {
+        this.setState({ matchFound: true })
+        this.props.navigation.navigate('FoundGame', { userObject: user, gameObject: result })
+      }).catch((error) => {
+        this.setState({ matchFound: false })
+      })
+    }
   }
   render() {
     const { navigate } = this.props.navigation
@@ -49,7 +62,6 @@ export class WaitingFindScreen extends React.Component {
           <Text style = { this.state.fontLoaded ? styles.waitingFont : styles.anything }>
             waiting...
           </Text>
-          {this.findMatch(this.game, this.user)}
         </View>
         <View style = { styles.bottomContainer }>
         <View style = { styles.tabStyle }>
@@ -65,8 +77,8 @@ export class WaitingFindScreen extends React.Component {
             text={ 'Delete\nRequest' }
             navigation={ this.props.navigation }
             destination={ 'Find' }
-            userObject={ this.user }
-            action = { () => clearTimeout(timer) }
+            userObject={ this.state.user }
+            action = { () => this.setState({ deletedRequest: true }) }
           />
         </View>
       </View>

@@ -46,7 +46,7 @@ export class FoundAPartnerScreen extends React.Component {
           </View>
         </View>
         <TouchableOpacity onPress={() =>
-            navigate('Home', { id: userID }) //for now
+            navigate('MeetYourMatch', { userObject: user, gameObject: game, matchObject: match }) //for now
           } style={ styles.bottomButton }
         >
           <View style={ styles.bottomButton }>

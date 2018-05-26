@@ -42,7 +42,7 @@ export class FoundScreen extends React.Component {
             <TouchableOpacity onPress={() =>
               {
                 updateGame(game.id, user.id)
-                navigate('MeetYourMatch', { userObject: user, gameObject: game }) //for now
+                navigate('MeetYourMatch', { userObject: user, gameObject: game, matchObject: { name : game.creator.name} }) //for now
               }}
             >
               <View style = { styles.button }>
