@@ -9,7 +9,6 @@ export default class ModalButton extends React.Component {
 
       <TouchableOpacity
         onPress={() => {
-          console.log("pressed")
           this.props.action()
           this.props.navigation.navigate('Selection', { id: this.props.user.id, userObject: this.props.user })
         }}
