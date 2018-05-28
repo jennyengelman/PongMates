@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Fonts, Button, TouchableOpacity, Dimensions } from 'react-native';
 import { Font  } from 'expo';
 import { getUser } from './../services/user-actions'
+import SlidingView from './../components/SlidingAnimation'
 import firebase from 'firebase'
 
 export class SelectionScreen extends React.Component {
@@ -44,27 +45,27 @@ export class SelectionScreen extends React.Component {
               </TouchableOpacity>
             </View>
           <View style = {{  flex: 4 }}>
-            <View style = {{ height: '50%', width: '100%' }}>
+            <View style = {{ height: '50%', width: '80%' }}>
               <TouchableOpacity onPress={() =>
-                  navigate('Create', { userObject : this.state.user })
-                } style = {{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}
+                  navigate('Create', { userObject : this.state.user })}
+                  style = {{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start' }}
               >
-                <View style = { styles.postButton }>
+                <SlidingView style = { styles.postButton } start = { - Dimensions.get('window').width * .8 } end = { 0 } duration = { 1000 }>
                     <Text style = { this.state.fontLoaded ? styles.postFontStyle : styles.anything }>
                       CREATE A GAME
                     </Text>
-                </View>
+                </SlidingView>
               </TouchableOpacity>
             </View>
             <View style = {{ height: '50%', width: '100%' }}>
               <TouchableOpacity onPress={() =>
                 navigate('Find', { userObject : this.state.user })}
-                style = {{ flex: 1, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end' }}>
-                <View style = { styles.findButton }>
+                style = {{ flex: 1, flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-end', marginLeft: '20%' }}>
+                <SlidingView style = { styles.findButton } start = { Dimensions.get('window').width * .8 } end = { 0 } duration = { 1000 }>
                     <Text style = { this.state.fontLoaded ? styles.findFontStyle : styles.anything }>
                       FIND A GAME
                     </Text>
-                </View>
+                </SlidingView>
               </TouchableOpacity>
             </View>
           </View>
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
    },
   postButton: {
     justifyContent: 'center',
-    width: '80%',
+    width: Dimensions.get('window').width * .8,
     height: '70%',
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
    },
   findButton: {
     justifyContent: 'center',
-    width: '80%',
+    width: Dimensions.get('window').width * .8,
     height: '70%',
     backgroundColor:'#93E1FA',
     borderTopLeftRadius: 20,
