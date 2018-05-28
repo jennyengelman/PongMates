@@ -71,8 +71,7 @@ renderModalButton = () => {
     });
     this.setState({ fontLoaded: true });
   }
-  render() {
-    console.log(this.props.navigation.params)
+  render()
     const { navigate } = this.props.navigation;
     return (
       <View style = { styles.container }>

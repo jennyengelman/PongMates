@@ -5,8 +5,10 @@ import { Font } from 'expo';
 import { getGame } from './../services/user-actions'
 
 export class MeetMatch extends React.Component {
-
-  static navigationOptions = { header: null };
+  static navigationOptions = {
+    header: null,
+    gesturesEnabled: false
+  };
 
   state = {
     fontLoaded: true,
