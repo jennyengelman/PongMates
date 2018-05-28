@@ -4,17 +4,57 @@ import { Font } from 'expo';
 import PongButton from './../components/PongButton';
 import { StackNavigator } from 'react-navigation';
 import { deleteGame } from './../services/game-actions';
+import TimerMixin from 'react-timer-mixin';
+import { searchDatabase } from './../services/database-actions'
+
 
 export class WaitingFindScreen extends React.Component {
-  static navigationOptions = {
-    header: null,
-    gesturesEnabled: false,
-  };
-  state = { fontLoaded: true };
+  static navigationOptions = { header: null };
+  constructor(props) {
+    super(props)
+    this.state = {
+      fontLoaded: true,
+      matchFound: false,
+      user: this.props.navigation.state.params.userObject,
+      game: this.props.navigation.state.params.gameObject,
+      timer: undefined,
+      counter: 0,
+      deletedRequest: false,
+    }
+  }
+  componentWillMount() {
+    this.everySecond()
+  }
+  setCounter = (value) => {
+    this.setState({ counter: value })
+  }
+  everySecond = () => {
+    if (!this.state.deletedRequest) {
+      if (this.state.counter < 10) {
+        this.setState({ timer : setTimeout(() => {
+          this.setCounter(this.state.counter + 1)
+          this.findMatch(this.state.game, this.state.user)
+          this.everySecond()
+        }, 1000) })
+      } else {
+        if (this.state.matchFound != true) {
+          this.props.navigation.navigate('NoGamesFound', { userObject: this.state.user })
+        }
+      }
+    }
+  }
+  findMatch = (game, user) => {
+    if (this.state.matchFound != true) {
+      searchDatabase(game, user).then((result) => {
+        this.setState({ matchFound: true })
+        this.props.navigation.navigate('FoundGame', { userObject: user, gameObject: result })
+      }).catch((error) => {
+        this.setState({ matchFound: false })
+      })
+    }
+  }
   render() {
     const { navigate } = this.props.navigation
-    const user = this.props.navigation.state.params.userObject
-    const game = this.props.navigation.state.params.gameObject
     return (
       <View style = { styles.background }>
         <View style = { styles.topContainer }>
@@ -27,19 +67,17 @@ export class WaitingFindScreen extends React.Component {
           <Text style = { this.state.fontLoaded ? styles.tabFontStyle : styles.anything }>Your Game Details</Text>
         </View>
           <View style = { styles.innerContainer }>
-            <View style = {{ paddingBottom: 5 }}>
-              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Name: { user.name }</Text>
-            </View>
-            <View style = {{ paddingTop: 5 }}>
-              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>Place: { game.place }</Text>
-            </View>
+              <Text style = { this.state.fontLoaded ? styles.fontStyle : styles.anything }>
+                Searching for games...
+              </Text>
           </View>
           <PongButton
             font={ this.state.fontLoaded }
             text={ 'Delete\nRequest' }
             navigation={ this.props.navigation }
-            destination={ 'Selection' }
-            action = { () => {} }
+            destination={ 'Find' }
+            userObject={ this.state.user }
+            action = { () => this.setState({ deletedRequest: true }) }
           />
         </View>
       </View>
@@ -69,7 +107,7 @@ const styles = StyleSheet.create({
     borderTopColor: '#FFC928',
     borderTopWidth: 15,
     flex: .43,
-    backgroundColor: '#F2994A',
+    backgroundColor: '#93E1FA',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
@@ -77,7 +115,7 @@ const styles = StyleSheet.create({
   tabFontStyle: {
     fontWeight: 'bold',
     color: '#545454',
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     fontSize: Dimensions.get('window').width / 18,
   },
   tabStyle: {
@@ -100,14 +138,14 @@ const styles = StyleSheet.create({
     fontSize: Dimensions.get('window').height / 25,
     fontWeight: 'bold',
     marginLeft: 15,
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     marginBottom: 5,
   },
   deleteFontStyle:{
     fontWeight: 'bold',
     fontSize: 15,
     color: '#545454',
-    fontFamily: 'source-sans-pro-semibold',
+    fontFamily: 'source-sans-pro',
     textAlign: 'center',
     width: '100%'
   },

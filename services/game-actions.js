@@ -34,7 +34,7 @@ export function updateGame(gameID, playerID) {
     firebase.database().ref(`games/${gameID}`).update({
       player: playerID
     })
-    resolve(getGame(gameID))
+    resolve(true)
   })
 }
 

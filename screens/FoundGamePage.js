@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert, Image, TextInput, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
+import { updateGame } from './../services/game-actions'
+
 
 export class FoundScreen extends React.Component {
   static navigationOptions = {
@@ -10,7 +12,8 @@ export class FoundScreen extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
-    const userID = this.props.navigation.state.params.id
+    const user = this.props.navigation.state.params.userObject
+    const game = this.props.navigation.state.params.gameObject
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
@@ -24,12 +27,12 @@ export class FoundScreen extends React.Component {
             <Text style = { this.state.fontLoaded ? styles.detailsHeaderText : styles.detailsHeaderTextElse }>Your Game Details</Text>
           </View>
           <View style = { styles.details }>
-            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Partner:</Text>
-            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Place:</Text>
+            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Partner: { game.creator.name }</Text>
+            <Text style = { this.state.fontLoaded ? styles.detailsText : styles.detailsTextElse }>Place: {game.place[0] }</Text>
           </View>
           <View style = { styles.buttonContainer }>
             <TouchableOpacity onPress={() =>
-                navigate('Create', { id: userID })
+                navigate('Find', { userObject: user })
               }
             >
               <View style = { styles.button }>
@@ -37,8 +40,10 @@ export class FoundScreen extends React.Component {
               </View>
             </TouchableOpacity>
             <TouchableOpacity onPress={() =>
-                navigate('Home', { id: userID }) //for now
-              }
+              {
+                updateGame(game.id, user.id)
+                navigate('MeetYourMatch', { userObject: user, gameObject: game, matchObject: { name : game.creator.name} }) //for now
+              }}
             >
               <View style = { styles.button }>
                 <Text style = { this.state.fontLoaded ? styles.buttonText : styles.buttonTextElse }>Let{ `'` }s Go!</Text>

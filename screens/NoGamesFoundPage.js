@@ -12,7 +12,7 @@ export class NoGamesFoundScreen extends React.Component {
   state = { fontLoaded: true };
   render() {
     const { navigate } = this.props.navigation
-    const userID = this.props.navigation.state.params.id
+    const user = this.props.navigation.state.params.userObject
     return (
       <View style = { styles.container }>
         <View style = { styles.topContainer }>
@@ -30,9 +30,9 @@ export class NoGamesFoundScreen extends React.Component {
               font = { this.state.fontLoaded ? 'source-sans-pro' : 'Cochin' }
               text = { 'Home' }
               navigation = { this.props.navigation }
-              destination = { 'Home' }
+              destination={ 'Selection' }
+              id = { user.id }
               style = {{ paddingRight: '10%' }}
-              id = { userID }
               action = { () => {} }
             />
             <View style = {{ width: '15%' }}/>
@@ -41,7 +41,7 @@ export class NoGamesFoundScreen extends React.Component {
               text = { 'Change Filter' }
               navigation = { this.props.navigation }
               destination = { 'Find' }
-              id = { userID }
+              userObject = { user }
               action = { () => {} }
             />
           </View>
