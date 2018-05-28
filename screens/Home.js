@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Picker, StyleSheet, Text, View, Button, Alert, Image, TextInput, Dimensions, TouchableOpacity } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import Logo from './../components/Logo';
@@ -70,18 +69,14 @@ renderModalButton = () => {
     this.setState({ fontLoaded: true });
   }
   render() {
+    console.log(this.props.navigation.params)
     const { navigate } = this.props.navigation;
     return (
-      <KeyboardAwareScrollView
-        style={{ backgroundColor: '#F2994A' }}
-        resetScrollToCoords={{ x: 0, y: 0 }}
-        contentContainerStyle={styles.container}
-        scrollEnabled={false}
-      >
-        <View style = {{ marginTop: 25, justifyContent: 'center', marginTop: '-5%' }}>
+      <View style = { styles.container }>
+        <View style = {{ backgroundColor: '#C2515B', height: '30%', justifyContent: 'center' }}>
           <Logo font={ this.state.fontLoaded }/>
         </View>
-        <View>
+        <View style = {{ backgroundColor: '#C2515B', height: '40%' }}>
           <View style = {{ alignItems: 'center', paddingTop: '5%' }}>
             <View style = { styles.homeRectangle }>
               <View style = { styles.nameContainer }>
@@ -93,37 +88,26 @@ renderModalButton = () => {
               </View>
             </View>
           </View>
-          <View style = {{ justifyContent: 'flex-end', alignItems: 'center', paddingTop: '10%' }}>
-            <TouchableOpacity onPress={() =>
-              {
-                if (this.state.text !== '') {
-                  generateUserKey().then((key) => {
-                    myKey = key
-                    createUser({id: myKey, name: this.state.text, year: 20})
-                    navigate('Selection', { id : myKey })
-                  })
-               }
-              }}
-            >
-             <Text style={ this.state.fontLoaded ? styles.nextText : styles.nextTextElse }>tap to begin</Text>
-            </TouchableOpacity>
-          </View>
-          <View style = {{ height: '30%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
-            <TouchableOpacity onPress={() => {
-              generateUserKey().then((key) => {
-                myKey = key
-                this.setState({ id: myKey })
-              })
-              this.state.visibleModal = 1
-            }}>
-              <Text style = { this.state.fontLoaded ? styles.modalTextStyle : styles.nameInputElse }>tap to begin</Text>
-            </TouchableOpacity>
-            <Modal isVisible={this.state.visibleModal === 1}>
-              {this._renderModalContent()}
-            </Modal>
-          </View>
+
         </View>
-      </KeyboardAwareScrollView>
+
+        <View style = {{ height: '30%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
+          <TouchableOpacity onPress={() => {
+            generateUserKey().then((key) => {
+              myKey = key
+              this.setState({ id: myKey })
+            })
+            this.state.visibleModal = 1
+          }}>
+            <Text style = { this.state.fontLoaded ? styles.modalTextStyle : styles.nameInputElse }>tap to begin</Text>
+          </TouchableOpacity>
+          <Modal isVisible={this.state.visibleModal === 1}>
+            {this._renderModalContent()}
+          </Modal>
+
+
+        </View>
+      </View>
     );
   }
 }
@@ -131,11 +115,7 @@ renderModalButton = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#C2515B',
-  },
-  form: {
-    flex: 1,
-    justifyContent: 'space-between',
+    backgroundColor: '#F2994A',
   },
   homeRectangle: {
     backgroundColor: '#93E1FA',
@@ -215,6 +195,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#696969',
   },
+  pongContainer: {
+    backgroundColor: '#FFC928',
+    width: 220,
+    height: 110,
+    borderTopRightRadius: 30,
+    borderBottomRightRadius: 30,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    borderColor: 'white',
+    borderWidth: 5,
+    marginLeft: -5,
+  },
   nextText: {
     fontFamily: 'source-sans-pro-bold',
     textAlign: 'center',
@@ -223,6 +215,31 @@ const styles = StyleSheet.create({
   nextTextElse: {
     textAlign: 'center',
     fontSize: Dimensions.get('window').height / 30,
+  },
+  selfieText: {
+    position: 'absolute',
+    alignSelf: 'center',
+    width: Dimensions.get('window').width * .4,
+    fontSize: Dimensions.get('window').width / 15,
+    color: '#696969',
+    fontFamily: 'source-sans-pro-bold',
+    textAlign: 'center',
+  },
+  selfieTextElse: {
+      position: 'absolute',
+      alignSelf: 'center',
+      width: Dimensions.get('window').width * .4,
+      fontSize: Dimensions.get('window').width / 15,
+      color: '#696969',
+      textAlign: 'center',
+  },
+  button: {
+    backgroundColor: '#F2994A',
+    padding: 12,
+    margin: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
   },
   modalTextStyle: {
     fontSize: 28,
