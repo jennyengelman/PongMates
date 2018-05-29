@@ -23,7 +23,7 @@ export class HomeScreen extends React.Component {
       user: {},
     };
   }
-
+  
   _renderModalContent = () => (
     <FadeInView style={ styles.modalContent }>
       <View style = {{ alignItems: 'center', justifyContent: 'center', flex: .2 }}>
