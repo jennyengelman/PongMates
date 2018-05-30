@@ -4,15 +4,18 @@ import PongButton from './../components/PongButton';
 import { Font } from 'expo';
 import { getGame } from './../services/user-actions'
 
+let scaleValue = 0
+
 export class MeetMatch extends React.Component {
   constructor(props) {
     super(props);
     this.scale.bind(this);
+    this.scaleValue = new Animated.Value(.3);
   }
-  scaleValue = new Animated.Value(.3);
 
   scale = () => {
     this.scaleValue.setValue(.3)
+    scaleValue = this.scaleValue
     Animated.timing(
       this.scaleValue,
       {
@@ -43,6 +46,7 @@ export class MeetMatch extends React.Component {
         </Text>
         <View style = { styles.detailsContainer }>
           <Animated.Image source = { require('./../assets/match.png') } style = { styles.matchImage }/>
+          { this.scale() }
           <View style = { styles.details }>
             <Text style = { this.state.fontLoaded ? styles.detailText : styles.anything }>
               People: { match.name } and {user.name}{ '\n' }Place: { game.place[0] }
@@ -94,7 +98,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').height / 4,
     height: Dimensions.get('window').height / 4,
     transform: [
-      { scale: this.scaleValue },
+      { scale: scaleValue },
     ]
   },
   details: {
