@@ -3,6 +3,11 @@ We are three Dartmouth students from the class of 2021 working as Women in Scien
 
 Need One is designed to improve social integration at Dartmouth through the game of pong. Need One will serve as a platform to connect a user with a partner to play with, either by searching for or posting a game. We hope that this will become an easy way for new members of the Dartmouth community, such as freshmen or transfer students, to branch out and interact with new people. Additionally, the app could serve as a mechanism for upperclassmen to reach out to underclassmen and make Dartmouth a more inclusive place.
 
+![picture](assets/images/readme2.png)
+![picture](assets/images/readme1.png)
+![picture](assets/images/readme3.png)
+
+
 ## Architecture
 
 * [Expo](https://expo.io/) is a tool for React Native applications that, by providing a prototype formate, aided our development process.
