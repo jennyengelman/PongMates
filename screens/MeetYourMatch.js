@@ -1,16 +1,37 @@
 import React from 'react';
-import { StyleSheet, Dimensions, Text, View, Image } from 'react-native';
+import { Animated, Easing, StyleSheet, Dimensions, Text, View, Image } from 'react-native';
 import PongButton from './../components/PongButton';
 import { Font } from 'expo';
 import { getGame } from './../services/user-actions'
 
 export class MeetMatch extends React.Component {
+  constructor(props) {
+    super(props);
+    this.scale.bind(this);
+  }
+  scaleValue = new Animated.Value(.3);
+
+  scale = () => {
+    this.scaleValue.setValue(.3)
+    Animated.timing(
+      this.scaleValue,
+      {
+        toValue: 1,
+        duration: 1500,
+      }
+    ).start()
+  };
+
   static navigationOptions = {
     header: null,
     gesturesEnabled: false
   };
   state = { fontLoaded: true };
   render() {
+    const scaleImage = this.scaleValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0.3, 5],
+    })
     const { navigate } = this.props.navigation
     const user = this.props.navigation.state.params.userObject
     const game = this.props.navigation.state.params.gameObject
@@ -21,7 +42,7 @@ export class MeetMatch extends React.Component {
           MEET YOUR MATCH!
         </Text>
         <View style = { styles.detailsContainer }>
-          <Image source = { require('./../assets/match.png') } style = { styles.matchImageStyle }/>
+          <Animated.Image source = { require('./../assets/match.png') } style = { styles.matchImage }/>
           <View style = { styles.details }>
             <Text style = { this.state.fontLoaded ? styles.detailText : styles.anything }>
               People: { match.name } and {user.name}{ '\n' }Place: { game.place[0] }
@@ -69,9 +90,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end'
   },
-  matchImageStyle: {
+  matchImage: {
     width: Dimensions.get('window').height / 4,
     height: Dimensions.get('window').height / 4,
+    transform: [
+      { scale: this.scaleValue },
+    ]
   },
   details: {
     width: '70%',

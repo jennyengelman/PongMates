@@ -23,36 +23,36 @@ export class HomeScreen extends React.Component {
       user: {},
     };
   }
-_renderModalContent = () => (
-  <View style={ styles.modalContent }>
-    <View style = {{ alignItems: 'center', justifyContent: 'center', flex: .2 }}>
-      <Text style = { styles.modalTextStyle }>Select Your Year</Text>
-        <Picker
-          selectedValue={ this.state.year }
-          style={{ height: 20, width: 100 }}
-          onValueChange={(itemValue, itemIndex) => {
-            this.setState({year: itemValue})}}>
-          <Picker.Item label="'21" value={21} />
-          <Picker.Item label="'20" value={20} />
-          <Picker.Item label="'19" value={19} />
-          <Picker.Item label="'18" value={18} />
-        </Picker>
+  _renderModalContent = () => (
+    <View style={ styles.modalContent }>
+      <View style = {{ alignItems: 'center', justifyContent: 'center', flex: .2 }}>
+        <Text style = { styles.modalTextStyle }>Select Your Year</Text>
+          <Picker
+            selectedValue={ this.state.year }
+            style={{ height: 20, width: 100 }}
+            onValueChange={(itemValue, itemIndex) => {
+              this.setState({year: itemValue})}}>
+            <Picker.Item label="'21" value={21} />
+            <Picker.Item label="'20" value={20} />
+            <Picker.Item label="'19" value={19} />
+            <Picker.Item label="'18" value={18} />
+          </Picker>
+        </View>
+      <View style = {{ flex: .2 }}>
+
+      {this.renderModalButton()}
       </View>
-    <View style = {{ flex: .2 }}>
-
-    {this.renderModalButton()}
     </View>
-  </View>
-);
+  );
 
-renderModalButton = () => {
-  if (this.state.id) {
-    return <ModalButton label = { 'Continue' } user = {{ id: this.state.id, name: this.state.text, year: this.state.year }}
-      action = { () => this.modalAction(this.state.id, this.state.text, this.state.year) } navigation = {this.props.navigation} />
-  } else {
-    return null
+  renderModalButton = () => {
+    if (this.state.id) {
+      return <ModalButton label = { 'Continue' } user = {{ id: this.state.id, name: this.state.text, year: this.state.year }}
+        action = { () => this.modalAction(this.state.id, this.state.text, this.state.year) } navigation = {this.props.navigation} />
+    } else {
+      return null
+    }
   }
-}
 
   modalAction = (id, name, year) => {
     createUser({ id, name, year })
