@@ -3,7 +3,6 @@ import { Picker, StyleSheet, Text, View, Button, Alert, Image, TextInput, Dimens
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
-import FadeInView from './../components/FadeInView';
 import Logo from './../components/Logo';
 import Modal from 'react-native-modal';
 import ModalButton from './../components/ModalButton';
@@ -23,26 +22,25 @@ export class HomeScreen extends React.Component {
       user: {},
     };
   }
-  
   _renderModalContent = () => (
-    <FadeInView style={ styles.modalContent }>
+    <View style={ styles.modalContent }>
       <View style = {{ alignItems: 'center', justifyContent: 'center', flex: .2 }}>
         <Text style = { styles.modalTextStyle }>Select Your Year</Text>
-        <Picker
-          selectedValue={ this.state.year }
-          style={{ height: 20, width: 100 }}
-          onValueChange={(itemValue, itemIndex) => {
-            this.setState({year: itemValue})}}>
-          <Picker.Item label="'21" value={21} />
-          <Picker.Item label="'20" value={20} />
-          <Picker.Item label="'19" value={19} />
-          <Picker.Item label="'18" value={18} />
-        </Picker>
-      </View>
+          <Picker
+            selectedValue={ this.state.year }
+            style={{ height: 20, width: 100 }}
+            onValueChange={(itemValue, itemIndex) => {
+              this.setState({year: itemValue})}}>
+            <Picker.Item label="'21" value={21} />
+            <Picker.Item label="'20" value={20} />
+            <Picker.Item label="'19" value={19} />
+            <Picker.Item label="'18" value={18} />
+          </Picker>
+        </View>
       <View style = {{ flex: .2 }}>
-        {this.renderModalButton()}
+      {this.renderModalButton()}
       </View>
-    </FadeInView>
+    </View>
   );
 
   renderModalButton = () => {
