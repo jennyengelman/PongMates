@@ -3,7 +3,6 @@ import { Picker, StyleSheet, Text, View, Button, Alert, Image, TextInput, Dimens
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
-import FadeInView from './../components/FadeInView';
 import Logo from './../components/Logo';
 import Modal from 'react-native-modal';
 import ModalButton from './../components/ModalButton';
@@ -39,7 +38,6 @@ export class HomeScreen extends React.Component {
           </Picker>
         </View>
       <View style = {{ flex: .2 }}>
-
       {this.renderModalButton()}
       </View>
     </View>

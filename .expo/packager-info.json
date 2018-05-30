@@ -2,7 +2,7 @@
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://jy-mmk.jennyengelman.pongmates.exp.direct",
   "packagerNgrokUrl": "https://packager.jy-mmk.jennyengelman.pongmates.exp.direct",
-  "ngrokPid": 75060,
+  "ngrokPid": 73666,
   "packagerPort": 19002,
-  "packagerPid": 75040
+  "packagerPid": 73645
 }
