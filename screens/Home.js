@@ -3,6 +3,7 @@ import { Picker, StyleSheet, Text, View, Button, Alert, Image, TextInput, Dimens
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
+import FadeInView from './../components/FadeInView';
 import Logo from './../components/Logo';
 import Modal from 'react-native-modal';
 import ModalButton from './../components/ModalButton';
@@ -13,7 +14,6 @@ export class HomeScreen extends React.Component {
   static navigationOptions = { header: null };
   constructor(props) {
     super(props)
-
     this.state = {
       fontLoaded: false,
       text: '',
@@ -23,10 +23,11 @@ export class HomeScreen extends React.Component {
       user: {},
     };
   }
-_renderModalContent = () => (
-  <View style={ styles.modalContent }>
-    <View style = {{ alignItems: 'center', justifyContent: 'center', flex: .2 }}>
-      <Text style = { styles.modalTextStyle }>Select Your Year</Text>
+  
+  _renderModalContent = () => (
+    <FadeInView style={ styles.modalContent }>
+      <View style = {{ alignItems: 'center', justifyContent: 'center', flex: .2 }}>
+        <Text style = { styles.modalTextStyle }>Select Your Year</Text>
         <Picker
           selectedValue={ this.state.year }
           style={{ height: 20, width: 100 }}
@@ -38,21 +39,21 @@ _renderModalContent = () => (
           <Picker.Item label="'18" value={18} />
         </Picker>
       </View>
-    <View style = {{ flex: .2 }}>
+      <View style = {{ flex: .2 }}>
+        {this.renderModalButton()}
+      </View>
+    </FadeInView>
+  );
 
-    {this.renderModalButton()}
-    </View>
-  </View>
-);
-
-renderModalButton = () => {
-  if (this.state.id) {
-    return <ModalButton label = { 'Continue' } user = {{ id: this.state.id, name: this.state.text, year: this.state.year }}
-      action = { () => this.modalAction(this.state.id, this.state.text, this.state.year) } navigation = {this.props.navigation} />
-  } else {
-    return null
+  renderModalButton = () => {
+    if (this.state.id) {
+      return <ModalButton label = { 'Continue' } user = {{ id: this.state.id, name: this.state.text, year: this.state.year }}
+        action = { () => this.modalAction(this.state.id, this.state.text, this.state.year) } navigation = {this.props.navigation} />
+    }
+    else {
+      return null
+    }
   }
-}
 
   modalAction = (id, name, year) => {
     createUser({ id, name, year })
@@ -69,6 +70,7 @@ renderModalButton = () => {
     });
     this.setState({ fontLoaded: true });
   }
+
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -93,9 +95,7 @@ renderModalButton = () => {
               </View>
             </View>
           </View>
-
         </View>
-
         <View style = {{ height: '30%', justifyContent: 'flex-end', alignItems: 'center', paddingBottom: Dimensions.get('window').height / 20 }}>
           <TouchableOpacity onPress={() => {
             generateUserKey().then((key) => {
@@ -109,8 +109,6 @@ renderModalButton = () => {
           <Modal isVisible={this.state.visibleModal === 1}>
             {this._renderModalContent()}
           </Modal>
-
-
         </View>
       </KeyboardAwareScrollView>
     );

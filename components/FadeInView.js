@@ -7,7 +7,7 @@ export default class FadeInView extends React.Component {
   }
 
   componentDidMount() {
-    Animate.timing(
+    Animated.timing(
       this.state.fadeAnim,
       {
         toValue: 1,
@@ -17,10 +17,8 @@ export default class FadeInView extends React.Component {
   }
 
   render() {
-    let { fadeAnim } = this.state;
-
     return (
-      <Animated.view style={{ opacity: fadeAnim }}/>
+      <Animated.View style={{ opacity: this.state.fadeAnim }}/>
     );
   }
 }
