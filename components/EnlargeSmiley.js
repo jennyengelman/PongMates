@@ -18,8 +18,8 @@ export default class EnlargeSmiley extends React.Component {
     Animated.timing(
       this.state.scaleValue,
       {
-        toValue: 10,
-        duration: 1000,
+        toValue: 1,
+        duration: 10000,
       }
     ).start();
   }
